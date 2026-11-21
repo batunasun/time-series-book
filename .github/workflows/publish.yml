@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-gh-pages
+  cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -24,7 +28,9 @@ jobs:
             git -c user.name="GitHub Actions" \
                 -c user.email="github-actions[bot]@users.noreply.github.com" \
                 commit --allow-empty -m "Initialize GitHub Pages branch"
-            git push origin gh-pages
+            if ! git push origin gh-pages; then
+              git ls-remote --exit-code --heads origin gh-pages >/dev/null
+            fi
             git switch "$source_branch"
           fi
 
