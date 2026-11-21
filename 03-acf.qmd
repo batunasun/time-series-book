@@ -323,9 +323,9 @@ Observe the strong persistence and seasonality.
 ## Exercises
 
 1. Generate a white noise series of length 200 and plot its ACF.
-2. Simulate an AR(1) process with \(\phi=0.7\).
-3. Verify that the theoretical ACF equals \(\phi^k\).
-4. Simulate an MA(1) process with \(\theta=0.5\).
+2. Simulate an AR(1) process with $\phi=0.7$.
+3. Verify that the theoretical ACF equals $\phi^k$.
+4. Simulate an MA(1) process with $\theta=0.5$.
 5. Verify that the ACF cuts off after lag 1.
 6. Compare the ACFs of white noise, AR(1), and MA(1).
 7. Explain the difference between gradual decay and cutoff behavior.
