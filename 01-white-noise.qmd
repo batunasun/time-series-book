@@ -1,8 +1,8 @@
-# White Noise
+# Цагаан чимээ (White Noise)
 
-## Definition
+## Тодорхойлолт
 
-A stochastic process \(\{Y_t\}\) is called a white noise process if
+\(\{Y_t\}\) стохастик процессийг цагаан чимээний процесс гэнэ, хэрэв
 
 $$
 E(Y_t)=0,
@@ -12,41 +12,47 @@ $$
 Var(Y_t)=\sigma^2,
 $$
 
-and
+ба
 
 $$
 Cov(Y_t,Y_{t-k})=0,
-\qquad k\neq 0.
+\qquad k\neq 0
 $$
 
-We write
+болно.
+
+Бид үүнийг
 
 $$
-Y_t \sim WN(0,\sigma^2).
+Y_t \sim WN(0,\sigma^2)
 $$
 
-## Properties
+гэж бичнэ.
 
-For a white noise process:
+## Шинж чанар
 
-1. The mean is constant.
-2. The variance is constant.
-3. Observations are uncorrelated.
+Цагаан чимээний процессийн хувьд:
 
-The autocorrelation function is
+1. Дундаж нь тогтмол.
+2. Дисперс нь тогтмол.
+3. Ажиглалтууд нь корреляцгүй.
+
+Автокорреляцын функц нь
 
 $$
 \rho(0)=1,
 $$
 
-and
+ба
 
 $$
 \rho(k)=0,
-\qquad k\ne0.
+\qquad k\ne0
 $$
 
-## Simulation in R
+байна.
+
+## R дээрх симуляц
 
 ```{r}
 set.seed(123)
@@ -55,23 +61,23 @@ y <- rnorm(200)
 
 plot.ts(
   y,
-  main="White Noise Series",
+  main="Цагаан чимээний цуваа",
   ylab=expression(Y[t])
 )
 ```
 
-## Autocorrelation Function
+## Автокорреляцын функц
 
 ```{r}
 acf(
   y,
-  main="ACF of White Noise"
+  main="Цагаан чимээний ACF"
 )
 ```
 
-For a white noise process, the sample autocorrelations fluctuate randomly around zero.
+Цагаан чимээний процессийн хувьд түүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.
 
-## Lag Plot
+## Хоцролтын график
 
 ```{r}
 plot(
@@ -83,24 +89,24 @@ plot(
 )
 ```
 
-The lag plot exhibits no systematic pattern.
+Хоцролтын график ямар нэг системтэй хэв маяг харуулахгүй.
 
-## Example
+## Жишээ
 
-Suppose
+Бүх \(t\)-ийн хувьд харилцан хамааралгүйгээр
 
 $$
-Y_t \sim N(0,1),
+Y_t \sim N(0,1)
 $$
 
-independently for all $t$.
+гэж үзье.
 
-Then $\{Y_t\}$ is white noise.
+Тэгвэл \(\{Y_t\}\) нь цагаан чимээ байна.
 
-## Exercise
+## Дасгал
 
-1. Generate a white noise series of length 500.
-2. Plot the series.
-3. Plot the ACF.
-4. Produce a lag-1 scatterplot.
-5. Explain whether the observations appear correlated.
+1. 500 урттай цагаан чимээний цуваа үүсгэ.
+2. Цувааг графикаар зур.
+3. ACF-ийг зур.
+4. Лаг-1 сарнилын графикийг гарга.
+5. Ажиглалтууд корреляцтай харагдаж байгаа эсэхийг тайлбарла.
