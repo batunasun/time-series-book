@@ -19,6 +19,7 @@ book:
     - 09-forecasting.qmd
     - 10-exercises.qmd
     - 11-solutions.qmd
+    - 12.qmd
 
 format:
   html:

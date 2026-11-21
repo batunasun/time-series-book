@@ -25,7 +25,7 @@ jobs:
           use-public-rspm: true
 
       - name: Install R dependencies
-        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "tidyverse", "fpp3", "forecast", "tseries", "urca", "zoo", "xts", "astsa"))'
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "tidyverse", "fpp3", "forecast", "tseries", "urca", "zoo", "xts", "astsa", "TSA"))'
         
       - name: Render and Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
