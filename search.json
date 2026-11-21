@@ -174,7 +174,7 @@
     "href": "02-stationarity.html#стационар-байдал-яагаад-чухал-вэ",
     "title": "3  Стационар байдал",
     "section": "3.10 Стационар байдал яагаад чухал вэ",
-    "text": "3.10 Стационар байдал яагаад чухал вэ\nСонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.\nЖишээнүүд:\n\nAR((p))\nMA((q))\nARMA((p,q))\n\nЦуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:\n\nЯлгавар авах\nЛогарифм авах\nУлирлын ялгавар авах\n\nЭдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.",
+    "text": "3.10 Стационар байдал яагаад чухал вэ\nСонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.\nЖишээнүүд:\n\nAR(p)\nMA(q)\nARMA(p,q)\n\nЦуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:\n\nЯлгавар авах\nЛогарифм авах\nУлирлын ялгавар авах\n\nЭдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Стационар байдал</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "02-stationarity.html#дасгал",
     "title": "3  Стационар байдал",
     "section": "3.11 Дасгал",
-    "text": "3.11 Дасгал\n\n200 урттай цагаан чимээний цуваа симуляцла.\nЦагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.\n() бүхий AR(1) процессыг симуляцла.\nСанамсаргүй алхалтыг симуляцла.\nAR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.\nСанамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.",
+    "text": "3.11 Дасгал\n\n200 урттай цагаан чимээний цуваа симуляцла.\nЦагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.\n\\(\\phi=0.8\\) бүхий AR(1) процессыг симуляцла.\nСанамсаргүй алхалтыг симуляцла.\nAR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.\nСанамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Стационар байдал</span>"
     ]
@@ -304,7 +304,7 @@
     "href": "03-acf.html#exercises",
     "title": "4  The Autocorrelation Function (ACF)",
     "section": "4.11 Exercises",
-    "text": "4.11 Exercises\n\nGenerate a white noise series of length 200 and plot its ACF.\nSimulate an AR(1) process with ().\nVerify that the theoretical ACF equals (^k).\nSimulate an MA(1) process with ().\nVerify that the ACF cuts off after lag 1.\nCompare the ACFs of white noise, AR(1), and MA(1).\nExplain the difference between gradual decay and cutoff behavior.",
+    "text": "4.11 Exercises\n\nGenerate a white noise series of length 200 and plot its ACF.\nSimulate an AR(1) process with \\(\\phi=0.7\\).\nVerify that the theoretical ACF equals \\(\\phi^k\\).\nSimulate an MA(1) process with \\(\\theta=0.5\\).\nVerify that the ACF cuts off after lag 1.\nCompare the ACFs of white noise, AR(1), and MA(1).\nExplain the difference between gradual decay and cutoff behavior.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
     ]
