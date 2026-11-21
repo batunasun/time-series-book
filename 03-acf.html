@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; The Autocorrelation Function (ACF) – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>4&nbsp; Автокорреляцын функц (ACF) – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-acf.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-acf.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,31 +199,55 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Таамаглал</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
     </ul>
@@ -236,38 +260,38 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
-  <li><a href="#autocovariance-function" id="toc-autocovariance-function" class="nav-link" data-scroll-target="#autocovariance-function"><span class="header-section-number">4.2</span> Autocovariance Function</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">4.1</span> Оршил</a></li>
+  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">4.2</span> Автоковариацын функц</a>
   <ul class="collapse">
-  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">4.2.1</span> Properties</a></li>
+  <li><a href="#шинж-чанар" id="toc-шинж-чанар" class="nav-link" data-scroll-target="#шинж-чанар"><span class="header-section-number">4.2.1</span> Шинж чанар</a></li>
   </ul></li>
-  <li><a href="#definition-of-the-acf" id="toc-definition-of-the-acf" class="nav-link" data-scroll-target="#definition-of-the-acf"><span class="header-section-number">4.3</span> Definition of the ACF</a>
+  <li><a href="#acf-ийн-тодорхойлолт" id="toc-acf-ийн-тодорхойлолт" class="nav-link" data-scroll-target="#acf-ийн-тодорхойлолт"><span class="header-section-number">4.3</span> ACF-ийн тодорхойлолт</a>
   <ul class="collapse">
-  <li><a href="#important-values" id="toc-important-values" class="nav-link" data-scroll-target="#important-values"><span class="header-section-number">4.3.1</span> Important Values</a></li>
+  <li><a href="#чухал-утгууд" id="toc-чухал-утгууд" class="nav-link" data-scroll-target="#чухал-утгууд"><span class="header-section-number">4.3.1</span> Чухал утгууд</a></li>
   </ul></li>
-  <li><a href="#sample-autocorrelation-function" id="toc-sample-autocorrelation-function" class="nav-link" data-scroll-target="#sample-autocorrelation-function"><span class="header-section-number">4.4</span> Sample Autocorrelation Function</a></li>
-  <li><a href="#white-noise" id="toc-white-noise" class="nav-link" data-scroll-target="#white-noise"><span class="header-section-number">4.5</span> White Noise</a>
+  <li><a href="#түүврийн-автокорреляцын-функц" id="toc-түүврийн-автокорреляцын-функц" class="nav-link" data-scroll-target="#түүврийн-автокорреляцын-функц"><span class="header-section-number">4.4</span> Түүврийн автокорреляцын функц</a></li>
+  <li><a href="#цагаан-чимээ" id="toc-цагаан-чимээ" class="nav-link" data-scroll-target="#цагаан-чимээ"><span class="header-section-number">4.5</span> Цагаан чимээ</a>
   <ul class="collapse">
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">4.5.1</span> Simulation</a></li>
-  <li><a href="#acf-plot" id="toc-acf-plot" class="nav-link" data-scroll-target="#acf-plot"><span class="header-section-number">4.5.2</span> ACF Plot</a></li>
+  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">4.5.1</span> Симуляц</a></li>
+  <li><a href="#acf-график" id="toc-acf-график" class="nav-link" data-scroll-target="#acf-график"><span class="header-section-number">4.5.2</span> ACF график</a></li>
   </ul></li>
-  <li><a href="#ar1-process" id="toc-ar1-process" class="nav-link" data-scroll-target="#ar1-process"><span class="header-section-number">4.6</span> AR(1) Process</a>
+  <li><a href="#ar1-процесс" id="toc-ar1-процесс" class="nav-link" data-scroll-target="#ar1-процесс"><span class="header-section-number">4.6</span> AR(1) процесс</a>
   <ul class="collapse">
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">4.6.1</span> Example</a></li>
+  <li><a href="#жишээ" id="toc-жишээ" class="nav-link" data-scroll-target="#жишээ"><span class="header-section-number">4.6.1</span> Жишээ</a></li>
   </ul></li>
-  <li><a href="#ma1-process" id="toc-ma1-process" class="nav-link" data-scroll-target="#ma1-process"><span class="header-section-number">4.7</span> MA(1) Process</a>
+  <li><a href="#ma1-процесс" id="toc-ma1-процесс" class="nav-link" data-scroll-target="#ma1-процесс"><span class="header-section-number">4.7</span> MA(1) процесс</a>
   <ul class="collapse">
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">4.7.1</span> Example</a></li>
+  <li><a href="#жишээ-1" id="toc-жишээ-1" class="nav-link" data-scroll-target="#жишээ-1"><span class="header-section-number">4.7.1</span> Жишээ</a></li>
   </ul></li>
-  <li><a href="#interpretation-of-the-acf" id="toc-interpretation-of-the-acf" class="nav-link" data-scroll-target="#interpretation-of-the-acf"><span class="header-section-number">4.8</span> Interpretation of the ACF</a>
+  <li><a href="#acf-ийн-тайлбар" id="toc-acf-ийн-тайлбар" class="nav-link" data-scroll-target="#acf-ийн-тайлбар"><span class="header-section-number">4.8</span> ACF-ийн тайлбар</a>
   <ul class="collapse">
-  <li><a href="#white-noise-1" id="toc-white-noise-1" class="nav-link" data-scroll-target="#white-noise-1"><span class="header-section-number">4.8.1</span> White Noise</a></li>
-  <li><a href="#ar-process" id="toc-ar-process" class="nav-link" data-scroll-target="#ar-process"><span class="header-section-number">4.8.2</span> AR Process</a></li>
-  <li><a href="#ma-process" id="toc-ma-process" class="nav-link" data-scroll-target="#ma-process"><span class="header-section-number">4.8.3</span> MA Process</a></li>
+  <li><a href="#цагаан-чимээ-1" id="toc-цагаан-чимээ-1" class="nav-link" data-scroll-target="#цагаан-чимээ-1"><span class="header-section-number">4.8.1</span> Цагаан чимээ</a></li>
+  <li><a href="#ar-процесс" id="toc-ar-процесс" class="nav-link" data-scroll-target="#ar-процесс"><span class="header-section-number">4.8.2</span> AR процесс</a></li>
+  <li><a href="#ma-процесс" id="toc-ma-процесс" class="nav-link" data-scroll-target="#ma-процесс"><span class="header-section-number">4.8.3</span> MA процесс</a></li>
   </ul></li>
-  <li><a href="#statistical-significance" id="toc-statistical-significance" class="nav-link" data-scroll-target="#statistical-significance"><span class="header-section-number">4.9</span> Statistical Significance</a></li>
-  <li><a href="#example-with-real-data" id="toc-example-with-real-data" class="nav-link" data-scroll-target="#example-with-real-data"><span class="header-section-number">4.10</span> Example with Real Data</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.11</span> Exercises</a></li>
+  <li><a href="#статистик-ач-холбогдол" id="toc-статистик-ач-холбогдол" class="nav-link" data-scroll-target="#статистик-ач-холбогдол"><span class="header-section-number">4.9</span> Статистик ач холбогдол</a></li>
+  <li><a href="#бодит-өгөгдөлтэй-жишээ" id="toc-бодит-өгөгдөлтэй-жишээ" class="nav-link" data-scroll-target="#бодит-өгөгдөлтэй-жишээ"><span class="header-section-number">4.10</span> Бодит өгөгдөлтэй жишээ</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">4.11</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +300,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></h1>
 </div>
 
 
@@ -293,91 +317,92 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
-<p>The autocorrelation function (ACF) describes the dependence between observations separated by a given lag.</p>
-<p>For a time series</p>
+<section id="оршил" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">4.1</span> Оршил</h2>
+<p>Автокорреляцын функц (ACF) нь өгөгдсөн хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг тодорхойлдог.</p>
+<p>Хугацааны цувааны хувьд</p>
 <p><span class="math display">\[
 \{Y_t\},
 \]</span></p>
-<p>the ACF measures the strength of the linear relationship between</p>
+<p>ACF нь</p>
 <p><span class="math display">\[
 Y_t
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
-Y_{t-k}.
+Y_{t-k}
 \]</span></p>
-<p>The ACF is one of the most important tools in time series analysis.</p>
-<p>It is widely used to:</p>
+<p>хоорондын шугаман хамаарлын хүчийг хэмждэг.</p>
+<p>ACF нь хугацааны цувааны шинжилгээний хамгийн чухал хэрэгслүүдийн нэг юм.</p>
+<p>Үүнийг өргөнөөр ашигладаг:</p>
 <ul>
-<li>identify serial dependence,</li>
-<li>detect nonstationarity,</li>
-<li>distinguish AR and MA models,</li>
-<li>guide model selection.</li>
+<li>цувааны хамаарлыг илрүүлэх,</li>
+<li>стационар бус байдлыг илрүүлэх,</li>
+<li>AR ба MA загваруудыг ялгах,</li>
+<li>загварын сонголтыг чиглүүлэх.</li>
 </ul>
 </section>
-<section id="autocovariance-function" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">4.2</span> Autocovariance Function</h2>
-<p>For a weakly stationary process,</p>
+<section id="автоковариацын-функц" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">4.2</span> Автоковариацын функц</h2>
+<p>Сул стационар процессийн хувьд</p>
 <p><span class="math display">\[
 \gamma(k)
 =
 Cov(Y_t,Y_{t-k})
 \]</span></p>
-<p>is called the autocovariance function.</p>
-<p>Since</p>
+<p>-ийг автоковариацын функц гэнэ.</p>
+<p>Учир нь</p>
 <p><span class="math display">\[
 Cov(Y_t,Y_{t-k})
 =
 E[(Y_t-\mu)(Y_{t-k}-\mu)],
 \]</span></p>
-<p>the autocovariance measures the dependence between observations separated by lag (k).</p>
-<section id="properties" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">4.2.1</span> Properties</h3>
+<p>автоковариац нь (k) хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг хэмждэг.</p>
+<section id="шинж-чанар" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="шинж-чанар"><span class="header-section-number">4.2.1</span> Шинж чанар</h3>
 <p><span class="math display">\[
 \gamma(0)=Var(Y_t)
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 \gamma(k)=\gamma(-k).
 \]</span></p>
-<p>Thus the autocovariance function is symmetric.</p>
+<p>Иймд автоковариацын функц нь тэгш хэмтэй.</p>
 </section>
 </section>
-<section id="definition-of-the-acf" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="definition-of-the-acf"><span class="header-section-number">4.3</span> Definition of the ACF</h2>
-<p>The autocorrelation function is</p>
+<section id="acf-ийн-тодорхойлолт" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="acf-ийн-тодорхойлолт"><span class="header-section-number">4.3</span> ACF-ийн тодорхойлолт</h2>
+<p>Автокорреляцын функц нь</p>
 <p><span class="math display">\[
 \rho(k)
 =
 \frac{\gamma(k)}
 {\gamma(0)}.
 \]</span></p>
-<p>Since</p>
+<p>Учир нь</p>
 <p><span class="math display">\[
 \gamma(0)=Var(Y_t),
 \]</span></p>
-<p>the ACF standardizes the covariance.</p>
-<p>Therefore</p>
+<p>ACF нь ковариацыг стандартчилдаг.</p>
+<p>Иймд</p>
 <p><span class="math display">\[
 -1 \le \rho(k) \le 1.
 \]</span></p>
-<section id="important-values" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="important-values"><span class="header-section-number">4.3.1</span> Important Values</h3>
-<p>At lag zero,</p>
+<section id="чухал-утгууд" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="чухал-утгууд"><span class="header-section-number">4.3.1</span> Чухал утгууд</h3>
+<p>Тэг хоцролт дээр</p>
 <p><span class="math display">\[
 \rho(0)=1.
 \]</span></p>
-<p>A value close to 1 indicates strong positive dependence.</p>
-<p>A value close to -1 indicates strong negative dependence.</p>
-<p>A value near 0 indicates little linear dependence.</p>
+<p>1-д ойрхон утга нь хүчтэй эерэг хамаарлыг илтгэнэ.</p>
+<p>-1-д ойрхон утга нь хүчтэй сөрөг хамаарлыг илтгэнэ.</p>
+<p>0-д ойрхон утга нь бага шугаман хамаарлыг илтгэнэ.</p>
 </section>
 </section>
-<section id="sample-autocorrelation-function" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sample-autocorrelation-function"><span class="header-section-number">4.4</span> Sample Autocorrelation Function</h2>
-<p>In practice the theoretical autocorrelation is unknown.</p>
-<p>The sample autocorrelation at lag (k) is</p>
+<section id="түүврийн-автокорреляцын-функц" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="түүврийн-автокорреляцын-функц"><span class="header-section-number">4.4</span> Түүврийн автокорреляцын функц</h2>
+<p>Практикт онолын автокорреляц нь тодорхойгүй байдаг.</p>
+<p>(k) хоцролт дээрх түүврийн автокорреляц нь</p>
 <p><span class="math display">\[
 r_k
 =
@@ -391,25 +416,25 @@ r_k
 (Y_t-\bar Y)^2
 }.
 \]</span></p>
-<p>The collection of sample autocorrelations is shown by the correlogram.</p>
+<p>Түүврийн автокорреляцуудын цуглуулгыг коррелограмм гэж үзүүлдэг.</p>
 </section>
-<section id="white-noise" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="white-noise"><span class="header-section-number">4.5</span> White Noise</h2>
-<p>Consider a white noise process</p>
+<section id="цагаан-чимээ" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="цагаан-чимээ"><span class="header-section-number">4.5</span> Цагаан чимээ</h2>
+<p>Цагаан чимээний процессыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t \sim WN(0,\sigma^2).
 \]</span></p>
-<p>Its autocorrelation function is</p>
+<p>Түүний автокорреляцын функц нь</p>
 <p><span class="math display">\[
 \rho(0)=1,
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 \rho(k)=0,
 \qquad k\ne0.
 \]</span></p>
-<section id="simulation" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="simulation"><span class="header-section-number">4.5.1</span> Simulation</h3>
+<section id="симуляц" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">4.5.1</span> Симуляц</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,7 +442,7 @@ Y_t \sim WN(0,\sigma^2).
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  wn,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"White Noise"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Цагаан чимээ"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">expression</span>(Y[t])</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -429,12 +454,12 @@ Y_t \sim WN(0,\sigma^2).
 </div>
 </div>
 </section>
-<section id="acf-plot" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="acf-plot"><span class="header-section-number">4.5.2</span> ACF Plot</h3>
+<section id="acf-график" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="acf-график"><span class="header-section-number">4.5.2</span> ACF график</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  wn,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"ACF of White Noise"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Цагаан чимээний ACF"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -444,26 +469,26 @@ Y_t \sim WN(0,\sigma^2).
 </div>
 </div>
 </div>
-<p>The sample autocorrelations fluctuate randomly around zero.</p>
+<p>Түүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.</p>
 </section>
 </section>
-<section id="ar1-process" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="ar1-process"><span class="header-section-number">4.6</span> AR(1) Process</h2>
-<p>Consider</p>
+<section id="ar1-процесс" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="ar1-процесс"><span class="header-section-number">4.6</span> AR(1) процесс</h2>
+<p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t,
 \]</span></p>
-<p>where</p>
+<p>энд</p>
 <p><span class="math display">\[
 |\phi|&lt;1.
 \]</span></p>
-<p>For an AR(1) process,</p>
+<p>AR(1) процессын хувьд</p>
 <p><span class="math display">\[
 \rho(k)=\phi^k.
 \]</span></p>
-<p>Thus the ACF decays geometrically.</p>
-<section id="example" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="example"><span class="header-section-number">4.6.1</span> Example</h3>
+<p>Иймд ACF нь геометрээр буурдаг.</p>
+<section id="жишээ" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="жишээ"><span class="header-section-number">4.6.1</span> Жишээ</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -474,7 +499,7 @@ Y_t=\phi Y_{t-1}+\varepsilon_t,
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of AR(1)"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"AR(1)-ийн ACF"</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -484,30 +509,30 @@ Y_t=\phi Y_{t-1}+\varepsilon_t,
 </div>
 </div>
 </div>
-<p>The autocorrelations decrease gradually as the lag increases.</p>
+<p>Хоцролт нэмэгдэх тусам автокорреляцууд аажмаар буурдаг.</p>
 </section>
 </section>
-<section id="ma1-process" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="ma1-process"><span class="header-section-number">4.7</span> MA(1) Process</h2>
-<p>Consider</p>
+<section id="ma1-процесс" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="ma1-процесс"><span class="header-section-number">4.7</span> MA(1) процесс</h2>
+<p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 \]</span></p>
-<p>The autocorrelation function is</p>
+<p>Автокорреляцын функц нь</p>
 <p><span class="math display">\[
 \rho(1)
 =
 \frac{\theta}
 {1+\theta^2}
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 \rho(k)=0,
 \qquad k&gt;1.
 \]</span></p>
-<p>Therefore the ACF cuts off after lag 1.</p>
-<section id="example-1" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">4.7.1</span> Example</h3>
+<p>Иймд ACF нь 1 хоцролтын дараа тасардаг.</p>
+<section id="жишээ-1" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="жишээ-1"><span class="header-section-number">4.7.1</span> Жишээ</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -518,7 +543,7 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ma1,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of MA(1)"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"MA(1)-ийн ACF"</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -528,65 +553,65 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 </div>
 </div>
 </div>
-<p>Only the first lag tends to be significant.</p>
+<p>Зөвхөн эхний хоцролт нь ихэвчлэн ач холбогдолтой байдаг.</p>
 </section>
 </section>
-<section id="interpretation-of-the-acf" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="interpretation-of-the-acf"><span class="header-section-number">4.8</span> Interpretation of the ACF</h2>
-<section id="white-noise-1" class="level3" data-number="4.8.1">
-<h3 data-number="4.8.1" class="anchored" data-anchor-id="white-noise-1"><span class="header-section-number">4.8.1</span> White Noise</h3>
+<section id="acf-ийн-тайлбар" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="acf-ийн-тайлбар"><span class="header-section-number">4.8</span> ACF-ийн тайлбар</h2>
+<section id="цагаан-чимээ-1" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="цагаан-чимээ-1"><span class="header-section-number">4.8.1</span> Цагаан чимээ</h3>
 <ul>
-<li>All autocorrelations are approximately zero.</li>
-<li>No systematic dependence.</li>
+<li>Бүх автокорреляцууд ойролцоогоор тэг.</li>
+<li>Системтэй хамаарал байхгүй.</li>
 </ul>
 </section>
-<section id="ar-process" class="level3" data-number="4.8.2">
-<h3 data-number="4.8.2" class="anchored" data-anchor-id="ar-process"><span class="header-section-number">4.8.2</span> AR Process</h3>
+<section id="ar-процесс" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="ar-процесс"><span class="header-section-number">4.8.2</span> AR процесс</h3>
 <ul>
-<li>Slow decay.</li>
-<li>Correlations persist across lags.</li>
+<li>Удаан бууралт.</li>
+<li>Хамаарал хоцролтуудын дагуу үргэлжилдэг.</li>
 </ul>
 </section>
-<section id="ma-process" class="level3" data-number="4.8.3">
-<h3 data-number="4.8.3" class="anchored" data-anchor-id="ma-process"><span class="header-section-number">4.8.3</span> MA Process</h3>
+<section id="ma-процесс" class="level3" data-number="4.8.3">
+<h3 data-number="4.8.3" class="anchored" data-anchor-id="ma-процесс"><span class="header-section-number">4.8.3</span> MA процесс</h3>
 <ul>
-<li>Sharp cutoff.</li>
-<li>Dependence exists only for a limited number of lags.</li>
+<li>Огцом тасралт.</li>
+<li>Хамаарал зөвхөн хязгаарлагдмал тооны хоцролтуудад оршино.</li>
 </ul>
 </section>
 </section>
-<section id="statistical-significance" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="statistical-significance"><span class="header-section-number">4.9</span> Statistical Significance</h2>
-<p>For a white noise process,</p>
+<section id="статистик-ач-холбогдол" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="статистик-ач-холбогдол"><span class="header-section-number">4.9</span> Статистик ач холбогдол</h2>
+<p>Цагаан чимээний процессын хувьд</p>
 <p><span class="math display">\[
 SE(r_k)
 \approx
 \frac{1}{\sqrt n}.
 \]</span></p>
-<p>Approximate 95% bounds are</p>
+<p>Ойролцоогоор 95% хязгаарууд нь</p>
 <p><span class="math display">\[
 \pm \frac{1.96}{\sqrt n}.
 \]</span></p>
-<p>For example, if</p>
+<p>Жишээлбэл, хэрэв</p>
 <p><span class="math display">\[
 n=200,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 \pm\frac{1.96}{\sqrt{200}}
 \approx
 \pm0.139.
 \]</span></p>
-<p>Bars outside these bounds may indicate significant autocorrelation.</p>
+<p>Эдгээр хязгаараас гадуур байгаа баганууд нь ач холбогдолтой автокорреляцыг илтгэж болно.</p>
 </section>
-<section id="example-with-real-data" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="example-with-real-data"><span class="header-section-number">4.10</span> Example with Real Data</h2>
+<section id="бодит-өгөгдөлтэй-жишээ" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="бодит-өгөгдөлтэй-жишээ"><span class="header-section-number">4.10</span> Бодит өгөгдөлтэй жишээ</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(AirPassengers)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  AirPassengers,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of AirPassengers"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"AirPassengers-ийн ACF"</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -596,18 +621,18 @@ n=200,
 </div>
 </div>
 </div>
-<p>Observe the strong persistence and seasonality.</p>
+<p>Хүчтэй үргэлжлэл ба улирлын байдлыг ажиглаарай.</p>
 </section>
-<section id="exercises" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.11</span> Exercises</h2>
+<section id="дасгал" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">4.11</span> Дасгал</h2>
 <ol type="1">
-<li>Generate a white noise series of length 200 and plot its ACF.</li>
-<li>Simulate an AR(1) process with <span class="math inline">\(\phi=0.7\)</span>.</li>
-<li>Verify that the theoretical ACF equals <span class="math inline">\(\phi^k\)</span>.</li>
-<li>Simulate an MA(1) process with <span class="math inline">\(\theta=0.5\)</span>.</li>
-<li>Verify that the ACF cuts off after lag 1.</li>
-<li>Compare the ACFs of white noise, AR(1), and MA(1).</li>
-<li>Explain the difference between gradual decay and cutoff behavior.</li>
+<li>200 урттай цагаан чимээний цуваа үүсгэж, ACF-ийг нь зур.</li>
+<li><span class="math inline">\(\phi=0.7\)</span> бүхий AR(1) процессыг симуляцла.</li>
+<li>Онолын ACF нь <span class="math inline">\(\phi^k\)</span>-тэй тэнцүү эсэхийг шалга.</li>
+<li><span class="math inline">\(\theta=0.5\)</span> бүхий MA(1) процессыг симуляцла.</li>
+<li>ACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.</li>
+<li>Цагаан чимээ, AR(1), MA(1)-ийн ACF-уудыг харьцуул.</li>
+<li>Аажмаар бууралт ба тасралтын зан төлөвийн ялгааг тайлбарла.</li>
 </ol>
 
 
@@ -1097,8 +1122,8 @@ n=200,
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-pacf.html" class="pagination-link" aria-label="The Partial Autocorrelation Function (PACF)">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-pacf.html" class="pagination-link" aria-label="Хэсэгчилсэн автокорреляцын функц (PACF)">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; The Autoregressive Process of Order One: AR(1) – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>6&nbsp; Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1) – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-ar1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-ar1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,31 +199,55 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Таамаглал</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
     </ul>
@@ -236,39 +260,39 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">6.2</span> Definition</a></li>
-  <li><a href="#stationarity-condition" id="toc-stationarity-condition" class="nav-link" data-scroll-target="#stationarity-condition"><span class="header-section-number">6.3</span> Stationarity Condition</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">6.1</span> Оршил</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">6.2</span> Тодорхойлолт</a></li>
+  <li><a href="#стационар-байдлын-нөхцөл" id="toc-стационар-байдлын-нөхцөл" class="nav-link" data-scroll-target="#стационар-байдлын-нөхцөл"><span class="header-section-number">6.3</span> Стационар байдлын нөхцөл</a>
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">6.3.1</span> Examples</a></li>
+  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">6.3.1</span> Жишээнүүд</a></li>
   </ul></li>
-  <li><a href="#mean-of-an-ar1-process" id="toc-mean-of-an-ar1-process" class="nav-link" data-scroll-target="#mean-of-an-ar1-process"><span class="header-section-number">6.4</span> Mean of an AR(1) Process</a></li>
-  <li><a href="#variance-of-an-ar1-process" id="toc-variance-of-an-ar1-process" class="nav-link" data-scroll-target="#variance-of-an-ar1-process"><span class="header-section-number">6.5</span> Variance of an AR(1) Process</a></li>
-  <li><a href="#autocovariance-function" id="toc-autocovariance-function" class="nav-link" data-scroll-target="#autocovariance-function"><span class="header-section-number">6.6</span> Autocovariance Function</a></li>
-  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function"><span class="header-section-number">6.7</span> Autocorrelation Function</a>
+  <li><a href="#ar1-процессын-дундаж" id="toc-ar1-процессын-дундаж" class="nav-link" data-scroll-target="#ar1-процессын-дундаж"><span class="header-section-number">6.4</span> AR(1) процессын дундаж</a></li>
+  <li><a href="#ar1-процессын-дисперс" id="toc-ar1-процессын-дисперс" class="nav-link" data-scroll-target="#ar1-процессын-дисперс"><span class="header-section-number">6.5</span> AR(1) процессын дисперс</a></li>
+  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">6.6</span> Автоковариацын функц</a></li>
+  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">6.7</span> Автокорреляцын функц</a>
   <ul class="collapse">
-  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences"><span class="header-section-number">6.7.1</span> Consequences</a></li>
+  <li><a href="#үр-дагавар" id="toc-үр-дагавар" class="nav-link" data-scroll-target="#үр-дагавар"><span class="header-section-number">6.7.1</span> Үр дагавар</a></li>
   </ul></li>
-  <li><a href="#partial-autocorrelation-function" id="toc-partial-autocorrelation-function" class="nav-link" data-scroll-target="#partial-autocorrelation-function"><span class="header-section-number">6.8</span> Partial Autocorrelation Function</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">6.9</span> Simulation</a>
+  <li><a href="#хэсэгчилсэн-автокорреляцын-функц" id="toc-хэсэгчилсэн-автокорреляцын-функц" class="nav-link" data-scroll-target="#хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">6.8</span> Хэсэгчилсэн автокорреляцын функц</a></li>
+  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">6.9</span> Симуляц</a>
   <ul class="collapse">
-  <li><a href="#positive-dependence" id="toc-positive-dependence" class="nav-link" data-scroll-target="#positive-dependence"><span class="header-section-number">6.9.1</span> Positive Dependence</a></li>
-  <li><a href="#negative-dependence" id="toc-negative-dependence" class="nav-link" data-scroll-target="#negative-dependence"><span class="header-section-number">6.9.2</span> Negative Dependence</a></li>
+  <li><a href="#эерэг-хамаарал" id="toc-эерэг-хамаарал" class="nav-link" data-scroll-target="#эерэг-хамаарал"><span class="header-section-number">6.9.1</span> Эерэг хамаарал</a></li>
+  <li><a href="#сөрөг-хамаарал" id="toc-сөрөг-хамаарал" class="nav-link" data-scroll-target="#сөрөг-хамаарал"><span class="header-section-number">6.9.2</span> Сөрөг хамаарал</a></li>
   </ul></li>
-  <li><a href="#acf-of-an-ar1-process" id="toc-acf-of-an-ar1-process" class="nav-link" data-scroll-target="#acf-of-an-ar1-process"><span class="header-section-number">6.10</span> ACF of an AR(1) Process</a></li>
-  <li><a href="#pacf-of-an-ar1-process" id="toc-pacf-of-an-ar1-process" class="nav-link" data-scroll-target="#pacf-of-an-ar1-process"><span class="header-section-number">6.11</span> PACF of an AR(1) Process</a></li>
-  <li><a href="#lag-plot" id="toc-lag-plot" class="nav-link" data-scroll-target="#lag-plot"><span class="header-section-number">6.12</span> Lag Plot</a></li>
-  <li><a href="#comparison-of-different-values-of-phi" id="toc-comparison-of-different-values-of-phi" class="nav-link" data-scroll-target="#comparison-of-different-values-of-phi"><span class="header-section-number">6.13</span> Comparison of Different Values of <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#parameter-estimation" id="toc-parameter-estimation" class="nav-link" data-scroll-target="#parameter-estimation"><span class="header-section-number">6.14</span> Parameter Estimation</a></li>
-  <li><a href="#forecasting" id="toc-forecasting" class="nav-link" data-scroll-target="#forecasting"><span class="header-section-number">6.15</span> Forecasting</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">6.16</span> Interpretation</a>
+  <li><a href="#ar1-процессын-acf" id="toc-ar1-процессын-acf" class="nav-link" data-scroll-target="#ar1-процессын-acf"><span class="header-section-number">6.10</span> AR(1) процессын ACF</a></li>
+  <li><a href="#ar1-процессын-pacf" id="toc-ar1-процессын-pacf" class="nav-link" data-scroll-target="#ar1-процессын-pacf"><span class="header-section-number">6.11</span> AR(1) процессын PACF</a></li>
+  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">6.12</span> Хоцролтын график</a></li>
+  <li><a href="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт" id="toc-phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="nav-link" data-scroll-target="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">6.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</a></li>
+  <li><a href="#параметрийн-үнэлгээ" id="toc-параметрийн-үнэлгээ" class="nav-link" data-scroll-target="#параметрийн-үнэлгээ"><span class="header-section-number">6.14</span> Параметрийн үнэлгээ</a></li>
+  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">6.15</span> Таамаглал</a></li>
+  <li><a href="#тайлбар" id="toc-тайлбар" class="nav-link" data-scroll-target="#тайлбар"><span class="header-section-number">6.16</span> Тайлбар</a>
   <ul class="collapse">
-  <li><a href="#positive-phi" id="toc-positive-phi" class="nav-link" data-scroll-target="#positive-phi"><span class="header-section-number">6.16.1</span> Positive <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#negative-phi" id="toc-negative-phi" class="nav-link" data-scroll-target="#negative-phi"><span class="header-section-number">6.16.2</span> Negative <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#near-zero" id="toc-near-zero" class="nav-link" data-scroll-target="#near-zero"><span class="header-section-number">6.16.3</span> Near Zero</a></li>
+  <li><a href="#эерэг-phi" id="toc-эерэг-phi" class="nav-link" data-scroll-target="#эерэг-phi"><span class="header-section-number">6.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#сөрөг-phi" id="toc-сөрөг-phi" class="nav-link" data-scroll-target="#сөрөг-phi"><span class="header-section-number">6.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#тэгтэй-ойролцоо" id="toc-тэгтэй-ойролцоо" class="nav-link" data-scroll-target="#тэгтэй-ойролцоо"><span class="header-section-number">6.16.3</span> Тэгтэй ойролцоо</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.17</span> Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.18</span> Exercises</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">6.17</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">6.18</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -277,7 +301,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></h1>
 </div>
 
 
@@ -294,138 +318,139 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
-<p>The AR(1) model is the simplest and most important autoregressive model.</p>
-<p>In an AR(1) process, the current observation depends on the immediately preceding observation and a random error.</p>
-<p>The model serves as a foundation for understanding higher-order autoregressive models and many forecasting methods.</p>
+<section id="оршил" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">6.1</span> Оршил</h2>
+<p>AR(1) загвар нь хамгийн энгийн бөгөөд хамгийн чухал авторегрессив загвар юм.</p>
+<p>AR(1) процесс дээр одоогийн ажиглалт нь шууд өмнөх ажиглалт болон санамсаргүй алдаанаас хамаардаг.</p>
+<p>Энэ загвар нь дээд эрэмбийн авторегрессив загварууд болон олон таамаглах аргуудыг ойлгох үндэс болдог.</p>
 </section>
-<section id="definition" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.2</span> Definition</h2>
-<p>An AR(1) process is defined by</p>
+<section id="тодорхойлолт" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">6.2</span> Тодорхойлолт</h2>
+<p>AR(1) процессыг</p>
 <p><span class="math display">\[
-Y_t=\phi Y_{t-1}+\varepsilon_t,
+Y_t=\phi Y_{t-1}+\varepsilon_t
 \]</span></p>
-<p>where</p>
+<p>гэж тодорхойлдог бөгөөд энд</p>
 <ul>
-<li><span class="math inline">\(\phi\)</span> is the autoregressive parameter,</li>
+<li><span class="math inline">\(\phi\)</span> нь авторегрессив параметр,</li>
 <li><span class="math inline">\(\varepsilon_t\sim WN(0,\sigma^2)\)</span>,</li>
-<li><span class="math inline">\(\{\varepsilon_t\}\)</span> is a white noise process.</li>
+<li><span class="math inline">\(\{\varepsilon_t\}\)</span> нь цагаан чимээний процесс.</li>
 </ul>
-<p>The parameter <span class="math inline">\(\phi\)</span> determines the strength of dependence between consecutive observations.</p>
+<p><span class="math inline">\(\phi\)</span> параметр нь дараалсан ажиглалтуудын хоорондын хамаарлын хүчийг тодорхойлдог.</p>
 </section>
-<section id="stationarity-condition" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="stationarity-condition"><span class="header-section-number">6.3</span> Stationarity Condition</h2>
-<p>The AR(1) process is stationary if</p>
+<section id="стационар-байдлын-нөхцөл" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="стационар-байдлын-нөхцөл"><span class="header-section-number">6.3</span> Стационар байдлын нөхцөл</h2>
+<p>AR(1) процесс нь</p>
 <p><span class="math display">\[
-|\phi|&lt;1.
+|\phi|&lt;1
 \]</span></p>
-<p>If</p>
+<p>бол стационар байна.</p>
+<p>Хэрэв</p>
 <p><span class="math display">\[
-|\phi|\ge 1,
+|\phi|\ge 1
 \]</span></p>
-<p>the process is nonstationary.</p>
-<section id="examples" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">6.3.1</span> Examples</h3>
+<p>бол процесс стационар бус байна.</p>
+<section id="жишээнүүд" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">6.3.1</span> Жишээнүүд</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Value of <span class="math inline">\(\phi\)</span></th>
-<th>Interpretation</th>
+<th><span class="math inline">\(\phi\)</span>-ийн утга</th>
+<th>Тайлбар</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(0\)</span></td>
-<td>White noise</td>
+<td>Цагаан чимээ</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(0.3\)</span></td>
-<td>Weak dependence</td>
+<td>Сул хамаарал</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(0.8\)</span></td>
-<td>Strong persistence</td>
+<td>Хүчтэй үргэлжлэл</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(-0.8\)</span></td>
-<td>Alternating behavior</td>
+<td>Ээлжлэх зан төлөв</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(1\)</span></td>
-<td>Random walk (nonstationary)</td>
+<td>Санамсаргүй алхалт (стационар бус)</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="mean-of-an-ar1-process" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="mean-of-an-ar1-process"><span class="header-section-number">6.4</span> Mean of an AR(1) Process</h2>
-<p>Taking expectations,</p>
+<section id="ar1-процессын-дундаж" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ar1-процессын-дундаж"><span class="header-section-number">6.4</span> AR(1) процессын дундаж</h2>
+<p>Математик хүлээлт авбал</p>
 <p><span class="math display">\[
 E(Y_t)
 =
 \phi E(Y_{t-1}).
 \]</span></p>
-<p>Under stationarity,</p>
+<p>Стационар нөхцөлд</p>
 <p><span class="math display">\[
 E(Y_t)=\mu.
 \]</span></p>
-<p>Therefore,</p>
+<p>Иймд</p>
 <p><span class="math display">\[
 \mu=\phi\mu.
 \]</span></p>
-<p>Hence,</p>
+<p>Тиймээс</p>
 <p><span class="math display">\[
 \mu=0.
 \]</span></p>
 </section>
-<section id="variance-of-an-ar1-process" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="variance-of-an-ar1-process"><span class="header-section-number">6.5</span> Variance of an AR(1) Process</h2>
-<p>Since</p>
+<section id="ar1-процессын-дисперс" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="ar1-процессын-дисперс"><span class="header-section-number">6.5</span> AR(1) процессын дисперс</h2>
+<p>Учир нь</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t,
 \]</span></p>
-<p>the stationary variance is</p>
+<p>стационар дисперс нь</p>
 <p><span class="math display">\[
 Var(Y_t)
 =
 \frac{\sigma^2}
      {1-\phi^2}.
 \]</span></p>
-<p>As <span class="math inline">\(|\phi|\)</span> approaches 1, the variance increases.</p>
+<p><span class="math inline">\(|\phi|\)</span> 1-д ойртох тусам дисперс нэмэгддэг.</p>
 </section>
-<section id="autocovariance-function" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">6.6</span> Autocovariance Function</h2>
-<p>For a stationary AR(1) process,</p>
+<section id="автоковариацын-функц" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">6.6</span> Автоковариацын функц</h2>
+<p>Стационар AR(1) процессын хувьд</p>
 <p><span class="math display">\[
 \gamma(k)
 =
 \phi^{k}\gamma(0).
 \]</span></p>
-<p>Since</p>
+<p>Учир нь</p>
 <p><span class="math display">\[
 \gamma(0)
 =
 \frac{\sigma^2}
      {1-\phi^2},
 \]</span></p>
-<p>all autocovariances are determined by <span class="math inline">\(\phi\)</span>.</p>
+<p>бүх автоковариацууд <span class="math inline">\(\phi\)</span>-ээр тодорхойлогдоно.</p>
 </section>
-<section id="autocorrelation-function" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="autocorrelation-function"><span class="header-section-number">6.7</span> Autocorrelation Function</h2>
-<p>The ACF of an AR(1) process is</p>
+<section id="автокорреляцын-функц" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">6.7</span> Автокорреляцын функц</h2>
+<p>AR(1) процессын ACF нь</p>
 <p><span class="math display">\[
 \rho(k)=\phi^k.
 \]</span></p>
-<p>This is one of the most important results in time series analysis.</p>
-<section id="consequences" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="consequences"><span class="header-section-number">6.7.1</span> Consequences</h3>
-<p>If</p>
+<p>Энэ нь хугацааны цувааны шинжилгээний хамгийн чухал үр дүнгүүдийн нэг юм.</p>
+<section id="үр-дагавар" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="үр-дагавар"><span class="header-section-number">6.7.1</span> Үр дагавар</h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \phi=0.8,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 \rho(1)=0.8,
 \]</span></p>
@@ -435,27 +460,27 @@ Var(Y_t)
 <p><span class="math display">\[
 \rho(3)=0.512.
 \]</span></p>
-<p>Thus the ACF decreases gradually toward zero.</p>
+<p>Иймд ACF тэг рүү аажмаар буурдаг.</p>
 </section>
 </section>
-<section id="partial-autocorrelation-function" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="partial-autocorrelation-function"><span class="header-section-number">6.8</span> Partial Autocorrelation Function</h2>
-<p>For an AR(1) process,</p>
+<section id="хэсэгчилсэн-автокорреляцын-функц" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">6.8</span> Хэсэгчилсэн автокорреляцын функц</h2>
+<p>AR(1) процессын хувьд</p>
 <p><span class="math display">\[
 PACF(1)=\phi,
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 PACF(k)=0,
 \qquad k&gt;1.
 \]</span></p>
-<p>Therefore the PACF cuts off after lag 1.</p>
-<p>This property is widely used to identify AR(1) models.</p>
+<p>Иймд PACF нь 1 хоцролтын дараа тасардаг.</p>
+<p>Энэ шинж чанарыг AR(1) загварыг тодорхойлоход өргөн ашигладаг.</p>
 </section>
-<section id="simulation" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="simulation"><span class="header-section-number">6.9</span> Simulation</h2>
-<section id="positive-dependence" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="positive-dependence"><span class="header-section-number">6.9.1</span> Positive Dependence</h3>
+<section id="симуляц" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">6.9</span> Симуляц</h2>
+<section id="эерэг-хамаарал" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="эерэг-хамаарал"><span class="header-section-number">6.9.1</span> Эерэг хамаарал</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -477,10 +502,10 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>Observe the persistence of consecutive observations.</p>
+<p>Дараалсан ажиглалтуудын үргэлжлэлийг ажиглаарай.</p>
 </section>
-<section id="negative-dependence" class="level3" data-number="6.9.2">
-<h3 data-number="6.9.2" class="anchored" data-anchor-id="negative-dependence"><span class="header-section-number">6.9.2</span> Negative Dependence</h3>
+<section id="сөрөг-хамаарал" class="level3" data-number="6.9.2">
+<h3 data-number="6.9.2" class="anchored" data-anchor-id="сөрөг-хамаарал"><span class="header-section-number">6.9.2</span> Сөрөг хамаарал</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -502,15 +527,15 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>Successive observations tend to alternate in sign.</p>
+<p>Дараалсан ажиглалтууд тэмдгээрээ ээлжлэн солигдох хандлагатай байдаг.</p>
 </section>
 </section>
-<section id="acf-of-an-ar1-process" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="acf-of-an-ar1-process"><span class="header-section-number">6.10</span> ACF of an AR(1) Process</h2>
+<section id="ar1-процессын-acf" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="ar1-процессын-acf"><span class="header-section-number">6.10</span> AR(1) процессын ACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of AR(1)"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"AR(1)-ийн ACF"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -520,15 +545,15 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>The ACF decays geometrically.</p>
-<p>This tailing-off behavior is characteristic of autoregressive processes.</p>
+<p>ACF геометрээр буурдаг.</p>
+<p>Энэ аажмаар буурах зан төлөв нь авторегрессив процессуудын онцлог шинж юм.</p>
 </section>
-<section id="pacf-of-an-ar1-process" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="pacf-of-an-ar1-process"><span class="header-section-number">6.11</span> PACF of an AR(1) Process</h2>
+<section id="ar1-процессын-pacf" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="ar1-процессын-pacf"><span class="header-section-number">6.11</span> AR(1) процессын PACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"PACF of AR(1)"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"AR(1)-ийн PACF"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -538,11 +563,11 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>Only the first lag should be significant.</p>
+<p>Зөвхөн эхний хоцролт ач холбогдолтой байх ёстой.</p>
 </section>
-<section id="lag-plot" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="lag-plot"><span class="header-section-number">6.12</span> Lag Plot</h2>
-<p>A lag plot reveals the dependence between <span class="math inline">\(Y_t\)</span> and <span class="math inline">\(Y_{t-1}\)</span>.</p>
+<section id="хоцролтын-график" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">6.12</span> Хоцролтын график</h2>
+<p>Хоцролтын график нь <span class="math inline">\(Y_t\)</span> ба <span class="math inline">\(Y_{t-1}\)</span> хоорондын хамаарлыг илрүүлдэг.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> ar1[<span class="sc">-</span><span class="fu">length</span>(ar1)],</span>
@@ -559,10 +584,10 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>A positive linear pattern should be visible.</p>
+<p>Эерэг шугаман хэв маяг харагдах ёстой.</p>
 </section>
-<section id="comparison-of-different-values-of-phi" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="comparison-of-different-values-of-phi"><span class="header-section-number">6.13</span> Comparison of Different Values of <span class="math inline">\(\phi\)</span></h2>
+<section id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">6.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -593,11 +618,11 @@ PACF(k)=0,
 </div>
 </div>
 </div>
-<p>Observe how the degree of dependence changes as <span class="math inline">\(\phi\)</span> changes.</p>
+<p><span class="math inline">\(\phi\)</span> өөрчлөгдөх тусам хамаарлын зэрэг хэрхэн өөрчлөгдөж байгааг ажиглаарай.</p>
 </section>
-<section id="parameter-estimation" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="parameter-estimation"><span class="header-section-number">6.14</span> Parameter Estimation</h2>
-<p>An AR(1) model can be estimated using maximum likelihood.</p>
+<section id="параметрийн-үнэлгээ" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="параметрийн-үнэлгээ"><span class="header-section-number">6.14</span> Параметрийн үнэлгээ</h2>
+<p>AR(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
@@ -618,83 +643,83 @@ s.e.  0.0491     0.2363
 sigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46</code></pre>
 </div>
 </div>
-<p>The estimated value of <span class="math inline">\(\phi\)</span> should be close to the true value used in simulation.</p>
+<p><span class="math inline">\(\phi\)</span>-ийн үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.</p>
 </section>
-<section id="forecasting" class="level2" data-number="6.15">
-<h2 data-number="6.15" class="anchored" data-anchor-id="forecasting"><span class="header-section-number">6.15</span> Forecasting</h2>
-<p>For an AR(1) model,</p>
+<section id="таамаглал" class="level2" data-number="6.15">
+<h2 data-number="6.15" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">6.15</span> Таамаглал</h2>
+<p>AR(1) загварын хувьд</p>
 <p><span class="math display">\[
 \hat{Y}_{t+1}
 =
 \phi Y_t.
 \]</span></p>
-<p>More generally,</p>
+<p>Ерөнхийдөө</p>
 <p><span class="math display">\[
 \hat{Y}_{t+h}
 =
 \phi^h Y_t.
 \]</span></p>
-<p>As <span class="math inline">\(h\)</span> increases,</p>
+<p><span class="math inline">\(h\)</span> нэмэгдэх тусам</p>
 <p><span class="math display">\[
 \phi^h \rightarrow 0,
 \]</span></p>
-<p>and forecasts approach the mean of the process.</p>
+<p>бөгөөд таамаглалууд процессын дундаж руу ойртдог.</p>
 </section>
-<section id="interpretation" class="level2" data-number="6.16">
-<h2 data-number="6.16" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">6.16</span> Interpretation</h2>
-<section id="positive-phi" class="level3" data-number="6.16.1">
-<h3 data-number="6.16.1" class="anchored" data-anchor-id="positive-phi"><span class="header-section-number">6.16.1</span> Positive <span class="math inline">\(\phi\)</span></h3>
-<p>If</p>
+<section id="тайлбар" class="level2" data-number="6.16">
+<h2 data-number="6.16" class="anchored" data-anchor-id="тайлбар"><span class="header-section-number">6.16</span> Тайлбар</h2>
+<section id="эерэг-phi" class="level3" data-number="6.16.1">
+<h3 data-number="6.16.1" class="anchored" data-anchor-id="эерэг-phi"><span class="header-section-number">6.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \phi&gt;0,
 \]</span></p>
-<p>large values tend to follow large values and small values tend to follow small values.</p>
+<p>бол том утгууд том утгуудыг дагах, жижиг утгууд жижиг утгуудыг дагах хандлагатай байдаг.</p>
 </section>
-<section id="negative-phi" class="level3" data-number="6.16.2">
-<h3 data-number="6.16.2" class="anchored" data-anchor-id="negative-phi"><span class="header-section-number">6.16.2</span> Negative <span class="math inline">\(\phi\)</span></h3>
-<p>If</p>
+<section id="сөрөг-phi" class="level3" data-number="6.16.2">
+<h3 data-number="6.16.2" class="anchored" data-anchor-id="сөрөг-phi"><span class="header-section-number">6.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \phi&lt;0,
 \]</span></p>
-<p>successive observations tend to move in opposite directions.</p>
+<p>бол дараалсан ажиглалтууд эсрэг чиглэлд хөдлөх хандлагатай байдаг.</p>
 </section>
-<section id="near-zero" class="level3" data-number="6.16.3">
-<h3 data-number="6.16.3" class="anchored" data-anchor-id="near-zero"><span class="header-section-number">6.16.3</span> Near Zero</h3>
-<p>If</p>
+<section id="тэгтэй-ойролцоо" class="level3" data-number="6.16.3">
+<h3 data-number="6.16.3" class="anchored" data-anchor-id="тэгтэй-ойролцоо"><span class="header-section-number">6.16.3</span> Тэгтэй ойролцоо</h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \phi\approx 0,
 \]</span></p>
-<p>the process resembles white noise.</p>
+<p>бол процесс цагаан чимээтэй төстэй болдог.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="6.17">
-<h2 data-number="6.17" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.17</span> Summary</h2>
-<p>The AR(1) process</p>
+<section id="дүгнэлт" class="level2" data-number="6.17">
+<h2 data-number="6.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">6.17</span> Дүгнэлт</h2>
+<p>AR(1) процесс</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t
 \]</span></p>
-<p>is the simplest autoregressive model.</p>
-<p>Key properties:</p>
+<p>нь хамгийн энгийн авторегрессив загвар юм.</p>
+<p>Гол шинж чанарууд:</p>
 <ul>
-<li>Stationary when <span class="math inline">\(|\phi|&lt;1\)</span>.</li>
-<li>Mean equals zero.</li>
-<li>Variance equals <span class="math inline">\(\frac{\sigma^2}{1-\phi^2}\)</span>.</li>
+<li><span class="math inline">\(|\phi|&lt;1\)</span> үед стационар.</li>
+<li>Дундаж нь тэгтэй тэнцүү.</li>
+<li>Дисперс нь <span class="math inline">\(\frac{\sigma^2}{1-\phi^2}\)</span>-тэй тэнцүү.</li>
 <li>ACF: <span class="math inline">\(\rho(k)=\phi^k\)</span>.</li>
-<li>PACF cuts off after lag 1.</li>
+<li>PACF нь 1 хоцролтын дараа тасарна.</li>
 </ul>
-<p>These characteristics make AR(1) a fundamental model in time series analysis.</p>
+<p>Эдгээр шинж чанарууд AR(1)-ийг хугацааны цувааны шинжилгээний үндсэн загвар болгодог.</p>
 </section>
-<section id="exercises" class="level2" data-number="6.18">
-<h2 data-number="6.18" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.18</span> Exercises</h2>
+<section id="дасгал" class="level2" data-number="6.18">
+<h2 data-number="6.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">6.18</span> Дасгал</h2>
 <ol type="1">
-<li>Simulate an AR(1) process with <span class="math inline">\(\phi=0.5\)</span>.</li>
-<li>Plot the series, ACF, and PACF.</li>
-<li>Verify that the ACF decays geometrically.</li>
-<li>Verify that the PACF cuts off after lag 1.</li>
-<li>Compare AR(1) processes with <span class="math inline">\(\phi=0.2\)</span>, <span class="math inline">\(0.5\)</span>, and <span class="math inline">\(0.9\)</span>.</li>
-<li>Simulate an AR(1) process with <span class="math inline">\(\phi=-0.8\)</span>.</li>
-<li>Construct a lag plot and describe the pattern.</li>
-<li>Estimate an AR(1) model using <code>arima()</code> and compare the estimated parameter with the true value.</li>
+<li><span class="math inline">\(\phi=0.5\)</span> бүхий AR(1) процессыг симуляцла.</li>
+<li>Цуваа, ACF, PACF-ийг зур.</li>
+<li>ACF геометрээр буурдаг эсэхийг шалга.</li>
+<li>PACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.</li>
+<li><span class="math inline">\(\phi=0.2\)</span>, <span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.9\)</span> бүхий AR(1) процессуудыг харьцуул.</li>
+<li><span class="math inline">\(\phi=-0.8\)</span> бүхий AR(1) процессыг симуляцла.</li>
+<li>Хоцролтын график байгуулж, хэв маягийг тайлбарла.</li>
+<li><code>arima()</code> ашиглан AR(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.</li>
 </ol>
 
 
@@ -1179,13 +1204,13 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./04-pacf.html" class="pagination-link" aria-label="The Partial Autocorrelation Function (PACF)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span>
+      <a href="./04-pacf.html" class="pagination-link" aria-label="Хэсэгчилсэн автокорреляцын функц (PACF)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-ma1.html" class="pagination-link" aria-label="The Moving Average Process of Order One: MA(1)">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-ma1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
