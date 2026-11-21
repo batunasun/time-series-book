@@ -21,9 +21,9 @@ $$
 
 We write
 
-\[
+$$
 Y_t \sim WN(0,\sigma^2).
-\]
+$$
 
 ## Properties
 
@@ -35,16 +35,16 @@ For a white noise process:
 
 The autocorrelation function is
 
-\[
+$$
 \rho(0)=1,
-\]
+$$
 
 and
 
-\[
+$$
 \rho(k)=0,
 \qquad k\ne0.
-\]
+$$
 
 ## Simulation in R
 
@@ -89,13 +89,13 @@ The lag plot exhibits no systematic pattern.
 
 Suppose
 
-\[
+$$
 Y_t \sim N(0,1),
-\]
+$$
 
-independently for all \(t\).
+independently for all $t$.
 
-Then \(\{Y_t\}\) is white noise.
+Then $\{Y_t\}$ is white noise.
 
 ## Exercise
 
