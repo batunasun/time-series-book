@@ -151,6 +151,7 @@ plot(theta, rho1, type = "l",
 ```{r}
 #| label: fig-4-2
 #| fig-cap: "Зураг 4.2. θ = −0.9 бүхий MA(1) процессийн хугацааны график"
+library(TSA)
 data(ma1.2.s)
 plot(ma1.2.s, type = "o",
      ylab = expression(Y[t]),
