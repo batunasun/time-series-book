@@ -1,8 +1,8 @@
 {
-  "hash": "145b638629fe6b95851efb21dac810be",
+  "hash": "028346178c8f6c4dd69ed8d1abbdfac3",
   "result": {
     "engine": "knitr",
-    "markdown": "# Time Series Analysis with R\n\nAuthor: Batnasan Davaanyam\n\nThis book covers\n\n- White Noise\n- Stationarity\n- ACF\n- PACF\n- AR Models\n- MA Models\n- ARMA Models\n- Forecasting\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(123)\n\nx <- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot(x)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "markdown": "# R хэл дээрх хугацааны цувааны шинжилгээ\n\nЗохиогч: Батнасан Давааням\n\nЭнэ ном нь дараахь сэдвүүдийг хамарна\n\n- Цагаан чимээ\n- Стационар байдал\n- ACF\n- PACF\n- AR загварууд\n- MA загварууд\n- ARMA загварууд\n- Таамаглал\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(123)\n\nx <- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot(x)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
     "supporting": [
       "index_files"
     ],

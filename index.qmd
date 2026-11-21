@@ -1,17 +1,17 @@
-# Time Series Analysis with R
+# R хэл дээрх хугацааны цувааны шинжилгээ
 
-Author: Batnasan Davaanyam
+Зохиогч: Батнасан Давааням
 
-This book covers
+Энэ ном нь дараахь сэдвүүдийг хамарна
 
-- White Noise
-- Stationarity
+- Цагаан чимээ
+- Стационар байдал
 - ACF
 - PACF
-- AR Models
-- MA Models
-- ARMA Models
-- Forecasting
+- AR загварууд
+- MA загварууд
+- ARMA загварууд
+- Таамаглал
 
 ```{r}
 set.seed(123)

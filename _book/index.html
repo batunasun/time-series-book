@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time Series Analysis with R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">R хэл дээрх хугацааны цувааны шинжилгээ</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time Series Analysis with R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">R хэл дээрх хугацааны цувааны шинжилгээ</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Таамаглал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Таамаглал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#time-series-analysis-with-r" id="toc-time-series-analysis-with-r" class="nav-link active" data-scroll-target="#time-series-analysis-with-r"><span class="header-section-number">1</span> Time Series Analysis with R</a></li>
+  <li><a href="#r-хэл-дээрх-хугацааны-цувааны-шинжилгээ" id="toc-r-хэл-дээрх-хугацааны-цувааны-шинжилгээ" class="nav-link active" data-scroll-target="#r-хэл-дээрх-хугацааны-цувааны-шинжилгээ"><span class="header-section-number">1</span> R хэл дээрх хугацааны цувааны шинжилгээ</a></li>
   </ul>
 </nav>
     </div>
@@ -264,19 +264,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="time-series-analysis-with-r" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Time Series Analysis with R</h1><p><img src="cover.png" title="Хугацааны цуваа:R хэлний хэрэглээ" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Author: Batnasan Davaanyam</p>
-<p>This book covers</p>
+<section id="r-хэл-дээрх-хугацааны-цувааны-шинжилгээ" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> R хэл дээрх хугацааны цувааны шинжилгээ</h1><p><img src="cover.png" title="Хугацааны цуваа:R хэлний хэрэглээ" class="quarto-cover-image nolightbox img-fluid"></p>
+<p>Зохиогч: Батнасан Давааням</p>
+<p>Энэ ном нь дараахь сэдвүүдийг хамарна</p>
 <ul>
-<li>White Noise</li>
-<li>Stationarity</li>
+<li>Цагаан чимээ</li>
+<li>Стационар байдал</li>
 <li>ACF</li>
 <li>PACF</li>
-<li>AR Models</li>
-<li>MA Models</li>
-<li>ARMA Models</li>
-<li>Forecasting</li>
+<li>AR загварууд</li>
+<li>MA загварууд</li>
+<li>ARMA загварууд</li>
+<li>Таамаглал</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
