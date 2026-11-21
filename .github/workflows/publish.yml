@@ -25,7 +25,8 @@ jobs:
           use-public-rspm: true
 
       - name: Install R dependencies
-        uses: r-lib/actions/setup-renv@v2
+        - name: Install R dependencies
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "tidyverse", "fpp3"))'
         # If you do not use renv, delete the line above and uncomment below:
         # run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "tidyverse", "fpp3"))'
 
