@@ -1,0 +1,578 @@
+# Selected Solutions
+
+## Introduction
+
+This chapter provides solutions to selected exercises from Chapter 10.
+
+Readers are encouraged to attempt each problem independently before consulting the solutions.
+
+---
+
+# Solution 1
+
+## Exercise 1
+
+Generate a white noise series of length 200 and plot it.
+
+### R Code
+
+```{r}
+set.seed(123)
+
+y <- rnorm(200)
+
+plot.ts(
+  y,
+  main="White Noise",
+  ylab=expression(Y[t])
+)
+```
+
+### Discussion
+
+The series fluctuates randomly around zero.
+
+No trend or seasonality is visible.
+
+The variance appears approximately constant through time.
+
+---
+
+# Solution 2
+
+## Exercise 2
+
+Plot the ACF of a white noise process.
+
+### R Code
+
+```{r}
+acf(y)
+```
+
+### Discussion
+
+For white noise,
+
+\[
+\rho(k)=0,
+\qquad k>0.
+\]
+
+In practice, sample autocorrelations fluctuate around zero due to random sampling variation.
+
+Most correlations should lie inside the 95% confidence bounds.
+
+---
+
+# Solution 3
+
+## Exercise 4
+
+Determine whether each process is stationary.
+
+### (a)
+
+\[
+Y_t=\varepsilon_t
+\]
+
+#### Answer
+
+Stationary.
+
+This is a white noise process.
+
+---
+
+### (b)
+
+\[
+Y_t=t+\varepsilon_t
+\]
+
+#### Answer
+
+Not stationary.
+
+The mean changes over time:
+
+\[
+E(Y_t)=t.
+\]
+
+---
+
+### (c)
+
+\[
+Y_t=0.5Y_{t-1}+\varepsilon_t
+\]
+
+#### Answer
+
+Stationary.
+
+Because
+
+\[
+|0.5|<1.
+\]
+
+---
+
+### (d)
+
+\[
+Y_t=Y_{t-1}+\varepsilon_t
+\]
+
+#### Answer
+
+Not stationary.
+
+This is a random walk.
+
+---
+
+# Solution 4
+
+## Exercise 7
+
+Suppose
+
+\[
+\rho(k)=0.8^k.
+\]
+
+Find:
+
+\[
+\rho(1),
+\quad
+\rho(2),
+\quad
+\rho(3).
+\]
+
+### Calculations
+
+\[
+\rho(1)=0.8
+\]
+
+\[
+\rho(2)=0.8^2=0.64
+\]
+
+\[
+\rho(3)=0.8^3=0.512
+\]
+
+### Answer
+
+\[
+\rho(1)=0.8,
+\qquad
+\rho(2)=0.64,
+\qquad
+\rho(3)=0.512.
+\]
+
+---
+
+# Solution 5
+
+## Exercise 11
+
+What is the difference between ACF and PACF?
+
+### Answer
+
+The ACF measures the total linear dependence between
+
+\[
+Y_t
+\]
+
+and
+
+\[
+Y_{t-k}.
+\]
+
+The PACF measures the direct dependence between
+
+\[
+Y_t
+\]
+
+and
+
+\[
+Y_{t-k},
+\]
+
+after removing the effects of intermediate observations.
+
+### Example
+
+For an AR(1) process:
+
+- ACF tails off gradually.
+- PACF cuts off after lag 1.
+
+---
+
+# Solution 6
+
+## Exercise 14
+
+Consider
+
+\[
+Y_t=0.6Y_{t-1}+\varepsilon_t.
+\]
+
+Assume
+
+\[
+\sigma^2=1.
+\]
+
+Find the mean and variance.
+
+### Mean
+
+For a stationary AR(1) process,
+
+\[
+E(Y_t)=0.
+\]
+
+### Variance
+
+\[
+Var(Y_t)
+=
+\frac{\sigma^2}
+     {1-\phi^2}
+=
+\frac{1}
+     {1-0.36}.
+\]
+
+Therefore,
+
+\[
+Var(Y_t)
+=
+\frac{1}{0.64}
+=
+1.5625.
+\]
+
+### Answer
+
+\[
+E(Y_t)=0
+\]
+
+\[
+Var(Y_t)=1.5625.
+\]
+
+---
+
+# Solution 7
+
+## Exercise 18
+
+For
+
+\[
+\theta=0.5,
+\]
+
+compute
+
+\[
+\rho(1).
+\]
+
+### Calculation
+
+\[
+\rho(1)
+=
+\frac{\theta}
+     {1+\theta^2}
+=
+\frac{0.5}
+     {1.25}
+=
+0.4.
+\]
+
+### Answer
+
+\[
+\rho(1)=0.4.
+\]
+
+---
+
+# Solution 8
+
+## Exercise 19
+
+For
+
+\[
+\theta=0.2,
+\]
+
+compute the lag-1 autocorrelation.
+
+### Calculation
+
+\[
+\rho(1)
+=
+\frac{0.2}
+     {1+0.04}
+=
+\frac{0.2}
+     {1.04}
+=
+0.1923.
+\]
+
+### Answer
+
+\[
+\rho(1)\approx0.1923.
+\]
+
+---
+
+# Solution 9
+
+## Exercise 20
+
+Why does an MA(1) process have
+
+\[
+\rho(k)=0,
+\qquad
+k>1?
+\]
+
+### Explanation
+
+The model is
+
+\[
+Y_t
+=
+\varepsilon_t
++
+\theta\varepsilon_{t-1}.
+\]
+
+Observations more than one time unit apart do not share any common error terms.
+
+Since the white noise sequence is uncorrelated,
+
+\[
+Cov(Y_t,Y_{t-k})=0
+\]
+
+for
+
+\[
+k>1.
+\]
+
+Hence
+
+\[
+\rho(k)=0.
+\]
+
+---
+
+# Solution 10
+
+## Exercise 23
+
+State the differences between AR(1), MA(1), and ARMA(1,1).
+
+### AR(1)
+
+\[
+Y_t
+=
+\phi Y_{t-1}
++
+\varepsilon_t.
+\]
+
+Characteristics:
+
+- ACF tails off.
+- PACF cuts off at lag 1.
+
+---
+
+### MA(1)
+
+\[
+Y_t
+=
+\varepsilon_t
++
+\theta\varepsilon_{t-1}.
+\]
+
+Characteristics:
+
+- ACF cuts off at lag 1.
+- PACF tails off.
+
+---
+
+### ARMA(1,1)
+
+\[
+Y_t
+=
+\phi Y_{t-1}
++
+\varepsilon_t
++
+\theta\varepsilon_{t-1}.
+\]
+
+Characteristics:
+
+- ACF tails off.
+- PACF tails off.
+
+---
+
+# Solution 11
+
+## Exercise 29
+
+What does ARIMA(1,1,1) mean?
+
+### Answer
+
+An ARIMA(1,1,1) model has:
+
+- one autoregressive term,
+- one order of differencing,
+- one moving-average term.
+
+Mathematically,
+
+\[
+(1-\phi B)(1-B)Y_t
+=
+(1+\theta B)\varepsilon_t.
+\]
+
+The differencing step is used to remove nonstationarity.
+
+---
+
+# Solution 12
+
+## Exercise 33
+
+Define:
+
+\[
+MAE,
+\quad
+MSE,
+\quad
+RMSE.
+\]
+
+### MAE
+
+\[
+MAE
+=
+\frac1n
+\sum |e_t|.
+\]
+
+Measures average absolute error.
+
+---
+
+### MSE
+
+\[
+MSE
+=
+\frac1n
+\sum e_t^2.
+\]
+
+Penalizes large errors more heavily.
+
+---
+
+### RMSE
+
+\[
+RMSE
+=
+\sqrt{MSE}.
+\]
+
+Has the same units as the original data.
+
+---
+
+# Solution 13
+
+## Exercise 36
+
+Why should residuals resemble white noise?
+
+### Answer
+
+A good time series model should explain all systematic structure present in the data.
+
+If residuals still contain autocorrelation, useful information remains unexplained.
+
+A well-fitted model produces residuals that:
+
+- have mean zero,
+- have constant variance,
+- exhibit no significant autocorrelation.
+
+Therefore the residual series should resemble white noise.
+
+---
+
+# Further Practice
+
+Readers are encouraged to complete the remaining exercises independently.
+
+The best way to learn time series analysis is to:
+
+1. Simulate processes.
+2. Plot the data.
+3. Examine ACF and PACF.
+4. Fit models.
+5. Study residual diagnostics.
+6. Produce forecasts.
+7. Compare models using real data.
+
+Repeated practice with both theory and computation is essential for mastery.

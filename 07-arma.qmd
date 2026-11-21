@@ -1,0 +1,357 @@
+# The Autoregressive Moving Average Process: ARMA
+
+## Introduction
+
+The ARMA model combines the ideas of autoregressive (AR) and moving average (MA) processes.
+
+It is one of the most important classes of stationary time series models and forms the foundation of the Box-Jenkins methodology.
+
+An ARMA model can capture both:
+
+- persistence through past observations,
+- short-term dependence through past shocks.
+
+## Definition
+
+An ARMA(\(p,q\)) process is defined by
+
+\[
+Y_t
+=
+\phi_1Y_{t-1}
++\phi_2Y_{t-2}
++\cdots
++\phi_pY_{t-p}
++
+\varepsilon_t
++
+\theta_1\varepsilon_{t-1}
++\theta_2\varepsilon_{t-2}
++\cdots
++\theta_q\varepsilon_{t-q},
+\]
+
+where
+
+\[
+\{\varepsilon_t\}
+\sim
+WN(0,\sigma^2).
+\]
+
+Here:
+
+- \(p\) = autoregressive order,
+- \(q\) = moving average order.
+
+## Special Cases
+
+### AR Model
+
+If
+
+\[
+q=0,
+\]
+
+then
+
+\[
+ARMA(p,0)=AR(p).
+\]
+
+### MA Model
+
+If
+
+\[
+p=0,
+\]
+
+then
+
+\[
+ARMA(0,q)=MA(q).
+\]
+
+Thus AR and MA processes are special cases of the ARMA model.
+
+## The ARMA(1,1) Model
+
+The simplest ARMA model is
+
+\[
+Y_t
+=
+\phi Y_{t-1}
++
+\varepsilon_t
++
+\theta\varepsilon_{t-1}.
+\]
+
+This model combines:
+
+- the dependence structure of AR(1),
+- the shock structure of MA(1).
+
+## Stationarity
+
+For ARMA processes, stationarity depends on the AR part.
+
+For ARMA(1,1),
+
+\[
+|\phi|<1
+\]
+
+is required for stationarity.
+
+### Examples
+
+| \(\phi\) | Stationary? |
+|-----------|-----------|
+| 0.3 | Yes |
+| 0.8 | Yes |
+| -0.5 | Yes |
+| 1.0 | No |
+| 1.1 | No |
+
+## Invertibility
+
+Invertibility depends on the MA part.
+
+For ARMA(1,1),
+
+\[
+|\theta|<1
+\]
+
+is required for invertibility.
+
+This ensures a unique representation of the process.
+
+## Mean
+
+For a stationary ARMA(1,1),
+
+\[
+E(Y_t)=0.
+\]
+
+More generally, if a constant term is included, the mean is constant over time.
+
+## Simulation of ARMA(1,1)
+
+Consider
+
+\[
+Y_t
+=
+0.7Y_{t-1}
++
+\varepsilon_t
++
+0.4\varepsilon_{t-1}.
+\]
+
+```{r}
+set.seed(123)
+
+arma11 <- arima.sim(
+  model=list(ar=.7, ma=.4),
+  n=300
+)
+
+plot.ts(
+  arma11,
+  main="ARMA(1,1) Process",
+  ylab=expression(Y[t])
+)
+```
+
+Observe the persistence created by the AR component and the short-term effects created by the MA component.
+
+## ACF of an ARMA Process
+
+```{r}
+acf(
+  arma11,
+  main="ACF of ARMA(1,1)"
+)
+```
+
+Unlike MA models, the ACF does not cut off.
+
+Unlike pure AR models, the pattern is often more complex.
+
+The ACF generally tails off toward zero.
+
+## PACF of an ARMA Process
+
+```{r}
+pacf(
+  arma11,
+  main="PACF of ARMA(1,1)"
+)
+```
+
+The PACF also tails off.
+
+This is one of the identifying characteristics of ARMA models.
+
+## Model Identification
+
+### AR(p)
+
+- ACF tails off.
+- PACF cuts off.
+
+### MA(q)
+
+- ACF cuts off.
+- PACF tails off.
+
+### ARMA(p,q)
+
+- ACF tails off.
+- PACF tails off.
+
+Therefore ARMA models are usually identified by examining both functions simultaneously.
+
+## Comparing AR(1), MA(1), and ARMA(1,1)
+
+```{r}
+par(mfrow=c(3,2))
+
+ar1 <- arima.sim(
+  model=list(ar=.7),
+  n=300
+)
+
+acf(ar1, main="AR(1): ACF")
+pacf(ar1, main="AR(1): PACF")
+
+ma1 <- arima.sim(
+  model=list(ma=.7),
+  n=300
+)
+
+acf(ma1, main="MA(1): ACF")
+pacf(ma1, main="MA(1): PACF")
+
+arma11 <- arima.sim(
+  model=list(ar=.7, ma=.4),
+  n=300
+)
+
+acf(arma11, main="ARMA(1,1): ACF")
+pacf(arma11, main="ARMA(1,1): PACF")
+```
+
+Compare the characteristic patterns.
+
+## Lag Plot
+
+A lag plot may be used to visualize dependence.
+
+```{r}
+plot(
+  x = arma11[-length(arma11)],
+  y = arma11[-1],
+  xlab = expression(Y[t-1]),
+  ylab = expression(Y[t]),
+  pch = 16
+)
+```
+
+The relationship is generally stronger than white noise and reflects both AR and MA effects.
+
+## Model Estimation
+
+An ARMA(1,1) model may be estimated using maximum likelihood.
+
+```{r}
+fit <- arima(
+  arma11,
+  order=c(1,0,1)
+)
+
+fit
+```
+
+The estimated coefficients should be close to the values used in simulation.
+
+## Model Selection Using AIC
+
+Different ARMA models can be compared using the Akaike Information Criterion (AIC).
+
+```{r}
+fit1 <- arima(arma11, order=c(1,0,0))
+fit2 <- arima(arma11, order=c(0,0,1))
+fit3 <- arima(arma11, order=c(1,0,1))
+
+AIC(fit1, fit2, fit3)
+```
+
+The model with the smallest AIC is usually preferred.
+
+## Forecasting
+
+Forecasts are based on:
+
+- past observations,
+- estimated model parameters.
+
+```{r}
+library(forecast)
+
+fit <- Arima(
+  arma11,
+  order=c(1,0,1)
+)
+
+forecast(fit, h=10)
+```
+
+The forecast gradually approaches the long-run mean of the process.
+
+## Summary
+
+An ARMA(\(p,q\)) model combines:
+
+- autoregressive dependence,
+- moving average dependence.
+
+For ARMA(1,1),
+
+\[
+Y_t
+=
+\phi Y_{t-1}
++
+\varepsilon_t
++
+\theta\varepsilon_{t-1}.
+\]
+
+Important properties:
+
+- Stationarity depends on the AR component.
+- Invertibility depends on the MA component.
+- ACF tails off.
+- PACF tails off.
+- Widely used for stationary time series.
+
+ARMA models provide a flexible framework for describing many real-world time series.
+
+## Exercises
+
+1. Simulate an ARMA(1,1) process with \(\phi=0.7\) and \(\theta=0.4\).
+2. Plot the series.
+3. Compute and interpret the ACF.
+4. Compute and interpret the PACF.
+5. Estimate an ARMA(1,1) model using `arima()`.
+6. Compare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.
+7. Use AIC to compare competing models.
+8. Produce 10-step-ahead forecasts and interpret the results.

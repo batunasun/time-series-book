@@ -1,0 +1,447 @@
+# The Autoregressive Integrated Moving Average Process: ARIMA
+
+## Introduction
+
+Many real-world time series are nonstationary.
+
+Examples include:
+
+- population growth,
+- economic indicators,
+- stock prices,
+- energy consumption,
+- environmental measurements.
+
+Since ARMA models require stationarity, a transformation is often necessary before modeling.
+
+The ARIMA model extends ARMA models by incorporating differencing.
+
+ARIMA stands for:
+
+- **AR**: Autoregressive
+- **I**: Integrated
+- **MA**: Moving Average
+
+## Motivation
+
+Consider a random walk:
+
+\[
+Y_t=Y_{t-1}+\varepsilon_t.
+\]
+
+This series is nonstationary because:
+
+- the variance increases over time,
+- the mean is not stable,
+- the ACF decays very slowly.
+
+However,
+
+\[
+Y_t-Y_{t-1}
+=
+\varepsilon_t
+\]
+
+is white noise.
+
+Thus a nonstationary process may become stationary after differencing.
+
+## Differencing
+
+The first difference of a time series is
+
+\[
+\nabla Y_t
+=
+Y_t-Y_{t-1}.
+\]
+
+### R Example
+
+```{r}
+set.seed(123)
+
+e <- rnorm(200)
+rw <- cumsum(e)
+
+plot.ts(
+  rw,
+  main="Random Walk",
+  ylab=expression(Y[t])
+)
+```
+
+Now compute the first difference:
+
+```{r}
+drw <- diff(rw)
+
+plot.ts(
+  drw,
+  main="First Difference",
+  ylab=expression(nabla*Y[t])
+)
+```
+
+The differenced series*appears stationary.
+
+## Definition*of an ARIMA Model
+
+An*ARIMA(\(p,d,q\)) model satisfies*
+\*
+\phi(B)(1-B)^dY_t
+=
+\theta(B)\var*psilon_t,
+\]
+
+where
+
+- \(p\) = AR *rder,
+- \(d\) = number of differen*es,
+- \*q\) = MA order.
+
+The operator
+
+\*
+(1-B)^d
+\]
+
+represents differenci*g.
+
+## Backshift Operator
+
+The bac*shift operator is defined by
+
+\*
+BY_t=Y_{t-1}.
+\]
+
+Therefore
+
+\*
+(1-B)Y_t
+=
+Y_t-Y_{t-1}.
+\]
+
+This *otation simplifies*model expressions.
+
+### Example
+
+A*(1):
+
+\*
+(1-\phi B)Y_t
+=
+\varepsilon_t.
+\]*
+MA(1):
+
+\*
+Y_t
+=
+(1+\theta B)\varepsilon_t.
+*]
+
+ARIMA(1,1,1):
+
+\*
+(1-\phi B)(1-B)Y_t
+=
+(1+\theta B)*varepsilon_t.
+\]
+
+##*ARIMA(0,1,0)
+
+The simplest ARIMA m*del is*
+\*
+(1-B)Y_t
+=
+\varepsilon_t.
+\]
+
+Equ*valently,
+
+\[
+Y_t=Y_{t-1}+\varepsi*on_t.
+\]
+
+This is the random walk *odel.
+
+### Simulation
+
+```{r}
+set.*eed(123)
+
+rw <- cumsum(rnorm(300*)
+
+plot.ts(
+  rw,
+  main="Random W*lk: ARIMA(0,1,0)"
+)
+```
+
+##*ACF of a Random Walk
+
+```{r}
+*cf(
+  rw,
+  main="ACF of Random Wa*k"
+)
+```
+
+The correlations decay v*ry slowly.
+
+This behavior is typic*l of nonstationary processes.
+
+## *CF After Differencing
+
+```{r}
+acf(*  diff(rw),
+  main="ACF of Differe*ced Random Walk"
+)
+```
+
+The differ*nced series behaves much more like*white noise.
+
+## ARIMA(1,1,0*
+
+Consider
+
+\[
+(1-\phi B)(1-B)Y_t
+*
+\varepsilon_t.
+\]
+
+This model app*ies an AR(1) structure to the diff*renced series.
+
+### Simulation
+
+``*{r}
+set.seed(123)
+
+arima110 <- ari*a.sim(
+  model=list(ar=.6),
+  n=30*
+)
+
+plot.ts(
+  cumsum(arima110),
+ *main="ARIMA*1,1,0)"
+)
+```
+
+## ARIMA(0*1,1)
+
+Consider
+
+\*
+(1-B)Y_t
+=
+(1+\theta B)\varepsilo*_t.
+\]
+
+This model is often useful*for forecasting.
+
+### Simulation
+
+*``{r}
+set.seed(123)
+
+arima011 <- a*ima.sim(
+  model=list(ma=.7),
+  n=*00
+)
+
+plot.ts(
+  cumsum(arima011),*  main="ARIMA(0,1,1)"
+)
+```
+
+## Id*ntifying Nonstationarity
+
+Typical *ndicators include:
+
+### Time Serie* Plot
+
+- trend,
+- changing level,
+* increasing variability.
+
+### ACF
+*- very slow decay,
+- large positiv* autocorrelations.
+
+### Example*
+```{r}
+par(mfrow=c*1,2))
+
+plot.ts(r*)
+acf(rw)
+```
+
+## Unit Root
+
+*onsider
+
+\*
+Y_t=\phi Y_{t-1}+\varepsilon_t.
+\*
+
+If*
+\[
+\phi=1,
+\]
+
+then
+
+*[
+Y_t=Y_{t-1}+\varepsilon_t,
+\]
+
+w*ich is a random walk.
+
+The process*contains a unit root.
+
+Unit roots *mply nonstationarity.
+
+## Testing *or a Unit Root
+
+A common*statistical test is the Augmented *ickey-Fuller (ADF) test.
+
+```{r ev*l=FALSE}
+library(tseries)
+
+adf.tes*(rw)
+*``
+
+### Interpretation
+
+- Small p*value → reject unit root.
+- Large *-value → evidence of nonstationari*y.
+
+## Fitting an ARIMA Model
+
+The*function `arima()` may be used.
+
+`*`{r}
+fit <- ar*ma(
+  rw,
+  order=c(0,1,0)
+*
+
+fit
+```
+
+Alternatively:
+
+```{* eval=FALSE}
+library(forecast)
+
+fi* <- Arima*
+  rw,
+  order=c(0,1,0)
+)
+``*
+
+## Automatic Model Selection
+
+Th* `forecast` package provides
+
+```{* eval=FALSE}
+library(forecast)
+
+fi* <- auto.arima(rw)
+
+fit
+```
+
+The a*gorithm automatically selects valu*s of:
+
+\[
+p,d,q.
+\]
+
+## Forecastin*
+
+```{r eval=FALSE}
+library(foreca*t)
+
+fit <- auto.arima(rw)
+
+fc <- f*recast(
+  fit,
+  h=20
+)
+
+plot(fc)
+*``
+
+The*resulting forecast includes:
+
+- po*nt forecasts,
+- 80% prediction int*rvals,
+- 95% prediction intervals.*
+## ARMA versus ARIMA
+
+| Model | S*ationary? | Differencing? |
+|-----*---|---------|---------|
+| AR(p) |*Yes | No |
+| MA(q* | Yes | No |
+| ARMA(p,q) | Yes |*No |
+| ARIMA(p,d,q) | Not*necessarily | Yes |
+
+ARIMA extends*ARMA by allowing nonstationary tim* series to be modeled.
+
+## Box-Jen*ins Modeling*Procedure
+
+The classical Box-Jenki*s procedure consists of:
+
+1. Ident*fication
+   - Time series plot
+   * ACF
+   - PACF
+
+2. Estimation
+   -*Estimate model parameters
+
+3.*Diagnostic Checking
+   - Residual *lots
+   - Residual*ACF
+   - Ljung-Box test
+
+4. Foreca*ting
+   - Produce future values
+
+#* Summary
+
+An ARIMA(\(p,d,q\)) mode* combines:
+
+- autoregression,
+- di*ferencing,
+- moving averages.
+
+Key*concepts:
+
+- Nonstationary series *ften require differencing.
+- Rando* walks are ARIMA(0,1,0) processes.*- Unit roots imply nonstationarity*
+- ARIMA models generalize ARMA mo*els.
+- Forecasting is a primary ap*lication of ARIMA.
+
+ARIMA remains *ne of the most widely used forecas*ing methods in practice.
+
+## Exerc*ses
+
+1. Simulate a random walk of *ength 300.
+2. Plot the series and *ts ACF.
+3. Compute the first diffe*ence.
+4. Plot the differenced seri*s and its ACF.
+5. Fit an ARIMA(0,1*0) model using `arima()`.
+6. Perfo*m an ADF test.
+7. Fit an ARIMA(1,1*0) model.
+8. Use `auto.arima()` to*select a model automatically.
+9. P*oduce 20-step-ahead forecasts.
+10.*Compare ARMA and ARIMA models conc*ptually.

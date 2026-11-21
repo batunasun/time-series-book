@@ -1,0 +1,47 @@
+{
+  "index.qmd": {
+    "index.html": "623f221f"
+  },
+  "intro.qmd": {
+    "intro.html": "06b580a7"
+  },
+  "summary.qmd": {
+    "summary.html": "0d0ec9b2"
+  },
+  "references.qmd": {
+    "references.html": "d82f1137"
+  },
+  "01-white-noise.qmd": {
+    "01-white-noise.html": "7e51bba4"
+  },
+  "02-stationarity.qmd": {
+    "02-stationarity.html": "7b187abd"
+  },
+  "03-acf.qmd": {
+    "03-acf.html": "043fb939"
+  },
+  "04-pacf.qmd": {
+    "04-pacf.html": "9e21a7ce"
+  },
+  "05-ar1.qmd": {
+    "05-ar1.html": "7a9daf9b"
+  },
+  "06-ma1.qmd": {
+    "06-ma1.html": "c81c3124"
+  },
+  "07-arma.qmd": {
+    "07-arma.html": "7133ab78"
+  },
+  "08-arima.qmd": {
+    "08-arima.html": "f20dd1bc"
+  },
+  "09-forecasting.qmd": {
+    "09-forecasting.html": "1b9d9fb4"
+  },
+  "10-exercises.qmd": {
+    "10-exercises.html": "09bcb91f"
+  },
+  "11-solutions.qmd": {
+    "11-solutions.html": "13e28184"
+  }
+}

@@ -1,0 +1,331 @@
+# The Autocorrelation Function (ACF)
+
+## Introduction
+
+The autocorrelation function (ACF) describes the dependence between observations separated by a given lag.
+
+For a time series
+
+\[
+\{Y_t\},
+\]
+
+the ACF measures the strength of the linear relationship between
+
+\[
+Y_t
+\]
+
+and
+
+\[
+Y_{t-k}.
+\]
+
+The ACF is one of the most important tools in time series analysis.
+
+It is widely used to:
+
+- identify serial dependence,
+- detect nonstationarity,
+- distinguish AR and MA models,
+- guide model selection.
+
+## Autocovariance Function
+
+For a weakly stationary process,
+
+\[
+\gamma(k)
+=
+Cov(Y_t,Y_{t-k})
+\]
+
+is called the autocovariance function.
+
+Since
+
+\[
+Cov(Y_t,Y_{t-k})
+=
+E[(Y_t-\mu)(Y_{t-k}-\mu)],
+\]
+
+the autocovariance measures the dependence between observations separated by lag \(k\).
+
+### Properties
+
+\[
+\gamma(0)=Var(Y_t)
+\]
+
+and
+
+\[
+\gamma(k)=\gamma(-k).
+\]
+
+Thus the autocovariance function is symmetric.
+
+## Definition of the ACF
+
+The autocorrelation function is
+
+\[
+\rho(k)
+=
+\frac{\gamma(k)}
+{\gamma(0)}.
+\]
+
+Since
+
+\[
+\gamma(0)=Var(Y_t),
+\]
+
+the ACF standardizes the covariance.
+
+Therefore
+
+\[
+-1 \le \rho(k) \le 1.
+\]
+
+### Important Values
+
+At lag zero,
+
+\[
+\rho(0)=1.
+\]
+
+A value close to 1 indicates strong positive dependence.
+
+A value close to -1 indicates strong negative dependence.
+
+A value near 0 indicates little linear dependence.
+
+## Sample Autocorrelation Function
+
+In practice the theoretical autocorrelation is unknown.
+
+The sample autocorrelation at lag \(k\) is
+
+\[
+r_k
+=
+\frac{
+\sum_{t=k+1}^{n}
+(Y_t-\bar Y)
+(Y_{t-k}-\bar Y)
+}
+{
+\sum_{t=1}^{n}
+(Y_t-\bar Y)^2
+}.
+\]
+
+The collection of sample autocorrelations is shown by the correlogram.
+
+## White Noise
+
+Consider a white noise process
+
+\[
+Y_t \sim WN(0,\sigma^2).
+\]
+
+Its autocorrelation function is
+
+\[
+\rho(0)=1,
+\]
+
+and
+
+\[
+\rho(k)=0,
+\qquad k\ne0.
+\]
+
+### Simulation
+
+```{r}
+set.seed(123)
+
+wn <- rnorm(200)
+
+plot.ts(
+  wn,
+  main = "White Noise",
+  ylab = expression(Y[t])
+)
+```
+
+### ACF Plot
+
+```{r}
+acf(
+  wn,
+  main = "ACF of White Noise"
+)
+```
+
+The sample autocorrelations fluctuate randomly around zero.
+
+## AR(1) Process
+
+Consider
+
+\[
+Y_t=\phi Y_{t-1}+\varepsilon_t,
+\]
+
+where
+
+\[
+|\phi|<1.
+\]
+
+For an AR(1) process,
+
+\[
+\rho(k)=\phi^k.
+\]
+
+Thus the ACF decays geometrically.
+
+### Example
+
+```{r}
+set.seed(123)
+
+ar1 <- arima.sim(
+  model=list(ar=.8),
+  n=200
+)
+
+acf(
+  ar1,
+  main="ACF of AR(1)"
+)
+```
+
+The autocorrelations decrease gradually as the lag increases.
+
+## MA(1) Process
+
+Consider
+
+\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
+\]
+
+The autocorrelation function is
+
+\[
+\rho(1)
+=
+\frac{\theta}
+{1+\theta^2}
+\]
+
+and
+
+\[
+\rho(k)=0,
+\qquad k>1.
+\]
+
+Therefore the ACF cuts off after lag 1.
+
+### Example
+
+```{r}
+set.seed(123)
+
+ma1 <- arima.sim(
+  model=list(ma=.5),
+  n=200
+)
+
+acf(
+  ma1,
+  main="ACF of MA(1)"
+)
+```
+
+Only the first lag tends to be significant.
+
+## Interpretation of the ACF
+
+### White Noise
+
+- All autocorrelations are approximately zero.
+- No systematic dependence.
+
+### AR Process
+
+- Slow decay.
+- Correlations persist across lags.
+
+### MA Process
+
+- Sharp cutoff.
+- Dependence exists only for a limited number of lags.
+
+## Statistical Significance
+
+For a white noise process,
+
+\[
+SE(r_k)
+\approx
+\frac{1}{\sqrt n}.
+\]
+
+Approximate 95% bounds are
+
+\[
+\pm \frac{1.96}{\sqrt n}.
+\]
+
+For example, if
+
+\[
+n=200,
+\]
+
+then
+
+\[
+\pm\frac{1.96}{\sqrt{200}}
+\approx
+\pm0.139.
+\]
+
+Bars outside these bounds may indicate significant autocorrelation.
+
+## Example with Real Data
+
+```{r}
+data(AirPassengers)
+
+acf(
+  AirPassengers,
+  main="ACF of AirPassengers"
+)
+```
+
+Observe the strong persistence and seasonality.
+
+## Exercises
+
+1. Generate a white noise series of length 200 and plot its ACF.
+2. Simulate an AR(1) process with \(\phi=0.7\).
+3. Verify that the theoretical ACF equals \(\phi^k\).
+4. Simulate an MA(1) process with \(\theta=0.5\).
+5. Verify that the ACF cuts off after lag 1.
+6. Compare the ACFs of white noise, AR(1), and MA(1).
+7. Explain the difference between gradual decay and cutoff behavior.

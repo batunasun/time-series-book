@@ -1,0 +1,474 @@
+# Forecasting
+
+## Introduction
+
+Forecasting is one of the primary objectives of time series analysis.
+
+A forecast is a prediction of future observations based on information available at the present time.
+
+Forecasting is used in:
+
+- economics,
+- finance,
+- environmental science,
+- energy demand planning,
+- public health,
+- business analytics.
+
+The goal is to obtain accurate predictions together with a measure of uncertainty.
+
+## Basic Forecasting Notation
+
+Suppose observations are available through time \(t\).
+
+A forecast made at time \(t\) for horizon \(h\) is denoted by
+
+\[
+\hat{Y}_{t+h|t}.
+\]
+
+This represents the prediction of
+
+\[
+Y_{t+h}
+\]
+
+based on information available at time \(t\).
+
+### One-Step-Ahead Forecast
+
+\[
+\hat{Y}_{t+1|t}.
+\]
+
+### Multi-Step Forecast
+
+\[
+\hat{Y}_{t+h|t}.
+\]
+
+for
+
+\[
+h=2,3,\ldots
+\]
+
+## Forecast Errors
+
+The forecast error is
+
+\[
+e_{t+h}
+=
+Y_{t+h}
+-
+\hat{Y}_{t+h|t}.
+\]
+
+Good forecasting models produce small forecast errors.
+
+## Measures of Forecast Accuracy
+
+### Mean Error (ME)
+
+\[
+ME
+=
+\frac{1}{n}
+\sum_{t=1}^{n}
+e_t.
+\]
+
+Measures forecast bias.
+
+### Mean Absolute Error (MAE)
+
+\[
+MAE
+=
+\frac{1}{n}
+\sum_{t=1}^{n}
+|e_t|.
+\]
+
+Easy to interpret because it uses the original units.
+
+### Mean Squared Error (MSE)
+
+\[
+MSE
+=
+\frac{1}{n}
+\sum_{t=1}^{n}
+e_t^2.
+\]
+
+Large errors receive greater weight.
+
+### Root Mean Squared Error (RMSE)
+
+\[
+RMSE
+=
+\sqrt{MSE}.
+\]
+
+One of the most commonly used measures.
+
+### Mean Absolute Percentage Error (MAPE)
+
+\[
+MAPE
+=
+\frac{100}{n}
+\sum_{t=1}^{n}
+\left|
+\frac{e_t}{Y_t}
+\right|.
+\]
+
+Expresses error as a percentage.
+
+## Training and Test Sets
+
+To evaluate forecasting performance, data are commonly divided into:
+
+### Training Set
+
+Used to estimate model parameters.
+
+### Test Set
+
+Used to assess forecast accuracy.
+
+Example:
+
+```{r}
+n <- length(AirPassengers)
+
+train <- window(
+  AirPassengers,
+  end = c(1958,12)
+)
+
+test <- window(
+  AirPassengers,
+  start = c(1959,1)
+)
+```
+
+## Benchmark Forecasting Methods
+
+Before fitting sophisticated models, benchmark forecasts should be considered.
+
+### Mean Forecast
+
+\[
+\hat Y_{t+h}
+=
+\bar Y.
+\]
+
+All future forecasts equal the historical mean.
+
+### Naive Forecast
+
+\[
+\hat Y_{t+h}
+=
+Y_t.
+\]
+
+The next observation is assumed to equal the most recent observation.
+
+### Drift Forecast
+
+\[
+\hat Y_{t+h}
+=
+Y_t
++
+h
+\frac{Y_t-Y_1}{t-1}.
+\]
+
+Projects the historical trend forward.
+
+### Seasonal Naive Forecast
+
+For seasonal data,
+
+\[
+\hat Y_{t+h}
+=
+Y_{t+h-m},
+\]
+
+where \(m\) is the seasonal period.
+
+## Example: Naive Forecast
+
+```{r eval=FALSE}
+library(forecast)
+
+fit <- naive(AirPassengers)
+
+autoplot(fit)
+```
+
+The naive method is surprisingly effective for many economic and financial time series.
+
+## AR(1) Forecasting
+
+Consider
+
+\[
+Y_t
+=
+\phi Y_{t-1}
++
+\varepsilon_t.
+\]
+
+The one-step forecast is
+
+\[
+\hat Y_{t+1|t}
+=
+\phi Y_t.
+\]
+
+The \(h\)-step forecast is
+
+\[
+\hat Y_{t+h|t}
+=
+\phi^h Y_t.
+\]
+
+As
+
+\[
+h\rightarrow\infty,
+\]
+
+the forecast approaches the mean of the process.
+
+## ARIMA Forecasting
+
+Suppose an ARIMA model has been fitted.
+
+```{r eval=FALSE}
+library(forecast)
+
+fit <- auto.arima(AirPassengers)
+
+fit
+```
+
+Forecasts are obtained using
+
+```{r eval=FALSE}
+fc <- forecast(
+  fit,
+  h = 24
+)
+
+autoplot(fc)
+```
+
+The output includes:
+
+- point forecasts,
+- prediction intervals,
+- future horizons.
+
+## Prediction Intervals
+
+Point forecasts alone are insufficient.
+
+Prediction intervals quantify uncertainty.
+
+A 95% prediction interval has the form
+
+\[
+\hat Y_{t+h}
+\pm
+1.96
+\times
+SE(\hat Y_{t+h}).
+\]
+
+Forecast uncertainty generally increases with horizon length.
+
+## Example: AirPassengers Data
+
+```{r eval=FALSE}
+library(forecast)
+
+fit <- auto.arima(AirPassengers)
+
+fc <- forecast(
+  fit,
+  h = 24
+)
+
+plot(fc)
+```
+
+Observe:
+
+- increasing uncertainty,
+- seasonal structure,
+- widening prediction intervals.
+
+## Residual Diagnostics
+
+A forecasting model should leave residuals that resemble white noise.
+
+### Residual Plot
+
+```{r eval=FALSE}
+checkresiduals(fit)
+```
+
+### Desired Properties
+
+Residuals should exhibit:
+
+- zero mean,
+- constant variance,
+- no significant autocorrelation.
+
+## Ljung-Box Test
+
+The Ljung-Box test checks whether residual autocorrelations remain.
+
+### Hypotheses
+
+\[
+H_0:
+\text{Residuals are uncorrelated}
+\]
+
+\[
+H_1:
+\text{Residual autocorrelation exists}.
+\]
+
+### Example
+
+```{r eval=FALSE}
+Box.test(
+  residuals(fit),
+  lag = 20,
+  type = "Ljung-Box"
+)
+```
+
+A large p-value supports the adequacy of the model.
+
+## Forecasting Workflow
+
+A typical forecasting procedure is:
+
+1. Plot the series.
+2. Check stationarity.
+3. Difference if necessary.
+4. Examine ACF and PACF.
+5. Fit candidate models.
+6. Compare AIC values.
+7. Check residual diagnostics.
+8. Produce forecasts.
+9. Evaluate forecast accuracy.
+
+## Example Using Simulated AR(1) Data
+
+```{r}
+set.seed(123)
+
+x <- arima.sim(
+  model=list(ar=.8),
+  n=200
+)
+
+plot.ts(
+  x,
+  main="Simulated AR(1) Series"
+)
+```
+
+Estimate the model:
+
+```{r}
+fit <- arima(
+  x,
+  order=c(1,0,0)
+)
+
+fit
+```
+
+Compare the estimated parameter with the true value.
+
+## Forecast Horizon
+
+Forecast quality generally decreases as the horizon increases.
+
+### Short-Term Forecasts
+
+- Usually more accurate.
+- Smaller prediction intervals.
+
+### Long-Term Forecasts
+
+- Greater uncertainty.
+- Wider prediction intervals.
+
+## Practical Considerations
+
+Good forecasts require:
+
+- adequate data quality,
+- stationarity when appropriate,
+- careful model selection,
+- diagnostic checking.
+
+Forecasting is not only about obtaining the smallest in-sample error, but also about producing reliable future predictions.
+
+## Summary
+
+Forecasting is the central goal of many time series analyses.
+
+Important concepts include:
+
+- forecast horizons,
+- forecast errors,
+- MAE,
+- MSE,
+- RMSE,
+- MAPE,
+- prediction intervals,
+- residual diagnostics.
+
+ARIMA models provide a powerful framework for forecasting stationary and nonstationary time series.
+
+Accurate forecasting requires:
+
+- appropriate model identification,
+- parameter estimation,
+- model validation,
+- realistic assessment of uncertainty.
+
+## Exercises
+
+1. Fit a naive forecasting model to a time series.
+2. Compute MAE and RMSE.
+3. Split a series into training and test sets.
+4. Fit an AR(1) model and produce forecasts.
+5. Fit an ARIMA model using `auto.arima()`.
+6. Compare forecast accuracy across competing models.
+7. Construct 95% prediction intervals.
+8. Perform Ljung-Box tests on residuals.
+9. Explain why forecast uncertainty grows with horizon length.
+10. Compare naive forecasts and ARIMA forecasts for the same series.

@@ -1,0 +1,439 @@
+# The Moving Average Process of Order One: MA(1)
+
+## Introduction
+
+The MA(1) model is the simplest moving average process.
+
+Unlike an autoregressive model, an MA(1) process does not depend directly on past observations. Instead, it depends on the current and previous random shocks.
+
+The MA(1) model is fundamental in time series analysis and serves as a building block for higher-order MA and ARMA models.
+
+## Definition
+
+An MA(1) process is defined by
+
+\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]
+
+where
+
+- \(\{\varepsilon_t\}\) is a white noise process,
+- \(E(\varepsilon_t)=0\),
+- \(Var(\varepsilon_t)=\sigma^2\),
+- \(\theta\) is the moving average parameter.
+
+## Mean
+
+Taking expectations,
+
+\[
+E(Y_t)
+=
+E(\varepsilon_t)
++
+\theta E(\varepsilon_{t-1}).
+\]
+
+Since
+
+\[
+E(\varepsilon_t)=0,
+\]
+
+it follows that
+
+\[
+E(Y_t)=0.
+\]
+
+## Variance
+
+Since the white noise terms are uncorrelated,
+
+\[
+Var(Y_t)
+=
+Var(\varepsilon_t+\theta\varepsilon_{t-1}),
+\]
+
+which gives
+
+\[
+Var(Y_t)
+=
+(1+\theta^2)\sigma^2.
+\]
+
+## Autocovariance Function
+
+### Lag 0
+
+\[
+\gamma(0)
+=
+(1+\theta^2)\sigma^2.
+\]
+
+### Lag 1
+
+\[
+\gamma(1)
+=
+\theta\sigma^2.
+\]
+
+### Lag \(k>1\)
+
+\[
+\gamma(k)=0.
+\]
+
+Therefore,
+
+\[
+\gamma(k)=
+\begin{cases}
+(1+\theta^2)\sigma^2, & k=0,\\
+\theta\sigma^2, & k=1,\\
+0, & k>1.
+\end{cases}
+\]
+
+## Autocorrelation Function
+
+Dividing by \(\gamma(0)\),
+
+\[
+\rho(1)
+=
+\frac{\theta}
+     {1+\theta^2},
+\]
+
+and
+
+\[
+\rho(k)=0,
+\qquad k>1.
+\]
+
+This is the most important property of an MA(1) process.
+
+The ACF cuts off after lag 1.
+
+## Example
+
+If
+
+\[
+\theta=0.5,
+\]
+
+then
+
+\[
+\rho(1)
+=
+\frac{0.5}{1+0.25}
+=
+0.40.
+\]
+
+If
+
+\[
+\theta=0.2,
+\]
+
+then
+
+\[
+\rho(1)
+=
+\frac{0.2}{1.04}
+\approx 0.192.
+\]
+
+This value should appear in the sample ACF.
+
+## Invertibility
+
+For an MA(1) model,
+
+\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]
+
+invertibility requires
+
+\[
+|\theta|<1.
+\]
+
+Invertibility ensures a unique representation of the process.
+
+This condition plays a role similar to the stationarity condition
+
+\[
+|\phi|<1
+\]
+
+for AR models.
+
+## Simulation
+
+### MA(1) with \(\theta=0.5\)
+
+```{r}
+set.seed(123)
+
+ma1 <- arima.sim(
+  model=list(ma=.5),
+  n=200
+)
+
+plot.ts(
+  ma1,
+  main=expression(MA(1)~with~theta==0.5),
+  ylab=expression(Y[t])
+)
+```
+
+### MA(1) with \(\theta=-0.5\)
+
+```{r}
+set.seed(123)
+
+ma1neg <- arima.sim(
+  model=list(ma=-.5),
+  n=200
+)
+
+plot.ts(
+  ma1neg,
+  main=expression(MA(1)~with~theta==-0.5),
+  ylab=expression(Y[t])
+)
+```
+
+## ACF of an MA(1) Process
+
+```{r}
+acf(
+  ma1,
+  main="ACF of MA(1)"
+)
+```
+
+Observe:
+
+- Significant spike at lag 1.
+- Near-zero autocorrelations for lags greater than 1.
+
+This cutoff behavior is the hallmark of an MA(1) process.
+
+## PACF of an MA(1) Process
+
+```{r}
+pacf(
+  ma1,
+  main="PACF of MA(1)"
+)
+```
+
+Unlike the ACF, the PACF does not cut off.
+
+Instead, it decreases gradually toward zero.
+
+## Lag-1 Scatter Plot
+
+The relationship between
+
+\[
+Y_t
+\]
+
+and
+
+\[
+Y_{t-1}
+\]
+
+may be examined using a lag plot.
+
+```{r}
+plot(
+  x = ma1[-length(ma1)],
+  y = ma1[-1],
+  xlab = expression(Y[t-1]),
+  ylab = expression(Y[t]),
+  pch = 16
+)
+```
+
+For positive \(\theta\), the plot tends to exhibit a weak positive linear pattern.
+
+For negative \(\theta\), the pattern slopes downward.
+
+## Lag-2 Scatter Plot
+
+Consider
+
+\[
+(Y_{t-2},Y_t).
+\]
+
+```{r}
+plot(
+  x = ma1[-c(length(ma1)-1,length(ma1))],
+  y = ma1[-c(1,2)],
+  xlab = expression(Y[t-2]),
+  ylab = expression(Y[t]),
+  pch = 16
+)
+```
+
+Since
+
+\[
+\rho(2)=0,
+\]
+
+the points should display little or no linear pattern.
+
+The scatter plot generally resembles a random cloud.
+
+## Comparison with AR(1)
+
+| Property | AR(1) | MA(1) |
+|-----------|-----------|-----------|
+| Model | \(Y_t=\phi Y_{t-1}+\varepsilon_t\) | \(Y_t=\varepsilon_t+\theta\varepsilon_{t-1}\) |
+| Stationarity | \(|\phi|<1\) | Always stationary |
+| Invertibility | Not required | \(|\theta|<1\) |
+| ACF | Tails off | Cuts off after lag 1 |
+| PACF | Cuts off after lag 1 | Tails off |
+
+These patterns are central to Box-Jenkins model identification.
+
+## Estimation
+
+An MA(1) model can be estimated using maximum likelihood.
+
+```{r}
+fit <- arima(
+  ma1,
+  order=c(0,0,1)
+)
+
+fit
+```
+
+The estimated value should be close to the true value used in simulation.
+
+## Example: \(\theta=0.2\)
+
+```{r}
+set.seed(123)
+
+ma1.2 <- arima.sim(
+  model=list(ma=.2),
+  n=500
+)
+
+acf(ma1.2)
+```
+
+The theoretical lag-1 autocorrelation is
+
+\[
+\rho(1)
+=
+\frac{0.2}{1+0.2^2}
+=
+0.1923.
+\]
+
+Compare this value with the sample ACF.
+
+## Forecasting
+
+For an MA(1) process,
+
+\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]
+
+the one-step-ahead forecast depends on the most recent estimated shock.
+
+For horizons greater than one,
+
+\[
+\hat Y_{t+h}
+\]
+
+rapidly converges to the mean of the process.
+
+Since the mean is zero,
+
+\[
+\hat Y_{t+h}
+\rightarrow 0.
+\]
+
+## Summary
+
+The MA(1) process
+
+\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1}
+\]
+
+has the following properties:
+
+- Mean:
+
+\[
+E(Y_t)=0.
+\]
+
+- Variance:
+
+\[
+Var(Y_t)
+=
+(1+\theta^2)\sigma^2.
+\]
+
+- ACF:
+
+\[
+\rho(1)
+=
+\frac{\theta}{1+\theta^2},
+\]
+
+\[
+\rho(k)=0,
+\qquad k>1.
+\]
+
+- PACF tails off gradually.
+- Invertibility requires
+
+\[
+|\theta|<1.
+\]
+
+The ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.
+
+## Exercises
+
+1. Simulate an MA(1) process with \(\theta=0.2\).
+2. Compute and plot the sample ACF.
+3. Compare the sample lag-1 autocorrelation with the theoretical value.
+4. Simulate an MA(1) process with \(\theta=0.8\).
+5. Compare its ACF with that of \(\theta=0.2\).
+6. Create lag-1 and lag-2 scatter plots.
+7. Explain why the lag-2 scatter plot shows little pattern.
+8. Estimate an MA(1) model using `arima()` and compare the estimated parameter with the true value.

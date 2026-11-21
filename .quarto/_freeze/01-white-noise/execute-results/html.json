@@ -1,0 +1,17 @@
+{
+  "hash": "1066b7e3e9e1038674fc0824a33eb6ae",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# White Noise\n\n## Definition\n\nA stochastic process \\(\\{Y_t\\}\\) is called a white noise process if\n\n\\[\nE(Y_t)=0,\n\\]\n\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\n\nand\n\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0.\n\\]\n\nWe write\n\n\\[\nY_t \\sim WN(0,\\sigma^2).\n\\]\n\n## Properties\n\nFor a white noise process:\n\n1. The mean is constant.\n2. The variance is constant.\n3. Observations are uncorrelated.\n\nThe autocorrelation function is\n\n\\[\n\\rho(0)=1,\n\\]\n\nand\n\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0.\n\\]\n\n## Simulation in R\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(123)\n\ny <- rnorm(200)\n\nplot.ts(\n  y,\n  main=\"White Noise Series\",\n  ylab=expression(Y[t])\n)\n```\n\n::: {.cell-output-display}\n![](01-white-noise_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n## Autocorrelation Function\n\n\n::: {.cell}\n\n```{.r .cell-code}\nacf(\n  y,\n  main=\"ACF of White Noise\"\n)\n```\n\n::: {.cell-output-display}\n![](01-white-noise_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\nFor a white noise process, the sample autocorrelations fluctuate randomly around zero.\n\n## Lag Plot\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(\n  x = y[-200],\n  y = y[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n```\n\n::: {.cell-output-display}\n![](01-white-noise_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\nThe lag plot exhibits no systematic pattern.\n\n## Example\n\nSuppose\n\n\\[\nY_t \\sim N(0,1),\n\\]\n\nindependently for all \\(t\\).\n\nThen \\(\\{Y_t\\}\\) is white noise.\n\n## Exercise\n\n1. Generate a white noise series of length 500.\n2. Plot the series.\n3. Plot the ACF.\n4. Produce a lag-1 scatterplot.\n5. Explain whether the observations appear correlated.",
+    "supporting": [
+      "01-white-noise_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

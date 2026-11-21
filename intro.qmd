@@ -1,0 +1,20 @@
+# White Noise
+
+A white noise process is defined as
+
+$$
+Y_t \sim WN(0,\sigma^2)
+$$
+
+Properties:
+
+1. \(E(Y_t)=0\)
+2. \(Var(Y_t)=\sigma^2\)
+3. \(Cov(Y_t,Y_{t-k})=0\)
+
+```{r}
+y <- rnorm(200)
+
+plot.ts(y)
+acf(y)
+```

@@ -1,0 +1,596 @@
+# Exercises
+
+## Introduction
+
+This chapter contains exercises covering:
+
+- White Noise
+- Stationarity
+- ACF
+- PACF
+- AR(1)
+- MA(1)
+- ARMA
+- ARIMA
+- Forecasting
+
+The exercises range from basic concepts to practical applications in R.
+
+---
+
+# Part I: White Noise
+
+## Exercise 1
+
+Generate a white noise series of length 200.
+
+Plot the series and describe its behavior.
+
+### Hint
+
+```{r eval=FALSE}
+y <- rnorm(200)
+plot.ts(y)
+```
+
+---
+
+## Exercise 2
+
+Compute and plot the ACF of a white noise process.
+
+Explain why most autocorrelations should lie within the 95% confidence limits.
+
+---
+
+## Exercise 3
+
+Construct a lag-1 scatter plot.
+
+```{r eval=FALSE}
+plot(
+  x=y[-200],
+  y=y[-1]
+)
+```
+
+What pattern do you observe?
+
+---
+
+# Part II: Stationarity
+
+## Exercise 4
+
+For each of the following processes, determine whether it is stationary.
+
+### (a)
+
+\[
+Y_t=\varepsilon_t
+\]
+
+### (b)
+
+\[
+Y_t=t+\varepsilon_t
+\]
+
+### (c)
+
+\[
+Y_t=0.5Y_{t-1}+\varepsilon_t
+\]
+
+### (d)
+
+\[
+Y_t=Y_{t-1}+\varepsilon_t
+\]
+
+---
+
+## Exercise 5
+
+Simulate a random walk and explain why it is not stationary.
+
+```{r eval=FALSE}
+rw <- cumsum(rnorm(300))
+```
+
+---
+
+## Exercise 6
+
+Difference the random walk and examine the resulting series.
+
+```{r eval=FALSE}
+diff(rw)
+```
+
+Does the differenced series appear stationary?
+
+---
+
+# Part III: ACF
+
+## Exercise 7
+
+Suppose
+
+\[
+\rho(k)=0.8^k.
+\]
+
+Compute:
+
+\[
+\rho(1),
+\quad
+\rho(2),
+\quad
+\rho(3).
+\]
+
+---
+
+## Exercise 8
+
+Explain the difference between:
+
+- autocovariance,
+- autocorrelation.
+
+---
+
+## Exercise 9
+
+Generate an AR(1) process with
+
+\[
+\phi=0.8.
+\]
+
+Plot its ACF.
+
+How does it differ from the ACF of white noise?
+
+---
+
+## Exercise 10
+
+Why does the ACF of an MA(1) process cut off after lag 1?
+
+---
+
+# Part IV: PACF
+
+## Exercise 11
+
+Explain the difference between ACF and PACF.
+
+---
+
+## Exercise 12
+
+For an AR(1) process,
+
+\[
+Y_t=0.7Y_{t-1}+\varepsilon_t,
+\]
+
+describe the expected PACF pattern.
+
+---
+
+## Exercise 13
+
+Plot both the ACF and PACF of an AR(2) process.
+
+Which plot helps identify the order?
+
+---
+
+# Part V: AR(1)
+
+## Exercise 14
+
+Consider
+
+\[
+Y_t=0.6Y_{t-1}+\varepsilon_t.
+\]
+
+Calculate:
+
+### Mean
+
+\[
+E(Y_t)
+\]
+
+### Variance
+
+\[
+Var(Y_t)
+=
+\frac{\sigma^2}
+     {1-\phi^2}.
+\]
+
+Assume
+
+\[
+\sigma^2=1.
+\]
+
+---
+
+## Exercise 15
+
+Show that
+
+\[
+\rho(k)=\phi^k
+\]
+
+for an AR(1) process.
+
+---
+
+## Exercise 16
+
+Simulate AR(1) processes with
+
+\[
+\phi=0.2,
+\quad
+0.5,
+\quad
+0.8.
+\]
+
+Compare the resulting series.
+
+---
+
+## Exercise 17
+
+Fit an AR(1) model using:
+
+```{r eval=FALSE}
+arima(
+  x,
+  order=c(1,0,0)
+)
+```
+
+Compare the estimated parameter with the true value.
+
+---
+
+# Part VI: MA(1)
+
+## Exercise 18
+
+For
+
+\[
+\theta=0.5,
+\]
+
+compute
+
+\[
+\rho(1)
+=
+\frac{\theta}
+     {1+\theta^2}.
+\]
+
+---
+
+## Exercise 19
+
+For
+
+\[
+\theta=0.2,
+\]
+
+compute the theoretical lag-1 autocorrelation.
+
+---
+
+## Exercise 20
+
+Explain why
+
+\[
+\rho(k)=0,
+\qquad k>1.
+\]
+
+for an MA(1) process.
+
+---
+
+## Exercise 21
+
+Generate an MA(1) process with
+
+\[
+\theta=0.5.
+\]
+
+Compare:
+
+- time plot,
+- ACF,
+- PACF.
+
+---
+
+## Exercise 22
+
+Produce lag-1 and lag-2 scatter plots.
+
+Which one exhibits stronger dependence?
+
+---
+
+# Part VII: ARMA Models
+
+## Exercise 23
+
+Explain the difference between:
+
+- AR(1),
+- MA(1),
+- ARMA(1,1).
+
+---
+
+## Exercise 24
+
+Simulate
+
+\[
+ARMA(1,1):
+\]
+
+\[
+Y_t
+=
+0.7Y_{t-1}
++
+\varepsilon_t
++
+0.4\varepsilon_{t-1}.
+\]
+
+Plot the series.
+
+---
+
+## Exercise 25
+
+Plot both the ACF and PACF.
+
+How do the patterns differ from pure AR and MA models?
+
+---
+
+## Exercise 26
+
+Estimate an ARMA(1,1) model using:
+
+```{r eval=FALSE}
+arima(
+  x,
+  order=c(1,0,1)
+)
+```
+
+Interpret the estimated coefficients.
+
+---
+
+# Part VIII: ARIMA Models
+
+## Exercise 27
+
+Generate a random walk.
+
+Plot:
+
+- the original series,
+- the differenced series.
+
+---
+
+## Exercise 28
+
+Plot the ACF of:
+
+- the random walk,
+- the differenced series.
+
+Explain the differences.
+
+---
+
+## Exercise 29
+
+Explain the meaning of:
+
+\[
+ARIMA(1,1,1).
+\]
+
+---
+
+## Exercise 30
+
+Fit:
+
+```{r eval=FALSE}
+arima(
+  x,
+  order=c(1,1,1)
+)
+```
+
+Interpret the output.
+
+---
+
+## Exercise 31
+
+Use
+
+```{r eval=FALSE}
+auto.arima(x)
+```
+
+and compare the selected model with your manually specified model.
+
+---
+
+# Part IX: Forecasting
+
+## Exercise 32
+
+Split a time series into:
+
+- training set,
+- test set.
+
+Why is this important?
+
+---
+
+## Exercise 33
+
+Compute:
+
+\[
+MAE,
+\quad
+MSE,
+\quad
+RMSE.
+\]
+
+Explain the differences among these measures.
+
+---
+
+## Exercise 34
+
+Fit a naive forecasting model.
+
+Compare it with an ARIMA forecast.
+
+---
+
+## Exercise 35
+
+For a fitted forecasting model:
+
+1. Produce 12-step forecasts.
+2. Plot prediction intervals.
+3. Interpret the forecast uncertainty.
+
+---
+
+## Exercise 36
+
+Perform residual diagnostics.
+
+Examine:
+
+- residual plots,
+- residual ACF,
+- Ljung-Box test.
+
+Should the residuals resemble white noise?
+
+Why?
+
+---
+
+# Comprehensive Project
+
+## Exercise 37
+
+Using a real data set of your choice:
+
+1. Plot the series.
+2. Investigate stationarity.
+3. Examine ACF and PACF.
+4. Fit AR, MA, ARMA, and ARIMA models.
+5. Compare AIC values.
+6. Select a final model.
+7. Produce forecasts.
+8. Evaluate forecast accuracy.
+9. Write a short report summarizing your findings.
+
+---
+
+# Programming Challenges
+
+## Exercise 38
+
+Write an R function that computes the sample autocorrelation at lag \(k\).
+
+Do not use the built-in `acf()` function.
+
+---
+
+## Exercise 39
+
+Write an R function that simulates an AR(1) process.
+
+Inputs:
+
+- \(\phi\)
+- \(n\)
+
+Output:
+
+- simulated series
+
+---
+
+## Exercise 40
+
+Write an R function that simulates an MA(1) process.
+
+Inputs:
+
+- \(\theta\)
+- \(n\)
+
+Output:
+
+- simulated series
+
+---
+
+# Review Questions
+
+1. What is white noise?
+2. What is stationarity?
+3. What is differencing?
+4. What is the ACF?
+5. What is the PACF?
+6. What is the difference between AR and MA models?
+7. What is invertibility?
+8. What is a unit root?
+9. What is an ARIMA model?
+10. Why are prediction intervals important?
+
+---
+
+Congratulations! You have now completed the core exercises for the book *Time Series Analysis with R*.

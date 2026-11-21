@@ -1,0 +1,17 @@
+{
+  "hash": "22dea5f6d287419b054bcce9e9a03edc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# White Noise\n\nA white noise process is defined as\n\n$$\nY_t \\sim WN(0,\\sigma^2)\n$$\n\nProperties:\n\n1. \\(E(Y_t)=0\\)\n2. \\(Var(Y_t)=\\sigma^2\\)\n3. \\(Cov(Y_t,Y_{t-k})=0\\)\n\n\n::: {.cell}\n\n```{.r .cell-code}\ny <- rnorm(200)\n\nplot.ts(y)\n```\n\n::: {.cell-output-display}\n![](intro_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n\n```{.r .cell-code}\nacf(y)\n```\n\n::: {.cell-output-display}\n![](intro_files/figure-html/unnamed-chunk-1-2.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "intro_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

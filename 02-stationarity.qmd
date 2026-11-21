@@ -1,0 +1,221 @@
+# Stationarity
+
+## Introduction
+
+Stationarity is one of the most important concepts in time series analysis.
+
+Many statistical methods for time series, including autocorrelation analysis, AR models, MA models, and ARMA models, assume that the underlying process is stationary.
+
+## Strict Stationarity
+
+A stochastic process \(\{Y_t\}\) is said to be **strictly stationary** if the joint distribution of
+
+\[
+(Y_{t_1},Y_{t_2},\ldots,Y_{t_n})
+\]
+
+is identical to the joint distribution of
+
+\[
+(Y_{t_1+h},Y_{t_2+h},\ldots,Y_{t_n+h})
+\]
+
+for every integer \(h\) and every collection of time points
+
+\[
+t_1,t_2,\ldots,t_n.
+\]
+
+Thus, the probabilistic behavior of the process does not change over time.
+
+## Weak Stationarity
+
+In practice, weak stationarity is used more frequently.
+
+A process is **weakly stationary** if
+
+### Mean
+
+\[
+E(Y_t)=\mu
+\]
+
+is constant for all \(t\).
+
+### Variance
+
+\[
+Var(Y_t)=\sigma^2
+\]
+
+is constant for all \(t\).
+
+### Covariance
+
+\[
+Cov(Y_t,Y_{t-k})
+\]
+
+depends only on the lag \(k\), not on the time \(t\).
+
+## Autocovariance Function
+
+The autocovariance function is
+
+\[
+\gamma(k)
+=
+Cov(Y_t,Y_{t-k}).
+\]
+
+For a weakly stationary process,
+
+\[
+\gamma(k)
+\]
+
+depends only on \(k\).
+
+## Autocorrelation Function
+
+The autocorrelation function (ACF) is
+
+\[
+\rho(k)
+=
+\frac{\gamma(k)}
+     {\gamma(0)}.
+\]
+
+Since
+
+\[
+\gamma(0)=Var(Y_t),
+\]
+
+the ACF measures dependence between observations separated by lag \(k\).
+
+## White Noise as a Stationary Process
+
+A white noise process
+
+\[
+Y_t \sim WN(0,\sigma^2)
+\]
+
+is stationary because
+
+\[
+E(Y_t)=0,
+\]
+
+\[
+Var(Y_t)=\sigma^2,
+\]
+
+and
+
+\[
+Cov(Y_t,Y_{t-k})=0
+\]
+
+for all \(k \neq 0\).
+
+## Example: Stationary Series
+
+```{r}
+set.seed(123)
+
+y <- arima.sim(
+  model = list(ar = 0.6),
+  n = 200
+)
+
+plot.ts(
+  y,
+  main = "Stationary AR(1) Series",
+  ylab = expression(Y[t])
+)
+```
+
+The series fluctuates around a constant mean and exhibits approximately constant variance.
+
+## Example: Nonstationary Series
+
+Consider a random walk
+
+\[
+Y_t = Y_{t-1} + \varepsilon_t,
+\]
+
+where
+
+\[
+\varepsilon_t \sim WN(0,\sigma^2).
+\]
+
+```{r}
+set.seed(123)
+
+e <- rnorm(200)
+rw <- cumsum(e)
+
+plot.ts(
+  rw,
+  main = "Random Walk",
+  ylab = expression(Y[t])
+)
+```
+
+The variability increases over time and the process has no stable mean.
+
+Therefore the random walk is nonstationary.
+
+## Comparing ACFs
+
+### Stationary Series
+
+```{r}
+acf(
+  y,
+  main = "ACF of Stationary AR(1)"
+)
+```
+
+### Random Walk
+
+```{r}
+acf(
+  rw,
+  main = "ACF of Random Walk"
+)
+```
+
+The random walk typically exhibits very slow decay in the autocorrelation function.
+
+## Why Stationarity Matters
+
+Most classical forecasting models require stationarity.
+
+Examples include:
+
+- AR(\(p\))
+- MA(\(q\))
+- ARMA(\(p,q\))
+
+When a series is nonstationary, transformations are often applied:
+
+- Differencing
+- Logarithms
+- Seasonal differencing
+
+These transformations are used to obtain a stationary series before modeling.
+
+## Exercises
+
+1. Simulate a white noise series of length 200.
+2. Verify that the white noise series appears stationary.
+3. Simulate an AR(1) process with \(\phi=0.8\).
+4. Simulate a random walk.
+5. Compare the ACFs of the AR(1) process and the random walk.
+6. Explain why the random walk is nonstationary.

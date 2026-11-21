@@ -1,0 +1,25 @@
+# Time Series Analysis with R
+
+Author: Batnasan Davaanyam
+
+This book covers
+
+- White Noise
+- Stationarity
+- ACF
+- PACF
+- AR Models
+- MA Models
+- ARMA Models
+- Forecasting
+
+```{r}
+set.seed(123)
+
+x <- arima.sim(
+  model = list(ar = 0.8),
+  n = 200
+)
+
+plot(x)
+```

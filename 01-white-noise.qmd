@@ -1,0 +1,106 @@
+# White Noise
+
+## Definition
+
+A stochastic process \(\{Y_t\}\) is called a white noise process if
+
+\[
+E(Y_t)=0,
+\]
+
+\[
+Var(Y_t)=\sigma^2,
+\]
+
+and
+
+\[
+Cov(Y_t,Y_{t-k})=0,
+\qquad k\neq 0.
+\]
+
+We write
+
+\[
+Y_t \sim WN(0,\sigma^2).
+\]
+
+## Properties
+
+For a white noise process:
+
+1. The mean is constant.
+2. The variance is constant.
+3. Observations are uncorrelated.
+
+The autocorrelation function is
+
+\[
+\rho(0)=1,
+\]
+
+and
+
+\[
+\rho(k)=0,
+\qquad k\ne0.
+\]
+
+## Simulation in R
+
+```{r}
+set.seed(123)
+
+y <- rnorm(200)
+
+plot.ts(
+  y,
+  main="White Noise Series",
+  ylab=expression(Y[t])
+)
+```
+
+## Autocorrelation Function
+
+```{r}
+acf(
+  y,
+  main="ACF of White Noise"
+)
+```
+
+For a white noise process, the sample autocorrelations fluctuate randomly around zero.
+
+## Lag Plot
+
+```{r}
+plot(
+  x = y[-200],
+  y = y[-1],
+  xlab = expression(Y[t-1]),
+  ylab = expression(Y[t]),
+  pch = 16
+)
+```
+
+The lag plot exhibits no systematic pattern.
+
+## Example
+
+Suppose
+
+\[
+Y_t \sim N(0,1),
+\]
+
+independently for all \(t\).
+
+Then \(\{Y_t\}\) is white noise.
+
+## Exercise
+
+1. Generate a white noise series of length 500.
+2. Plot the series.
+3. Plot the ACF.
+4. Produce a lag-1 scatterplot.
+5. Explain whether the observations appear correlated.
