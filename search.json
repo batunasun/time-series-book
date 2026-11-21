@@ -12,71 +12,71 @@
   {
     "objectID": "01-white-noise.html",
     "href": "01-white-noise.html",
-    "title": "2  White Noise",
+    "title": "2  Цагаан чимээ (White Noise)",
     "section": "",
-    "text": "2.1 Definition\nA stochastic process ({Y_t}) is called a white noise process if\n\\[\nE(Y_t)=0,\n\\]\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\nand\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0.\n\\]\nWe write\n\\[\nY_t \\sim WN(0,\\sigma^2).\n\\]",
+    "text": "2.1 Тодорхойлолт\n({Y_t}) стохастик процессийг цагаан чимээний процесс гэнэ, хэрэв\n\\[\nE(Y_t)=0,\n\\]\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\nба\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0\n\\]\nболно.\nБид үүнийг\n\\[\nY_t \\sim WN(0,\\sigma^2)\n\\]\nгэж бичнэ.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#properties",
-    "href": "01-white-noise.html#properties",
-    "title": "2  White Noise",
-    "section": "2.2 Properties",
-    "text": "2.2 Properties\nFor a white noise process:\n\nThe mean is constant.\nThe variance is constant.\nObservations are uncorrelated.\n\nThe autocorrelation function is\n\\[\n\\rho(0)=1,\n\\]\nand\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0.\n\\]",
+    "objectID": "01-white-noise.html#шинж-чанар",
+    "href": "01-white-noise.html#шинж-чанар",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.2 Шинж чанар",
+    "text": "2.2 Шинж чанар\nЦагаан чимээний процессийн хувьд:\n\nДундаж нь тогтмол.\nДисперс нь тогтмол.\nАжиглалтууд нь корреляцгүй.\n\nАвтокорреляцын функц нь\n\\[\n\\rho(0)=1,\n\\]\nба\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0\n\\]\nбайна.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#simulation-in-r",
-    "href": "01-white-noise.html#simulation-in-r",
-    "title": "2  White Noise",
-    "section": "2.3 Simulation in R",
-    "text": "2.3 Simulation in R\n\nset.seed(123)\n\ny &lt;- rnorm(200)\n\nplot.ts(\n  y,\n  main=\"White Noise Series\",\n  ylab=expression(Y[t])\n)",
+    "objectID": "01-white-noise.html#r-дээрх-симуляц",
+    "href": "01-white-noise.html#r-дээрх-симуляц",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.3 R дээрх симуляц",
+    "text": "2.3 R дээрх симуляц\n\nset.seed(123)\n\ny &lt;- rnorm(200)\n\nplot.ts(\n  y,\n  main=\"Цагаан чимээний цуваа\",\n  ylab=expression(Y[t])\n)",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#autocorrelation-function",
-    "href": "01-white-noise.html#autocorrelation-function",
-    "title": "2  White Noise",
-    "section": "2.4 Autocorrelation Function",
-    "text": "2.4 Autocorrelation Function\n\nacf(\n  y,\n  main=\"ACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nFor a white noise process, the sample autocorrelations fluctuate randomly around zero.",
+    "objectID": "01-white-noise.html#автокорреляцын-функц",
+    "href": "01-white-noise.html#автокорреляцын-функц",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.4 Автокорреляцын функц",
+    "text": "2.4 Автокорреляцын функц\n\nacf(\n  y,\n  main=\"Цагаан чимээний ACF\"\n)\n\n\n\n\n\n\n\n\nЦагаан чимээний процессийн хувьд түүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#lag-plot",
-    "href": "01-white-noise.html#lag-plot",
-    "title": "2  White Noise",
-    "section": "2.5 Lag Plot",
-    "text": "2.5 Lag Plot\n\nplot(\n  x = y[-200],\n  y = y[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nThe lag plot exhibits no systematic pattern.",
+    "objectID": "01-white-noise.html#хоцролтын-график",
+    "href": "01-white-noise.html#хоцролтын-график",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.5 Хоцролтын график",
+    "text": "2.5 Хоцролтын график\n\nplot(\n  x = y[-200],\n  y = y[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nХоцролтын график ямар нэг системтэй хэв маяг харуулахгүй.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#example",
-    "href": "01-white-noise.html#example",
-    "title": "2  White Noise",
-    "section": "2.6 Example",
-    "text": "2.6 Example\nSuppose\n\\[\nY_t \\sim N(0,1),\n\\]\nindependently for all \\(t\\).\nThen \\(\\{Y_t\\}\\) is white noise.",
+    "objectID": "01-white-noise.html#жишээ",
+    "href": "01-white-noise.html#жишээ",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.6 Жишээ",
+    "text": "2.6 Жишээ\nБүх (t)-ийн хувьд харилцан хамааралгүйгээр\n\\[\nY_t \\sim N(0,1)\n\\]\nгэж үзье.\nТэгвэл ({Y_t}) нь цагаан чимээ байна.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
-    "objectID": "01-white-noise.html#exercise",
-    "href": "01-white-noise.html#exercise",
-    "title": "2  White Noise",
-    "section": "2.7 Exercise",
-    "text": "2.7 Exercise\n\nGenerate a white noise series of length 500.\nPlot the series.\nPlot the ACF.\nProduce a lag-1 scatterplot.\nExplain whether the observations appear correlated.",
+    "objectID": "01-white-noise.html#дасгал",
+    "href": "01-white-noise.html#дасгал",
+    "title": "2  Цагаан чимээ (White Noise)",
+    "section": "2.7 Дасгал",
+    "text": "2.7 Дасгал\n\n500 урттай цагаан чимээний цуваа үүсгэ.\nЦувааг графикаар зур.\nACF-ийг зур.\nЛаг-1 сарнилын графикийг гарга.\nАжиглалтууд корреляцтай харагдаж байгаа эсэхийг тайлбарла.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
   },
   {
