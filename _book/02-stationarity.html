@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Stationarity – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>3&nbsp; Стационар байдал – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -112,6 +112,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -124,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-stationarity.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-stationarity.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,13 +187,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,26 +236,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
-  <li><a href="#strict-stationarity" id="toc-strict-stationarity" class="nav-link" data-scroll-target="#strict-stationarity"><span class="header-section-number">3.2</span> Strict Stationarity</a></li>
-  <li><a href="#weak-stationarity" id="toc-weak-stationarity" class="nav-link" data-scroll-target="#weak-stationarity"><span class="header-section-number">3.3</span> Weak Stationarity</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">3.1</span> Оршил</a></li>
+  <li><a href="#хатуу-стационар-байдал" id="toc-хатуу-стационар-байдал" class="nav-link" data-scroll-target="#хатуу-стационар-байдал"><span class="header-section-number">3.2</span> Хатуу стационар байдал</a></li>
+  <li><a href="#сул-стационар-байдал" id="toc-сул-стационар-байдал" class="nav-link" data-scroll-target="#сул-стационар-байдал"><span class="header-section-number">3.3</span> Сул стационар байдал</a>
   <ul class="collapse">
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">3.3.1</span> Mean</a></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">3.3.2</span> Variance</a></li>
-  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">3.3.3</span> Covariance</a></li>
+  <li><a href="#дундаж" id="toc-дундаж" class="nav-link" data-scroll-target="#дундаж"><span class="header-section-number">3.3.1</span> Дундаж</a></li>
+  <li><a href="#дисперс" id="toc-дисперс" class="nav-link" data-scroll-target="#дисперс"><span class="header-section-number">3.3.2</span> Дисперс</a></li>
+  <li><a href="#ковариац" id="toc-ковариац" class="nav-link" data-scroll-target="#ковариац"><span class="header-section-number">3.3.3</span> Ковариац</a></li>
   </ul></li>
-  <li><a href="#autocovariance-function" id="toc-autocovariance-function" class="nav-link" data-scroll-target="#autocovariance-function"><span class="header-section-number">3.4</span> Autocovariance Function</a></li>
-  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function"><span class="header-section-number">3.5</span> Autocorrelation Function</a></li>
-  <li><a href="#white-noise-as-a-stationary-process" id="toc-white-noise-as-a-stationary-process" class="nav-link" data-scroll-target="#white-noise-as-a-stationary-process"><span class="header-section-number">3.6</span> White Noise as a Stationary Process</a></li>
-  <li><a href="#example-stationary-series" id="toc-example-stationary-series" class="nav-link" data-scroll-target="#example-stationary-series"><span class="header-section-number">3.7</span> Example: Stationary Series</a></li>
-  <li><a href="#example-nonstationary-series" id="toc-example-nonstationary-series" class="nav-link" data-scroll-target="#example-nonstationary-series"><span class="header-section-number">3.8</span> Example: Nonstationary Series</a></li>
-  <li><a href="#comparing-acfs" id="toc-comparing-acfs" class="nav-link" data-scroll-target="#comparing-acfs"><span class="header-section-number">3.9</span> Comparing ACFs</a>
+  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">3.4</span> Автоковариацын функц</a></li>
+  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">3.5</span> Автокорреляцын функц</a></li>
+  <li><a href="#цагаан-чимээ-нь-стационар-процесс" id="toc-цагаан-чимээ-нь-стационар-процесс" class="nav-link" data-scroll-target="#цагаан-чимээ-нь-стационар-процесс"><span class="header-section-number">3.6</span> Цагаан чимээ нь стационар процесс</a></li>
+  <li><a href="#жишээ-стационар-цуваа" id="toc-жишээ-стационар-цуваа" class="nav-link" data-scroll-target="#жишээ-стационар-цуваа"><span class="header-section-number">3.7</span> Жишээ: Стационар цуваа</a></li>
+  <li><a href="#жишээ-стационар-бус-цуваа" id="toc-жишээ-стационар-бус-цуваа" class="nav-link" data-scroll-target="#жишээ-стационар-бус-цуваа"><span class="header-section-number">3.8</span> Жишээ: Стационар бус цуваа</a></li>
+  <li><a href="#acf-уудыг-харьцуулах" id="toc-acf-уудыг-харьцуулах" class="nav-link" data-scroll-target="#acf-уудыг-харьцуулах"><span class="header-section-number">3.9</span> ACF-уудыг харьцуулах</a>
   <ul class="collapse">
-  <li><a href="#stationary-series" id="toc-stationary-series" class="nav-link" data-scroll-target="#stationary-series"><span class="header-section-number">3.9.1</span> Stationary Series</a></li>
-  <li><a href="#random-walk" id="toc-random-walk" class="nav-link" data-scroll-target="#random-walk"><span class="header-section-number">3.9.2</span> Random Walk</a></li>
+  <li><a href="#стационар-цуваа" id="toc-стационар-цуваа" class="nav-link" data-scroll-target="#стационар-цуваа"><span class="header-section-number">3.9.1</span> Стационар цуваа</a></li>
+  <li><a href="#санамсаргүй-алхалт" id="toc-санамсаргүй-алхалт" class="nav-link" data-scroll-target="#санамсаргүй-алхалт"><span class="header-section-number">3.9.2</span> Санамсаргүй алхалт</a></li>
   </ul></li>
-  <li><a href="#why-stationarity-matters" id="toc-why-stationarity-matters" class="nav-link" data-scroll-target="#why-stationarity-matters"><span class="header-section-number">3.10</span> Why Stationarity Matters</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.11</span> Exercises</a></li>
+  <li><a href="#стационар-байдал-яагаад-чухал-вэ" id="toc-стационар-байдал-яагаад-чухал-вэ" class="nav-link" data-scroll-target="#стационар-байдал-яагаад-чухал-вэ"><span class="header-section-number">3.10</span> Стационар байдал яагаад чухал вэ</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">3.11</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></h1>
 </div>
 
 
@@ -252,70 +281,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>Stationarity is one of the most important concepts in time series analysis.</p>
-<p>Many statistical methods for time series, including autocorrelation analysis, AR models, MA models, and ARMA models, assume that the underlying process is stationary.</p>
+<section id="оршил" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">3.1</span> Оршил</h2>
+<p>Стационар байдал нь хугацааны цувааны шинжилгээний хамгийн чухал ойлголтуудын нэг юм.</p>
+<p>Автокорреляцын шинжилгээ, AR загварууд, MA загварууд, ARMA загварууд зэрэг хугацааны цувааны олон статистик арга нь суурь процесс стационар байна гэж үздэг.</p>
 </section>
-<section id="strict-stationarity" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="strict-stationarity"><span class="header-section-number">3.2</span> Strict Stationarity</h2>
-<p>A stochastic process ({Y_t}) is said to be <strong>strictly stationary</strong> if the joint distribution of</p>
-<p>[ (Y_{t_1},Y_{t_2},,Y_{t_n}) ]</p>
-<p>is identical to the joint distribution of</p>
-<p>[ (Y_{t_1+h},Y_{t_2+h},,Y_{t_n+h}) ]</p>
-<p>for every integer (h) and every collection of time points</p>
-<p>[ t_1,t_2,,t_n. ]</p>
-<p>Thus, the probabilistic behavior of the process does not change over time.</p>
+<section id="хатуу-стационар-байдал" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="хатуу-стационар-байдал"><span class="header-section-number">3.2</span> Хатуу стационар байдал</h2>
+<p><span class="math display">\[\{Y_t\}\]</span> стохастик процессийг <strong>хатуу стационар</strong> гэнэ, хэрэв</p>
+<p><span class="math display">\[
+(Y_{t_1},Y_{t_2},\ldots,Y_{t_n})
+\]</span> -ийн хамтарсан тархалт нь бүх бүхэл <span class="math inline">\(h\)</span> болон</p>
+<p><span class="math display">\[
+t_1,t_2,\ldots,t_n
+\]</span></p>
+<p>хугацааны цэгүүдийн дурын олонлогийн хувьд</p>
+<p><span class="math display">\[(Y_{t_1+h},Y_{t_2+h},\ldots,Y_{t_n+h})\]</span></p>
+<p>-ийн хамтарсан тархалттай ижил байна.</p>
+<p>Иймд процессийн магадлалын зан төлөв цаг хугацааны явцад өөрчлөгдөхгүй.</p>
 </section>
-<section id="weak-stationarity" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="weak-stationarity"><span class="header-section-number">3.3</span> Weak Stationarity</h2>
-<p>In practice, weak stationarity is used more frequently.</p>
-<p>A process is <strong>weakly stationary</strong> if</p>
-<section id="mean" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">3.3.1</span> Mean</h3>
-<p>[ E(Y_t)= ]</p>
-<p>is constant for all (t).</p>
+<section id="сул-стационар-байдал" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="сул-стационар-байдал"><span class="header-section-number">3.3</span> Сул стационар байдал</h2>
+<p>Практикт сул стационар байдлыг илүү их ашигладаг.</p>
+<p>Процесс нь дараах нөхцлүүд биелбэл <strong>сул стационар</strong> байна.</p>
+<section id="дундаж" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="дундаж"><span class="header-section-number">3.3.1</span> Дундаж</h3>
+<p><span class="math display">\[
+E(Y_t)=\mu
+\]</span></p>
+<p>нь бүх <span class="math inline">\(t\)</span>-ийн хувьд тогтмол.</p>
 </section>
-<section id="variance" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="variance"><span class="header-section-number">3.3.2</span> Variance</h3>
-<p>[ Var(Y_t)=^2 ]</p>
-<p>is constant for all (t).</p>
+<section id="дисперс" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="дисперс"><span class="header-section-number">3.3.2</span> Дисперс</h3>
+<p><span class="math display">\[
+Var(Y_t)=\sigma^2
+\]</span></p>
+<p>нь бүх <span class="math inline">\(t\)</span>-ийн хувьд тогтмол.</p>
 </section>
-<section id="covariance" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="covariance"><span class="header-section-number">3.3.3</span> Covariance</h3>
-<p>[ Cov(Y_t,Y_{t-k}) ]</p>
-<p>depends only on the lag (k), not on the time (t).</p>
+<section id="ковариац" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="ковариац"><span class="header-section-number">3.3.3</span> Ковариац</h3>
+<p><span class="math display">\[
+Cov(Y_t,Y_{t-k})
+\]</span></p>
+<p>нь зөвхөн <span class="math inline">\(k\)</span> хоцролтоос хамаарах бөгөөд <span class="math inline">\(t\)</span> хугацаанаас хамаарахгүй.</p>
 </section>
 </section>
-<section id="autocovariance-function" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">3.4</span> Autocovariance Function</h2>
-<p>The autocovariance function is</p>
-<p>[ (k) = Cov(Y_t,Y_{t-k}). ]</p>
-<p>For a weakly stationary process,</p>
-<p>[ (k) ]</p>
-<p>depends only on (k).</p>
+<section id="автоковариацын-функц" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">3.4</span> Автоковариацын функц</h2>
+<p>Автоковариацын функц нь</p>
+<p><span class="math display">\[
+\gamma(k)
+=
+Cov(Y_t,Y_{t-k}).
+\]</span></p>
+<p>Сул стационар процессийн хувьд</p>
+<p><span class="math display">\[
+\gamma(k)
+\]</span></p>
+<p>нь зөвхөн <span class="math inline">\(k\)</span>-ээс хамаарна.</p>
 </section>
-<section id="autocorrelation-function" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="autocorrelation-function"><span class="header-section-number">3.5</span> Autocorrelation Function</h2>
-<p>The autocorrelation function (ACF) is</p>
-<p>[ (k) = {(0)}. ]</p>
-<p>Since</p>
-<p>[ (0)=Var(Y_t), ]</p>
-<p>the ACF measures dependence between observations separated by lag (k).</p>
+<section id="автокорреляцын-функц" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">3.5</span> Автокорреляцын функц</h2>
+<p>Автокорреляцын функц (ACF) нь</p>
+<p><span class="math display">\[
+\rho(k)
+=
+\frac{\gamma(k)}
+     {\gamma(0)}.
+\]</span></p>
+<p>Учир нь</p>
+<p><span class="math display">\[
+\gamma(0)=Var(Y_t),
+\]</span></p>
+<p>ACF нь <span class="math inline">\(k\)</span> хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг хэмждэг.</p>
 </section>
-<section id="white-noise-as-a-stationary-process" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="white-noise-as-a-stationary-process"><span class="header-section-number">3.6</span> White Noise as a Stationary Process</h2>
-<p>A white noise process</p>
-<p>[ Y_t WN(0,^2) ]</p>
-<p>is stationary because</p>
-<p>[ E(Y_t)=0, ]</p>
-<p>[ Var(Y_t)=^2, ]</p>
-<p>and</p>
-<p>[ Cov(Y_t,Y_{t-k})=0 ]</p>
-<p>for all (k ).</p>
+<section id="цагаан-чимээ-нь-стационар-процесс" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="цагаан-чимээ-нь-стационар-процесс"><span class="header-section-number">3.6</span> Цагаан чимээ нь стационар процесс</h2>
+<p>Цагаан чимээний процесс</p>
+<p><span class="math display">\[
+Y_t \sim WN(0,\sigma^2)
+\]</span></p>
+<p>нь стационар, учир нь</p>
+<p><span class="math display">\[
+E(Y_t)=0,
+\]</span></p>
+<p><span class="math display">\[
+Var(Y_t)=\sigma^2,
+\]</span></p>
+<p>ба</p>
+<p><span class="math display">\[
+Cov(Y_t,Y_{t-k})=0
+\]</span></p>
+<p>нь бүх <span class="math inline">\(k \neq 0\)</span>-ийн хувьд биелнэ.</p>
 </section>
-<section id="example-stationary-series" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="example-stationary-series"><span class="header-section-number">3.7</span> Example: Stationary Series</h2>
+<section id="жишээ-стационар-цуваа" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="жишээ-стационар-цуваа"><span class="header-section-number">3.7</span> Жишээ: Стационар цуваа</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -326,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  y,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Stationary AR(1) Series"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Стационар AR(1) цуваа"</span>,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">expression</span>(Y[t])</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -337,14 +397,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The series fluctuates around a constant mean and exhibits approximately constant variance.</p>
+<p>Цуваа нь тогтмол дундажийн орчимд хэлбэлзэж, ойролцоогоор тогтмол дисперс харуулна.</p>
 </section>
-<section id="example-nonstationary-series" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="example-nonstationary-series"><span class="header-section-number">3.8</span> Example: Nonstationary Series</h2>
-<p>Consider a random walk</p>
-<p>[ Y_t = Y_{t-1} + _t, ]</p>
-<p>where</p>
-<p>[ _t WN(0,^2). ]</p>
+<section id="жишээ-стационар-бус-цуваа" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="жишээ-стационар-бус-цуваа"><span class="header-section-number">3.8</span> Жишээ: Стационар бус цуваа</h2>
+<p>Санамсаргүй алхалтыг авч үзье:</p>
+<p><span class="math display">\[
+Y_t = Y_{t-1} + \varepsilon_t,
+\]</span></p>
+<p>энд</p>
+<p><span class="math display">\[
+\varepsilon_t \sim WN(0,\sigma^2).
+\]</span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -353,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  rw,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Random Walk"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Санамсаргүй алхалт"</span>,</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">expression</span>(Y[t])</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -364,17 +428,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The variability increases over time and the process has no stable mean.</p>
-<p>Therefore the random walk is nonstationary.</p>
+<p>Хувьсах байдал цаг хугацааны явцад нэмэгдэж, процесс тогтвортой дундажгүй байна.</p>
+<p>Иймд санамсаргүй алхалт нь стационар бус байна.</p>
 </section>
-<section id="comparing-acfs" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="comparing-acfs"><span class="header-section-number">3.9</span> Comparing ACFs</h2>
-<section id="stationary-series" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="stationary-series"><span class="header-section-number">3.9.1</span> Stationary Series</h3>
+<section id="acf-уудыг-харьцуулах" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="acf-уудыг-харьцуулах"><span class="header-section-number">3.9</span> ACF-уудыг харьцуулах</h2>
+<section id="стационар-цуваа" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="стационар-цуваа"><span class="header-section-number">3.9.1</span> Стационар цуваа</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  y,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"ACF of Stationary AR(1)"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Стационар AR(1)-ийн ACF"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -385,12 +449,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="random-walk" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2" class="anchored" data-anchor-id="random-walk"><span class="header-section-number">3.9.2</span> Random Walk</h3>
+<section id="санамсаргүй-алхалт" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="санамсаргүй-алхалт"><span class="header-section-number">3.9.2</span> Санамсаргүй алхалт</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  rw,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"ACF of Random Walk"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Санамсаргүй алхалтын ACF"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -400,35 +464,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The random walk typically exhibits very slow decay in the autocorrelation function.</p>
+<p>Санамсаргүй алхалт нь ихэвчлэн автокорреляцын функцэд маш удаан бууралт харуулдаг.</p>
 </section>
 </section>
-<section id="why-stationarity-matters" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="why-stationarity-matters"><span class="header-section-number">3.10</span> Why Stationarity Matters</h2>
-<p>Most classical forecasting models require stationarity.</p>
-<p>Examples include:</p>
+<section id="стационар-байдал-яагаад-чухал-вэ" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="стационар-байдал-яагаад-чухал-вэ"><span class="header-section-number">3.10</span> Стационар байдал яагаад чухал вэ</h2>
+<p>Сонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.</p>
+<p>Жишээнүүд:</p>
 <ul>
 <li>AR((p))</li>
 <li>MA((q))</li>
 <li>ARMA((p,q))</li>
 </ul>
-<p>When a series is nonstationary, transformations are often applied:</p>
+<p>Цуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:</p>
 <ul>
-<li>Differencing</li>
-<li>Logarithms</li>
-<li>Seasonal differencing</li>
+<li>Ялгавар авах</li>
+<li>Логарифм авах</li>
+<li>Улирлын ялгавар авах</li>
 </ul>
-<p>These transformations are used to obtain a stationary series before modeling.</p>
+<p>Эдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.</p>
 </section>
-<section id="exercises" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.11</span> Exercises</h2>
+<section id="дасгал" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">3.11</span> Дасгал</h2>
 <ol type="1">
-<li>Simulate a white noise series of length 200.</li>
-<li>Verify that the white noise series appears stationary.</li>
-<li>Simulate an AR(1) process with ().</li>
-<li>Simulate a random walk.</li>
-<li>Compare the ACFs of the AR(1) process and the random walk.</li>
-<li>Explain why the random walk is nonstationary.</li>
+<li>200 урттай цагаан чимээний цуваа симуляцла.</li>
+<li>Цагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.</li>
+<li>() бүхий AR(1) процессыг симуляцла.</li>
+<li>Санамсаргүй алхалтыг симуляцла.</li>
+<li>AR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.</li>
+<li>Санамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.</li>
 </ol>
 
 
@@ -913,8 +977,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./01-white-noise.html" class="pagination-link" aria-label="White Noise">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></span>
+      <a href="./01-white-noise.html" class="pagination-link" aria-label="Цагаан чимээ (White Noise)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -23,47 +23,47 @@ Suppose observations are available through time \(t\).
 
 A forecast made at time \(t\) for horizon \(h\) is denoted by
 
-\[
+$$
 \hat{Y}_{t+h|t}.
-\]
+$$
 
 This represents the prediction of
 
-\[
+$$
 Y_{t+h}
-\]
+$$
 
 based on information available at time \(t\).
 
 ### One-Step-Ahead Forecast
 
-\[
+$$
 \hat{Y}_{t+1|t}.
-\]
+$$
 
 ### Multi-Step Forecast
 
-\[
+$$
 \hat{Y}_{t+h|t}.
-\]
+$$
 
 for
 
-\[
+$$
 h=2,3,\ldots
-\]
+$$
 
 ## Forecast Errors
 
 The forecast error is
 
-\[
+$$
 e_{t+h}
 =
 Y_{t+h}
 -
 \hat{Y}_{t+h|t}.
-\]
+$$
 
 Good forecasting models produce small forecast errors.
 
@@ -71,53 +71,53 @@ Good forecasting models produce small forecast errors.
 
 ### Mean Error (ME)
 
-\[
+$$
 ME
 =
 \frac{1}{n}
 \sum_{t=1}^{n}
 e_t.
-\]
+$$
 
 Measures forecast bias.
 
 ### Mean Absolute Error (MAE)
 
-\[
+$$
 MAE
 =
 \frac{1}{n}
 \sum_{t=1}^{n}
 |e_t|.
-\]
+$$
 
 Easy to interpret because it uses the original units.
 
 ### Mean Squared Error (MSE)
 
-\[
+$$
 MSE
 =
 \frac{1}{n}
 \sum_{t=1}^{n}
 e_t^2.
-\]
+$$
 
 Large errors receive greater weight.
 
 ### Root Mean Squared Error (RMSE)
 
-\[
+$$
 RMSE
 =
 \sqrt{MSE}.
-\]
+$$
 
 One of the most commonly used measures.
 
 ### Mean Absolute Percentage Error (MAPE)
 
-\[
+$$
 MAPE
 =
 \frac{100}{n}
@@ -125,7 +125,7 @@ MAPE
 \left|
 \frac{e_t}{Y_t}
 \right|.
-\]
+$$
 
 Expresses error as a percentage.
 
@@ -163,34 +163,34 @@ Before fitting sophisticated models, benchmark forecasts should be considered.
 
 ### Mean Forecast
 
-\[
+$$
 \hat Y_{t+h}
 =
 \bar Y.
-\]
+$$
 
 All future forecasts equal the historical mean.
 
 ### Naive Forecast
 
-\[
+$$
 \hat Y_{t+h}
 =
 Y_t.
-\]
+$$
 
 The next observation is assumed to equal the most recent observation.
 
 ### Drift Forecast
 
-\[
+$$
 \hat Y_{t+h}
 =
 Y_t
 +
 h
 \frac{Y_t-Y_1}{t-1}.
-\]
+$$
 
 Projects the historical trend forward.
 
@@ -198,11 +198,11 @@ Projects the historical trend forward.
 
 For seasonal data,
 
-\[
+$$
 \hat Y_{t+h}
 =
 Y_{t+h-m},
-\]
+$$
 
 where \(m\) is the seasonal period.
 
@@ -222,35 +222,35 @@ The naive method is surprisingly effective for many economic and financial time 
 
 Consider
 
-\[
+$$
 Y_t
 =
 \phi Y_{t-1}
 +
 \varepsilon_t.
-\]
+$$
 
 The one-step forecast is
 
-\[
+$$
 \hat Y_{t+1|t}
 =
 \phi Y_t.
-\]
+$$
 
 The \(h\)-step forecast is
 
-\[
+$$
 \hat Y_{t+h|t}
 =
 \phi^h Y_t.
-\]
+$$
 
 As
 
-\[
+$$
 h\rightarrow\infty,
-\]
+$$
 
 the forecast approaches the mean of the process.
 
@@ -291,13 +291,13 @@ Prediction intervals quantify uncertainty.
 
 A 95% prediction interval has the form
 
-\[
+$$
 \hat Y_{t+h}
 \pm
 1.96
 \times
 SE(\hat Y_{t+h}).
-\]
+$$
 
 Forecast uncertainty generally increases with horizon length.
 
@@ -346,15 +346,15 @@ The Ljung-Box test checks whether residual autocorrelations remain.
 
 ### Hypotheses
 
-\[
+$$
 H_0:
 \text{Residuals are uncorrelated}
-\]
+$$
 
-\[
+$$
 H_1:
 \text{Residual autocorrelation exists}.
-\]
+$$
 
 ### Example
 

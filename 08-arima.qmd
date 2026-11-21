@@ -26,9 +26,9 @@ ARIMA stands for:
 
 Consider a random walk:
 
-\[
+$$
 Y_t=Y_{t-1}+\varepsilon_t.
-\]
+$$
 
 This series is nonstationary because:
 
@@ -38,11 +38,11 @@ This series is nonstationary because:
 
 However,
 
-\[
+$$
 Y_t-Y_{t-1}
 =
 \varepsilon_t
-\]
+$$
 
 is white noise.
 
@@ -52,11 +52,11 @@ Thus a nonstationary process may become stationary after differencing.
 
 The first difference of a time series is
 
-\[
+$$
 \nabla Y_t
 =
 Y_t-Y_{t-1}.
-\]
+$$
 
 ### R Example
 
@@ -89,24 +89,24 @@ The differenced series*appears stationary.
 
 ## Definition*of an ARIMA Model
 
-An*ARIMA(\(p,d,q\)) model satisfies*
+An*ARIMA($p,d,q$) model satisfies*
 \*
 \phi(B)(1-B)^dY_t
 =
 \theta(B)\var*psilon_t,
-\]
+$$
 
 where
 
-- \(p\) = AR *rder,
-- \(d\) = number of differen*es,
-- \*q\) = MA order.
+- $p$ = AR *rder,
+- $d$ = number of differen*es,
+- \*q$ = MA order.
 
 The operator
 
 \*
 (1-B)^d
-\]
+$$
 
 represents differenci*g.
 
@@ -116,7 +116,7 @@ The bac*shift operator is defined by
 
 \*
 BY_t=Y_{t-1}.
-\]
+$$
 
 Therefore
 
@@ -124,7 +124,7 @@ Therefore
 (1-B)Y_t
 =
 Y_t-Y_{t-1}.
-\]
+$$
 
 This *otation simplifies*model expressions.
 
@@ -151,7 +151,7 @@ ARIMA(1,1,1):
 (1-\phi B)(1-B)Y_t
 =
 (1+\theta B)*varepsilon_t.
-\]
+$$
 
 ##*ARIMA(0,1,0)
 
@@ -160,13 +160,13 @@ The simplest ARIMA m*del is*
 (1-B)Y_t
 =
 \varepsilon_t.
-\]
+$$
 
 Equ*valently,
 
-\[
+$$
 Y_t=Y_{t-1}+\varepsi*on_t.
-\]
+$$
 
 This is the random walk *odel.
 
@@ -210,11 +210,11 @@ The differ*nced series behaves much more like*white noise.
 
 Consider
 
-\[
+$$
 (1-\phi B)(1-B)Y_t
 *
 \varepsilon_t.
-\]
+$$
 
 This model app*ies an AR(1) structure to the diff*renced series.
 
@@ -242,7 +242,7 @@ Consider
 (1-B)Y_t
 =
 (1+\theta B)\varepsilo*_t.
-\]
+$$
 
 This model is often useful*for forecasting.
 
@@ -292,15 +292,15 @@ Y_t=\phi Y_{t-1}+\varepsilon_t.
 \*
 
 If*
-\[
+$$
 \phi=1,
-\]
+$$
 
 then
 
-*[
+$$
 Y_t=Y_{t-1}+\varepsilon_t,
-\]
+$$
 
 w*ich is a random walk.
 
@@ -361,9 +361,9 @@ fit
 
 The a*gorithm automatically selects valu*s of:
 
-\[
+$$
 p,d,q.
-\]
+$$
 
 ## Forecastin*
 
@@ -418,7 +418,7 @@ The classical Box-Jenki*s procedure consists of:
 
 #* Summary
 
-An ARIMA(\(p,d,q\)) mode* combines:
+An ARIMA($p,d,q$) mode* combines:
 
 - autoregression,
 - di*ferencing,

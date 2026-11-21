@@ -66,27 +66,27 @@ For each of the following processes, determine whether it is stationary.
 
 ### (a)
 
-\[
+$$
 Y_t=\varepsilon_t
-\]
+$$
 
 ### (b)
 
-\[
+$$
 Y_t=t+\varepsilon_t
-\]
+$$
 
 ### (c)
 
-\[
+$$
 Y_t=0.5Y_{t-1}+\varepsilon_t
-\]
+$$
 
 ### (d)
 
-\[
+$$
 Y_t=Y_{t-1}+\varepsilon_t
-\]
+$$
 
 ---
 
@@ -118,19 +118,19 @@ Does the differenced series appear stationary?
 
 Suppose
 
-\[
+$$
 \rho(k)=0.8^k.
-\]
+$$
 
 Compute:
 
-\[
+$$
 \rho(1),
 \quad
 \rho(2),
 \quad
 \rho(3).
-\]
+$$
 
 ---
 
@@ -147,9 +147,9 @@ Explain the difference between:
 
 Generate an AR(1) process with
 
-\[
+$$
 \phi=0.8.
-\]
+$$
 
 Plot its ACF.
 
@@ -175,9 +175,9 @@ Explain the difference between ACF and PACF.
 
 For an AR(1) process,
 
-\[
+$$
 Y_t=0.7Y_{t-1}+\varepsilon_t,
-\]
+$$
 
 describe the expected PACF pattern.
 
@@ -197,32 +197,32 @@ Which plot helps identify the order?
 
 Consider
 
-\[
+$$
 Y_t=0.6Y_{t-1}+\varepsilon_t.
-\]
+$$
 
 Calculate:
 
 ### Mean
 
-\[
+$$
 E(Y_t)
-\]
+$$
 
 ### Variance
 
-\[
+$$
 Var(Y_t)
 =
 \frac{\sigma^2}
      {1-\phi^2}.
-\]
+$$
 
 Assume
 
-\[
+$$
 \sigma^2=1.
-\]
+$$
 
 ---
 
@@ -230,9 +230,9 @@ Assume
 
 Show that
 
-\[
+$$
 \rho(k)=\phi^k
-\]
+$$
 
 for an AR(1) process.
 
@@ -242,13 +242,13 @@ for an AR(1) process.
 
 Simulate AR(1) processes with
 
-\[
+$$
 \phi=0.2,
 \quad
 0.5,
 \quad
 0.8.
-\]
+$$
 
 Compare the resulting series.
 
@@ -275,18 +275,18 @@ Compare the estimated parameter with the true value.
 
 For
 
-\[
+$$
 \theta=0.5,
-\]
+$$
 
 compute
 
-\[
+$$
 \rho(1)
 =
 \frac{\theta}
      {1+\theta^2}.
-\]
+$$
 
 ---
 
@@ -294,9 +294,9 @@ compute
 
 For
 
-\[
+$$
 \theta=0.2,
-\]
+$$
 
 compute the theoretical lag-1 autocorrelation.
 
@@ -306,10 +306,10 @@ compute the theoretical lag-1 autocorrelation.
 
 Explain why
 
-\[
+$$
 \rho(k)=0,
 \qquad k>1.
-\]
+$$
 
 for an MA(1) process.
 
@@ -319,9 +319,9 @@ for an MA(1) process.
 
 Generate an MA(1) process with
 
-\[
+$$
 \theta=0.5.
-\]
+$$
 
 Compare:
 
@@ -355,11 +355,11 @@ Explain the difference between:
 
 Simulate
 
-\[
+$$
 ARMA(1,1):
-\]
+$$
 
-\[
+$$
 Y_t
 =
 0.7Y_{t-1}
@@ -367,7 +367,7 @@ Y_t
 \varepsilon_t
 +
 0.4\varepsilon_{t-1}.
-\]
+$$
 
 Plot the series.
 
@@ -424,9 +424,9 @@ Explain the differences.
 
 Explain the meaning of:
 
-\[
+$$
 ARIMA(1,1,1).
-\]
+$$
 
 ---
 
@@ -474,13 +474,13 @@ Why is this important?
 
 Compute:
 
-\[
+$$
 MAE,
 \quad
 MSE,
 \quad
 RMSE.
-\]
+$$
 
 Explain the differences among these measures.
 

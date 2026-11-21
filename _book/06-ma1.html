@@ -187,13 +187,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -298,7 +298,9 @@ window.Quarto = {
 <section id="definition" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">7.2</span> Definition</h2>
 <p>An MA(1) process is defined by</p>
-<p>[ Y_t=<em>t+</em>{t-1}, ]</p>
+<p><span class="math display">\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]</span></p>
 <p>where</p>
 <ul>
 <li>({_t}) is a white noise process,</li>
@@ -310,72 +312,130 @@ window.Quarto = {
 <section id="mean" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="mean"><span class="header-section-number">7.3</span> Mean</h2>
 <p>Taking expectations,</p>
-<p>[ E(Y_t) = E(<em>t) + E(</em>{t-1}). ]</p>
+<p><span class="math display">\[
+E(Y_t)
+=
+E(\varepsilon_t)
++
+\theta E(\varepsilon_{t-1}).
+\]</span></p>
 <p>Since</p>
-<p>[ E(_t)=0, ]</p>
+<p><span class="math display">\[
+E(\varepsilon_t)=0,
+\]</span></p>
 <p>it follows that</p>
-<p>[ E(Y_t)=0. ]</p>
+<p><span class="math display">\[
+E(Y_t)=0.
+\]</span></p>
 </section>
 <section id="variance" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="variance"><span class="header-section-number">7.4</span> Variance</h2>
 <p>Since the white noise terms are uncorrelated,</p>
-<p>[ Var(Y_t) = Var(<em>t+</em>{t-1}), ]</p>
+<p><span class="math display">\[
+Var(Y_t)
+=
+Var(\varepsilon_t+\theta\varepsilon_{t-1}),
+\]</span></p>
 <p>which gives</p>
-<p>[ Var(Y_t) = (1+<sup>2)</sup>2. ]</p>
+<p><span class="math display">\[
+Var(Y_t)
+=
+(1+\theta^2)\sigma^2.
+\]</span></p>
 </section>
 <section id="autocovariance-function" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">7.5</span> Autocovariance Function</h2>
 <section id="lag-0" class="level3" data-number="7.5.1">
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="lag-0"><span class="header-section-number">7.5.1</span> Lag 0</h3>
-<p>[ (0) = (1+<sup>2)</sup>2. ]</p>
+<p><span class="math display">\[
+\gamma(0)
+=
+(1+\theta^2)\sigma^2.
+\]</span></p>
 </section>
 <section id="lag-1" class="level3" data-number="7.5.2">
 <h3 data-number="7.5.2" class="anchored" data-anchor-id="lag-1"><span class="header-section-number">7.5.2</span> Lag 1</h3>
-<p>[ (1) = ^2. ]</p>
+<p><span class="math display">\[
+\gamma(1)
+=
+\theta\sigma^2.
+\]</span></p>
 </section>
 <section id="lag-k1" class="level3" data-number="7.5.3">
 <h3 data-number="7.5.3" class="anchored" data-anchor-id="lag-k1"><span class="header-section-number">7.5.3</span> Lag (k&gt;1)</h3>
-<p>[ (k)=0. ]</p>
+<p><span class="math display">\[
+\gamma(k)=0.
+\]</span></p>
 <p>Therefore,</p>
-[ (k)=
-<span class="math display">\[\begin{cases}
+<p><span class="math display">\[
+\gamma(k)=
+\begin{cases}
 (1+\theta^2)\sigma^2, &amp; k=0,\\
 \theta\sigma^2, &amp; k=1,\\
 0, &amp; k&gt;1.
-\end{cases}\]</span>
-<p>]</p>
+\end{cases}
+\]</span></p>
 </section>
 </section>
 <section id="autocorrelation-function" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="autocorrelation-function"><span class="header-section-number">7.6</span> Autocorrelation Function</h2>
 <p>Dividing by ((0)),</p>
-<p>[ (1) = {1+^2}, ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{\theta}
+     {1+\theta^2},
+\]</span></p>
 <p>and</p>
-<p>[ (k)=0, k&gt;1. ]</p>
+<p><span class="math display">\[
+\rho(k)=0,
+\qquad k&gt;1.
+\]</span></p>
 <p>This is the most important property of an MA(1) process.</p>
 <p>The ACF cuts off after lag 1.</p>
 </section>
 <section id="example" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="example"><span class="header-section-number">7.7</span> Example</h2>
 <p>If</p>
-<p>[ , ]</p>
+<p><span class="math display">\[
+\theta=0.5,
+\]</span></p>
 <p>then</p>
-<p>[ (1) = = 0.40. ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{0.5}{1+0.25}
+=
+0.40.
+\]</span></p>
 <p>If</p>
-<p>[ , ]</p>
+<p><span class="math display">\[
+\theta=0.2,
+\]</span></p>
 <p>then</p>
-<p>[ (1) = . ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{0.2}{1.04}
+\approx 0.192.
+\]</span></p>
 <p>This value should appear in the sample ACF.</p>
 </section>
 <section id="invertibility" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="invertibility"><span class="header-section-number">7.8</span> Invertibility</h2>
 <p>For an MA(1) model,</p>
-<p>[ Y_t=<em>t+</em>{t-1}, ]</p>
+<p><span class="math display">\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]</span></p>
 <p>invertibility requires</p>
-<p>[ ||&lt;1. ]</p>
+<p><span class="math display">\[
+|\theta|&lt;1.
+\]</span></p>
 <p>Invertibility ensures a unique representation of the process.</p>
 <p>This condition plays a role similar to the stationarity condition</p>
-<p>[ ||&lt;1 ]</p>
+<p><span class="math display">\[
+|\phi|&lt;1
+\]</span></p>
 <p>for AR models.</p>
 </section>
 <section id="simulation" class="level2" data-number="7.9">
@@ -472,9 +532,13 @@ window.Quarto = {
 <section id="lag-1-scatter-plot" class="level2" data-number="7.12">
 <h2 data-number="7.12" class="anchored" data-anchor-id="lag-1-scatter-plot"><span class="header-section-number">7.12</span> Lag-1 Scatter Plot</h2>
 <p>The relationship between</p>
-<p>[ Y_t ]</p>
+<p><span class="math display">\[
+Y_t
+\]</span></p>
 <p>and</p>
-<p>[ Y_{t-1} ]</p>
+<p><span class="math display">\[
+Y_{t-1}
+\]</span></p>
 <p>may be examined using a lag plot.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
@@ -498,7 +562,9 @@ window.Quarto = {
 <section id="lag-2-scatter-plot" class="level2" data-number="7.13">
 <h2 data-number="7.13" class="anchored" data-anchor-id="lag-2-scatter-plot"><span class="header-section-number">7.13</span> Lag-2 Scatter Plot</h2>
 <p>Consider</p>
-<p>[ (Y_{t-2},Y_t). ]</p>
+<p><span class="math display">\[
+(Y_{t-2},Y_t).
+\]</span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> ma1[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">length</span>(ma1)<span class="sc">-</span><span class="dv">1</span>,<span class="fu">length</span>(ma1))],</span>
@@ -516,7 +582,9 @@ window.Quarto = {
 </div>
 </div>
 <p>Since</p>
-<p>[ (2)=0, ]</p>
+<p><span class="math display">\[
+\rho(2)=0,
+\]</span></p>
 <p>the points should display little or no linear pattern.</p>
 <p>The scatter plot generally resembles a random cloud.</p>
 </section>
@@ -610,43 +678,73 @@ sigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83</code></pr
 </div>
 </div>
 <p>The theoretical lag-1 autocorrelation is</p>
-<p>[ (1) = = 0.1923. ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{0.2}{1+0.2^2}
+=
+0.1923.
+\]</span></p>
 <p>Compare this value with the sample ACF.</p>
 </section>
 <section id="forecasting" class="level2" data-number="7.17">
 <h2 data-number="7.17" class="anchored" data-anchor-id="forecasting"><span class="header-section-number">7.17</span> Forecasting</h2>
 <p>For an MA(1) process,</p>
-<p>[ Y_t=<em>t+</em>{t-1}, ]</p>
+<p><span class="math display">\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
+\]</span></p>
 <p>the one-step-ahead forecast depends on the most recent estimated shock.</p>
 <p>For horizons greater than one,</p>
-<p>[ Y_{t+h} ]</p>
+<p><span class="math display">\[
+\hat Y_{t+h}
+\]</span></p>
 <p>rapidly converges to the mean of the process.</p>
 <p>Since the mean is zero,</p>
-<p>[ Y_{t+h} . ]</p>
+<p><span class="math display">\[
+\hat Y_{t+h}
+\rightarrow 0.
+\]</span></p>
 </section>
 <section id="summary" class="level2" data-number="7.18">
 <h2 data-number="7.18" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.18</span> Summary</h2>
 <p>The MA(1) process</p>
-<p>[ Y_t=<em>t+</em>{t-1} ]</p>
+<p><span class="math display">\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1}
+\]</span></p>
 <p>has the following properties:</p>
 <ul>
 <li>Mean:</li>
 </ul>
-<p>[ E(Y_t)=0. ]</p>
+<p><span class="math display">\[
+E(Y_t)=0.
+\]</span></p>
 <ul>
 <li>Variance:</li>
 </ul>
-<p>[ Var(Y_t) = (1+<sup>2)</sup>2. ]</p>
+<p><span class="math display">\[
+Var(Y_t)
+=
+(1+\theta^2)\sigma^2.
+\]</span></p>
 <ul>
 <li>ACF:</li>
 </ul>
-<p>[ (1) = , ]</p>
-<p>[ (k)=0, k&gt;1. ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{\theta}{1+\theta^2},
+\]</span></p>
+<p><span class="math display">\[
+\rho(k)=0,
+\qquad k&gt;1.
+\]</span></p>
 <ul>
 <li>PACF tails off gradually.</li>
 <li>Invertibility requires</li>
 </ul>
-<p>[ ||&lt;1. ]</p>
+<p><span class="math display">\[
+|\theta|&lt;1.
+\]</span></p>
 <p>The ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.</p>
 </section>
 <section id="exercises" class="level2" data-number="7.19">

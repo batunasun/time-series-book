@@ -1,127 +1,128 @@
-# Stationarity
+# Стационар байдал
 
-## Introduction
+## Оршил
 
-Stationarity is one of the most important concepts in time series analysis.
+Стационар байдал нь хугацааны цувааны шинжилгээний хамгийн чухал ойлголтуудын нэг юм.
 
-Many statistical methods for time series, including autocorrelation analysis, AR models, MA models, and ARMA models, assume that the underlying process is stationary.
+Автокорреляцын шинжилгээ, AR загварууд, MA загварууд, ARMA загварууд зэрэг хугацааны цувааны олон статистик арга нь суурь процесс стационар байна гэж үздэг.
 
-## Strict Stationarity
+## Хатуу стационар байдал
 
-A stochastic process \(\{Y_t\}\) is said to be **strictly stationary** if the joint distribution of
+$$\{Y_t\}$$ стохастик процессийг **хатуу стационар** гэнэ, хэрэв
 
-\[
+$$
 (Y_{t_1},Y_{t_2},\ldots,Y_{t_n})
-\]
+$$
+-ийн хамтарсан тархалт нь бүх бүхэл $h$ болон
 
-is identical to the joint distribution of
+$$
+t_1,t_2,\ldots,t_n
+$$
 
-\[
-(Y_{t_1+h},Y_{t_2+h},\ldots,Y_{t_n+h})
-\]
+хугацааны цэгүүдийн дурын олонлогийн хувьд
 
-for every integer \(h\) and every collection of time points
 
-\[
-t_1,t_2,\ldots,t_n.
-\]
+$$(Y_{t_1+h},Y_{t_2+h},\ldots,Y_{t_n+h})$$
 
-Thus, the probabilistic behavior of the process does not change over time.
 
-## Weak Stationarity
+-ийн хамтарсан тархалттай ижил байна.
 
-In practice, weak stationarity is used more frequently.
+Иймд процессийн магадлалын зан төлөв цаг хугацааны явцад өөрчлөгдөхгүй.
 
-A process is **weakly stationary** if
+## Сул стационар байдал
 
-### Mean
+Практикт сул стационар байдлыг илүү их ашигладаг.
 
-\[
+Процесс нь дараах нөхцлүүд биелбэл **сул стационар** байна.
+
+### Дундаж
+
+$$
 E(Y_t)=\mu
-\]
+$$
 
-is constant for all \(t\).
+нь бүх $t$-ийн хувьд тогтмол.
 
-### Variance
+### Дисперс
 
-\[
+$$
 Var(Y_t)=\sigma^2
-\]
+$$
 
-is constant for all \(t\).
+нь бүх $t$-ийн хувьд тогтмол.
 
-### Covariance
+### Ковариац
 
-\[
+$$
 Cov(Y_t,Y_{t-k})
-\]
+$$
 
-depends only on the lag \(k\), not on the time \(t\).
+нь зөвхөн $k$ хоцролтоос хамаарах бөгөөд $t$ хугацаанаас хамаарахгүй.
 
-## Autocovariance Function
+## Автоковариацын функц
 
-The autocovariance function is
+Автоковариацын функц нь
 
-\[
+$$
 \gamma(k)
 =
 Cov(Y_t,Y_{t-k}).
-\]
+$$
 
-For a weakly stationary process,
+Сул стационар процессийн хувьд
 
-\[
+$$
 \gamma(k)
-\]
+$$
 
-depends only on \(k\).
+нь зөвхөн $k$-ээс хамаарна.
 
-## Autocorrelation Function
+## Автокорреляцын функц
 
-The autocorrelation function (ACF) is
+Автокорреляцын функц (ACF) нь
 
-\[
+$$
 \rho(k)
 =
 \frac{\gamma(k)}
      {\gamma(0)}.
-\]
+$$
 
-Since
+Учир нь
 
-\[
+$$
 \gamma(0)=Var(Y_t),
-\]
+$$
 
-the ACF measures dependence between observations separated by lag \(k\).
+ACF нь $k$ хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг хэмждэг.
 
-## White Noise as a Stationary Process
+## Цагаан чимээ нь стационар процесс
 
-A white noise process
+Цагаан чимээний процесс
 
-\[
+$$
 Y_t \sim WN(0,\sigma^2)
-\]
+$$
 
-is stationary because
+нь стационар, учир нь
 
-\[
+$$
 E(Y_t)=0,
-\]
+$$
 
-\[
+$$
 Var(Y_t)=\sigma^2,
-\]
+$$
 
-and
+ба
 
-\[
+$$
 Cov(Y_t,Y_{t-k})=0
-\]
+$$
 
-for all \(k \neq 0\).
+нь бүх $k \neq 0$-ийн хувьд биелнэ.
 
-## Example: Stationary Series
+## Жишээ: Стационар цуваа
 
 ```{r}
 set.seed(123)
@@ -133,26 +134,26 @@ y <- arima.sim(
 
 plot.ts(
   y,
-  main = "Stationary AR(1) Series",
+  main = "Стационар AR(1) цуваа",
   ylab = expression(Y[t])
 )
 ```
 
-The series fluctuates around a constant mean and exhibits approximately constant variance.
+Цуваа нь тогтмол дундажийн орчимд хэлбэлзэж, ойролцоогоор тогтмол дисперс харуулна.
 
-## Example: Nonstationary Series
+## Жишээ: Стационар бус цуваа
 
-Consider a random walk
+Санамсаргүй алхалтыг авч үзье:
 
-\[
+$$
 Y_t = Y_{t-1} + \varepsilon_t,
-\]
+$$
 
-where
+энд
 
-\[
+$$
 \varepsilon_t \sim WN(0,\sigma^2).
-\]
+$$
 
 ```{r}
 set.seed(123)
@@ -162,60 +163,60 @@ rw <- cumsum(e)
 
 plot.ts(
   rw,
-  main = "Random Walk",
+  main = "Санамсаргүй алхалт",
   ylab = expression(Y[t])
 )
 ```
 
-The variability increases over time and the process has no stable mean.
+Хувьсах байдал цаг хугацааны явцад нэмэгдэж, процесс тогтвортой дундажгүй байна.
 
-Therefore the random walk is nonstationary.
+Иймд санамсаргүй алхалт нь стационар бус байна.
 
-## Comparing ACFs
+## ACF-уудыг харьцуулах
 
-### Stationary Series
+### Стационар цуваа
 
 ```{r}
 acf(
   y,
-  main = "ACF of Stationary AR(1)"
+  main = "Стационар AR(1)-ийн ACF"
 )
 ```
 
-### Random Walk
+### Санамсаргүй алхалт
 
 ```{r}
 acf(
   rw,
-  main = "ACF of Random Walk"
+  main = "Санамсаргүй алхалтын ACF"
 )
 ```
 
-The random walk typically exhibits very slow decay in the autocorrelation function.
+Санамсаргүй алхалт нь ихэвчлэн автокорреляцын функцэд маш удаан бууралт харуулдаг.
 
-## Why Stationarity Matters
+## Стационар байдал яагаад чухал вэ
 
-Most classical forecasting models require stationarity.
+Сонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.
 
-Examples include:
+Жишээнүүд:
 
 - AR(\(p\))
 - MA(\(q\))
 - ARMA(\(p,q\))
 
-When a series is nonstationary, transformations are often applied:
+Цуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:
 
-- Differencing
-- Logarithms
-- Seasonal differencing
+- Ялгавар авах
+- Логарифм авах
+- Улирлын ялгавар авах
 
-These transformations are used to obtain a stationary series before modeling.
+Эдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.
 
-## Exercises
+## Дасгал
 
-1. Simulate a white noise series of length 200.
-2. Verify that the white noise series appears stationary.
-3. Simulate an AR(1) process with \(\phi=0.8\).
-4. Simulate a random walk.
-5. Compare the ACFs of the AR(1) process and the random walk.
-6. Explain why the random walk is nonstationary.
+1. 200 урттай цагаан чимээний цуваа симуляцла.
+2. Цагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.
+3. \(\phi=0.8\) бүхий AR(1) процессыг симуляцла.
+4. Санамсаргүй алхалтыг симуляцла.
+5. AR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.
+6. Санамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.

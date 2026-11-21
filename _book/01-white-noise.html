@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; White Noise – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>2&nbsp; Цагаан чимээ (White Noise) – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -112,6 +112,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -124,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-white-noise.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-white-noise.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,13 +187,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,13 +236,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">2.1</span> Definition</a></li>
-  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">2.2</span> Properties</a></li>
-  <li><a href="#simulation-in-r" id="toc-simulation-in-r" class="nav-link" data-scroll-target="#simulation-in-r"><span class="header-section-number">2.3</span> Simulation in R</a></li>
-  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function"><span class="header-section-number">2.4</span> Autocorrelation Function</a></li>
-  <li><a href="#lag-plot" id="toc-lag-plot" class="nav-link" data-scroll-target="#lag-plot"><span class="header-section-number">2.5</span> Lag Plot</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">2.6</span> Example</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.7</span> Exercise</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link active" data-scroll-target="#тодорхойлолт"><span class="header-section-number">2.1</span> Тодорхойлолт</a></li>
+  <li><a href="#шинж-чанар" id="toc-шинж-чанар" class="nav-link" data-scroll-target="#шинж-чанар"><span class="header-section-number">2.2</span> Шинж чанар</a></li>
+  <li><a href="#r-дээрх-симуляц" id="toc-r-дээрх-симуляц" class="nav-link" data-scroll-target="#r-дээрх-симуляц"><span class="header-section-number">2.3</span> R дээрх симуляц</a></li>
+  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">2.4</span> Автокорреляцын функц</a></li>
+  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">2.5</span> Хоцролтын график</a></li>
+  <li><a href="#жишээ" id="toc-жишээ" class="nav-link" data-scroll-target="#жишээ"><span class="header-section-number">2.6</span> Жишээ</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">2.7</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">White Noise</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></h1>
 </div>
 
 
@@ -239,31 +268,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="definition" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">2.1</span> Definition</h2>
-<p>A stochastic process ({Y_t}) is called a white noise process if</p>
-<p>[ E(Y_t)=0, ]</p>
-<p>[ Var(Y_t)=^2, ]</p>
-<p>and</p>
-<p>[ Cov(Y_t,Y_{t-k})=0, k. ]</p>
-<p>We write</p>
-<p>[ Y_t WN(0,^2). ]</p>
+<section id="тодорхойлолт" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">2.1</span> Тодорхойлолт</h2>
+<p>({Y_t}) стохастик процессийг цагаан чимээний процесс гэнэ, хэрэв</p>
+<p><span class="math display">\[
+E(Y_t)=0,
+\]</span></p>
+<p><span class="math display">\[
+Var(Y_t)=\sigma^2,
+\]</span></p>
+<p>ба</p>
+<p><span class="math display">\[
+Cov(Y_t,Y_{t-k})=0,
+\qquad k\neq 0
+\]</span></p>
+<p>болно.</p>
+<p>Бид үүнийг</p>
+<p><span class="math display">\[
+Y_t \sim WN(0,\sigma^2)
+\]</span></p>
+<p>гэж бичнэ.</p>
 </section>
-<section id="properties" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="properties"><span class="header-section-number">2.2</span> Properties</h2>
-<p>For a white noise process:</p>
+<section id="шинж-чанар" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="шинж-чанар"><span class="header-section-number">2.2</span> Шинж чанар</h2>
+<p>Цагаан чимээний процессийн хувьд:</p>
 <ol type="1">
-<li>The mean is constant.</li>
-<li>The variance is constant.</li>
-<li>Observations are uncorrelated.</li>
+<li>Дундаж нь тогтмол.</li>
+<li>Дисперс нь тогтмол.</li>
+<li>Ажиглалтууд нь корреляцгүй.</li>
 </ol>
-<p>The autocorrelation function is</p>
-<p>[ (0)=1, ]</p>
-<p>and</p>
-<p>[ (k)=0, k. ]</p>
+<p>Автокорреляцын функц нь</p>
+<p><span class="math display">\[
+\rho(0)=1,
+\]</span></p>
+<p>ба</p>
+<p><span class="math display">\[
+\rho(k)=0,
+\qquad k\ne0
+\]</span></p>
+<p>байна.</p>
 </section>
-<section id="simulation-in-r" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="simulation-in-r"><span class="header-section-number">2.3</span> Simulation in R</h2>
+<section id="r-дээрх-симуляц" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="r-дээрх-симуляц"><span class="header-section-number">2.3</span> R дээрх симуляц</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -271,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  y,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"White Noise Series"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"Цагаан чимээний цуваа"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab=</span><span class="fu">expression</span>(Y[t])</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -283,12 +329,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="autocorrelation-function" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="autocorrelation-function"><span class="header-section-number">2.4</span> Autocorrelation Function</h2>
+<section id="автокорреляцын-функц" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">2.4</span> Автокорреляцын функц</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  y,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of White Noise"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"Цагаан чимээний ACF"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -298,10 +344,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>For a white noise process, the sample autocorrelations fluctuate randomly around zero.</p>
+<p>Цагаан чимээний процессийн хувьд түүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.</p>
 </section>
-<section id="lag-plot" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="lag-plot"><span class="header-section-number">2.5</span> Lag Plot</h2>
+<section id="хоцролтын-график" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">2.5</span> Хоцролтын график</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> y[<span class="sc">-</span><span class="dv">200</span>],</span>
@@ -318,23 +364,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The lag plot exhibits no systematic pattern.</p>
+<p>Хоцролтын график ямар нэг системтэй хэв маяг харуулахгүй.</p>
 </section>
-<section id="example" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="example"><span class="header-section-number">2.6</span> Example</h2>
-<p>Suppose</p>
-<p>[ Y_t N(0,1), ]</p>
-<p>independently for all (t).</p>
-<p>Then ({Y_t}) is white noise.</p>
+<section id="жишээ" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="жишээ"><span class="header-section-number">2.6</span> Жишээ</h2>
+<p>Бүх (t)-ийн хувьд харилцан хамааралгүйгээр</p>
+<p><span class="math display">\[
+Y_t \sim N(0,1)
+\]</span></p>
+<p>гэж үзье.</p>
+<p>Тэгвэл ({Y_t}) нь цагаан чимээ байна.</p>
 </section>
-<section id="exercise" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="exercise"><span class="header-section-number">2.7</span> Exercise</h2>
+<section id="дасгал" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">2.7</span> Дасгал</h2>
 <ol type="1">
-<li>Generate a white noise series of length 500.</li>
-<li>Plot the series.</li>
-<li>Plot the ACF.</li>
-<li>Produce a lag-1 scatterplot.</li>
-<li>Explain whether the observations appear correlated.</li>
+<li>500 урттай цагаан чимээний цуваа үүсгэ.</li>
+<li>Цувааг графикаар зур.</li>
+<li>ACF-ийг зур.</li>
+<li>Лаг-1 сарнилын графикийг гарга.</li>
+<li>Ажиглалтууд корреляцтай харагдаж байгаа эсэхийг тайлбарла.</li>
 </ol>
 
 
@@ -824,8 +872,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-stationarity.html" class="pagination-link" aria-label="Stationarity">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-stationarity.html" class="pagination-link" aria-label="Стационар байдал">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

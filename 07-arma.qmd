@@ -15,7 +15,7 @@ An ARMA model can capture both:
 
 An ARMA(\(p,q\)) process is defined by
 
-\[
+$$
 Y_t
 =
 \phi_1Y_{t-1}
@@ -29,15 +29,15 @@ Y_t
 +\theta_2\varepsilon_{t-2}
 +\cdots
 +\theta_q\varepsilon_{t-q},
-\]
+$$
 
 where
 
-\[
+$$
 \{\varepsilon_t\}
 \sim
 WN(0,\sigma^2).
-\]
+$$
 
 Here:
 
@@ -50,29 +50,29 @@ Here:
 
 If
 
-\[
+$$
 q=0,
-\]
+$$
 
 then
 
-\[
+$$
 ARMA(p,0)=AR(p).
-\]
+$$
 
 ### MA Model
 
 If
 
-\[
+$$
 p=0,
-\]
+$$
 
 then
 
-\[
+$$
 ARMA(0,q)=MA(q).
-\]
+$$
 
 Thus AR and MA processes are special cases of the ARMA model.
 
@@ -80,7 +80,7 @@ Thus AR and MA processes are special cases of the ARMA model.
 
 The simplest ARMA model is
 
-\[
+$$
 Y_t
 =
 \phi Y_{t-1}
@@ -88,7 +88,7 @@ Y_t
 \varepsilon_t
 +
 \theta\varepsilon_{t-1}.
-\]
+$$
 
 This model combines:
 
@@ -101,9 +101,9 @@ For ARMA processes, stationarity depends on the AR part.
 
 For ARMA(1,1),
 
-\[
+$$
 |\phi|<1
-\]
+$$
 
 is required for stationarity.
 
@@ -123,9 +123,9 @@ Invertibility depends on the MA part.
 
 For ARMA(1,1),
 
-\[
+$$
 |\theta|<1
-\]
+$$
 
 is required for invertibility.
 
@@ -135,9 +135,9 @@ This ensures a unique representation of the process.
 
 For a stationary ARMA(1,1),
 
-\[
+$$
 E(Y_t)=0.
-\]
+$$
 
 More generally, if a constant term is included, the mean is constant over time.
 
@@ -145,7 +145,7 @@ More generally, if a constant term is included, the mean is constant over time.
 
 Consider
 
-\[
+$$
 Y_t
 =
 0.7Y_{t-1}
@@ -153,7 +153,7 @@ Y_t
 \varepsilon_t
 +
 0.4\varepsilon_{t-1}.
-\]
+$$
 
 ```{r}
 set.seed(123)
@@ -325,7 +325,7 @@ An ARMA(\(p,q\)) model combines:
 
 For ARMA(1,1),
 
-\[
+$$
 Y_t
 =
 \phi Y_{t-1}
@@ -333,7 +333,7 @@ Y_t
 \varepsilon_t
 +
 \theta\varepsilon_{t-1}.
-\]
+$$
 
 Important properties:
 

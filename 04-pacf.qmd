@@ -4,35 +4,35 @@
 
 The autocorrelation function (ACF) measures the correlation between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-k}.
-\]
+$$
 
 However, the autocorrelation at lag \(k\) may be influenced indirectly through intermediate lags.
 
 The partial autocorrelation function (PACF) measures the direct relationship between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-k},
-\]
+$$
 
 after removing the linear effects of the intervening observations
 
-\[
+$$
 Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}.
-\]
+$$
 
 The PACF is one of the most useful tools for identifying autoregressive models.
 
@@ -40,39 +40,39 @@ The PACF is one of the most useful tools for identifying autoregressive models.
 
 Consider an AR(1) process
 
-\[
+$$
 Y_t=\phi Y_{t-1}+\varepsilon_t.
-\]
+$$
 
 Since
 
-\[
+$$
 Y_t
-\]
+$$
 
 depends directly only on
 
-\[
+$$
 Y_{t-1},
-\]
+$$
 
 any apparent correlation between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-2}
-\]
+$$
 
 arises through
 
-\[
+$$
 Y_{t-1}.
-\]
+$$
 
 The PACF removes this indirect effect.
 
@@ -80,33 +80,33 @@ The PACF removes this indirect effect.
 
 The partial autocorrelation at lag \(k\), denoted by
 
-\[
+$$
 \alpha(k),
-\]
+$$
 
 is the correlation between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-k}
-\]
+$$
 
 after controlling for
 
-\[
+$$
 Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}.
-\]
+$$
 
 Thus,
 
-\[
+$$
 \alpha(k)
-\]
+$$
 
 measures the direct contribution of lag \(k\).
 
@@ -131,18 +131,18 @@ pacf(y)
 
 For white noise,
 
-\[
+$$
 Y_t \sim WN(0,\sigma^2),
-\]
+$$
 
 there is no dependence between observations.
 
 Therefore
 
-\[
+$$
 \alpha(k)=0,
 \qquad k\ge1.
-\]
+$$
 
 ### Simulation
 
@@ -163,28 +163,28 @@ All bars should fluctuate randomly around zero.
 
 Consider
 
-\[
+$$
 Y_t=\phi Y_{t-1}+\varepsilon_t,
-\]
+$$
 
 with
 
-\[
+$$
 |\phi|<1.
-\]
+$$
 
 The theoretical PACF is
 
-\[
+$$
 \alpha(1)=\phi,
-\]
+$$
 
 and
 
-\[
+$$
 \alpha(k)=0,
 \qquad k>1.
-\]
+$$
 
 Therefore, the PACF cuts off after lag 1.
 
@@ -210,7 +210,7 @@ A significant spike appears at lag 1, while later lags are close to zero.
 
 Consider
 
-\[
+$$
 Y_t
 =
 0.7Y_{t-1}
@@ -218,7 +218,7 @@ Y_t
 0.3Y_{t-2}
 +
 \varepsilon_t.
-\]
+$$
 
 ```{r}
 set.seed(123)
@@ -240,9 +240,9 @@ The PACF exhibits significant values at lags 1 and 2 and then cuts off.
 
 Consider
 
-\[
+$$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
-\]
+$$
 
 Unlike an AR process, the PACF does not cut off.
 
@@ -328,17 +328,17 @@ Observe:
 
 For large samples,
 
-\[
+$$
 SE(r_k)
 \approx
 \frac{1}{\sqrt{n}}.
-\]
+$$
 
 The PACF plot displays approximate 95% confidence limits
 
-\[
+$$
 \pm\frac{1.96}{\sqrt n}.
-\]
+$$
 
 Values outside these limits may indicate significant dependence.
 

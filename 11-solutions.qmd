@@ -54,10 +54,10 @@ acf(y)
 
 For white noise,
 
-\[
+$$
 \rho(k)=0,
 \qquad k>0.
-\]
+$$
 
 In practice, sample autocorrelations fluctuate around zero due to random sampling variation.
 
@@ -73,9 +73,9 @@ Determine whether each process is stationary.
 
 ### (a)
 
-\[
+$$
 Y_t=\varepsilon_t
-\]
+$$
 
 #### Answer
 
@@ -87,9 +87,9 @@ This is a white noise process.
 
 ### (b)
 
-\[
+$$
 Y_t=t+\varepsilon_t
-\]
+$$
 
 #### Answer
 
@@ -97,17 +97,17 @@ Not stationary.
 
 The mean changes over time:
 
-\[
+$$
 E(Y_t)=t.
-\]
+$$
 
 ---
 
 ### (c)
 
-\[
+$$
 Y_t=0.5Y_{t-1}+\varepsilon_t
-\]
+$$
 
 #### Answer
 
@@ -115,17 +115,17 @@ Stationary.
 
 Because
 
-\[
+$$
 |0.5|<1.
-\]
+$$
 
 ---
 
 ### (d)
 
-\[
+$$
 Y_t=Y_{t-1}+\varepsilon_t
-\]
+$$
 
 #### Answer
 
@@ -141,43 +141,43 @@ This is a random walk.
 
 Suppose
 
-\[
+$$
 \rho(k)=0.8^k.
-\]
+$$
 
 Find:
 
-\[
+$$
 \rho(1),
 \quad
 \rho(2),
 \quad
 \rho(3).
-\]
+$$
 
 ### Calculations
 
-\[
+$$
 \rho(1)=0.8
-\]
+$$
 
-\[
+$$
 \rho(2)=0.8^2=0.64
-\]
+$$
 
-\[
+$$
 \rho(3)=0.8^3=0.512
-\]
+$$
 
 ### Answer
 
-\[
+$$
 \rho(1)=0.8,
 \qquad
 \rho(2)=0.64,
 \qquad
 \rho(3)=0.512.
-\]
+$$
 
 ---
 
@@ -191,27 +191,27 @@ What is the difference between ACF and PACF?
 
 The ACF measures the total linear dependence between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-k}.
-\]
+$$
 
 The PACF measures the direct dependence between
 
-\[
+$$
 Y_t
-\]
+$$
 
 and
 
-\[
+$$
 Y_{t-k},
-\]
+$$
 
 after removing the effects of intermediate observations.
 
@@ -230,15 +230,15 @@ For an AR(1) process:
 
 Consider
 
-\[
+$$
 Y_t=0.6Y_{t-1}+\varepsilon_t.
-\]
+$$
 
 Assume
 
-\[
+$$
 \sigma^2=1.
-\]
+$$
 
 Find the mean and variance.
 
@@ -246,13 +246,13 @@ Find the mean and variance.
 
 For a stationary AR(1) process,
 
-\[
+$$
 E(Y_t)=0.
-\]
+$$
 
 ### Variance
 
-\[
+$$
 Var(Y_t)
 =
 \frac{\sigma^2}
@@ -260,27 +260,27 @@ Var(Y_t)
 =
 \frac{1}
      {1-0.36}.
-\]
+$$
 
 Therefore,
 
-\[
+$$
 Var(Y_t)
 =
 \frac{1}{0.64}
 =
 1.5625.
-\]
+$$
 
 ### Answer
 
-\[
+$$
 E(Y_t)=0
-\]
+$$
 
-\[
+$$
 Var(Y_t)=1.5625.
-\]
+$$
 
 ---
 
@@ -290,19 +290,19 @@ Var(Y_t)=1.5625.
 
 For
 
-\[
+$$
 \theta=0.5,
-\]
+$$
 
 compute
 
-\[
+$$
 \rho(1).
-\]
+$$
 
 ### Calculation
 
-\[
+$$
 \rho(1)
 =
 \frac{\theta}
@@ -312,13 +312,13 @@ compute
      {1.25}
 =
 0.4.
-\]
+$$
 
 ### Answer
 
-\[
+$$
 \rho(1)=0.4.
-\]
+$$
 
 ---
 
@@ -328,15 +328,15 @@ compute
 
 For
 
-\[
+$$
 \theta=0.2,
-\]
+$$
 
 compute the lag-1 autocorrelation.
 
 ### Calculation
 
-\[
+$$
 \rho(1)
 =
 \frac{0.2}
@@ -346,13 +346,13 @@ compute the lag-1 autocorrelation.
      {1.04}
 =
 0.1923.
-\]
+$$
 
 ### Answer
 
-\[
+$$
 \rho(1)\approx0.1923.
-\]
+$$
 
 ---
 
@@ -362,43 +362,43 @@ compute the lag-1 autocorrelation.
 
 Why does an MA(1) process have
 
-\[
+$$
 \rho(k)=0,
 \qquad
 k>1?
-\]
+$$
 
 ### Explanation
 
 The model is
 
-\[
+$$
 Y_t
 =
 \varepsilon_t
 +
 \theta\varepsilon_{t-1}.
-\]
+$$
 
 Observations more than one time unit apart do not share any common error terms.
 
 Since the white noise sequence is uncorrelated,
 
-\[
+$$
 Cov(Y_t,Y_{t-k})=0
-\]
+$$
 
 for
 
-\[
+$$
 k>1.
-\]
+$$
 
 Hence
 
-\[
+$$
 \rho(k)=0.
-\]
+$$
 
 ---
 
@@ -410,13 +410,13 @@ State the differences between AR(1), MA(1), and ARMA(1,1).
 
 ### AR(1)
 
-\[
+$$
 Y_t
 =
 \phi Y_{t-1}
 +
 \varepsilon_t.
-\]
+$$
 
 Characteristics:
 
@@ -427,13 +427,13 @@ Characteristics:
 
 ### MA(1)
 
-\[
+$$
 Y_t
 =
 \varepsilon_t
 +
 \theta\varepsilon_{t-1}.
-\]
+$$
 
 Characteristics:
 
@@ -444,7 +444,7 @@ Characteristics:
 
 ### ARMA(1,1)
 
-\[
+$$
 Y_t
 =
 \phi Y_{t-1}
@@ -452,7 +452,7 @@ Y_t
 \varepsilon_t
 +
 \theta\varepsilon_{t-1}.
-\]
+$$
 
 Characteristics:
 
@@ -477,11 +477,11 @@ An ARIMA(1,1,1) model has:
 
 Mathematically,
 
-\[
+$$
 (1-\phi B)(1-B)Y_t
 =
 (1+\theta B)\varepsilon_t.
-\]
+$$
 
 The differencing step is used to remove nonstationarity.
 
@@ -493,22 +493,22 @@ The differencing step is used to remove nonstationarity.
 
 Define:
 
-\[
+$$
 MAE,
 \quad
 MSE,
 \quad
 RMSE.
-\]
+$$
 
 ### MAE
 
-\[
+$$
 MAE
 =
 \frac1n
 \sum |e_t|.
-\]
+$$
 
 Measures average absolute error.
 
@@ -516,12 +516,12 @@ Measures average absolute error.
 
 ### MSE
 
-\[
+$$
 MSE
 =
 \frac1n
 \sum e_t^2.
-\]
+$$
 
 Penalizes large errors more heavily.
 
@@ -529,11 +529,11 @@ Penalizes large errors more heavily.
 
 ### RMSE
 
-\[
+$$
 RMSE
 =
 \sqrt{MSE}.
-\]
+$$
 
 Has the same units as the original data.
 
