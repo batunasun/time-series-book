@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; The Moving Average Process of Order One: MA(1) – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>7&nbsp; Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1) – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ma1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ma1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,31 +199,55 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Таамаглал</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
     </ul>
@@ -236,34 +260,34 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">7.2</span> Definition</a></li>
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">7.3</span> Mean</a></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">7.4</span> Variance</a></li>
-  <li><a href="#autocovariance-function" id="toc-autocovariance-function" class="nav-link" data-scroll-target="#autocovariance-function"><span class="header-section-number">7.5</span> Autocovariance Function</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">7.1</span> Оршил</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">7.2</span> Тодорхойлолт</a></li>
+  <li><a href="#дундаж" id="toc-дундаж" class="nav-link" data-scroll-target="#дундаж"><span class="header-section-number">7.3</span> Дундаж</a></li>
+  <li><a href="#дисперс" id="toc-дисперс" class="nav-link" data-scroll-target="#дисперс"><span class="header-section-number">7.4</span> Дисперс</a></li>
+  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">7.5</span> Автоковариацын функц</a>
   <ul class="collapse">
-  <li><a href="#lag-0" id="toc-lag-0" class="nav-link" data-scroll-target="#lag-0"><span class="header-section-number">7.5.1</span> Lag 0</a></li>
-  <li><a href="#lag-1" id="toc-lag-1" class="nav-link" data-scroll-target="#lag-1"><span class="header-section-number">7.5.2</span> Lag 1</a></li>
-  <li><a href="#lag-k1" id="toc-lag-k1" class="nav-link" data-scroll-target="#lag-k1"><span class="header-section-number">7.5.3</span> Lag (k&gt;1)</a></li>
+  <li><a href="#хоцролт" id="toc-хоцролт" class="nav-link" data-scroll-target="#хоцролт"><span class="header-section-number">7.5.1</span> 0 хоцролт</a></li>
+  <li><a href="#хоцролт-1" id="toc-хоцролт-1" class="nav-link" data-scroll-target="#хоцролт-1"><span class="header-section-number">7.5.2</span> 1 хоцролт</a></li>
+  <li><a href="#k1-хоцролт" id="toc-k1-хоцролт" class="nav-link" data-scroll-target="#k1-хоцролт"><span class="header-section-number">7.5.3</span> (k&gt;1) хоцролт</a></li>
   </ul></li>
-  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function"><span class="header-section-number">7.6</span> Autocorrelation Function</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">7.7</span> Example</a></li>
-  <li><a href="#invertibility" id="toc-invertibility" class="nav-link" data-scroll-target="#invertibility"><span class="header-section-number">7.8</span> Invertibility</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">7.9</span> Simulation</a>
+  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">7.6</span> Автокорреляцын функц</a></li>
+  <li><a href="#жишээ" id="toc-жишээ" class="nav-link" data-scroll-target="#жишээ"><span class="header-section-number">7.7</span> Жишээ</a></li>
+  <li><a href="#буцаах-боломжтой-байдал" id="toc-буцаах-боломжтой-байдал" class="nav-link" data-scroll-target="#буцаах-боломжтой-байдал"><span class="header-section-number">7.8</span> Буцаах боломжтой байдал</a></li>
+  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">7.9</span> Симуляц</a>
   <ul class="collapse">
-  <li><a href="#ma1-with" id="toc-ma1-with" class="nav-link" data-scroll-target="#ma1-with"><span class="header-section-number">7.9.1</span> MA(1) with ()</a></li>
-  <li><a href="#ma1-with-1" id="toc-ma1-with-1" class="nav-link" data-scroll-target="#ma1-with-1"><span class="header-section-number">7.9.2</span> MA(1) with ()</a></li>
+  <li><a href="#бүхий-ma1" id="toc-бүхий-ma1" class="nav-link" data-scroll-target="#бүхий-ma1"><span class="header-section-number">7.9.1</span> () бүхий MA(1)</a></li>
+  <li><a href="#бүхий-ma1-1" id="toc-бүхий-ma1-1" class="nav-link" data-scroll-target="#бүхий-ma1-1"><span class="header-section-number">7.9.2</span> () бүхий MA(1)</a></li>
   </ul></li>
-  <li><a href="#acf-of-an-ma1-process" id="toc-acf-of-an-ma1-process" class="nav-link" data-scroll-target="#acf-of-an-ma1-process"><span class="header-section-number">7.10</span> ACF of an MA(1) Process</a></li>
-  <li><a href="#pacf-of-an-ma1-process" id="toc-pacf-of-an-ma1-process" class="nav-link" data-scroll-target="#pacf-of-an-ma1-process"><span class="header-section-number">7.11</span> PACF of an MA(1) Process</a></li>
-  <li><a href="#lag-1-scatter-plot" id="toc-lag-1-scatter-plot" class="nav-link" data-scroll-target="#lag-1-scatter-plot"><span class="header-section-number">7.12</span> Lag-1 Scatter Plot</a></li>
-  <li><a href="#lag-2-scatter-plot" id="toc-lag-2-scatter-plot" class="nav-link" data-scroll-target="#lag-2-scatter-plot"><span class="header-section-number">7.13</span> Lag-2 Scatter Plot</a></li>
-  <li><a href="#comparison-with-ar1" id="toc-comparison-with-ar1" class="nav-link" data-scroll-target="#comparison-with-ar1"><span class="header-section-number">7.14</span> Comparison with AR(1)</a></li>
-  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">7.15</span> Estimation</a></li>
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">7.16</span> Example: ()</a></li>
-  <li><a href="#forecasting" id="toc-forecasting" class="nav-link" data-scroll-target="#forecasting"><span class="header-section-number">7.17</span> Forecasting</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.18</span> Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.19</span> Exercises</a></li>
+  <li><a href="#ma1-процессын-acf" id="toc-ma1-процессын-acf" class="nav-link" data-scroll-target="#ma1-процессын-acf"><span class="header-section-number">7.10</span> MA(1) процессын ACF</a></li>
+  <li><a href="#ma1-процессын-pacf" id="toc-ma1-процессын-pacf" class="nav-link" data-scroll-target="#ma1-процессын-pacf"><span class="header-section-number">7.11</span> MA(1) процессын PACF</a></li>
+  <li><a href="#хоцролтын-сарнилын-график" id="toc-хоцролтын-сарнилын-график" class="nav-link" data-scroll-target="#хоцролтын-сарнилын-график"><span class="header-section-number">7.12</span> 1 хоцролтын сарнилын график</a></li>
+  <li><a href="#хоцролтын-сарнилын-график-1" id="toc-хоцролтын-сарнилын-график-1" class="nav-link" data-scroll-target="#хоцролтын-сарнилын-график-1"><span class="header-section-number">7.13</span> 2 хоцролтын сарнилын график</a></li>
+  <li><a href="#ar1-тэй-харьцуулалт" id="toc-ar1-тэй-харьцуулалт" class="nav-link" data-scroll-target="#ar1-тэй-харьцуулалт"><span class="header-section-number">7.14</span> AR(1)-тэй харьцуулалт</a></li>
+  <li><a href="#үнэлгээ" id="toc-үнэлгээ" class="nav-link" data-scroll-target="#үнэлгээ"><span class="header-section-number">7.15</span> Үнэлгээ</a></li>
+  <li><a href="#жишээ-1" id="toc-жишээ-1" class="nav-link" data-scroll-target="#жишээ-1"><span class="header-section-number">7.16</span> Жишээ: ()</a></li>
+  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">7.17</span> Таамаглал</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">7.18</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">7.19</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -272,7 +296,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></h1>
 </div>
 
 
@@ -289,29 +313,29 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
-<p>The MA(1) model is the simplest moving average process.</p>
-<p>Unlike an autoregressive model, an MA(1) process does not depend directly on past observations. Instead, it depends on the current and previous random shocks.</p>
-<p>The MA(1) model is fundamental in time series analysis and serves as a building block for higher-order MA and ARMA models.</p>
+<section id="оршил" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">7.1</span> Оршил</h2>
+<p>MA(1) загвар нь хамгийн энгийн хөдөлгөөнт дундаж процесс юм.</p>
+<p>Авторегрессив загвараас ялгаатай нь MA(1) процесс нь өнгөрсөн ажиглалтуудаас шууд хамаардаггүй. Харин одоогийн болон өмнөх санамсаргүй шокиос хамаардаг.</p>
+<p>MA(1) загвар нь хугацааны цувааны шинжилгээнд үндсэн ач холбогдолтой бөгөөд дээд эрэмбийн MA болон ARMA загваруудын бүрэлдэхүүн хэсэг болдог.</p>
 </section>
-<section id="definition" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">7.2</span> Definition</h2>
-<p>An MA(1) process is defined by</p>
+<section id="тодорхойлолт" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">7.2</span> Тодорхойлолт</h2>
+<p>MA(1) процессыг</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 \]</span></p>
-<p>where</p>
+<p>гэж тодорхойлдог бөгөөд энд</p>
 <ul>
-<li>({_t}) is a white noise process,</li>
-<li>(E(_t)=0),</li>
-<li>(Var(_t)=^2),</li>
-<li>() is the moving average parameter.</li>
+<li><span class="math inline">\(\{\varepsilon_t\}\)</span> нь цагаан чимээний процесс,</li>
+<li><span class="math inline">\(E(\varepsilon_t)=0\)</span>,</li>
+<li><span class="math inline">\(Var(\varepsilon_t)=\sigma^2\)</span>,</li>
+<li><span class="math inline">\(\theta\)</span> нь хөдөлгөөнт дундажийн параметр.</li>
 </ul>
 </section>
-<section id="mean" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="mean"><span class="header-section-number">7.3</span> Mean</h2>
-<p>Taking expectations,</p>
+<section id="дундаж" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="дундаж"><span class="header-section-number">7.3</span> Дундаж</h2>
+<p>Математик хүлээлт авбал</p>
 <p><span class="math display">\[
 E(Y_t)
 =
@@ -319,54 +343,54 @@ E(\varepsilon_t)
 +
 \theta E(\varepsilon_{t-1}).
 \]</span></p>
-<p>Since</p>
+<p>Учир нь</p>
 <p><span class="math display">\[
 E(\varepsilon_t)=0,
 \]</span></p>
-<p>it follows that</p>
+<p>иймд</p>
 <p><span class="math display">\[
 E(Y_t)=0.
 \]</span></p>
 </section>
-<section id="variance" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="variance"><span class="header-section-number">7.4</span> Variance</h2>
-<p>Since the white noise terms are uncorrelated,</p>
+<section id="дисперс" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="дисперс"><span class="header-section-number">7.4</span> Дисперс</h2>
+<p>Цагаан чимээний гишүүд корреляцгүй тул</p>
 <p><span class="math display">\[
 Var(Y_t)
 =
 Var(\varepsilon_t+\theta\varepsilon_{t-1}),
 \]</span></p>
-<p>which gives</p>
+<p>үүнээс</p>
 <p><span class="math display">\[
 Var(Y_t)
 =
 (1+\theta^2)\sigma^2.
 \]</span></p>
 </section>
-<section id="autocovariance-function" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">7.5</span> Autocovariance Function</h2>
-<section id="lag-0" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="lag-0"><span class="header-section-number">7.5.1</span> Lag 0</h3>
+<section id="автоковариацын-функц" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">7.5</span> Автоковариацын функц</h2>
+<section id="хоцролт" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="хоцролт"><span class="header-section-number">7.5.1</span> 0 хоцролт</h3>
 <p><span class="math display">\[
 \gamma(0)
 =
 (1+\theta^2)\sigma^2.
 \]</span></p>
 </section>
-<section id="lag-1" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="lag-1"><span class="header-section-number">7.5.2</span> Lag 1</h3>
+<section id="хоцролт-1" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="хоцролт-1"><span class="header-section-number">7.5.2</span> 1 хоцролт</h3>
 <p><span class="math display">\[
 \gamma(1)
 =
 \theta\sigma^2.
 \]</span></p>
 </section>
-<section id="lag-k1" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="lag-k1"><span class="header-section-number">7.5.3</span> Lag (k&gt;1)</h3>
+<section id="k1-хоцролт" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="k1-хоцролт"><span class="header-section-number">7.5.3</span> (k&gt;1) хоцролт</h3>
 <p><span class="math display">\[
 \gamma(k)=0.
 \]</span></p>
-<p>Therefore,</p>
+<p>Иймд</p>
 <p><span class="math display">\[
 \gamma(k)=
 \begin{cases}
@@ -377,30 +401,30 @@ Var(Y_t)
 \]</span></p>
 </section>
 </section>
-<section id="autocorrelation-function" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="autocorrelation-function"><span class="header-section-number">7.6</span> Autocorrelation Function</h2>
-<p>Dividing by ((0)),</p>
+<section id="автокорреляцын-функц" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">7.6</span> Автокорреляцын функц</h2>
+<p><span class="math inline">\(\gamma(0)\)</span>-д хуваавал</p>
 <p><span class="math display">\[
 \rho(1)
 =
 \frac{\theta}
      {1+\theta^2},
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 \rho(k)=0,
 \qquad k&gt;1.
 \]</span></p>
-<p>This is the most important property of an MA(1) process.</p>
-<p>The ACF cuts off after lag 1.</p>
+<p>Энэ нь MA(1) процессын хамгийн чухал шинж чанар юм.</p>
+<p>ACF нь 1 хоцролтын дараа тасардаг.</p>
 </section>
-<section id="example" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="example"><span class="header-section-number">7.7</span> Example</h2>
-<p>If</p>
+<section id="жишээ" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="жишээ"><span class="header-section-number">7.7</span> Жишээ</h2>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \theta=0.5,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 \rho(1)
 =
@@ -408,40 +432,40 @@ Var(Y_t)
 =
 0.40.
 \]</span></p>
-<p>If</p>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 \theta=0.2,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 \rho(1)
 =
 \frac{0.2}{1.04}
 \approx 0.192.
 \]</span></p>
-<p>This value should appear in the sample ACF.</p>
+<p>Энэ утга түүврийн ACF-д харагдах ёстой.</p>
 </section>
-<section id="invertibility" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="invertibility"><span class="header-section-number">7.8</span> Invertibility</h2>
-<p>For an MA(1) model,</p>
+<section id="буцаах-боломжтой-байдал" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="буцаах-боломжтой-байдал"><span class="header-section-number">7.8</span> Буцаах боломжтой байдал</h2>
+<p>MA(1) загварын хувьд</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 \]</span></p>
-<p>invertibility requires</p>
+<p>буцаах боломжтой байх нөхцөл нь</p>
 <p><span class="math display">\[
 |\theta|&lt;1.
 \]</span></p>
-<p>Invertibility ensures a unique representation of the process.</p>
-<p>This condition plays a role similar to the stationarity condition</p>
+<p>Буцаах боломжтой байдал нь процессын цор ганц дүрслэлийг баталгаажуулдаг.</p>
+<p>Энэ нөхцөл нь AR загваруудын стационар байдлын</p>
 <p><span class="math display">\[
 |\phi|&lt;1
 \]</span></p>
-<p>for AR models.</p>
+<p>нөхцөлтэй төстэй үүрэг гүйцэтгэдэг.</p>
 </section>
-<section id="simulation" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="simulation"><span class="header-section-number">7.9</span> Simulation</h2>
-<section id="ma1-with" class="level3" data-number="7.9.1">
-<h3 data-number="7.9.1" class="anchored" data-anchor-id="ma1-with"><span class="header-section-number">7.9.1</span> MA(1) with ()</h3>
+<section id="симуляц" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">7.9</span> Симуляц</h2>
+<section id="бүхий-ma1" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="бүхий-ma1"><span class="header-section-number">7.9.1</span> () бүхий MA(1)</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -464,8 +488,8 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 </div>
 </div>
 </section>
-<section id="ma1-with-1" class="level3" data-number="7.9.2">
-<h3 data-number="7.9.2" class="anchored" data-anchor-id="ma1-with-1"><span class="header-section-number">7.9.2</span> MA(1) with ()</h3>
+<section id="бүхий-ma1-1" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="бүхий-ma1-1"><span class="header-section-number">7.9.2</span> () бүхий MA(1)</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -489,12 +513,12 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 </div>
 </section>
 </section>
-<section id="acf-of-an-ma1-process" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="acf-of-an-ma1-process"><span class="header-section-number">7.10</span> ACF of an MA(1) Process</h2>
+<section id="ma1-процессын-acf" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="ma1-процессын-acf"><span class="header-section-number">7.10</span> MA(1) процессын ACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ma1,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of MA(1)"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(ma1),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"MA(1)-ийн ACF"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -504,19 +528,19 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 </div>
 </div>
 </div>
-<p>Observe:</p>
+<p>Ажиглаарай:</p>
 <ul>
-<li>Significant spike at lag 1.</li>
-<li>Near-zero autocorrelations for lags greater than 1.</li>
+<li>1 хоцролт дээр ач холбогдолтой оргил.</li>
+<li>1-ээс их хоцролтуудад тэгтэй ойрхон автокорреляцууд.</li>
 </ul>
-<p>This cutoff behavior is the hallmark of an MA(1) process.</p>
+<p>Энэ тасралтын зан төлөв нь MA(1) процессын онцлог шинж юм.</p>
 </section>
-<section id="pacf-of-an-ma1-process" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="pacf-of-an-ma1-process"><span class="header-section-number">7.11</span> PACF of an MA(1) Process</h2>
+<section id="ma1-процессын-pacf" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="ma1-процессын-pacf"><span class="header-section-number">7.11</span> MA(1) процессын PACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ma1,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"PACF of MA(1)"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(ma1),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"MA(1)-ийн PACF"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -526,20 +550,19 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 </div>
 </div>
 </div>
-<p>Unlike the ACF, the PACF does not cut off.</p>
-<p>Instead, it decreases gradually toward zero.</p>
+<p>ACF-ээс ялгаатай нь PACF тасардаггүй.</p>
+<p>Харин аажмаар тэг рүү буурдаг.</p>
 </section>
-<section id="lag-1-scatter-plot" class="level2" data-number="7.12">
-<h2 data-number="7.12" class="anchored" data-anchor-id="lag-1-scatter-plot"><span class="header-section-number">7.12</span> Lag-1 Scatter Plot</h2>
-<p>The relationship between</p>
+<section id="хоцролтын-сарнилын-график" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="хоцролтын-сарнилын-график"><span class="header-section-number">7.12</span> 1 хоцролтын сарнилын график</h2>
 <p><span class="math display">\[
 Y_t
 \]</span></p>
-<p>and</p>
+<p>ба</p>
 <p><span class="math display">\[
 Y_{t-1}
 \]</span></p>
-<p>may be examined using a lag plot.</p>
+<p>хоорондын хамаарлыг хоцролтын график ашиглан шалгаж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> ma1[<span class="sc">-</span><span class="fu">length</span>(ma1)],</span>
@@ -556,12 +579,12 @@ Y_{t-1}
 </div>
 </div>
 </div>
-<p>For positive (), the plot tends to exhibit a weak positive linear pattern.</p>
-<p>For negative (), the pattern slopes downward.</p>
+<p>Эерэг <span class="math inline">\(\theta\)</span>-ийн хувьд график сул эерэг шугаман хэв маяг харуулах хандлагатай.</p>
+<p>Сөрөг <span class="math inline">\(\theta\)</span>-ийн хувьд хэв маяг доош налуу байна.</p>
 </section>
-<section id="lag-2-scatter-plot" class="level2" data-number="7.13">
-<h2 data-number="7.13" class="anchored" data-anchor-id="lag-2-scatter-plot"><span class="header-section-number">7.13</span> Lag-2 Scatter Plot</h2>
-<p>Consider</p>
+<section id="хоцролтын-сарнилын-график-1" class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="хоцролтын-сарнилын-график-1"><span class="header-section-number">7.13</span> 2 хоцролтын сарнилын график</h2>
+<p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 (Y_{t-2},Y_t).
 \]</span></p>
@@ -581,15 +604,15 @@ Y_{t-1}
 </div>
 </div>
 </div>
-<p>Since</p>
+<p>Учир нь</p>
 <p><span class="math display">\[
 \rho(2)=0,
 \]</span></p>
-<p>the points should display little or no linear pattern.</p>
-<p>The scatter plot generally resembles a random cloud.</p>
+<p>цэгүүд бага буюу шугаман хэв маяггүй байх ёстой.</p>
+<p>Сарнилын график ерөнхийдөө санамсаргүй үүлтэй төстэй байна.</p>
 </section>
-<section id="comparison-with-ar1" class="level2" data-number="7.14">
-<h2 data-number="7.14" class="anchored" data-anchor-id="comparison-with-ar1"><span class="header-section-number">7.14</span> Comparison with AR(1)</h2>
+<section id="ar1-тэй-харьцуулалт" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="ar1-тэй-харьцуулалт"><span class="header-section-number">7.14</span> AR(1)-тэй харьцуулалт</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -598,44 +621,44 @@ Y_{t-1}
 </colgroup>
 <thead>
 <tr class="header">
-<th>Property</th>
+<th>Шинж чанар</th>
 <th>AR(1)</th>
 <th>MA(1)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Model</td>
-<td>(Y_t=Y_{t-1}+_t)</td>
-<td>(Y_t=<em>t+</em>{t-1})</td>
+<td>Загвар</td>
+<td><span class="math inline">\(Y_t=\phi Y_{t-1}+\varepsilon_t\)</span></td>
+<td><span class="math inline">\(Y_t=\varepsilon_t+\theta\varepsilon_{t-1}\)</span></td>
 </tr>
 <tr class="even">
-<td>Stationarity</td>
-<td>(</td>
-<td></td>
+<td>Стационар байдал</td>
+<td><span class="math inline">\(|\phi|&lt;1\)</span></td>
+<td>Үргэлж стационар</td>
 </tr>
 <tr class="odd">
-<td>Invertibility</td>
-<td>Not required</td>
-<td>(</td>
+<td>Буцаах боломжтой байдал</td>
+<td>Шаардлагагүй</td>
+<td><span class="math inline">\(|\theta|&lt;1\)</span></td>
 </tr>
 <tr class="even">
 <td>ACF</td>
-<td>Tails off</td>
-<td>Cuts off after lag 1</td>
+<td>Аажмаар буурна</td>
+<td>1 хоцролтын дараа тасарна</td>
 </tr>
 <tr class="odd">
 <td>PACF</td>
-<td>Cuts off after lag 1</td>
-<td>Tails off</td>
+<td>1 хоцролтын дараа тасарна</td>
+<td>Аажмаар буурна</td>
 </tr>
 </tbody>
 </table>
-<p>These patterns are central to Box-Jenkins model identification.</p>
+<p>Эдгээр хэв маяг нь Box-Jenkins загвар тодорхойлоход төвлөрсөн ач холбогдолтой.</p>
 </section>
-<section id="estimation" class="level2" data-number="7.15">
-<h2 data-number="7.15" class="anchored" data-anchor-id="estimation"><span class="header-section-number">7.15</span> Estimation</h2>
-<p>An MA(1) model can be estimated using maximum likelihood.</p>
+<section id="үнэлгээ" class="level2" data-number="7.15">
+<h2 data-number="7.15" class="anchored" data-anchor-id="үнэлгээ"><span class="header-section-number">7.15</span> Үнэлгээ</h2>
+<p>MA(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  ma1,</span>
@@ -656,10 +679,10 @@ s.e.  0.0874     0.1018
 sigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83</code></pre>
 </div>
 </div>
-<p>The estimated value should be close to the true value used in simulation.</p>
+<p>Үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.</p>
 </section>
-<section id="example-1" class="level2" data-number="7.16">
-<h2 data-number="7.16" class="anchored" data-anchor-id="example-1"><span class="header-section-number">7.16</span> Example: ()</h2>
+<section id="жишээ-1" class="level2" data-number="7.16">
+<h2 data-number="7.16" class="anchored" data-anchor-id="жишээ-1"><span class="header-section-number">7.16</span> Жишээ: ()</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -677,7 +700,7 @@ sigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83</code></pr
 </div>
 </div>
 </div>
-<p>The theoretical lag-1 autocorrelation is</p>
+<p>Онолын 1 хоцролтын автокорреляц нь</p>
 <p><span class="math display">\[
 \rho(1)
 =
@@ -685,41 +708,41 @@ sigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83</code></pr
 =
 0.1923.
 \]</span></p>
-<p>Compare this value with the sample ACF.</p>
+<p>Энэ утгыг түүврийн ACF-тэй харьцуул.</p>
 </section>
-<section id="forecasting" class="level2" data-number="7.17">
-<h2 data-number="7.17" class="anchored" data-anchor-id="forecasting"><span class="header-section-number">7.17</span> Forecasting</h2>
-<p>For an MA(1) process,</p>
+<section id="таамаглал" class="level2" data-number="7.17">
+<h2 data-number="7.17" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">7.17</span> Таамаглал</h2>
+<p>MA(1) процессын хувьд</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 \]</span></p>
-<p>the one-step-ahead forecast depends on the most recent estimated shock.</p>
-<p>For horizons greater than one,</p>
+<p>нэг алхамын урьдчилсан таамаглал нь хамгийн сүүлийн үнэлэгдсэн шокноос хамаарна.</p>
+<p>Нэгээс их алсын зайн хувьд</p>
 <p><span class="math display">\[
 \hat Y_{t+h}
 \]</span></p>
-<p>rapidly converges to the mean of the process.</p>
-<p>Since the mean is zero,</p>
+<p>процессын дундаж руу хурдан ойртдог.</p>
+<p>Дундаж нь тэг тул</p>
 <p><span class="math display">\[
 \hat Y_{t+h}
 \rightarrow 0.
 \]</span></p>
 </section>
-<section id="summary" class="level2" data-number="7.18">
-<h2 data-number="7.18" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.18</span> Summary</h2>
-<p>The MA(1) process</p>
+<section id="дүгнэлт" class="level2" data-number="7.18">
+<h2 data-number="7.18" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">7.18</span> Дүгнэлт</h2>
+<p>MA(1) процесс</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}
 \]</span></p>
-<p>has the following properties:</p>
+<p>нь дараах шинж чанаруудтай:</p>
 <ul>
-<li>Mean:</li>
+<li>Дундаж:</li>
 </ul>
 <p><span class="math display">\[
 E(Y_t)=0.
 \]</span></p>
 <ul>
-<li>Variance:</li>
+<li>Дисперс:</li>
 </ul>
 <p><span class="math display">\[
 Var(Y_t)
@@ -739,25 +762,25 @@ Var(Y_t)
 \qquad k&gt;1.
 \]</span></p>
 <ul>
-<li>PACF tails off gradually.</li>
-<li>Invertibility requires</li>
+<li>PACF аажмаар буурна.</li>
+<li>Буцаах боломжтой байх нөхцөл:</li>
 </ul>
 <p><span class="math display">\[
 |\theta|&lt;1.
 \]</span></p>
-<p>The ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.</p>
+<p>ACF-ийн 1 хоцролт дээрх тасралт нь MA(1) процессын хамгийн чухал таних шинж юм.</p>
 </section>
-<section id="exercises" class="level2" data-number="7.19">
-<h2 data-number="7.19" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.19</span> Exercises</h2>
+<section id="дасгал" class="level2" data-number="7.19">
+<h2 data-number="7.19" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">7.19</span> Дасгал</h2>
 <ol type="1">
-<li>Simulate an MA(1) process with ().</li>
-<li>Compute and plot the sample ACF.</li>
-<li>Compare the sample lag-1 autocorrelation with the theoretical value.</li>
-<li>Simulate an MA(1) process with ().</li>
-<li>Compare its ACF with that of ().</li>
-<li>Create lag-1 and lag-2 scatter plots.</li>
-<li>Explain why the lag-2 scatter plot shows little pattern.</li>
-<li>Estimate an MA(1) model using <code>arima()</code> and compare the estimated parameter with the true value.</li>
+<li>() бүхий MA(1) процессыг симуляцла.</li>
+<li>Түүврийн ACF-ийг тооцоолж, график зур.</li>
+<li>Түүврийн 1 хоцролтын автокорреляцыг онолын утгатай харьцуул.</li>
+<li>() бүхий MA(1) процессыг симуляцла.</li>
+<li>Түүний ACF-ийг ()-ын ACF-тэй харьцуул.</li>
+<li>1 хоцролт ба 2 хоцролтын сарнилын графикуудыг байгуул.</li>
+<li>2 хоцролтын сарнилын график яагаад бага хэв маяг харуулдаг вэ гэдгийг тайлбарла.</li>
+<li><code>arima()</code> ашиглан MA(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.</li>
 </ol>
 
 
@@ -1242,13 +1265,13 @@ Var(Y_t)
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./05-ar1.html" class="pagination-link" aria-label="The Autoregressive Process of Order One: AR(1)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></span>
+      <a href="./05-ar1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-arma.html" class="pagination-link" aria-label="The Autoregressive Moving Average Process: ARMA">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07-arma.html" class="pagination-link" aria-label="Авторегрессив хөдөлгөөнт дундаж процесс: ARMA">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -14,7 +14,7 @@
     "href": "01-white-noise.html",
     "title": "2  Цагаан чимээ (White Noise)",
     "section": "",
-    "text": "2.1 Тодорхойлолт\n({Y_t}) стохастик процессийг цагаан чимээний процесс гэнэ, хэрэв\n\\[\nE(Y_t)=0,\n\\]\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\nба\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0\n\\]\nболно.\nБид үүнийг\n\\[\nY_t \\sim WN(0,\\sigma^2)\n\\]\nгэж бичнэ.",
+    "text": "2.1 Тодорхойлолт\n\\[\n\\{Y_t\\}\n\\] стохастик процессийг цагаан чимээний процесс гэнэ, хэрэв\n\\[\nE(Y_t)=0,\n\\]\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\nба\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0\n\\]\nболно.\nБид үүнийг\n\\[\nY_t \\sim WN(0,\\sigma^2)\n\\]\nгэж бичнэ.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Цагаан чимээ (White Noise)</span>"
     ]
@@ -174,7 +174,7 @@
     "href": "02-stationarity.html#стационар-байдал-яагаад-чухал-вэ",
     "title": "3  Стационар байдал",
     "section": "3.10 Стационар байдал яагаад чухал вэ",
-    "text": "3.10 Стационар байдал яагаад чухал вэ\nСонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.\nЖишээнүүд:\n\nAR((p))\nMA((q))\nARMA((p,q))\n\nЦуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:\n\nЯлгавар авах\nЛогарифм авах\nУлирлын ялгавар авах\n\nЭдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.",
+    "text": "3.10 Стационар байдал яагаад чухал вэ\nСонгодог таамаглах загваруудын ихэнх нь стационар байдлыг шаарддаг.\nЖишээнүүд:\n\nAR(p)\nMA(q)\nARMA(p,q)\n\nЦуваа стационар бус үед дараах хувиргалтуудыг ихэвчлэн хэрэглэдэг:\n\nЯлгавар авах\nЛогарифм авах\nУлирлын ялгавар авах\n\nЭдгээр хувиргалтыг загварчлахаас өмнө стационар цуваа гаргаж авахад ашигладаг.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Стационар байдал</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "02-stationarity.html#дасгал",
     "title": "3  Стационар байдал",
     "section": "3.11 Дасгал",
-    "text": "3.11 Дасгал\n\n200 урттай цагаан чимээний цуваа симуляцла.\nЦагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.\n() бүхий AR(1) процессыг симуляцла.\nСанамсаргүй алхалтыг симуляцла.\nAR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.\nСанамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.",
+    "text": "3.11 Дасгал\n\n200 урттай цагаан чимээний цуваа симуляцла.\nЦагаан чимээний цуваа стационар харагдаж байгаа эсэхийг шалга.\n\\(\\phi=0.8\\) бүхий AR(1) процессыг симуляцла.\nСанамсаргүй алхалтыг симуляцла.\nAR(1) процесс ба санамсаргүй алхалтын ACF-уудыг харьцуул.\nСанамсаргүй алхалт яагаад стационар бус байгааг тайлбарла.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Стационар байдал</span>"
     ]
@@ -192,121 +192,121 @@
   {
     "objectID": "03-acf.html",
     "href": "03-acf.html",
-    "title": "4  The Autocorrelation Function (ACF)",
+    "title": "4  Автокорреляцын функц (ACF)",
     "section": "",
-    "text": "4.1 Introduction\nThe autocorrelation function (ACF) describes the dependence between observations separated by a given lag.\nFor a time series\n\\[\n\\{Y_t\\},\n\\]\nthe ACF measures the strength of the linear relationship between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-k}.\n\\]\nThe ACF is one of the most important tools in time series analysis.\nIt is widely used to:",
+    "text": "4.1 Оршил\nАвтокорреляцын функц (ACF) нь өгөгдсөн хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг тодорхойлдог.\nХугацааны цувааны хувьд\n\\[\n\\{Y_t\\},\n\\]\nACF нь\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын шугаман хамаарлын хүчийг хэмждэг.\nACF нь хугацааны цувааны шинжилгээний хамгийн чухал хэрэгслүүдийн нэг юм.\nҮүнийг өргөнөөр ашигладаг:",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#introduction",
-    "href": "03-acf.html#introduction",
-    "title": "4  The Autocorrelation Function (ACF)",
+    "objectID": "03-acf.html#оршил",
+    "href": "03-acf.html#оршил",
+    "title": "4  Автокорреляцын функц (ACF)",
     "section": "",
-    "text": "identify serial dependence,\ndetect nonstationarity,\ndistinguish AR and MA models,\nguide model selection.",
+    "text": "цувааны хамаарлыг илрүүлэх,\nстационар бус байдлыг илрүүлэх,\nAR ба MA загваруудыг ялгах,\nзагварын сонголтыг чиглүүлэх.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#autocovariance-function",
-    "href": "03-acf.html#autocovariance-function",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.2 Autocovariance Function",
-    "text": "4.2 Autocovariance Function\nFor a weakly stationary process,\n\\[\n\\gamma(k)\n=\nCov(Y_t,Y_{t-k})\n\\]\nis called the autocovariance function.\nSince\n\\[\nCov(Y_t,Y_{t-k})\n=\nE[(Y_t-\\mu)(Y_{t-k}-\\mu)],\n\\]\nthe autocovariance measures the dependence between observations separated by lag (k).\n\n4.2.1 Properties\n\\[\n\\gamma(0)=Var(Y_t)\n\\]\nand\n\\[\n\\gamma(k)=\\gamma(-k).\n\\]\nThus the autocovariance function is symmetric.",
+    "objectID": "03-acf.html#автоковариацын-функц",
+    "href": "03-acf.html#автоковариацын-функц",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.2 Автоковариацын функц",
+    "text": "4.2 Автоковариацын функц\nСул стационар процессийн хувьд\n\\[\n\\gamma(k)\n=\nCov(Y_t,Y_{t-k})\n\\]\n-ийг автоковариацын функц гэнэ.\nУчир нь\n\\[\nCov(Y_t,Y_{t-k})\n=\nE[(Y_t-\\mu)(Y_{t-k}-\\mu)],\n\\]\nавтоковариац нь (k) хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг хэмждэг.\n\n4.2.1 Шинж чанар\n\\[\n\\gamma(0)=Var(Y_t)\n\\]\nба\n\\[\n\\gamma(k)=\\gamma(-k).\n\\]\nИймд автоковариацын функц нь тэгш хэмтэй.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#definition-of-the-acf",
-    "href": "03-acf.html#definition-of-the-acf",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.3 Definition of the ACF",
-    "text": "4.3 Definition of the ACF\nThe autocorrelation function is\n\\[\n\\rho(k)\n=\n\\frac{\\gamma(k)}\n{\\gamma(0)}.\n\\]\nSince\n\\[\n\\gamma(0)=Var(Y_t),\n\\]\nthe ACF standardizes the covariance.\nTherefore\n\\[\n-1 \\le \\rho(k) \\le 1.\n\\]\n\n4.3.1 Important Values\nAt lag zero,\n\\[\n\\rho(0)=1.\n\\]\nA value close to 1 indicates strong positive dependence.\nA value close to -1 indicates strong negative dependence.\nA value near 0 indicates little linear dependence.",
+    "objectID": "03-acf.html#acf-ийн-тодорхойлолт",
+    "href": "03-acf.html#acf-ийн-тодорхойлолт",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.3 ACF-ийн тодорхойлолт",
+    "text": "4.3 ACF-ийн тодорхойлолт\nАвтокорреляцын функц нь\n\\[\n\\rho(k)\n=\n\\frac{\\gamma(k)}\n{\\gamma(0)}.\n\\]\nУчир нь\n\\[\n\\gamma(0)=Var(Y_t),\n\\]\nACF нь ковариацыг стандартчилдаг.\nИймд\n\\[\n-1 \\le \\rho(k) \\le 1.\n\\]\n\n4.3.1 Чухал утгууд\nТэг хоцролт дээр\n\\[\n\\rho(0)=1.\n\\]\n1-д ойрхон утга нь хүчтэй эерэг хамаарлыг илтгэнэ.\n-1-д ойрхон утга нь хүчтэй сөрөг хамаарлыг илтгэнэ.\n0-д ойрхон утга нь бага шугаман хамаарлыг илтгэнэ.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#sample-autocorrelation-function",
-    "href": "03-acf.html#sample-autocorrelation-function",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.4 Sample Autocorrelation Function",
-    "text": "4.4 Sample Autocorrelation Function\nIn practice the theoretical autocorrelation is unknown.\nThe sample autocorrelation at lag (k) is\n\\[\nr_k\n=\n\\frac{\n\\sum_{t=k+1}^{n}\n(Y_t-\\bar Y)\n(Y_{t-k}-\\bar Y)\n}\n{\n\\sum_{t=1}^{n}\n(Y_t-\\bar Y)^2\n}.\n\\]\nThe collection of sample autocorrelations is shown by the correlogram.",
+    "objectID": "03-acf.html#түүврийн-автокорреляцын-функц",
+    "href": "03-acf.html#түүврийн-автокорреляцын-функц",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.4 Түүврийн автокорреляцын функц",
+    "text": "4.4 Түүврийн автокорреляцын функц\nПрактикт онолын автокорреляц нь тодорхойгүй байдаг.\n(k) хоцролт дээрх түүврийн автокорреляц нь\n\\[\nr_k\n=\n\\frac{\n\\sum_{t=k+1}^{n}\n(Y_t-\\bar Y)\n(Y_{t-k}-\\bar Y)\n}\n{\n\\sum_{t=1}^{n}\n(Y_t-\\bar Y)^2\n}.\n\\]\nТүүврийн автокорреляцуудын цуглуулгыг коррелограмм гэж үзүүлдэг.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#white-noise",
-    "href": "03-acf.html#white-noise",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.5 White Noise",
-    "text": "4.5 White Noise\nConsider a white noise process\n\\[\nY_t \\sim WN(0,\\sigma^2).\n\\]\nIts autocorrelation function is\n\\[\n\\rho(0)=1,\n\\]\nand\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0.\n\\]\n\n4.5.1 Simulation\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\nplot.ts(\n  wn,\n  main = \"White Noise\",\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n4.5.2 ACF Plot\n\nacf(\n  wn,\n  main = \"ACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nThe sample autocorrelations fluctuate randomly around zero.",
+    "objectID": "03-acf.html#цагаан-чимээ",
+    "href": "03-acf.html#цагаан-чимээ",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.5 Цагаан чимээ",
+    "text": "4.5 Цагаан чимээ\nЦагаан чимээний процессыг авч үзье:\n\\[\nY_t \\sim WN(0,\\sigma^2).\n\\]\nТүүний автокорреляцын функц нь\n\\[\n\\rho(0)=1,\n\\]\nба\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0.\n\\]\n\n4.5.1 Симуляц\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\nplot.ts(\n  wn,\n  main = \"Цагаан чимээ\",\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n4.5.2 ACF график\n\nacf(\n  wn,\n  main = \"Цагаан чимээний ACF\"\n)\n\n\n\n\n\n\n\n\nТүүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#ar1-process",
-    "href": "03-acf.html#ar1-process",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.6 AR(1) Process",
-    "text": "4.6 AR(1) Process\nConsider\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nwhere\n\\[\n|\\phi|&lt;1.\n\\]\nFor an AR(1) process,\n\\[\n\\rho(k)=\\phi^k.\n\\]\nThus the ACF decays geometrically.\n\n4.6.1 Example\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\nacf(\n  ar1,\n  main=\"ACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nThe autocorrelations decrease gradually as the lag increases.",
+    "objectID": "03-acf.html#ar1-процесс",
+    "href": "03-acf.html#ar1-процесс",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.6 AR(1) процесс",
+    "text": "4.6 AR(1) процесс\nДараахьыг авч үзье:\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nэнд\n\\[\n|\\phi|&lt;1.\n\\]\nAR(1) процессын хувьд\n\\[\n\\rho(k)=\\phi^k.\n\\]\nИймд ACF нь геометрээр буурдаг.\n\n4.6.1 Жишээ\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\nacf(\n  ar1,\n  main=\"AR(1)-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nХоцролт нэмэгдэх тусам автокорреляцууд аажмаар буурдаг.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#ma1-process",
-    "href": "03-acf.html#ma1-process",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.7 MA(1) Process",
-    "text": "4.7 MA(1) Process\nConsider\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}.\n\\]\nThe autocorrelation function is\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n{1+\\theta^2}\n\\]\nand\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\nTherefore the ACF cuts off after lag 1.\n\n4.7.1 Example\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nacf(\n  ma1,\n  main=\"ACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nOnly the first lag tends to be significant.",
+    "objectID": "03-acf.html#ma1-процесс",
+    "href": "03-acf.html#ma1-процесс",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.7 MA(1) процесс",
+    "text": "4.7 MA(1) процесс\nДараахьыг авч үзье:\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}.\n\\]\nАвтокорреляцын функц нь\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n{1+\\theta^2}\n\\]\nба\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\nИймд ACF нь 1 хоцролтын дараа тасардаг.\n\n4.7.1 Жишээ\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nacf(\n  ma1,\n  main=\"MA(1)-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nЗөвхөн эхний хоцролт нь ихэвчлэн ач холбогдолтой байдаг.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#interpretation-of-the-acf",
-    "href": "03-acf.html#interpretation-of-the-acf",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.8 Interpretation of the ACF",
-    "text": "4.8 Interpretation of the ACF\n\n4.8.1 White Noise\n\nAll autocorrelations are approximately zero.\nNo systematic dependence.\n\n\n\n4.8.2 AR Process\n\nSlow decay.\nCorrelations persist across lags.\n\n\n\n4.8.3 MA Process\n\nSharp cutoff.\nDependence exists only for a limited number of lags.",
+    "objectID": "03-acf.html#acf-ийн-тайлбар",
+    "href": "03-acf.html#acf-ийн-тайлбар",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.8 ACF-ийн тайлбар",
+    "text": "4.8 ACF-ийн тайлбар\n\n4.8.1 Цагаан чимээ\n\nБүх автокорреляцууд ойролцоогоор тэг.\nСистемтэй хамаарал байхгүй.\n\n\n\n4.8.2 AR процесс\n\nУдаан бууралт.\nХамаарал хоцролтуудын дагуу үргэлжилдэг.\n\n\n\n4.8.3 MA процесс\n\nОгцом тасралт.\nХамаарал зөвхөн хязгаарлагдмал тооны хоцролтуудад оршино.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#statistical-significance",
-    "href": "03-acf.html#statistical-significance",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.9 Statistical Significance",
-    "text": "4.9 Statistical Significance\nFor a white noise process,\n\\[\nSE(r_k)\n\\approx\n\\frac{1}{\\sqrt n}.\n\\]\nApproximate 95% bounds are\n\\[\n\\pm \\frac{1.96}{\\sqrt n}.\n\\]\nFor example, if\n\\[\nn=200,\n\\]\nthen\n\\[\n\\pm\\frac{1.96}{\\sqrt{200}}\n\\approx\n\\pm0.139.\n\\]\nBars outside these bounds may indicate significant autocorrelation.",
+    "objectID": "03-acf.html#статистик-ач-холбогдол",
+    "href": "03-acf.html#статистик-ач-холбогдол",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.9 Статистик ач холбогдол",
+    "text": "4.9 Статистик ач холбогдол\nЦагаан чимээний процессын хувьд\n\\[\nSE(r_k)\n\\approx\n\\frac{1}{\\sqrt n}.\n\\]\nОйролцоогоор 95% хязгаарууд нь\n\\[\n\\pm \\frac{1.96}{\\sqrt n}.\n\\]\nЖишээлбэл, хэрэв\n\\[\nn=200,\n\\]\nбол\n\\[\n\\pm\\frac{1.96}{\\sqrt{200}}\n\\approx\n\\pm0.139.\n\\]\nЭдгээр хязгаараас гадуур байгаа баганууд нь ач холбогдолтой автокорреляцыг илтгэж болно.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#example-with-real-data",
-    "href": "03-acf.html#example-with-real-data",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.10 Example with Real Data",
-    "text": "4.10 Example with Real Data\n\ndata(AirPassengers)\n\nacf(\n  AirPassengers,\n  main=\"ACF of AirPassengers\"\n)\n\n\n\n\n\n\n\n\nObserve the strong persistence and seasonality.",
+    "objectID": "03-acf.html#бодит-өгөгдөлтэй-жишээ",
+    "href": "03-acf.html#бодит-өгөгдөлтэй-жишээ",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.10 Бодит өгөгдөлтэй жишээ",
+    "text": "4.10 Бодит өгөгдөлтэй жишээ\n\ndata(AirPassengers)\n\nacf(\n  AirPassengers,\n  main=\"AirPassengers-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nХүчтэй үргэлжлэл ба улирлын байдлыг ажиглаарай.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
-    "objectID": "03-acf.html#exercises",
-    "href": "03-acf.html#exercises",
-    "title": "4  The Autocorrelation Function (ACF)",
-    "section": "4.11 Exercises",
-    "text": "4.11 Exercises\n\nGenerate a white noise series of length 200 and plot its ACF.\nSimulate an AR(1) process with ().\nVerify that the theoretical ACF equals (^k).\nSimulate an MA(1) process with ().\nVerify that the ACF cuts off after lag 1.\nCompare the ACFs of white noise, AR(1), and MA(1).\nExplain the difference between gradual decay and cutoff behavior.",
+    "objectID": "03-acf.html#дасгал",
+    "href": "03-acf.html#дасгал",
+    "title": "4  Автокорреляцын функц (ACF)",
+    "section": "4.11 Дасгал",
+    "text": "4.11 Дасгал\n\n200 урттай цагаан чимээний цуваа үүсгэж, ACF-ийг нь зур.\n\\(\\phi=0.7\\) бүхий AR(1) процессыг симуляцла.\nОнолын ACF нь \\(\\phi^k\\)-тэй тэнцүү эсэхийг шалга.\n\\(\\theta=0.5\\) бүхий MA(1) процессыг симуляцла.\nACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.\nЦагаан чимээ, AR(1), MA(1)-ийн ACF-уудыг харьцуул.\nАажмаар бууралт ба тасралтын зан төлөвийн ялгааг тайлбарла.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Автокорреляцын функц (ACF)</span>"
     ]
   },
   {
@@ -317,696 +317,6 @@
     "text": "5.1 Оршил\nАвтокорреляцын функц (ACF) нь\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын корреляцийг хэмждэг.\nГэхдээ (k) хоцролт дээрх автокорреляц нь завсрын хоцролтуудаар дамжин шууд бус байдлаар нөлөөлөгдөж болно.\nХэсэгчилсэн автокорреляцын функц (PACF) нь завсрын ажиглалтуудын\n\\[\nY_{t-1},Y_{t-2},\\ldots,Y_{t-k+1}\n\\]\nшугаман нөлөөг арилгасны дараа\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын шууд хамаарлыг хэмждэг.\nPACF нь авторегрессив загваруудыг тодорхойлох хамгийн ашигтай хэрэгслүүдийн нэг юм.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#motivation",
-    "href": "04-pacf.html#motivation",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.2 Motivation",
-    "text": "5.2 Motivation\nConsider an AR(1) process\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t.\n\\]\nSince\n\\[\nY_t\n\\]\ndepends directly only on\n\\[\nY_{t-1},\n\\]\nany apparent correlation between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-2}\n\\]\narises through\n\\[\nY_{t-1}.\n\\]\nThe PACF removes this indirect effect.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#definition",
-    "href": "04-pacf.html#definition",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.3 Definition",
-    "text": "5.3 Definition\nThe partial autocorrelation at lag (k), denoted by\n\\[\n\\alpha(k),\n\\]\nis the correlation between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-k}\n\\]\nafter controlling for\n\\[\nY_{t-1},Y_{t-2},\\ldots,Y_{t-k+1}.\n\\]\nThus,\n\\[\n\\alpha(k)\n\\]\nmeasures the direct contribution of lag (k).",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#computing-the-pacf",
-    "href": "04-pacf.html#computing-the-pacf",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.4 Computing the PACF",
-    "text": "5.4 Computing the PACF\nIn practice the PACF is estimated using recursive regression methods or the Yule-Walker equations.\nFortunately, R computes it automatically.\n\nset.seed(123)\n\ny &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(y)",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#pacf-of-white-noise",
-    "href": "04-pacf.html#pacf-of-white-noise",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.5 PACF of White Noise",
-    "text": "5.5 PACF of White Noise\nFor white noise,\n\\[\nY_t \\sim WN(0,\\sigma^2),\n\\]\nthere is no dependence between observations.\nTherefore\n\\[\n\\alpha(k)=0,\n\\qquad k\\ge1.\n\\]\n\n5.5.1 Simulation\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\npacf(\n  wn,\n  main=\"PACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nAll bars should fluctuate randomly around zero.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#pacf-of-an-ar1-process",
-    "href": "04-pacf.html#pacf-of-an-ar1-process",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.6 PACF of an AR(1) Process",
-    "text": "5.6 PACF of an AR(1) Process\nConsider\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nwith\n\\[\n|\\phi|&lt;1.\n\\]\nThe theoretical PACF is\n\\[\n\\alpha(1)=\\phi,\n\\]\nand\n\\[\n\\alpha(k)=0,\n\\qquad k&gt;1.\n\\]\nTherefore, the PACF cuts off after lag 1.\n\n5.6.1 Example\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(\n  ar1,\n  main=\"PACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nA significant spike appears at lag 1, while later lags are close to zero.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#pacf-of-an-ar2-process",
-    "href": "04-pacf.html#pacf-of-an-ar2-process",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.7 PACF of an AR(2) Process",
-    "text": "5.7 PACF of an AR(2) Process\nConsider\n\\[\nY_t\n=\n0.7Y_{t-1}\n-\n0.3Y_{t-2}\n+\n\\varepsilon_t.\n\\]\n\nset.seed(123)\n\nar2 &lt;- arima.sim(\n  model=list(ar=c(.7,-.3)),\n  n=500\n)\n\npacf(\n  ar2,\n  main=\"PACF of AR(2)\"\n)\n\n\n\n\n\n\n\n\nThe PACF exhibits significant values at lags 1 and 2 and then cuts off.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#pacf-of-an-ma1-process",
-    "href": "04-pacf.html#pacf-of-an-ma1-process",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.8 PACF of an MA(1) Process",
-    "text": "5.8 PACF of an MA(1) Process\nConsider\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}.\n\\]\nUnlike an AR process, the PACF does not cut off.\nInstead, it decreases gradually toward zero.\n\n5.8.1 Example\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\npacf(\n  ma1,\n  main=\"PACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nThe PACF tails off rather than terminating abruptly.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#comparison-of-acf-and-pacf",
-    "href": "04-pacf.html#comparison-of-acf-and-pacf",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.9 Comparison of ACF and PACF",
-    "text": "5.9 Comparison of ACF and PACF\n\n5.9.1 AR Models\nFor an AR((p)) process:\n\nACF tails off.\nPACF cuts off after lag (p).\n\n\n\n5.9.2 MA Models\nFor an MA((q)) process:\n\nACF cuts off after lag (q).\nPACF tails off.\n\n\n\n5.9.3 ARMA Models\nFor an ARMA((p,q)) process:\n\nACF tails off.\nPACF tails off.\n\nNeither function exhibits a sharp cutoff.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#model-identification",
-    "href": "04-pacf.html#model-identification",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.10 Model Identification",
-    "text": "5.10 Model Identification\nThe Box-Jenkins approach uses ACF and PACF together.\n\n\n\nModel\nACF\nPACF\n\n\n\n\nAR(1)\nTails off\nCuts off after lag 1\n\n\nAR(2)\nTails off\nCuts off after lag 2\n\n\nMA(1)\nCuts off after lag 1\nTails off\n\n\nMA(2)\nCuts off after lag 2\nTails off\n\n\nARMA(1,1)\nTails off\nTails off\n\n\n\nThese patterns are fundamental in practical model identification.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#example-comparing-ar-and-ma-models",
-    "href": "04-pacf.html#example-comparing-ar-and-ma-models",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.11 Example: Comparing AR and MA Models",
-    "text": "5.11 Example: Comparing AR and MA Models\n\npar(mfrow=c(2,2))\n\nar1 &lt;- arima.sim(model=list(ar=.8), n=300)\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(model=list(ma=.8), n=300)\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\n\n\n\n\n\n\n\nObserve:\n\nAR(1): ACF tails off, PACF cuts off.\nMA(1): ACF cuts off, PACF tails off.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#statistical-significance",
-    "href": "04-pacf.html#statistical-significance",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.12 Statistical Significance",
-    "text": "5.12 Statistical Significance\nFor large samples,\n\\[\nSE(r_k)\n\\approx\n\\frac{1}{\\sqrt{n}}.\n\\]\nThe PACF plot displays approximate 95% confidence limits\n\\[\n\\pm\\frac{1.96}{\\sqrt n}.\n\\]\nValues outside these limits may indicate significant dependence.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#summary",
-    "href": "04-pacf.html#summary",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.13 Summary",
-    "text": "5.13 Summary\n\nThe PACF measures direct dependence at a given lag.\nPACF removes the effect of intermediate observations.\nAR((p)) processes have PACFs that cut off after lag (p).\nMA((q)) processes have PACFs that tail off.\nACF and PACF together are the primary tools for model identification.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "04-pacf.html#exercises",
-    "href": "04-pacf.html#exercises",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
-    "section": "5.14 Exercises",
-    "text": "5.14 Exercises\n\nSimulate an AR(1) process with ().\nPlot its ACF and PACF.\nVerify that the PACF cuts off after lag 1.\nSimulate an AR(2) process.\nIdentify the cutoff lag from the PACF.\nSimulate an MA(1) process.\nCompare its ACF and PACF.\nExplain why PACF is useful for selecting the order of an AR model.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html",
-    "href": "05-ar1.html",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "",
-    "text": "6.1 Introduction\nThe AR(1) model is the simplest and most important autoregressive model.\nIn an AR(1) process, the current observation depends on the immediately preceding observation and a random error.\nThe model serves as a foundation for understanding higher-order autoregressive models and many forecasting methods.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#definition",
-    "href": "05-ar1.html#definition",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.2 Definition",
-    "text": "6.2 Definition\nAn AR(1) process is defined by\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nwhere\n\n\\(\\phi\\) is the autoregressive parameter,\n\\(\\varepsilon_t\\sim WN(0,\\sigma^2)\\),\n\\(\\{\\varepsilon_t\\}\\) is a white noise process.\n\nThe parameter \\(\\phi\\) determines the strength of dependence between consecutive observations.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#stationarity-condition",
-    "href": "05-ar1.html#stationarity-condition",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.3 Stationarity Condition",
-    "text": "6.3 Stationarity Condition\nThe AR(1) process is stationary if\n\\[\n|\\phi|&lt;1.\n\\]\nIf\n\\[\n|\\phi|\\ge 1,\n\\]\nthe process is nonstationary.\n\n6.3.1 Examples\n\n\n\nValue of \\(\\phi\\)\nInterpretation\n\n\n\n\n\\(0\\)\nWhite noise\n\n\n\\(0.3\\)\nWeak dependence\n\n\n\\(0.8\\)\nStrong persistence\n\n\n\\(-0.8\\)\nAlternating behavior\n\n\n\\(1\\)\nRandom walk (nonstationary)",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#mean-of-an-ar1-process",
-    "href": "05-ar1.html#mean-of-an-ar1-process",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.4 Mean of an AR(1) Process",
-    "text": "6.4 Mean of an AR(1) Process\nTaking expectations,\n\\[\nE(Y_t)\n=\n\\phi E(Y_{t-1}).\n\\]\nUnder stationarity,\n\\[\nE(Y_t)=\\mu.\n\\]\nTherefore,\n\\[\n\\mu=\\phi\\mu.\n\\]\nHence,\n\\[\n\\mu=0.\n\\]",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#variance-of-an-ar1-process",
-    "href": "05-ar1.html#variance-of-an-ar1-process",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.5 Variance of an AR(1) Process",
-    "text": "6.5 Variance of an AR(1) Process\nSince\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nthe stationary variance is\n\\[\nVar(Y_t)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2}.\n\\]\nAs \\(|\\phi|\\) approaches 1, the variance increases.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#autocovariance-function",
-    "href": "05-ar1.html#autocovariance-function",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.6 Autocovariance Function",
-    "text": "6.6 Autocovariance Function\nFor a stationary AR(1) process,\n\\[\n\\gamma(k)\n=\n\\phi^{k}\\gamma(0).\n\\]\nSince\n\\[\n\\gamma(0)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2},\n\\]\nall autocovariances are determined by \\(\\phi\\).",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#autocorrelation-function",
-    "href": "05-ar1.html#autocorrelation-function",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.7 Autocorrelation Function",
-    "text": "6.7 Autocorrelation Function\nThe ACF of an AR(1) process is\n\\[\n\\rho(k)=\\phi^k.\n\\]\nThis is one of the most important results in time series analysis.\n\n6.7.1 Consequences\nIf\n\\[\n\\phi=0.8,\n\\]\nthen\n\\[\n\\rho(1)=0.8,\n\\]\n\\[\n\\rho(2)=0.64,\n\\]\n\\[\n\\rho(3)=0.512.\n\\]\nThus the ACF decreases gradually toward zero.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#partial-autocorrelation-function",
-    "href": "05-ar1.html#partial-autocorrelation-function",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.8 Partial Autocorrelation Function",
-    "text": "6.8 Partial Autocorrelation Function\nFor an AR(1) process,\n\\[\nPACF(1)=\\phi,\n\\]\nand\n\\[\nPACF(k)=0,\n\\qquad k&gt;1.\n\\]\nTherefore the PACF cuts off after lag 1.\nThis property is widely used to identify AR(1) models.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#simulation",
-    "href": "05-ar1.html#simulation",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.9 Simulation",
-    "text": "6.9 Simulation\n\n6.9.1 Positive Dependence\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1,\n  main = expression(AR(1)~with~phi==0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nObserve the persistence of consecutive observations.\n\n\n6.9.2 Negative Dependence\n\nset.seed(123)\n\nar1neg &lt;- arima.sim(\n  model = list(ar = -0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1neg,\n  main = expression(AR(1)~with~phi==-0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nSuccessive observations tend to alternate in sign.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#acf-of-an-ar1-process",
-    "href": "05-ar1.html#acf-of-an-ar1-process",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.10 ACF of an AR(1) Process",
-    "text": "6.10 ACF of an AR(1) Process\n\nacf(\n  ar1,\n  main=\"ACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nThe ACF decays geometrically.\nThis tailing-off behavior is characteristic of autoregressive processes.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#pacf-of-an-ar1-process",
-    "href": "05-ar1.html#pacf-of-an-ar1-process",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.11 PACF of an AR(1) Process",
-    "text": "6.11 PACF of an AR(1) Process\n\npacf(\n  ar1,\n  main=\"PACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nOnly the first lag should be significant.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#lag-plot",
-    "href": "05-ar1.html#lag-plot",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.12 Lag Plot",
-    "text": "6.12 Lag Plot\nA lag plot reveals the dependence between \\(Y_t\\) and \\(Y_{t-1}\\).\n\nplot(\n  x = ar1[-length(ar1)],\n  y = ar1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nA positive linear pattern should be visible.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#comparison-of-different-values-of-phi",
-    "href": "05-ar1.html#comparison-of-different-values-of-phi",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.13 Comparison of Different Values of \\(\\phi\\)",
-    "text": "6.13 Comparison of Different Values of \\(\\phi\\)\n\npar(mfrow=c(2,2))\n\nplot.ts(\n  arima.sim(model=list(ar=.2), n=200),\n  main=expression(phi==0.2)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.5), n=200),\n  main=expression(phi==0.5)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.8), n=200),\n  main=expression(phi==0.8)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=-0.8), n=200),\n  main=expression(phi==-0.8)\n)\n\n\n\n\n\n\n\n\nObserve how the degree of dependence changes as \\(\\phi\\) changes.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#parameter-estimation",
-    "href": "05-ar1.html#parameter-estimation",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.14 Parameter Estimation",
-    "text": "6.14 Parameter Estimation\nAn AR(1) model can be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  ar1,\n  order=c(1,0,0)\n)\n\nfit\n\n\nCall:\narima(x = ar1, order = c(1, 0, 0))\n\nCoefficients:\n         ar1  intercept\n      0.7235    -0.0239\ns.e.  0.0491     0.2363\n\nsigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46\n\n\nThe estimated value of \\(\\phi\\) should be close to the true value used in simulation.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#forecasting",
-    "href": "05-ar1.html#forecasting",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.15 Forecasting",
-    "text": "6.15 Forecasting\nFor an AR(1) model,\n\\[\n\\hat{Y}_{t+1}\n=\n\\phi Y_t.\n\\]\nMore generally,\n\\[\n\\hat{Y}_{t+h}\n=\n\\phi^h Y_t.\n\\]\nAs \\(h\\) increases,\n\\[\n\\phi^h \\rightarrow 0,\n\\]\nand forecasts approach the mean of the process.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#interpretation",
-    "href": "05-ar1.html#interpretation",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.16 Interpretation",
-    "text": "6.16 Interpretation\n\n6.16.1 Positive \\(\\phi\\)\nIf\n\\[\n\\phi&gt;0,\n\\]\nlarge values tend to follow large values and small values tend to follow small values.\n\n\n6.16.2 Negative \\(\\phi\\)\nIf\n\\[\n\\phi&lt;0,\n\\]\nsuccessive observations tend to move in opposite directions.\n\n\n6.16.3 Near Zero\nIf\n\\[\n\\phi\\approx 0,\n\\]\nthe process resembles white noise.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#summary",
-    "href": "05-ar1.html#summary",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.17 Summary",
-    "text": "6.17 Summary\nThe AR(1) process\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t\n\\]\nis the simplest autoregressive model.\nKey properties:\n\nStationary when \\(|\\phi|&lt;1\\).\nMean equals zero.\nVariance equals \\(\\frac{\\sigma^2}{1-\\phi^2}\\).\nACF: \\(\\rho(k)=\\phi^k\\).\nPACF cuts off after lag 1.\n\nThese characteristics make AR(1) a fundamental model in time series analysis.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "05-ar1.html#exercises",
-    "href": "05-ar1.html#exercises",
-    "title": "6  The Autoregressive Process of Order One: AR(1)",
-    "section": "6.18 Exercises",
-    "text": "6.18 Exercises\n\nSimulate an AR(1) process with \\(\\phi=0.5\\).\nPlot the series, ACF, and PACF.\nVerify that the ACF decays geometrically.\nVerify that the PACF cuts off after lag 1.\nCompare AR(1) processes with \\(\\phi=0.2\\), \\(0.5\\), and \\(0.9\\).\nSimulate an AR(1) process with \\(\\phi=-0.8\\).\nConstruct a lag plot and describe the pattern.\nEstimate an AR(1) model using arima() and compare the estimated parameter with the true value.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html",
-    "href": "06-ma1.html",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "",
-    "text": "7.1 Introduction\nThe MA(1) model is the simplest moving average process.\nUnlike an autoregressive model, an MA(1) process does not depend directly on past observations. Instead, it depends on the current and previous random shocks.\nThe MA(1) model is fundamental in time series analysis and serves as a building block for higher-order MA and ARMA models.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#definition",
-    "href": "06-ma1.html#definition",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.2 Definition",
-    "text": "7.2 Definition\nAn MA(1) process is defined by\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\nwhere\n\n({_t}) is a white noise process,\n(E(_t)=0),\n(Var(_t)=^2),\n() is the moving average parameter.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#mean",
-    "href": "06-ma1.html#mean",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.3 Mean",
-    "text": "7.3 Mean\nTaking expectations,\n\\[\nE(Y_t)\n=\nE(\\varepsilon_t)\n+\n\\theta E(\\varepsilon_{t-1}).\n\\]\nSince\n\\[\nE(\\varepsilon_t)=0,\n\\]\nit follows that\n\\[\nE(Y_t)=0.\n\\]",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#variance",
-    "href": "06-ma1.html#variance",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.4 Variance",
-    "text": "7.4 Variance\nSince the white noise terms are uncorrelated,\n\\[\nVar(Y_t)\n=\nVar(\\varepsilon_t+\\theta\\varepsilon_{t-1}),\n\\]\nwhich gives\n\\[\nVar(Y_t)\n=\n(1+\\theta^2)\\sigma^2.\n\\]",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#autocovariance-function",
-    "href": "06-ma1.html#autocovariance-function",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.5 Autocovariance Function",
-    "text": "7.5 Autocovariance Function\n\n7.5.1 Lag 0\n\\[\n\\gamma(0)\n=\n(1+\\theta^2)\\sigma^2.\n\\]\n\n\n7.5.2 Lag 1\n\\[\n\\gamma(1)\n=\n\\theta\\sigma^2.\n\\]\n\n\n7.5.3 Lag (k&gt;1)\n\\[\n\\gamma(k)=0.\n\\]\nTherefore,\n\\[\n\\gamma(k)=\n\\begin{cases}\n(1+\\theta^2)\\sigma^2, & k=0,\\\\\n\\theta\\sigma^2, & k=1,\\\\\n0, & k&gt;1.\n\\end{cases}\n\\]",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#autocorrelation-function",
-    "href": "06-ma1.html#autocorrelation-function",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.6 Autocorrelation Function",
-    "text": "7.6 Autocorrelation Function\nDividing by ((0)),\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n     {1+\\theta^2},\n\\]\nand\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\nThis is the most important property of an MA(1) process.\nThe ACF cuts off after lag 1.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#example",
-    "href": "06-ma1.html#example",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.7 Example",
-    "text": "7.7 Example\nIf\n\\[\n\\theta=0.5,\n\\]\nthen\n\\[\n\\rho(1)\n=\n\\frac{0.5}{1+0.25}\n=\n0.40.\n\\]\nIf\n\\[\n\\theta=0.2,\n\\]\nthen\n\\[\n\\rho(1)\n=\n\\frac{0.2}{1.04}\n\\approx 0.192.\n\\]\nThis value should appear in the sample ACF.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#invertibility",
-    "href": "06-ma1.html#invertibility",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.8 Invertibility",
-    "text": "7.8 Invertibility\nFor an MA(1) model,\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\ninvertibility requires\n\\[\n|\\theta|&lt;1.\n\\]\nInvertibility ensures a unique representation of the process.\nThis condition plays a role similar to the stationarity condition\n\\[\n|\\phi|&lt;1\n\\]\nfor AR models.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#simulation",
-    "href": "06-ma1.html#simulation",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.9 Simulation",
-    "text": "7.9 Simulation\n\n7.9.1 MA(1) with ()\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nplot.ts(\n  ma1,\n  main=expression(MA(1)~with~theta==0.5),\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n7.9.2 MA(1) with ()\n\nset.seed(123)\n\nma1neg &lt;- arima.sim(\n  model=list(ma=-.5),\n  n=200\n)\n\nplot.ts(\n  ma1neg,\n  main=expression(MA(1)~with~theta==-0.5),\n  ylab=expression(Y[t])\n)",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#acf-of-an-ma1-process",
-    "href": "06-ma1.html#acf-of-an-ma1-process",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.10 ACF of an MA(1) Process",
-    "text": "7.10 ACF of an MA(1) Process\n\nacf(\n  ma1,\n  main=\"ACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nObserve:\n\nSignificant spike at lag 1.\nNear-zero autocorrelations for lags greater than 1.\n\nThis cutoff behavior is the hallmark of an MA(1) process.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#pacf-of-an-ma1-process",
-    "href": "06-ma1.html#pacf-of-an-ma1-process",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.11 PACF of an MA(1) Process",
-    "text": "7.11 PACF of an MA(1) Process\n\npacf(\n  ma1,\n  main=\"PACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nUnlike the ACF, the PACF does not cut off.\nInstead, it decreases gradually toward zero.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#lag-1-scatter-plot",
-    "href": "06-ma1.html#lag-1-scatter-plot",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.12 Lag-1 Scatter Plot",
-    "text": "7.12 Lag-1 Scatter Plot\nThe relationship between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-1}\n\\]\nmay be examined using a lag plot.\n\nplot(\n  x = ma1[-length(ma1)],\n  y = ma1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nFor positive (), the plot tends to exhibit a weak positive linear pattern.\nFor negative (), the pattern slopes downward.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#lag-2-scatter-plot",
-    "href": "06-ma1.html#lag-2-scatter-plot",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.13 Lag-2 Scatter Plot",
-    "text": "7.13 Lag-2 Scatter Plot\nConsider\n\\[\n(Y_{t-2},Y_t).\n\\]\n\nplot(\n  x = ma1[-c(length(ma1)-1,length(ma1))],\n  y = ma1[-c(1,2)],\n  xlab = expression(Y[t-2]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nSince\n\\[\n\\rho(2)=0,\n\\]\nthe points should display little or no linear pattern.\nThe scatter plot generally resembles a random cloud.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#comparison-with-ar1",
-    "href": "06-ma1.html#comparison-with-ar1",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.14 Comparison with AR(1)",
-    "text": "7.14 Comparison with AR(1)\n\n\n\n\n\n\n\n\nProperty\nAR(1)\nMA(1)\n\n\n\n\nModel\n(Y_t=Y_{t-1}+_t)\n(Y_t=t+{t-1})\n\n\nStationarity\n(\n\n\n\nInvertibility\nNot required\n(\n\n\nACF\nTails off\nCuts off after lag 1\n\n\nPACF\nCuts off after lag 1\nTails off\n\n\n\nThese patterns are central to Box-Jenkins model identification.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#estimation",
-    "href": "06-ma1.html#estimation",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.15 Estimation",
-    "text": "7.15 Estimation\nAn MA(1) model can be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  ma1,\n  order=c(0,0,1)\n)\n\nfit\n\n\nCall:\narima(x = ma1, order = c(0, 0, 1))\n\nCoefficients:\n         ma1  intercept\n      0.5124     0.0041\ns.e.  0.0874     0.1018\n\nsigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83\n\n\nThe estimated value should be close to the true value used in simulation.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#example-1",
-    "href": "06-ma1.html#example-1",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.16 Example: ()",
-    "text": "7.16 Example: ()\n\nset.seed(123)\n\nma1.2 &lt;- arima.sim(\n  model=list(ma=.2),\n  n=500\n)\n\nacf(ma1.2)\n\n\n\n\n\n\n\n\nThe theoretical lag-1 autocorrelation is\n\\[\n\\rho(1)\n=\n\\frac{0.2}{1+0.2^2}\n=\n0.1923.\n\\]\nCompare this value with the sample ACF.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#forecasting",
-    "href": "06-ma1.html#forecasting",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.17 Forecasting",
-    "text": "7.17 Forecasting\nFor an MA(1) process,\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\nthe one-step-ahead forecast depends on the most recent estimated shock.\nFor horizons greater than one,\n\\[\n\\hat Y_{t+h}\n\\]\nrapidly converges to the mean of the process.\nSince the mean is zero,\n\\[\n\\hat Y_{t+h}\n\\rightarrow 0.\n\\]",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#summary",
-    "href": "06-ma1.html#summary",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.18 Summary",
-    "text": "7.18 Summary\nThe MA(1) process\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}\n\\]\nhas the following properties:\n\nMean:\n\n\\[\nE(Y_t)=0.\n\\]\n\nVariance:\n\n\\[\nVar(Y_t)\n=\n(1+\\theta^2)\\sigma^2.\n\\]\n\nACF:\n\n\\[\n\\rho(1)\n=\n\\frac{\\theta}{1+\\theta^2},\n\\]\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\n\nPACF tails off gradually.\nInvertibility requires\n\n\\[\n|\\theta|&lt;1.\n\\]\nThe ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "06-ma1.html#exercises",
-    "href": "06-ma1.html#exercises",
-    "title": "7  The Moving Average Process of Order One: MA(1)",
-    "section": "7.19 Exercises",
-    "text": "7.19 Exercises\n\nSimulate an MA(1) process with ().\nCompute and plot the sample ACF.\nCompare the sample lag-1 autocorrelation with the theoretical value.\nSimulate an MA(1) process with ().\nCompare its ACF with that of ().\nCreate lag-1 and lag-2 scatter plots.\nExplain why the lag-2 scatter plot shows little pattern.\nEstimate an MA(1) model using arima() and compare the estimated parameter with the true value.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html",
-    "href": "07-arma.html",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "",
-    "text": "8.1 Introduction\nThe ARMA model combines the ideas of autoregressive (AR) and moving average (MA) processes.\nIt is one of the most important classes of stationary time series models and forms the foundation of the Box-Jenkins methodology.\nAn ARMA model can capture both:",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#introduction",
-    "href": "07-arma.html#introduction",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "",
-    "text": "persistence through past observations,\nshort-term dependence through past shocks.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#definition",
-    "href": "07-arma.html#definition",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.2 Definition",
-    "text": "8.2 Definition\nAn ARMA((p,q)) process is defined by\n\\[\nY_t\n=\n\\phi_1Y_{t-1}\n+\\phi_2Y_{t-2}\n+\\cdots\n+\\phi_pY_{t-p}\n+\n\\varepsilon_t\n+\n\\theta_1\\varepsilon_{t-1}\n+\\theta_2\\varepsilon_{t-2}\n+\\cdots\n+\\theta_q\\varepsilon_{t-q},\n\\]\nwhere\n\\[\n\\{\\varepsilon_t\\}\n\\sim\nWN(0,\\sigma^2).\n\\]\nHere:\n\n(p) = autoregressive order,\n(q) = moving average order.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#special-cases",
-    "href": "07-arma.html#special-cases",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.3 Special Cases",
-    "text": "8.3 Special Cases\n\n8.3.1 AR Model\nIf\n\\[\nq=0,\n\\]\nthen\n\\[\nARMA(p,0)=AR(p).\n\\]\n\n\n8.3.2 MA Model\nIf\n\\[\np=0,\n\\]\nthen\n\\[\nARMA(0,q)=MA(q).\n\\]\nThus AR and MA processes are special cases of the ARMA model.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#the-arma11-model",
-    "href": "07-arma.html#the-arma11-model",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.4 The ARMA(1,1) Model",
-    "text": "8.4 The ARMA(1,1) Model\nThe simplest ARMA model is\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nThis model combines:\n\nthe dependence structure of AR(1),\nthe shock structure of MA(1).",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#stationarity",
-    "href": "07-arma.html#stationarity",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.5 Stationarity",
-    "text": "8.5 Stationarity\nFor ARMA processes, stationarity depends on the AR part.\nFor ARMA(1,1),\n\\[\n|\\phi|&lt;1\n\\]\nis required for stationarity.\n\n8.5.1 Examples\n\n\n\n()\nStationary?\n\n\n\n\n0.3\nYes\n\n\n0.8\nYes\n\n\n-0.5\nYes\n\n\n1.0\nNo\n\n\n1.1\nNo",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#invertibility",
-    "href": "07-arma.html#invertibility",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.6 Invertibility",
-    "text": "8.6 Invertibility\nInvertibility depends on the MA part.\nFor ARMA(1,1),\n\\[\n|\\theta|&lt;1\n\\]\nis required for invertibility.\nThis ensures a unique representation of the process.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#mean",
-    "href": "07-arma.html#mean",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.7 Mean",
-    "text": "8.7 Mean\nFor a stationary ARMA(1,1),\n\\[\nE(Y_t)=0.\n\\]\nMore generally, if a constant term is included, the mean is constant over time.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#simulation-of-arma11",
-    "href": "07-arma.html#simulation-of-arma11",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.8 Simulation of ARMA(1,1)",
-    "text": "8.8 Simulation of ARMA(1,1)\nConsider\n\\[\nY_t\n=\n0.7Y_{t-1}\n+\n\\varepsilon_t\n+\n0.4\\varepsilon_{t-1}.\n\\]\n\nset.seed(123)\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nplot.ts(\n  arma11,\n  main=\"ARMA(1,1) Process\",\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\nObserve the persistence created by the AR component and the short-term effects created by the MA component.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#acf-of-an-arma-process",
-    "href": "07-arma.html#acf-of-an-arma-process",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.9 ACF of an ARMA Process",
-    "text": "8.9 ACF of an ARMA Process\n\nacf(\n  arma11,\n  main=\"ACF of ARMA(1,1)\"\n)\n\n\n\n\n\n\n\n\nUnlike MA models, the ACF does not cut off.\nUnlike pure AR models, the pattern is often more complex.\nThe ACF generally tails off toward zero.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#pacf-of-an-arma-process",
-    "href": "07-arma.html#pacf-of-an-arma-process",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.10 PACF of an ARMA Process",
-    "text": "8.10 PACF of an ARMA Process\n\npacf(\n  arma11,\n  main=\"PACF of ARMA(1,1)\"\n)\n\n\n\n\n\n\n\n\nThe PACF also tails off.\nThis is one of the identifying characteristics of ARMA models.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#model-identification",
-    "href": "07-arma.html#model-identification",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.11 Model Identification",
-    "text": "8.11 Model Identification\n\n8.11.1 AR(p)\n\nACF tails off.\nPACF cuts off.\n\n\n\n8.11.2 MA(q)\n\nACF cuts off.\nPACF tails off.\n\n\n\n8.11.3 ARMA(p,q)\n\nACF tails off.\nPACF tails off.\n\nTherefore ARMA models are usually identified by examining both functions simultaneously.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#comparing-ar1-ma1-and-arma11",
-    "href": "07-arma.html#comparing-ar1-ma1-and-arma11",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.12 Comparing AR(1), MA(1), and ARMA(1,1)",
-    "text": "8.12 Comparing AR(1), MA(1), and ARMA(1,1)\n\npar(mfrow=c(3,2))\n\nar1 &lt;- arima.sim(\n  model=list(ar=.7),\n  n=300\n)\n\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(\n  model=list(ma=.7),\n  n=300\n)\n\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nacf(arma11, main=\"ARMA(1,1): ACF\")\npacf(arma11, main=\"ARMA(1,1): PACF\")\n\n\n\n\n\n\n\n\nCompare the characteristic patterns.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#lag-plot",
-    "href": "07-arma.html#lag-plot",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.13 Lag Plot",
-    "text": "8.13 Lag Plot\nA lag plot may be used to visualize dependence.\n\nplot(\n  x = arma11[-length(arma11)],\n  y = arma11[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nThe relationship is generally stronger than white noise and reflects both AR and MA effects.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#model-estimation",
-    "href": "07-arma.html#model-estimation",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.14 Model Estimation",
-    "text": "8.14 Model Estimation\nAn ARMA(1,1) model may be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nfit\n\n\nCall:\narima(x = arma11, order = c(1, 0, 1))\n\nCoefficients:\n         ar1     ma1  intercept\n      0.6933  0.3851    -0.0051\ns.e.  0.0509  0.0733     0.2623\n\nsigma^2 estimated as 1.029:  log likelihood = -430.61,  aic = 869.22\n\n\nThe estimated coefficients should be close to the values used in simulation.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#model-selection-using-aic",
-    "href": "07-arma.html#model-selection-using-aic",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.15 Model Selection Using AIC",
-    "text": "8.15 Model Selection Using AIC\nDifferent ARMA models can be compared using the Akaike Information Criterion (AIC).\n\nfit1 &lt;- arima(arma11, order=c(1,0,0))\nfit2 &lt;- arima(arma11, order=c(0,0,1))\nfit3 &lt;- arima(arma11, order=c(1,0,1))\n\nAIC(fit1, fit2, fit3)\n\n     df      AIC\nfit1  3 890.8641\nfit2  3 976.2085\nfit3  4 869.2151\n\n\nThe model with the smallest AIC is usually preferred.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#forecasting",
-    "href": "07-arma.html#forecasting",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.16 Forecasting",
-    "text": "8.16 Forecasting\nForecasts are based on:\n\npast observations,\nestimated model parameters.\n\n\nlibrary(forecast)\n\nfit &lt;- Arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nforecast(fit, h=10)\n\n    Point Forecast     Lo 80     Hi 80     Lo 95    Hi 95\n301    -0.60561759 -1.912139 0.7009042 -2.603770 1.392535\n302    -0.42142755 -2.342873 1.5000181 -3.360025 2.517170\n303    -0.29373540 -2.449182 1.8617111 -3.590206 3.002735\n304    -0.20521116 -2.464515 2.0540925 -3.660518 3.250096\n305    -0.14384057 -2.451397 2.1637157 -3.672943 3.385262\n306    -0.10129461 -2.431686 2.2290971 -3.665321 3.462732\n307    -0.07179908 -2.413087 2.2694884 -3.652489 3.508891\n308    -0.05135091 -2.397857 2.2951552 -3.640022 3.537321\n309    -0.03717495 -2.386185 2.3118352 -3.629676 3.555326\n310    -0.02734728 -2.377560 2.3228654 -3.621687 3.566993\n\n\nThe forecast gradually approaches the long-run mean of the process.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#summary",
-    "href": "07-arma.html#summary",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.17 Summary",
-    "text": "8.17 Summary\nAn ARMA((p,q)) model combines:\n\nautoregressive dependence,\nmoving average dependence.\n\nFor ARMA(1,1),\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nImportant properties:\n\nStationarity depends on the AR component.\nInvertibility depends on the MA component.\nACF tails off.\nPACF tails off.\nWidely used for stationary time series.\n\nARMA models provide a flexible framework for describing many real-world time series.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
-    ]
-  },
-  {
-    "objectID": "07-arma.html#exercises",
-    "href": "07-arma.html#exercises",
-    "title": "8  The Autoregressive Moving Average Process: ARMA",
-    "section": "8.18 Exercises",
-    "text": "8.18 Exercises\n\nSimulate an ARMA(1,1) process with () and ().\nPlot the series.\nCompute and interpret the ACF.\nCompute and interpret the PACF.\nEstimate an ARMA(1,1) model using arima().\nCompare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.\nUse AIC to compare competing models.\nProduce 10-step-ahead forecasts and interpret the results.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
     ]
   },
   {
@@ -1137,6 +447,1536 @@
     "text": "5.14 Дасгал\n\n() бүхий AR(1) процессыг симуляцла.\nТүүний ACF ба PACF-ийг зур.\nPACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.\nAR(2) процессыг симуляцла.\nPACF-ээс тасралтын хоцролтыг тодорхойл.\nMA(1) процессыг симуляцла.\nТүүний ACF ба PACF-ийг харьцуул.\nPACF нь AR загварын эрэмбийг сонгоход яагаад ашигтай байдаг вэ гэдгийг тайлбарла.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html",
+    "href": "05-ar1.html",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "",
+    "text": "6.1 Оршил\nAR(1) загвар нь хамгийн энгийн бөгөөд хамгийн чухал авторегрессив загвар юм.\nAR(1) процесс дээр одоогийн ажиглалт нь шууд өмнөх ажиглалт болон санамсаргүй алдаанаас хамаардаг.\nЭнэ загвар нь дээд эрэмбийн авторегрессив загварууд болон олон таамаглах аргуудыг ойлгох үндэс болдог.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#тодорхойлолт",
+    "href": "05-ar1.html#тодорхойлолт",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.2 Тодорхойлолт",
+    "text": "6.2 Тодорхойлолт\nAR(1) процессыг\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t\n\\]\nгэж тодорхойлдог бөгөөд энд\n\n\\(\\phi\\) нь авторегрессив параметр,\n\\(\\varepsilon_t\\sim WN(0,\\sigma^2)\\),\n\\(\\{\\varepsilon_t\\}\\) нь цагаан чимээний процесс.\n\n\\(\\phi\\) параметр нь дараалсан ажиглалтуудын хоорондын хамаарлын хүчийг тодорхойлдог.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#стационар-байдлын-нөхцөл",
+    "href": "05-ar1.html#стационар-байдлын-нөхцөл",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.3 Стационар байдлын нөхцөл",
+    "text": "6.3 Стационар байдлын нөхцөл\nAR(1) процесс нь\n\\[\n|\\phi|&lt;1\n\\]\nбол стационар байна.\nХэрэв\n\\[\n|\\phi|\\ge 1\n\\]\nбол процесс стационар бус байна.\n\n6.3.1 Жишээнүүд\n\n\n\n\\(\\phi\\)-ийн утга\nТайлбар\n\n\n\n\n\\(0\\)\nЦагаан чимээ\n\n\n\\(0.3\\)\nСул хамаарал\n\n\n\\(0.8\\)\nХүчтэй үргэлжлэл\n\n\n\\(-0.8\\)\nЭэлжлэх зан төлөв\n\n\n\\(1\\)\nСанамсаргүй алхалт (стационар бус)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#ar1-процессын-дундаж",
+    "href": "05-ar1.html#ar1-процессын-дундаж",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.4 AR(1) процессын дундаж",
+    "text": "6.4 AR(1) процессын дундаж\nМатематик хүлээлт авбал\n\\[\nE(Y_t)\n=\n\\phi E(Y_{t-1}).\n\\]\nСтационар нөхцөлд\n\\[\nE(Y_t)=\\mu.\n\\]\nИймд\n\\[\n\\mu=\\phi\\mu.\n\\]\nТиймээс\n\\[\n\\mu=0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#ar1-процессын-дисперс",
+    "href": "05-ar1.html#ar1-процессын-дисперс",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.5 AR(1) процессын дисперс",
+    "text": "6.5 AR(1) процессын дисперс\nУчир нь\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nстационар дисперс нь\n\\[\nVar(Y_t)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2}.\n\\]\n\\(|\\phi|\\) 1-д ойртох тусам дисперс нэмэгддэг.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#автоковариацын-функц",
+    "href": "05-ar1.html#автоковариацын-функц",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.6 Автоковариацын функц",
+    "text": "6.6 Автоковариацын функц\nСтационар AR(1) процессын хувьд\n\\[\n\\gamma(k)\n=\n\\phi^{k}\\gamma(0).\n\\]\nУчир нь\n\\[\n\\gamma(0)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2},\n\\]\nбүх автоковариацууд \\(\\phi\\)-ээр тодорхойлогдоно.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#автокорреляцын-функц",
+    "href": "05-ar1.html#автокорреляцын-функц",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.7 Автокорреляцын функц",
+    "text": "6.7 Автокорреляцын функц\nAR(1) процессын ACF нь\n\\[\n\\rho(k)=\\phi^k.\n\\]\nЭнэ нь хугацааны цувааны шинжилгээний хамгийн чухал үр дүнгүүдийн нэг юм.\n\n6.7.1 Үр дагавар\nХэрэв\n\\[\n\\phi=0.8,\n\\]\nбол\n\\[\n\\rho(1)=0.8,\n\\]\n\\[\n\\rho(2)=0.64,\n\\]\n\\[\n\\rho(3)=0.512.\n\\]\nИймд ACF тэг рүү аажмаар буурдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#хэсэгчилсэн-автокорреляцын-функц",
+    "href": "05-ar1.html#хэсэгчилсэн-автокорреляцын-функц",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.8 Хэсэгчилсэн автокорреляцын функц",
+    "text": "6.8 Хэсэгчилсэн автокорреляцын функц\nAR(1) процессын хувьд\n\\[\nPACF(1)=\\phi,\n\\]\nба\n\\[\nPACF(k)=0,\n\\qquad k&gt;1.\n\\]\nИймд PACF нь 1 хоцролтын дараа тасардаг.\nЭнэ шинж чанарыг AR(1) загварыг тодорхойлоход өргөн ашигладаг.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#симуляц",
+    "href": "05-ar1.html#симуляц",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.9 Симуляц",
+    "text": "6.9 Симуляц\n\n6.9.1 Эерэг хамаарал\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1,\n  main = expression(AR(1)~with~phi==0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nДараалсан ажиглалтуудын үргэлжлэлийг ажиглаарай.\n\n\n6.9.2 Сөрөг хамаарал\n\nset.seed(123)\n\nar1neg &lt;- arima.sim(\n  model = list(ar = -0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1neg,\n  main = expression(AR(1)~with~phi==-0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nДараалсан ажиглалтууд тэмдгээрээ ээлжлэн солигдох хандлагатай байдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#ar1-процессын-acf",
+    "href": "05-ar1.html#ar1-процессын-acf",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.10 AR(1) процессын ACF",
+    "text": "6.10 AR(1) процессын ACF\n\nacf(\n  ar1,\n  main=\"AR(1)-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nACF геометрээр буурдаг.\nЭнэ аажмаар буурах зан төлөв нь авторегрессив процессуудын онцлог шинж юм.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#ar1-процессын-pacf",
+    "href": "05-ar1.html#ar1-процессын-pacf",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.11 AR(1) процессын PACF",
+    "text": "6.11 AR(1) процессын PACF\n\npacf(\n  ar1,\n  main=\"AR(1)-ийн PACF\"\n)\n\n\n\n\n\n\n\n\nЗөвхөн эхний хоцролт ач холбогдолтой байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#хоцролтын-график",
+    "href": "05-ar1.html#хоцролтын-график",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.12 Хоцролтын график",
+    "text": "6.12 Хоцролтын график\nХоцролтын график нь \\(Y_t\\) ба \\(Y_{t-1}\\) хоорондын хамаарлыг илрүүлдэг.\n\nplot(\n  x = ar1[-length(ar1)],\n  y = ar1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nЭерэг шугаман хэв маяг харагдах ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#phi-ийн-өөр-өөр-утгуудын-харьцуулалт",
+    "href": "05-ar1.html#phi-ийн-өөр-өөр-утгуудын-харьцуулалт",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.13 \\(\\phi\\)-ийн өөр өөр утгуудын харьцуулалт",
+    "text": "6.13 \\(\\phi\\)-ийн өөр өөр утгуудын харьцуулалт\n\npar(mfrow=c(2,2))\n\nplot.ts(\n  arima.sim(model=list(ar=.2), n=200),\n  main=expression(phi==0.2)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.5), n=200),\n  main=expression(phi==0.5)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.8), n=200),\n  main=expression(phi==0.8)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=-0.8), n=200),\n  main=expression(phi==-0.8)\n)\n\n\n\n\n\n\n\n\n\\(\\phi\\) өөрчлөгдөх тусам хамаарлын зэрэг хэрхэн өөрчлөгдөж байгааг ажиглаарай.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#параметрийн-үнэлгээ",
+    "href": "05-ar1.html#параметрийн-үнэлгээ",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.14 Параметрийн үнэлгээ",
+    "text": "6.14 Параметрийн үнэлгээ\nAR(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.\n\nfit &lt;- arima(\n  ar1,\n  order=c(1,0,0)\n)\n\nfit\n\n\nCall:\narima(x = ar1, order = c(1, 0, 0))\n\nCoefficients:\n         ar1  intercept\n      0.7235    -0.0239\ns.e.  0.0491     0.2363\n\nsigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46\n\n\n\\(\\phi\\)-ийн үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#таамаглал",
+    "href": "05-ar1.html#таамаглал",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.15 Таамаглал",
+    "text": "6.15 Таамаглал\nAR(1) загварын хувьд\n\\[\n\\hat{Y}_{t+1}\n=\n\\phi Y_t.\n\\]\nЕрөнхийдөө\n\\[\n\\hat{Y}_{t+h}\n=\n\\phi^h Y_t.\n\\]\n\\(h\\) нэмэгдэх тусам\n\\[\n\\phi^h \\rightarrow 0,\n\\]\nбөгөөд таамаглалууд процессын дундаж руу ойртдог.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#тайлбар",
+    "href": "05-ar1.html#тайлбар",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.16 Тайлбар",
+    "text": "6.16 Тайлбар\n\n6.16.1 Эерэг \\(\\phi\\)\nХэрэв\n\\[\n\\phi&gt;0,\n\\]\nбол том утгууд том утгуудыг дагах, жижиг утгууд жижиг утгуудыг дагах хандлагатай байдаг.\n\n\n6.16.2 Сөрөг \\(\\phi\\)\nХэрэв\n\\[\n\\phi&lt;0,\n\\]\nбол дараалсан ажиглалтууд эсрэг чиглэлд хөдлөх хандлагатай байдаг.\n\n\n6.16.3 Тэгтэй ойролцоо\nХэрэв\n\\[\n\\phi\\approx 0,\n\\]\nбол процесс цагаан чимээтэй төстэй болдог.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#дүгнэлт",
+    "href": "05-ar1.html#дүгнэлт",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.17 Дүгнэлт",
+    "text": "6.17 Дүгнэлт\nAR(1) процесс\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t\n\\]\nнь хамгийн энгийн авторегрессив загвар юм.\nГол шинж чанарууд:\n\n\\(|\\phi|&lt;1\\) үед стационар.\nДундаж нь тэгтэй тэнцүү.\nДисперс нь \\(\\frac{\\sigma^2}{1-\\phi^2}\\)-тэй тэнцүү.\nACF: \\(\\rho(k)=\\phi^k\\).\nPACF нь 1 хоцролтын дараа тасарна.\n\nЭдгээр шинж чанарууд AR(1)-ийг хугацааны цувааны шинжилгээний үндсэн загвар болгодог.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#дасгал",
+    "href": "05-ar1.html#дасгал",
+    "title": "6  Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)",
+    "section": "6.18 Дасгал",
+    "text": "6.18 Дасгал\n\n\\(\\phi=0.5\\) бүхий AR(1) процессыг симуляцла.\nЦуваа, ACF, PACF-ийг зур.\nACF геометрээр буурдаг эсэхийг шалга.\nPACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.\n\\(\\phi=0.2\\), \\(0.5\\), \\(0.9\\) бүхий AR(1) процессуудыг харьцуул.\n\\(\\phi=-0.8\\) бүхий AR(1) процессыг симуляцла.\nХоцролтын график байгуулж, хэв маягийг тайлбарла.\narima() ашиглан AR(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html",
+    "href": "06-ma1.html",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "",
+    "text": "7.1 Оршил\nMA(1) загвар нь хамгийн энгийн хөдөлгөөнт дундаж процесс юм.\nАвторегрессив загвараас ялгаатай нь MA(1) процесс нь өнгөрсөн ажиглалтуудаас шууд хамаардаггүй. Харин одоогийн болон өмнөх санамсаргүй шокиос хамаардаг.\nMA(1) загвар нь хугацааны цувааны шинжилгээнд үндсэн ач холбогдолтой бөгөөд дээд эрэмбийн MA болон ARMA загваруудын бүрэлдэхүүн хэсэг болдог.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#тодорхойлолт",
+    "href": "06-ma1.html#тодорхойлолт",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.2 Тодорхойлолт",
+    "text": "7.2 Тодорхойлолт\nMA(1) процессыг\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\nгэж тодорхойлдог бөгөөд энд\n\n\\(\\{\\varepsilon_t\\}\\) нь цагаан чимээний процесс,\n\\(E(\\varepsilon_t)=0\\),\n\\(Var(\\varepsilon_t)=\\sigma^2\\),\n\\(\\theta\\) нь хөдөлгөөнт дундажийн параметр.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#дундаж",
+    "href": "06-ma1.html#дундаж",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.3 Дундаж",
+    "text": "7.3 Дундаж\nМатематик хүлээлт авбал\n\\[\nE(Y_t)\n=\nE(\\varepsilon_t)\n+\n\\theta E(\\varepsilon_{t-1}).\n\\]\nУчир нь\n\\[\nE(\\varepsilon_t)=0,\n\\]\nиймд\n\\[\nE(Y_t)=0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#дисперс",
+    "href": "06-ma1.html#дисперс",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.4 Дисперс",
+    "text": "7.4 Дисперс\nЦагаан чимээний гишүүд корреляцгүй тул\n\\[\nVar(Y_t)\n=\nVar(\\varepsilon_t+\\theta\\varepsilon_{t-1}),\n\\]\nүүнээс\n\\[\nVar(Y_t)\n=\n(1+\\theta^2)\\sigma^2.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#автоковариацын-функц",
+    "href": "06-ma1.html#автоковариацын-функц",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.5 Автоковариацын функц",
+    "text": "7.5 Автоковариацын функц\n\n7.5.1 0 хоцролт\n\\[\n\\gamma(0)\n=\n(1+\\theta^2)\\sigma^2.\n\\]\n\n\n7.5.2 1 хоцролт\n\\[\n\\gamma(1)\n=\n\\theta\\sigma^2.\n\\]\n\n\n7.5.3 (k&gt;1) хоцролт\n\\[\n\\gamma(k)=0.\n\\]\nИймд\n\\[\n\\gamma(k)=\n\\begin{cases}\n(1+\\theta^2)\\sigma^2, & k=0,\\\\\n\\theta\\sigma^2, & k=1,\\\\\n0, & k&gt;1.\n\\end{cases}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#автокорреляцын-функц",
+    "href": "06-ma1.html#автокорреляцын-функц",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.6 Автокорреляцын функц",
+    "text": "7.6 Автокорреляцын функц\n\\(\\gamma(0)\\)-д хуваавал\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n     {1+\\theta^2},\n\\]\nба\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\nЭнэ нь MA(1) процессын хамгийн чухал шинж чанар юм.\nACF нь 1 хоцролтын дараа тасардаг.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#жишээ",
+    "href": "06-ma1.html#жишээ",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.7 Жишээ",
+    "text": "7.7 Жишээ\nХэрэв\n\\[\n\\theta=0.5,\n\\]\nбол\n\\[\n\\rho(1)\n=\n\\frac{0.5}{1+0.25}\n=\n0.40.\n\\]\nХэрэв\n\\[\n\\theta=0.2,\n\\]\nбол\n\\[\n\\rho(1)\n=\n\\frac{0.2}{1.04}\n\\approx 0.192.\n\\]\nЭнэ утга түүврийн ACF-д харагдах ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#буцаах-боломжтой-байдал",
+    "href": "06-ma1.html#буцаах-боломжтой-байдал",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.8 Буцаах боломжтой байдал",
+    "text": "7.8 Буцаах боломжтой байдал\nMA(1) загварын хувьд\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\nбуцаах боломжтой байх нөхцөл нь\n\\[\n|\\theta|&lt;1.\n\\]\nБуцаах боломжтой байдал нь процессын цор ганц дүрслэлийг баталгаажуулдаг.\nЭнэ нөхцөл нь AR загваруудын стационар байдлын\n\\[\n|\\phi|&lt;1\n\\]\nнөхцөлтэй төстэй үүрэг гүйцэтгэдэг.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#симуляц",
+    "href": "06-ma1.html#симуляц",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.9 Симуляц",
+    "text": "7.9 Симуляц\n\n7.9.1 () бүхий MA(1)\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nplot.ts(\n  ma1,\n  main=expression(MA(1)~with~theta==0.5),\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n7.9.2 () бүхий MA(1)\n\nset.seed(123)\n\nma1neg &lt;- arima.sim(\n  model=list(ma=-.5),\n  n=200\n)\n\nplot.ts(\n  ma1neg,\n  main=expression(MA(1)~with~theta==-0.5),\n  ylab=expression(Y[t])\n)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#ma1-процессын-acf",
+    "href": "06-ma1.html#ma1-процессын-acf",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.10 MA(1) процессын ACF",
+    "text": "7.10 MA(1) процессын ACF\n\nacf(\n  as.numeric(ma1),\n  main=\"MA(1)-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nАжиглаарай:\n\n1 хоцролт дээр ач холбогдолтой оргил.\n1-ээс их хоцролтуудад тэгтэй ойрхон автокорреляцууд.\n\nЭнэ тасралтын зан төлөв нь MA(1) процессын онцлог шинж юм.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#ma1-процессын-pacf",
+    "href": "06-ma1.html#ma1-процессын-pacf",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.11 MA(1) процессын PACF",
+    "text": "7.11 MA(1) процессын PACF\n\npacf(\n  as.numeric(ma1),\n  main=\"MA(1)-ийн PACF\"\n)\n\n\n\n\n\n\n\n\nACF-ээс ялгаатай нь PACF тасардаггүй.\nХарин аажмаар тэг рүү буурдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#хоцролтын-сарнилын-график",
+    "href": "06-ma1.html#хоцролтын-сарнилын-график",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.12 1 хоцролтын сарнилын график",
+    "text": "7.12 1 хоцролтын сарнилын график\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-1}\n\\]\nхоорондын хамаарлыг хоцролтын график ашиглан шалгаж болно.\n\nplot(\n  x = ma1[-length(ma1)],\n  y = ma1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nЭерэг \\(\\theta\\)-ийн хувьд график сул эерэг шугаман хэв маяг харуулах хандлагатай.\nСөрөг \\(\\theta\\)-ийн хувьд хэв маяг доош налуу байна.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#хоцролтын-сарнилын-график-1",
+    "href": "06-ma1.html#хоцролтын-сарнилын-график-1",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.13 2 хоцролтын сарнилын график",
+    "text": "7.13 2 хоцролтын сарнилын график\nДараахьыг авч үзье:\n\\[\n(Y_{t-2},Y_t).\n\\]\n\nplot(\n  x = ma1[-c(length(ma1)-1,length(ma1))],\n  y = ma1[-c(1,2)],\n  xlab = expression(Y[t-2]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nУчир нь\n\\[\n\\rho(2)=0,\n\\]\nцэгүүд бага буюу шугаман хэв маяггүй байх ёстой.\nСарнилын график ерөнхийдөө санамсаргүй үүлтэй төстэй байна.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#ar1-тэй-харьцуулалт",
+    "href": "06-ma1.html#ar1-тэй-харьцуулалт",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.14 AR(1)-тэй харьцуулалт",
+    "text": "7.14 AR(1)-тэй харьцуулалт\n\n\n\n\n\n\n\n\nШинж чанар\nAR(1)\nMA(1)\n\n\n\n\nЗагвар\n\\(Y_t=\\phi Y_{t-1}+\\varepsilon_t\\)\n\\(Y_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}\\)\n\n\nСтационар байдал\n\\(|\\phi|&lt;1\\)\nҮргэлж стационар\n\n\nБуцаах боломжтой байдал\nШаардлагагүй\n\\(|\\theta|&lt;1\\)\n\n\nACF\nАажмаар буурна\n1 хоцролтын дараа тасарна\n\n\nPACF\n1 хоцролтын дараа тасарна\nАажмаар буурна\n\n\n\nЭдгээр хэв маяг нь Box-Jenkins загвар тодорхойлоход төвлөрсөн ач холбогдолтой.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#үнэлгээ",
+    "href": "06-ma1.html#үнэлгээ",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.15 Үнэлгээ",
+    "text": "7.15 Үнэлгээ\nMA(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.\n\nfit &lt;- arima(\n  ma1,\n  order=c(0,0,1)\n)\n\nfit\n\n\nCall:\narima(x = ma1, order = c(0, 0, 1))\n\nCoefficients:\n         ma1  intercept\n      0.5124     0.0041\ns.e.  0.0874     0.1018\n\nsigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83\n\n\nҮнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#жишээ-1",
+    "href": "06-ma1.html#жишээ-1",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.16 Жишээ: ()",
+    "text": "7.16 Жишээ: ()\n\nset.seed(123)\n\nma1.2 &lt;- arima.sim(\n  model=list(ma=.2),\n  n=500\n)\n\nacf(ma1.2)\n\n\n\n\n\n\n\n\nОнолын 1 хоцролтын автокорреляц нь\n\\[\n\\rho(1)\n=\n\\frac{0.2}{1+0.2^2}\n=\n0.1923.\n\\]\nЭнэ утгыг түүврийн ACF-тэй харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#таамаглал",
+    "href": "06-ma1.html#таамаглал",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.17 Таамаглал",
+    "text": "7.17 Таамаглал\nMA(1) процессын хувьд\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1},\n\\]\nнэг алхамын урьдчилсан таамаглал нь хамгийн сүүлийн үнэлэгдсэн шокноос хамаарна.\nНэгээс их алсын зайн хувьд\n\\[\n\\hat Y_{t+h}\n\\]\nпроцессын дундаж руу хурдан ойртдог.\nДундаж нь тэг тул\n\\[\n\\hat Y_{t+h}\n\\rightarrow 0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#дүгнэлт",
+    "href": "06-ma1.html#дүгнэлт",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.18 Дүгнэлт",
+    "text": "7.18 Дүгнэлт\nMA(1) процесс\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}\n\\]\nнь дараах шинж чанаруудтай:\n\nДундаж:\n\n\\[\nE(Y_t)=0.\n\\]\n\nДисперс:\n\n\\[\nVar(Y_t)\n=\n(1+\\theta^2)\\sigma^2.\n\\]\n\nACF:\n\n\\[\n\\rho(1)\n=\n\\frac{\\theta}{1+\\theta^2},\n\\]\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1.\n\\]\n\nPACF аажмаар буурна.\nБуцаах боломжтой байх нөхцөл:\n\n\\[\n|\\theta|&lt;1.\n\\]\nACF-ийн 1 хоцролт дээрх тасралт нь MA(1) процессын хамгийн чухал таних шинж юм.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#дасгал",
+    "href": "06-ma1.html#дасгал",
+    "title": "7  Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)",
+    "section": "7.19 Дасгал",
+    "text": "7.19 Дасгал\n\n() бүхий MA(1) процессыг симуляцла.\nТүүврийн ACF-ийг тооцоолж, график зур.\nТүүврийн 1 хоцролтын автокорреляцыг онолын утгатай харьцуул.\n() бүхий MA(1) процессыг симуляцла.\nТүүний ACF-ийг ()-ын ACF-тэй харьцуул.\n1 хоцролт ба 2 хоцролтын сарнилын графикуудыг байгуул.\n2 хоцролтын сарнилын график яагаад бага хэв маяг харуулдаг вэ гэдгийг тайлбарла.\narima() ашиглан MA(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html",
+    "href": "07-arma.html",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "",
+    "text": "8.1 Оршил\nARMA загвар нь авторегрессив (AR) болон хөдөлгөөнт дундаж (MA) процессуудын санааг нэгтгэдэг.\nЭнэ нь стационар хугацааны цувааны загваруудын хамгийн чухал ангиллын нэг бөгөөд Box-Jenkins аргачлалын үндэс болдог.\nARMA загвар нь дараахь хоёрыг хоёуланг нь илэрхийлж чадна:",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#оршил",
+    "href": "07-arma.html#оршил",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "",
+    "text": "өнгөрсөн ажиглалтуудаар дамжих үргэлжлэл,\nөнгөрсөн шокоор дамжих богино хугацааны хамаарал.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#тодорхойлолт",
+    "href": "07-arma.html#тодорхойлолт",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.2 Тодорхойлолт",
+    "text": "8.2 Тодорхойлолт\nARMA((p,q)) процессыг\n\\[\nY_t\n=\n\\phi_1Y_{t-1}\n+\\phi_2Y_{t-2}\n+\\cdots\n+\\phi_pY_{t-p}\n+\n\\varepsilon_t\n+\n\\theta_1\\varepsilon_{t-1}\n+\\theta_2\\varepsilon_{t-2}\n+\\cdots\n+\\theta_q\\varepsilon_{t-q},\n\\]\nгэж тодорхойлдог бөгөөд энд\n\\[\n\\{\\varepsilon_t\\}\n\\sim\nWN(0,\\sigma^2).\n\\]\nЭнд:\n\n(p) = авторегрессив эрэмбэ,\n(q) = хөдөлгөөнт дундажийн эрэмбэ.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#онцгой-тохиолдлууд",
+    "href": "07-arma.html#онцгой-тохиолдлууд",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.3 Онцгой тохиолдлууд",
+    "text": "8.3 Онцгой тохиолдлууд\n\n8.3.1 AR загвар\nХэрэв\n\\[\nq=0,\n\\]\nбол\n\\[\nARMA(p,0)=AR(p).\n\\]\n\n\n8.3.2 MA загвар\nХэрэв\n\\[\np=0,\n\\]\nбол\n\\[\nARMA(0,q)=MA(q).\n\\]\nИймд AR ба MA процессууд нь ARMA загварын онцгой тохиолдлууд юм.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#arma11-загвар",
+    "href": "07-arma.html#arma11-загвар",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.4 ARMA(1,1) загвар",
+    "text": "8.4 ARMA(1,1) загвар\nХамгийн энгийн ARMA загвар нь\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nЭнэ загвар нь дараахь хоёрыг нэгтгэдэг:\n\nAR(1)-ийн хамаарлын бүтэц,\nMA(1)-ийн шокийн бүтэц.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#стационар-байдал",
+    "href": "07-arma.html#стационар-байдал",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.5 Стационар байдал",
+    "text": "8.5 Стационар байдал\nARMA процессуудын хувьд стационар байдал нь AR хэсгээс хамаарна.\nARMA(1,1)-ийн хувьд стационар байхын тулд\n\\[\n|\\phi|&lt;1\n\\]\nшаардлагатай.\n\n8.5.1 Жишээнүүд\n\n\n\n()\nСтационар уу?\n\n\n\n\n0.3\nТийм\n\n\n0.8\nТийм\n\n\n-0.5\nТийм\n\n\n1.0\nҮгүй\n\n\n1.1\nҮгүй",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#буцаах-боломжтой-байдал",
+    "href": "07-arma.html#буцаах-боломжтой-байдал",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.6 Буцаах боломжтой байдал",
+    "text": "8.6 Буцаах боломжтой байдал\nБуцаах боломжтой байдал нь MA хэсгээс хамаарна.\nARMA(1,1)-ийн хувьд буцаах боломжтой байхын тулд\n\\[\n|\\theta|&lt;1\n\\]\nшаардлагатай.\nЭнэ нь процессын цор ганц дүрслэлийг баталгаажуулдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#дундаж",
+    "href": "07-arma.html#дундаж",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.7 Дундаж",
+    "text": "8.7 Дундаж\nСтационар ARMA(1,1)-ийн хувьд\n\\[\nE(Y_t)=0.\n\\]\nЕрөнхийдөө, хэрэв тогтмол гишүүн орсон бол дундаж нь цаг хугацааны явцад тогтмол байна.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#arma11-ийн-симуляц",
+    "href": "07-arma.html#arma11-ийн-симуляц",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.8 ARMA(1,1)-ийн симуляц",
+    "text": "8.8 ARMA(1,1)-ийн симуляц\nДараахьыг авч үзье:\n\\[\nY_t\n=\n0.7Y_{t-1}\n+\n\\varepsilon_t\n+\n0.4\\varepsilon_{t-1}.\n\\]\n\nset.seed(123)\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nplot.ts(\n  arma11,\n  main=\"ARMA(1,1) процесс\",\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\nAR бүрэлдэхүүнээс үүсэх үргэлжлэл ба MA бүрэлдэхүүнээс үүсэх богино хугацааны нөлөөг ажиглаарай.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#arma-процессын-acf",
+    "href": "07-arma.html#arma-процессын-acf",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.9 ARMA процессын ACF",
+    "text": "8.9 ARMA процессын ACF\n\nacf(\n  arma11,\n  main=\"ARMA(1,1)-ийн ACF\"\n)\n\n\n\n\n\n\n\n\nMA загваруудаас ялгаатай нь ACF тасардаггүй.\nЦэвэр AR загваруудаас ялгаатай нь хэв маяг нь ихэвчлэн илүү төвөгтэй байдаг.\nACF ерөнхийдөө тэг рүү аажмаар буурдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#arma-процессын-pacf",
+    "href": "07-arma.html#arma-процессын-pacf",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.10 ARMA процессын PACF",
+    "text": "8.10 ARMA процессын PACF\n\npacf(\n  arma11,\n  main=\"ARMA(1,1)-ийн PACF\"\n)\n\n\n\n\n\n\n\n\nPACF мөн аажмаар буурдаг.\nЭнэ нь ARMA загваруудын таних шинж чанаруудын нэг юм.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#загвар-тодорхойлох",
+    "href": "07-arma.html#загвар-тодорхойлох",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.11 Загвар тодорхойлох",
+    "text": "8.11 Загвар тодорхойлох\n\n8.11.1 AR(p)\n\nACF аажмаар буурна.\nPACF тасарна.\n\n\n\n8.11.2 MA(q)\n\nACF тасарна.\nPACF аажмаар буурна.\n\n\n\n8.11.3 ARMA(p,q)\n\nACF аажмаар буурна.\nPACF аажмаар буурна.\n\nИймд ARMA загваруудыг ихэвчлэн хоёр функцийг нэгэн зэрэг шалгаж тодорхойлдог.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#ar1-ma1-arma11-ийг-харьцуулах",
+    "href": "07-arma.html#ar1-ma1-arma11-ийг-харьцуулах",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.12 AR(1), MA(1), ARMA(1,1)-ийг харьцуулах",
+    "text": "8.12 AR(1), MA(1), ARMA(1,1)-ийг харьцуулах\n\npar(mfrow=c(3,2))\n\nar1 &lt;- arima.sim(\n  model=list(ar=.7),\n  n=300\n)\n\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(\n  model=list(ma=.7),\n  n=300\n)\n\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nacf(arma11, main=\"ARMA(1,1): ACF\")\npacf(arma11, main=\"ARMA(1,1): PACF\")\n\n\n\n\n\n\n\n\nОнцлог хэв маягуудыг харьцуулаарай.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#хоцролтын-график",
+    "href": "07-arma.html#хоцролтын-график",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.13 Хоцролтын график",
+    "text": "8.13 Хоцролтын график\nХамаарлыг дүрслэхэд хоцролтын график ашиглаж болно.\n\nplot(\n  x = arma11[-length(arma11)],\n  y = arma11[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nХамаарал нь ерөнхийдөө цагаан чимээнээс илүү хүчтэй бөгөөд AR ба MA нөлөөг хоёуланг нь илэрхийлдэг.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#загварын-үнэлгээ",
+    "href": "07-arma.html#загварын-үнэлгээ",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.14 Загварын үнэлгээ",
+    "text": "8.14 Загварын үнэлгээ\nARMA(1,1) загварыг хамгийн их магадлалын аргаар үнэлж болно.\n\nfit &lt;- arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nfit\n\n\nCall:\narima(x = arma11, order = c(1, 0, 1))\n\nCoefficients:\n         ar1     ma1  intercept\n      0.6933  0.3851    -0.0051\ns.e.  0.0509  0.0733     0.2623\n\nsigma^2 estimated as 1.029:  log likelihood = -430.61,  aic = 869.22\n\n\nҮнэлсэн коэффициентүүд нь симуляцад ашигласан утгуудтай ойрхон байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#aic-ашиглан-загвар-сонгох",
+    "href": "07-arma.html#aic-ашиглан-загвар-сонгох",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.15 AIC ашиглан загвар сонгох",
+    "text": "8.15 AIC ашиглан загвар сонгох\nӨөр өөр ARMA загваруудыг Акайке мэдээллийн шалгуур (AIC) ашиглан харьцуулж болно.\n\nfit1 &lt;- arima(arma11, order=c(1,0,0))\nfit2 &lt;- arima(arma11, order=c(0,0,1))\nfit3 &lt;- arima(arma11, order=c(1,0,1))\n\nAIC(fit1, fit2, fit3)\n\n     df      AIC\nfit1  3 890.8641\nfit2  3 976.2085\nfit3  4 869.2151\n\n\nХамгийн бага AIC-тай загварыг ихэвчлэн илүүд үздэг.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#таамаглал",
+    "href": "07-arma.html#таамаглал",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.16 Таамаглал",
+    "text": "8.16 Таамаглал\nТаамаглалууд нь дараахь зүйлд үндэслэнэ:\n\nөнгөрсөн ажиглалтууд,\nүнэлсэн загварын параметрүүд.\n\n\nlibrary(forecast)\n\nfit &lt;- Arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nforecast(fit, h=10)\n\n    Point Forecast     Lo 80     Hi 80     Lo 95    Hi 95\n301    -0.60561759 -1.912139 0.7009042 -2.603770 1.392535\n302    -0.42142755 -2.342873 1.5000181 -3.360025 2.517170\n303    -0.29373540 -2.449182 1.8617111 -3.590206 3.002735\n304    -0.20521116 -2.464515 2.0540925 -3.660518 3.250096\n305    -0.14384057 -2.451397 2.1637157 -3.672943 3.385262\n306    -0.10129461 -2.431686 2.2290971 -3.665321 3.462732\n307    -0.07179908 -2.413087 2.2694884 -3.652489 3.508891\n308    -0.05135091 -2.397857 2.2951552 -3.640022 3.537321\n309    -0.03717495 -2.386185 2.3118352 -3.629676 3.555326\n310    -0.02734728 -2.377560 2.3228654 -3.621687 3.566993\n\n\nТаамаглал нь процессын урт хугацааны дундаж руу аажмаар ойртдог.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#дүгнэлт",
+    "href": "07-arma.html#дүгнэлт",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.17 Дүгнэлт",
+    "text": "8.17 Дүгнэлт\nARMA((p,q)) загвар нь дараахь хоёрыг нэгтгэдэг:\n\nавторегрессив хамаарал,\nхөдөлгөөнт дундажийн хамаарал.\n\nARMA(1,1)-ийн хувьд\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nЧухал шинж чанарууд:\n\nСтационар байдал нь AR бүрэлдэхүүнээс хамаарна.\nБуцаах боломжтой байдал нь MA бүрэлдэхүүнээс хамаарна.\nACF аажмаар буурна.\nPACF аажмаар буурна.\nСтационар хугацааны цуваанд өргөн ашиглагддаг.\n\nARMA загварууд нь олон бодит хугацааны цувааг дүрслэх уян хатан хүрээг бүрдүүлдэг.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#дасгал",
+    "href": "07-arma.html#дасгал",
+    "title": "8  Авторегрессив хөдөлгөөнт дундаж процесс: ARMA",
+    "section": "8.18 Дасгал",
+    "text": "8.18 Дасгал\n\n() ба () бүхий ARMA(1,1) процессыг симуляцла.\nЦувааг зур.\nACF-ийг тооцоолж, тайлбарла.\nPACF-ийг тооцоолж, тайлбарла.\narima() ашиглан ARMA(1,1) загварыг үнэл.\nAR(1), MA(1), ARMA(1,1)-ийг ACF ба PACF графикууд ашиглан харьцуул.\nAIC ашиглан өрсөлдөж буй загваруудыг харьцуул.\n10 алхамын урьдчилсан таамаглал гаргаж, үр дүнг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html",
+    "href": "08-arima.html",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "",
+    "text": "9.1 Оршил\nБодит ертөнцийн олон хугацааны цуваа стационар бус байдаг.\nЖишээнүүд:\nARMA загварууд стационар байдлыг шаарддаг тул загварчлахаас өмнө хувиргалт хийх шаардлагатай болдог.\nARIMA загвар нь ялгавар авах замаар ARMA загварыг өргөтгөдөг.\nARIMA гэдэг нь:",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#оршил",
+    "href": "08-arima.html#оршил",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "",
+    "text": "хүн амын өсөлт,\nэдийн засгийн үзүүлэлтүүд,\nхувьцааны үнэ,\nэрчим хүчний хэрэглээ,\nбайгаль орчны хэмжилтүүд.\n\n\n\n\n\nAR: Авторегрессив\nI: Нэгтгэсэн (Integrated)\nMA: Хөдөлгөөнт дундаж",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#урам-зориг",
+    "href": "08-arima.html#урам-зориг",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.2 Урам зориг",
+    "text": "9.2 Урам зориг\nСанамсаргүй алхалтыг авч үзье:\n\\[\nY_t=Y_{t-1}+\\varepsilon_t.\n\\]\nЭнэ цуваа нь стационар бус, учир нь:\n\nдисперс цаг хугацааны явцад нэмэгддэг,\nдундаж нь тогтвортой биш,\nACF маш удаан буурдаг.\n\nГэхдээ\n\\[\nY_t-Y_{t-1}\n=\n\\varepsilon_t\n\\]\nнь цагаан чимээ юм.\nИймд стационар бус процесс ялгавар авсны дараа стационар болж болно.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#ялгавар-авах",
+    "href": "08-arima.html#ялгавар-авах",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.3 Ялгавар авах",
+    "text": "9.3 Ялгавар авах\nХугацааны цувааны эхний ялгавар нь\n\\[\n\\nabla Y_t\n=\nY_t-Y_{t-1}.\n\\]\n\n9.3.1 R жишээ\n\nset.seed(123)\n\ne &lt;- rnorm(200)\nrw &lt;- cumsum(e)\n\nplot.ts(\n  rw,\n  main=\"Санамсаргүй алхалт\",\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\nОдоо эхний ялгаврыг тооцоолъё:\n\ndrw &lt;- diff(rw)\n\nplot.ts(\n  drw,\n  main=\"Эхний ялгавар\",\n  ylab=expression(nabla*Y[t])\n)\n\n\n\n\n\n\n\n\nЯлгавар авсан цуваа стационар харагдаж байна.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arima-загварын-тодорхойлолт",
+    "href": "08-arima.html#arima-загварын-тодорхойлолт",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.4 ARIMA загварын тодорхойлолт",
+    "text": "9.4 ARIMA загварын тодорхойлолт\nARIMA(\\(p,d,q\\)) загвар нь\n\\[\n\\phi(B)(1-B)^dY_t\n=\n\\theta(B)\\varepsilon_t,\n\\]\nнөхцлийг хангана, энд\n\n\\(p\\) = AR эрэмбэ,\n\\(d\\) = ялгаврын тоо,\n\\(q\\) = MA эрэмбэ.\n\nОператор\n\\[\n(1-B)^d\n\\]\nнь ялгавар авахыг илэрхийлнэ.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#хойш-шилжилтийн-оператор",
+    "href": "08-arima.html#хойш-шилжилтийн-оператор",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.5 Хойш шилжилтийн оператор",
+    "text": "9.5 Хойш шилжилтийн оператор\nХойш шилжилтийн операторыг\n\\[\nBY_t=Y_{t-1}\n\\]\nгэж тодорхойлдог.\nИймд\n\\[\n(1-B)Y_t\n=\nY_t-Y_{t-1}.\n\\]\nЭнэ тэмдэглэгээ нь загварын илэрхийллийг хялбаршуулдаг.\n\n9.5.1 Жишээ\nAR(1):\n\\[\n(1-\\phi B)Y_t\n=\n\\varepsilon_t.\n\\]\nMA(1):\n\\[\nY_t\n=\n(1+\\theta B)\\varepsilon_t.\n\\]\nARIMA(1,1,1):\n\\[\n(1-\\phi B)(1-B)Y_t\n=\n(1+\\theta B)\\varepsilon_t.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arima010",
+    "href": "08-arima.html#arima010",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.6 ARIMA(0,1,0)",
+    "text": "9.6 ARIMA(0,1,0)\nХамгийн энгийн ARIMA загвар нь\n\\[\n(1-B)Y_t\n=\n\\varepsilon_t.\n\\]\nҮүнтэй ижил утгаар\n\\[\nY_t=Y_{t-1}+\\varepsilon_t.\n\\]\nЭнэ нь санамсаргүй алхалтын загвар юм.\n\n9.6.1 Симуляц\n\nset.seed(123)\n\nrw &lt;- cumsum(rnorm(300))\n\nplot.ts(\n  rw,\n  main=\"Санамсаргүй алхалт: ARIMA(0,1,0)\"\n)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#санамсаргүй-алхалтын-acf",
+    "href": "08-arima.html#санамсаргүй-алхалтын-acf",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.7 Санамсаргүй алхалтын ACF",
+    "text": "9.7 Санамсаргүй алхалтын ACF\n\nacf(\n  rw,\n  main=\"Санамсаргүй алхалтын ACF\"\n)\n\n\n\n\n\n\n\n\nКорреляцууд маш удаан буурдаг.\nЭнэ зан төлөв нь стационар бус процессуудад ердийн зүйл юм.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#ялгавар-авсны-дараах-acf",
+    "href": "08-arima.html#ялгавар-авсны-дараах-acf",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.8 Ялгавар авсны дараах ACF",
+    "text": "9.8 Ялгавар авсны дараах ACF\n\nacf(\n  diff(rw),\n  main=\"Ялгавар авсан санамсаргүй алхалтын ACF\"\n)\n\n\n\n\n\n\n\n\nЯлгавар авсан цуваа нь цагаан чимээтэй илүү төстэй ажилладаг.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arima110",
+    "href": "08-arima.html#arima110",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.9 ARIMA(1,1,0)",
+    "text": "9.9 ARIMA(1,1,0)\nДараахьыг авч үзье:\n\\[\n(1-\\phi B)(1-B)Y_t\n=\n\\varepsilon_t.\n\\]\nЭнэ загвар нь ялгавар авсан цуваанд AR(1) бүтцийг хэрэглэдэг.\n\n9.9.1 Симуляц\n\nset.seed(123)\n\narima110 &lt;- arima.sim(\n  model=list(ar=.6),\n  n=300\n)\n\nplot.ts(\n  cumsum(arima110),\n  main=\"ARIMA(1,1,0)\"\n)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arima011",
+    "href": "08-arima.html#arima011",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.10 ARIMA(0,1,1)",
+    "text": "9.10 ARIMA(0,1,1)\nДараахьыг авч үзье:\n\\[\n(1-B)Y_t\n=\n(1+\\theta B)\\varepsilon_t.\n\\]\nЭнэ загвар нь таамаглахад ихэвчлэн ашигтай байдаг.\n\n9.10.1 Симуляц\n\nset.seed(123)\n\narima011 &lt;- arima.sim(\n  model=list(ma=.7),\n  n=300\n)\n\nplot.ts(\n  cumsum(arima011),\n  main=\"ARIMA(0,1,1)\"\n)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#стационар-бус-байдлыг-илрүүлэх",
+    "href": "08-arima.html#стационар-бус-байдлыг-илрүүлэх",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.11 Стационар бус байдлыг илрүүлэх",
+    "text": "9.11 Стационар бус байдлыг илрүүлэх\nЕрдийн үзүүлэлтүүд:\n\n9.11.1 Хугацааны цувааны график\n\nтренд,\nтүвшний өөрчлөлт,\nнэмэгдэж буй хувьсах байдал.\n\n\n\n9.11.2 ACF\n\nмаш удаан бууралт,\nтом эерэг автокорреляцууд.\n\n\n\n9.11.3 Жишээ\n\npar(mfrow=c(1,2))\n\nplot.ts(rw)\nacf(rw)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#нэгж-язгуур",
+    "href": "08-arima.html#нэгж-язгуур",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.12 Нэгж язгуур",
+    "text": "9.12 Нэгж язгуур\nДараахьыг авч үзье:\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t.\n\\]\nХэрэв \\[\n\\phi=1,\n\\] бол\n\\[\nY_t=Y_{t-1}+\\varepsilon_t,\n\\] энэ нь санамсаргүй алхалт юм.\nПроцесс нь нэгж язгуур агуулдаг.\nНэгж язгуур нь стационар бус байдлыг илтгэнэ.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#нэгж-язгуурыг-шалгах",
+    "href": "08-arima.html#нэгж-язгуурыг-шалгах",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.13 Нэгж язгуурыг шалгах",
+    "text": "9.13 Нэгж язгуурыг шалгах\nНийтлэг статистик шалгалт нь Өргөтгөсөн Дики-Фуллер (ADF) шалгалт юм.\n\nlibrary(tseries)\n\nadf.test(rw)\n\n\n9.13.1 Тайлбар\n\nБага p-утга → нэгж язгуурыг үгүйсгэнэ.\nТом p-утга → стационар бус байдлын нотолгоо.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arima-загварыг-тохируулах",
+    "href": "08-arima.html#arima-загварыг-тохируулах",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.14 ARIMA загварыг тохируулах",
+    "text": "9.14 ARIMA загварыг тохируулах\narima() функцийг ашиглаж болно.\n\nfit &lt;- arima(\n  rw,\n  order=c(0,1,0)\n)\n\nfit\n\n\nCall:\narima(x = rw, order = c(0, 1, 0))\n\n\nsigma^2 estimated as 0.8946:  log likelihood = -407.62,  aic = 817.24\n\n\nӨөр хувилбар:\n\nlibrary(forecast)\n\nfit &lt;- Arima(\n  rw,\n  order=c(0,1,0)\n)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#загварыг-автоматаар-сонгох",
+    "href": "08-arima.html#загварыг-автоматаар-сонгох",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.15 Загварыг автоматаар сонгох",
+    "text": "9.15 Загварыг автоматаар сонгох\nforecast багц нь дараахь боломжийг олгодог:\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(rw)\n\nfit\n\nАлгоритм нь\n\\[\np,d,q\n\\]\n-ийн утгуудыг автоматаар сонгодог.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#таамаглал",
+    "href": "08-arima.html#таамаглал",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.16 Таамаглал",
+    "text": "9.16 Таамаглал\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(rw)\n\nfc &lt;- forecast(\n  fit,\n  h=20\n)\n\nplot(fc)\n\nҮүссэн таамаглал нь дараахь зүйлийг агуулна:\n\nцэгэн таамаглалууд,\n80% таамаглалын интервалууд,\n95% таамаглалын интервалууд.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#arma-ба-arima-г-харьцуулах",
+    "href": "08-arima.html#arma-ба-arima-г-харьцуулах",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.17 ARMA ба ARIMA-г харьцуулах",
+    "text": "9.17 ARMA ба ARIMA-г харьцуулах\n\n\n\nЗагвар\nСтационар уу?\nЯлгавар авах уу?\n\n\n\n\nAR(\\(p\\))\nТийм\nҮгүй\n\n\nMA(\\(q\\))\nТийм\nҮгүй\n\n\nARMA(\\(p,q\\))\nТийм\nҮгүй\n\n\nARIMA(\\(p,d,q\\))\nЗаавал биш\nТийм\n\n\n\nARIMA нь стационар бус хугацааны цувааг загварчлах боломжийг олгосноор ARMA-г өргөтгөдөг.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#box-jenkins-загварчлалын-журам",
+    "href": "08-arima.html#box-jenkins-загварчлалын-журам",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.18 Box-Jenkins загварчлалын журам",
+    "text": "9.18 Box-Jenkins загварчлалын журам\nСонгодог Box-Jenkins журам нь дараахь үе шатуудаас бүрдэнэ:\n\nТодорхойлох\n\nХугацааны цувааны график\nACF\nPACF\n\nҮнэлэх\n\nЗагварын параметрүүдийг үнэлэх\n\nОношлогооны шалгалт\n\nҮлдэгдлийн графикууд\nҮлдэгдлийн ACF\nLjung-Box шалгалт\n\nТаамаглах\n\nИрээдүйн утгуудыг гаргах",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#дүгнэлт",
+    "href": "08-arima.html#дүгнэлт",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.19 Дүгнэлт",
+    "text": "9.19 Дүгнэлт\nARIMA(\\(p,d,q\\)) загвар нь дараахь зүйлийг нэгтгэдэг:\n\nавторегресс,\nялгавар авах,\nхөдөлгөөнт дундаж.\n\nГол ойлголтууд:\n\nСтационар бус цуваа нь ихэвчлэн ялгавар авахыг шаарддаг.\nСанамсаргүй алхалтууд нь ARIMA(0,1,0) процессууд юм.\nНэгж язгуур нь стационар бус байдлыг илтгэнэ.\nARIMA загварууд нь ARMA загваруудыг ерөнхий болгодог.\nТаамаглал нь ARIMA-гийн үндсэн хэрэглээ юм.\n\nARIMA нь практикт хамгийн өргөн хэрэглэгддэг таамаглах аргуудын нэг хэвээр байна.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "08-arima.html#дасгал",
+    "href": "08-arima.html#дасгал",
+    "title": "9  Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA",
+    "section": "9.20 Дасгал",
+    "text": "9.20 Дасгал\n\n300 урттай санамсаргүй алхалтыг симуляцла.\nЦуваа ба түүний ACF-ийг зур.\nЭхний ялгаврыг тооцоол.\nЯлгавар авсан цуваа ба түүний ACF-ийг зур.\narima() ашиглан ARIMA(0,1,0) загварыг тохируул.\nADF шалгалт гүйцэтгэ.\nARIMA(1,1,0) загварыг тохируул.\nauto.arima() ашиглан загварыг автоматаар сонго.\n20 алхамын урьдчилсан таамаглал гарга.\nARMA ба ARIMA загваруудыг үзэл баримтлалын хувьд харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html",
+    "href": "09-forecasting.html",
+    "title": "10  9. Таамаглал",
+    "section": "",
+    "text": "10.1 Оршил\nТаамаглал нь хугацааны цувааны шинжилгээний үндсэн зорилтуудын нэг юм.\nТаамаглал гэдэг нь одоогийн цагт байгаа мэдээлэлд үндэслэн ирээдүйн ажиглалтуудыг урьдчилан таамаглахыг хэлнэ.\nТаамаглалыг дараахь салбаруудад ашигладаг:\nЗорилго нь тодорхойгүй байдлын хэмжүүрийн хамт үнэн зөв таамаглал гаргах явдал юм.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#оршил",
+    "href": "09-forecasting.html#оршил",
+    "title": "10  9. Таамаглал",
+    "section": "",
+    "text": "эдийн засаг,\nсанхүү,\nбайгаль орчны шинжлэх ухаан,\nэрчим хүчний эрэлтийн төлөвлөлт,\nнийгмийн эрүүл мэнд,\nбизнесийн аналитик.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-үндсэн-тэмдэглэгээ",
+    "href": "09-forecasting.html#таамаглалын-үндсэн-тэмдэглэгээ",
+    "title": "10  9. Таамаглал",
+    "section": "10.2 Таамаглалын үндсэн тэмдэглэгээ",
+    "text": "10.2 Таамаглалын үндсэн тэмдэглэгээ\n\\(t\\) хугацаа хүртэл ажиглалтууд байгаа гэж үзье.\n\\(t\\) хугацаанд \\(h\\) алсын зайд хийсэн таамаглалыг\n\\[\n\\hat{Y}_{t+h|t}\n\\]\nгэж тэмдэглэнэ.\nЭнэ нь \\(t\\) хугацаанд байгаа мэдээлэлд үндэслэн\n\\[\nY_{t+h}\n\\]\n-ийн таамаглалыг илэрхийлнэ.\n\n10.2.1 Нэг алхамын таамаглал\n\\[\n\\hat{Y}_{t+1|t}.\n\\]\n\n\n10.2.2 Олон алхамын таамаглал\n\\[\n\\hat{Y}_{t+h|t}.\n\\]\nэнд\n\\[\nh=2,3,\\ldots\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-алдаа",
+    "href": "09-forecasting.html#таамаглалын-алдаа",
+    "title": "10  9. Таамаглал",
+    "section": "10.3 Таамаглалын алдаа",
+    "text": "10.3 Таамаглалын алдаа\nТаамаглалын алдаа нь\n\\[\ne_{t+h}\n=\nY_{t+h}\n-\n\\hat{Y}_{t+h|t}.\n\\]\nСайн таамаглалын загварууд бага таамаглалын алдаа гаргадаг.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-нарийвчлалын-хэмжүүрүүд",
+    "href": "09-forecasting.html#таамаглалын-нарийвчлалын-хэмжүүрүүд",
+    "title": "10  9. Таамаглал",
+    "section": "10.4 Таамаглалын нарийвчлалын хэмжүүрүүд",
+    "text": "10.4 Таамаглалын нарийвчлалын хэмжүүрүүд\n\n10.4.1 Дундаж алдаа (ME)\n\\[\nME\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\ne_t.\n\\]\nТаамаглалын хазайлтыг хэмждэг.\n\n\n10.4.2 Дундаж абсолют алдаа (MAE)\n\\[\nMAE\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\n|e_t|.\n\\]\nАнхны нэгжээр илэрхийлэгддэг тул тайлбарлахад хялбар.\n\n\n10.4.3 Дундаж квадрат алдаа (MSE)\n\\[\nMSE\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\ne_t^2.\n\\]\nТом алдаануудад илүү их жин өгдөг.\n\n\n10.4.4 Квадрат дундажийн язгуур алдаа (RMSE)\n\\[\nRMSE\n=\n\\sqrt{MSE}.\n\\]\nХамгийн өргөн хэрэглэгддэг хэмжүүрүүдийн нэг.\n\n\n10.4.5 Дундаж абсолют хувийн алдаа (MAPE)\n\\[\nMAPE\n=\n\\frac{100}{n}\n\\sum_{t=1}^{n}\n\\left|\n\\frac{e_t}{Y_t}\n\\right|.\n\\]\nАлдааг хувиар илэрхийлдэг.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#сургалтын-ба-тестийн-олонлогууд",
+    "href": "09-forecasting.html#сургалтын-ба-тестийн-олонлогууд",
+    "title": "10  9. Таамаглал",
+    "section": "10.5 Сургалтын ба тестийн олонлогууд",
+    "text": "10.5 Сургалтын ба тестийн олонлогууд\nТаамаглалын гүйцэтгэлийг үнэлэхийн тулд өгөгдлийг ихэвчлэн дараахь байдлаар хуваадаг:\n\n10.5.1 Сургалтын олонлог\nЗагварын параметрүүдийг үнэлэхэд ашиглана.\n\n\n10.5.2 Тестийн олонлог\nТаамаглалын нарийвчлалыг үнэлэхэд ашиглана.\nЖишээ:\n\nn &lt;- length(AirPassengers)\n\ntrain &lt;- window(\n  AirPassengers,\n  end = c(1958,12)\n)\n\ntest &lt;- window(\n  AirPassengers,\n  start = c(1959,1)\n)",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#жишиг-таамаглалын-аргууд",
+    "href": "09-forecasting.html#жишиг-таамаглалын-аргууд",
+    "title": "10  9. Таамаглал",
+    "section": "10.6 Жишиг таамаглалын аргууд",
+    "text": "10.6 Жишиг таамаглалын аргууд\nНарийн төвөгтэй загваруудыг тохируулахаас өмнө жишиг таамаглалуудыг авч үзэх хэрэгтэй.\n\n10.6.1 Дундаж таамаглал\n\\[\n\\hat Y_{t+h}\n=\n\\bar Y.\n\\]\nБүх ирээдүйн таамаглалууд түүхэн дундажтай тэнцүү.\n\n\n10.6.2 Энгийн (naive) таамаглал\n\\[\n\\hat Y_{t+h}\n=\nY_t.\n\\]\nДараагийн ажиглалт нь хамгийн сүүлийн ажиглалттай тэнцүү гэж үзнэ.\n\n\n10.6.3 Дрифт таамаглал\n\\[\n\\hat Y_{t+h}\n=\nY_t\n+\nh\n\\frac{Y_t-Y_1}{t-1}.\n\\]\nТүүхэн трендийг урагшлуулна.\n\n\n10.6.4 Улирлын энгийн таамаглал\nУлирлын өгөгдлийн хувьд\n\\[\n\\hat Y_{t+h}\n=\nY_{t+h-m},\n\\]\nэнд (m) нь улирлын үе.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#жишээ-энгийн-таамаглал",
+    "href": "09-forecasting.html#жишээ-энгийн-таамаглал",
+    "title": "10  9. Таамаглал",
+    "section": "10.7 Жишээ: Энгийн таамаглал",
+    "text": "10.7 Жишээ: Энгийн таамаглал\n\nlibrary(forecast)\n\nfit &lt;- naive(AirPassengers)\n\nautoplot(fit)\n\nЭнгийн арга нь олон эдийн засаг, санхүүгийн хугацааны цуваанд гайхмаар үр дүнтэй байдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#ar1-таамаглал",
+    "href": "09-forecasting.html#ar1-таамаглал",
+    "title": "10  9. Таамаглал",
+    "section": "10.8 AR(1) таамаглал",
+    "text": "10.8 AR(1) таамаглал\nДараахьыг авч үзье:\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t.\n\\]\nНэг алхамын таамаглал нь\n\\[\n\\hat Y_{t+1|t}\n=\n\\phi Y_t.\n\\]\n(h)-алхамын таамаглал нь\n\\[\n\\hat Y_{t+h|t}\n=\n\\phi^h Y_t.\n\\]\n(h) үед таамаглал процессын дундаж руу ойртдог.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#arima-таамаглал",
+    "href": "09-forecasting.html#arima-таамаглал",
+    "title": "10  9. Таамаглал",
+    "section": "10.9 ARIMA таамаглал",
+    "text": "10.9 ARIMA таамаглал\nARIMA загвар тохируулсан гэж үзье.\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(AirPassengers)\n\nfit\n\nТаамаглалыг дараахь байдлаар гаргана:\n\nfc &lt;- forecast(\n  fit,\n  h = 24\n)\n\nautoplot(fc)\n\nГаралт нь дараахь зүйлийг агуулна:\n\nцэгэн таамаглалууд,\nтаамаглалын интервалууд,\nирээдүйн алсын зай.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-интервалууд",
+    "href": "09-forecasting.html#таамаглалын-интервалууд",
+    "title": "10  9. Таамаглал",
+    "section": "10.10 Таамаглалын интервалууд",
+    "text": "10.10 Таамаглалын интервалууд\nЗөвхөн цэгэн таамаглал хангалтгүй.\nТаамаглалын интервалууд тодорхойгүй байдлыг тоон хэлбэрээр илэрхийлдэг.\n95% таамаглалын интервал нь дараах хэлбэртэй:\n\\[\n\\hat Y_{t+h}\n\\pm\n1.96\n\\times\nSE(\\hat Y_{t+h}).\n\\]\nТаамаглалын тодорхойгүй байдал ерөнхийдөө алсын зайны урттай хамт нэмэгддэг.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#жишээ-airpassengers-өгөгдөл",
+    "href": "09-forecasting.html#жишээ-airpassengers-өгөгдөл",
+    "title": "10  9. Таамаглал",
+    "section": "10.11 Жишээ: AirPassengers өгөгдөл",
+    "text": "10.11 Жишээ: AirPassengers өгөгдөл\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(AirPassengers)\n\nfc &lt;- forecast(\n  fit,\n  h = 24\n)\n\nplot(fc)\n\nАжиглаарай:\n\nнэмэгдэж буй тодорхойгүй байдал,\nулирлын бүтэц,\nөргөжиж буй таамаглалын интервалууд.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#үлдэгдлийн-оношлогоо",
+    "href": "09-forecasting.html#үлдэгдлийн-оношлогоо",
+    "title": "10  9. Таамаглал",
+    "section": "10.12 Үлдэгдлийн оношлогоо",
+    "text": "10.12 Үлдэгдлийн оношлогоо\nТаамаглалын загвар нь цагаан чимээтэй төстэй үлдэгдэл үлдээх ёстой.\n\n10.12.1 Үлдэгдлийн график\n\ncheckresiduals(fit)\n\n\n\n10.12.2 Хүсээгүй шинж чанарууд\nҮлдэгдэл нь дараахь шинж чанаруудыг харуулах ёстой:\n\nтэг дундаж,\nтогтмол дисперс,\nач холбогдолтой автокорреляцгүй байх.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#ljung-box-шалгалт",
+    "href": "09-forecasting.html#ljung-box-шалгалт",
+    "title": "10  9. Таамаглал",
+    "section": "10.13 Ljung-Box шалгалт",
+    "text": "10.13 Ljung-Box шалгалт\nLjung-Box шалгалт нь үлдэгдлийн автокорреляцууд үлдсэн эсэхийг шалгадаг.\n\n10.13.1 Таамаглалууд\n\\[\nH_0:\n\\text{Үлдэгдлүүд корреляцгүй}\n\\]\n\\[\nH_1:\n\\text{Үлдэгдлийн автокорреляц байна}.\n\\]\n\n\n10.13.2 Жишээ\n\nBox.test(\n  residuals(fit),\n  lag = 20,\n  type = \"Ljung-Box\"\n)\n\nТом p-утга нь загварын тохиромжтой байдлыг дэмждэг.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-ажлын-урсгал",
+    "href": "09-forecasting.html#таамаглалын-ажлын-урсгал",
+    "title": "10  9. Таамаглал",
+    "section": "10.14 Таамаглалын ажлын урсгал",
+    "text": "10.14 Таамаглалын ажлын урсгал\nЕрдийн таамаглалын журам нь:\n\nЦувааг зурах.\nСтационар байдлыг шалгах.\nШаардлагатай бол ялгавар авах.\nACF ба PACF-ийг шалгах.\nБоломжит загваруудыг тохируулах.\nAIC утгуудыг харьцуулах.\nҮлдэгдлийн оношлогоог шалгах.\nТаамаглалуудыг гаргах.\nТаамаглалын нарийвчлалыг үнэлэх.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#симуляцлагдсан-ar1-өгөгдөл-ашигласан-жишээ",
+    "href": "09-forecasting.html#симуляцлагдсан-ar1-өгөгдөл-ашигласан-жишээ",
+    "title": "10  9. Таамаглал",
+    "section": "10.15 Симуляцлагдсан AR(1) өгөгдөл ашигласан жишээ",
+    "text": "10.15 Симуляцлагдсан AR(1) өгөгдөл ашигласан жишээ\n\nset.seed(123)\n\nx &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\nplot.ts(\n  x,\n  main=\"Симуляцлагдсан AR(1) цуваа\"\n)\n\n\n\n\n\n\n\n\nЗагварыг үнэл:\n\nfit &lt;- arima(\n  x,\n  order=c(1,0,0)\n)\n\nfit\n\n\nCall:\narima(x = x, order = c(1, 0, 0))\n\nCoefficients:\n         ar1  intercept\n      0.7235    -0.0239\ns.e.  0.0491     0.2363\n\nsigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46\n\n\nҮнэлсэн параметрийг жинхэнэ утгатай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#таамаглалын-алсын-зай",
+    "href": "09-forecasting.html#таамаглалын-алсын-зай",
+    "title": "10  9. Таамаглал",
+    "section": "10.16 Таамаглалын алсын зай",
+    "text": "10.16 Таамаглалын алсын зай\nТаамаглалын чанар ерөнхийдөө алсын зай нэмэгдэх тусам буурдаг.\n\n10.16.1 Богино хугацааны таамаглалууд\n\nИхэвчлэн илүү нарийвчлалтай.\nБага таамаглалын интервалууд.\n\n\n\n10.16.2 Урт хугацааны таамаглалууд\n\nИлүү их тодорхойгүй байдал.\nӨргөн таамаглалын интервалууд.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#практик-анхаарах-зүйлс",
+    "href": "09-forecasting.html#практик-анхаарах-зүйлс",
+    "title": "10  9. Таамаглал",
+    "section": "10.17 Практик анхаарах зүйлс",
+    "text": "10.17 Практик анхаарах зүйлс\nСайн таамаглал нь дараахь зүйлийг шаарддаг:\n\nхангалттай өгөгдлийн чанар,\nтохиромжтой үед стационар байдал,\nболгоомжтой загварын сонголт,\nоношлогооны шалгалт.\n\nТаамаглал нь зөвхөн түүвэр доторх хамгийн бага алдаа гаргах тухай биш, харин найдвартай ирээдүйн таамаглалуудыг гаргах тухай юм.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#дүгнэлт",
+    "href": "09-forecasting.html#дүгнэлт",
+    "title": "10  9. Таамаглал",
+    "section": "10.18 Дүгнэлт",
+    "text": "10.18 Дүгнэлт\nТаамаглал нь олон хугацааны цувааны шинжилгээний төв зорилго юм.\nЧухал ойлголтууд нь:\n\nтаамаглалын алсын зай,\nтаамаглалын алдаа,\nMAE,\nMSE,\nRMSE,\nMAPE,\nтаамаглалын интервалууд,\nүлдэгдлийн оношлогоо.\n\nARIMA загварууд нь стационар ба стационар бус хугацааны цувааг таамаглах хүчирхэг хүрээг бүрдүүлдэг.\nҮнэн зөв таамаглал нь дараахь зүйлийг шаарддаг:\n\nзохистой загвар тодорхойлох,\nпараметрийн үнэлгээ,\nзагварын баталгаажуулалт,\nтодорхойгүй байдлын бодит үнэлгээ.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "09-forecasting.html#дасгал",
+    "href": "09-forecasting.html#дасгал",
+    "title": "10  9. Таамаглал",
+    "section": "10.19 Дасгал",
+    "text": "10.19 Дасгал\n\nХугацааны цуваанд энгийн таамаглалын загварыг тохируул.\nMAE ба RMSE-ийг тооцоол.\nЦувааг сургалтын ба тестийн олонлогт хуваа.\nAR(1) загварыг тохируулж, таамаглал гарга.\nauto.arima() ашиглан ARIMA загварыг тохируул.\nӨрсөлдөж буй загваруудын таамаглалын нарийвчлалыг харьцуул.\n95% таамаглалын интервалуудыг байгуул.\nҮлдэгдэлд Ljung-Box шалгалт гүйцэтгэ.\nТаамаглалын тодорхойгүй байдал яагаад алсын зайны урттай хамт өсдөг вэ гэдгийг тайлбарла.\nИжил цувааны хувьд энгийн таамаглал ба ARIMA таамаглалыг харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html",
+    "href": "10-exercises.html",
+    "title": "11  Дасгалууд",
+    "section": "",
+    "text": "11.1 Оршил\nЭнэ бүлэгт дараахь сэдвүүдийг хамарсан дасгалууд багтсан:\nДасгалууд нь үндсэн ойлголтуудаас эхлээд R дээрх практик хэрэглээ хүртэл хамардаг.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#оршил",
+    "href": "10-exercises.html#оршил",
+    "title": "11  Дасгалууд",
+    "section": "",
+    "text": "Цагаан чимээ\nСтационар байдал\nACF\nPACF\nAR(1)\nMA(1)\nARMA\nARIMA\nТаамаглал",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-1",
+    "href": "10-exercises.html#дасгал-1",
+    "title": "11  Дасгалууд",
+    "section": "12.1 Дасгал 1",
+    "text": "12.1 Дасгал 1\n200 урттай цагаан чимээний цуваа үүсгэ.\nЦувааг зурж, зан төлөвийг нь тайлбарла.\n\n12.1.1 Зөвлөмж\n\ny &lt;- rnorm(200)\nplot.ts(y)",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-2",
+    "href": "10-exercises.html#дасгал-2",
+    "title": "11  Дасгалууд",
+    "section": "12.2 Дасгал 2",
+    "text": "12.2 Дасгал 2\nЦагаан чимээний процессын ACF-ийг тооцоолж, график зур.\nЯагаад ихэнх автокорреляцууд 95% итгэлцлийн хязгаар дотор байх ёстойг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-3",
+    "href": "10-exercises.html#дасгал-3",
+    "title": "11  Дасгалууд",
+    "section": "12.3 Дасгал 3",
+    "text": "12.3 Дасгал 3\n1 хоцролтын сарнилын график байгуул.\n\nplot(\n  x=y[-200],\n  y=y[-1]\n)\n\nЯмар хэв маяг ажиглаж байна вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-4",
+    "href": "10-exercises.html#дасгал-4",
+    "title": "11  Дасгалууд",
+    "section": "13.1 Дасгал 4",
+    "text": "13.1 Дасгал 4\nДараах процесс бүрийн хувьд стационар эсэхийг тодорхойл.\n\n13.1.1 (a)\n\\[\nY_t=\\varepsilon_t\n\\]\n\n\n13.1.2 (b)\n\\[\nY_t=t+\\varepsilon_t\n\\]\n\n\n13.1.3 (c)\n\\[\nY_t=0.5Y_{t-1}+\\varepsilon_t\n\\]\n\n\n13.1.4 (d)\n\\[\nY_t=Y_{t-1}+\\varepsilon_t\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-5",
+    "href": "10-exercises.html#дасгал-5",
+    "title": "11  Дасгалууд",
+    "section": "13.2 Дасгал 5",
+    "text": "13.2 Дасгал 5\nСанамсаргүй алхалтыг симуляцлаж, яагаад стационар бус байгааг тайлбарла.\n\nrw &lt;- cumsum(rnorm(300))",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-6",
+    "href": "10-exercises.html#дасгал-6",
+    "title": "11  Дасгалууд",
+    "section": "13.3 Дасгал 6",
+    "text": "13.3 Дасгал 6\nСанамсаргүй алхалтаас ялгавар авч, үүссэн цувааг шалга.\n\ndiff(rw)\n\nЯлгавар авсан цуваа стационар харагдаж байна уу?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-7",
+    "href": "10-exercises.html#дасгал-7",
+    "title": "11  Дасгалууд",
+    "section": "14.1 Дасгал 7",
+    "text": "14.1 Дасгал 7\nДараахьыг өгөгдсөн гэж үзье:\n\\[\n\\rho(k)=0.8^k.\n\\]\nТооцоол:\n\\[\n\\rho(1),\n\\quad\n\\rho(2),\n\\quad\n\\rho(3).\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-8",
+    "href": "10-exercises.html#дасгал-8",
+    "title": "11  Дасгалууд",
+    "section": "14.2 Дасгал 8",
+    "text": "14.2 Дасгал 8\nДараахь хоёрын ялгааг тайлбарла:\n\nавтоковариац,\nавтокорреляц.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-9",
+    "href": "10-exercises.html#дасгал-9",
+    "title": "11  Дасгалууд",
+    "section": "14.3 Дасгал 9",
+    "text": "14.3 Дасгал 9\nДараах параметртэй AR(1) процессыг үүсгэ:\n\\[\n\\phi=0.8.\n\\]\nТүүний ACF-ийг зур.\nЦагаан чимээний ACF-ээс юугаараа ялгаатай вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-10",
+    "href": "10-exercises.html#дасгал-10",
+    "title": "11  Дасгалууд",
+    "section": "14.4 Дасгал 10",
+    "text": "14.4 Дасгал 10\nMA(1) процессын ACF яагаад 1 хоцролтын дараа тасардаг вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-11",
+    "href": "10-exercises.html#дасгал-11",
+    "title": "11  Дасгалууд",
+    "section": "15.1 Дасгал 11",
+    "text": "15.1 Дасгал 11\nACF ба PACF-ийн ялгааг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-12",
+    "href": "10-exercises.html#дасгал-12",
+    "title": "11  Дасгалууд",
+    "section": "15.2 Дасгал 12",
+    "text": "15.2 Дасгал 12\nAR(1) процессын хувьд\n\\[\nY_t=0.7Y_{t-1}+\\varepsilon_t,\n\\]\nхүлээгдэж буй PACF хэв маягийг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-13",
+    "href": "10-exercises.html#дасгал-13",
+    "title": "11  Дасгалууд",
+    "section": "15.3 Дасгал 13",
+    "text": "15.3 Дасгал 13\nAR(2) процессын ACF ба PACF-ийг хоёуланг нь зур.\nАль график нь эрэмбийг тодорхойлоход тусалдаг вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-14",
+    "href": "10-exercises.html#дасгал-14",
+    "title": "11  Дасгалууд",
+    "section": "16.1 Дасгал 14",
+    "text": "16.1 Дасгал 14\nДараахьыг авч үзье:\n\\[\nY_t=0.6Y_{t-1}+\\varepsilon_t.\n\\]\nТооцоол:\n\n16.1.1 Дундаж\n\\[\nE(Y_t)\n\\]\n\n\n16.1.2 Дисперс\n\\[\nVar(Y_t)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2}.\n\\]\nДараахьыг өгөгдсөн гэж үз:\n\\[\n\\sigma^2=1.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-15",
+    "href": "10-exercises.html#дасгал-15",
+    "title": "11  Дасгалууд",
+    "section": "16.2 Дасгал 15",
+    "text": "16.2 Дасгал 15\nAR(1) процессын хувьд\n\\[\n\\rho(k)=\\phi^k\n\\]\nгэдгийг батал.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-16",
+    "href": "10-exercises.html#дасгал-16",
+    "title": "11  Дасгалууд",
+    "section": "16.3 Дасгал 16",
+    "text": "16.3 Дасгал 16\nДараах параметртэй AR(1) процессуудыг симуляцла:\n\\[\n\\phi=0.2,\n\\quad\n0.5,\n\\quad\n0.8.\n\\]\nҮүссэн цуваануудыг харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-17",
+    "href": "10-exercises.html#дасгал-17",
+    "title": "11  Дасгалууд",
+    "section": "16.4 Дасгал 17",
+    "text": "16.4 Дасгал 17\nДараахьыг ашиглан AR(1) загварыг тохируул:\n\narima(\n  x,\n  order=c(1,0,0)\n)\n\nҮнэлсэн параметрийг жинхэнэ утгатай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-18",
+    "href": "10-exercises.html#дасгал-18",
+    "title": "11  Дасгалууд",
+    "section": "17.1 Дасгал 18",
+    "text": "17.1 Дасгал 18\nДараахьын хувьд\n\\[\n\\theta=0.5,\n\\]\nтооцоол:\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n     {1+\\theta^2}.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-19",
+    "href": "10-exercises.html#дасгал-19",
+    "title": "11  Дасгалууд",
+    "section": "17.2 Дасгал 19",
+    "text": "17.2 Дасгал 19\nДараахьын хувьд\n\\[\n\\theta=0.2,\n\\]\nонолын 1 хоцролтын автокорреляцыг тооцоол.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-20",
+    "href": "10-exercises.html#дасгал-20",
+    "title": "11  Дасгалууд",
+    "section": "17.3 Дасгал 20",
+    "text": "17.3 Дасгал 20\nMA(1) процессын хувьд яагаад\n\\[\n\\rho(k)=0,\n\\qquad k&gt;1\n\\]\nбайдаг вэ гэдгийг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-21",
+    "href": "10-exercises.html#дасгал-21",
+    "title": "11  Дасгалууд",
+    "section": "17.4 Дасгал 21",
+    "text": "17.4 Дасгал 21\nДараах параметртэй MA(1) процессыг үүсгэ:\n\\[\n\\theta=0.5.\n\\]\nХарьцуул:\n\nхугацааны график,\nACF,\nPACF.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-22",
+    "href": "10-exercises.html#дасгал-22",
+    "title": "11  Дасгалууд",
+    "section": "17.5 Дасгал 22",
+    "text": "17.5 Дасгал 22\n1 хоцролт ба 2 хоцролтын сарнилын графикуудыг гарга.\nАль нь илүү хүчтэй хамаарал харуулж байна вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-23",
+    "href": "10-exercises.html#дасгал-23",
+    "title": "11  Дасгалууд",
+    "section": "18.1 Дасгал 23",
+    "text": "18.1 Дасгал 23\nДараахь хоёрын ялгааг тайлбарла:\n\nAR(1),\nMA(1),\nARMA(1,1).",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-24",
+    "href": "10-exercises.html#дасгал-24",
+    "title": "11  Дасгалууд",
+    "section": "18.2 Дасгал 24",
+    "text": "18.2 Дасгал 24\nДараахьыг симуляцла:\n\\[\nARMA(1,1):\n\\]\n\\[\nY_t\n=\n0.7Y_{t-1}\n+\n\\varepsilon_t\n+\n0.4\\varepsilon_{t-1}.\n\\]\nЦувааг зур.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-25",
+    "href": "10-exercises.html#дасгал-25",
+    "title": "11  Дасгалууд",
+    "section": "18.3 Дасгал 25",
+    "text": "18.3 Дасгал 25\nACF ба PACF-ийг хоёуланг нь зур.\nХэв маягууд нь цэвэр AR ба MA загваруудаас юугаараа ялгаатай вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-26",
+    "href": "10-exercises.html#дасгал-26",
+    "title": "11  Дасгалууд",
+    "section": "18.4 Дасгал 26",
+    "text": "18.4 Дасгал 26\nДараахьыг ашиглан ARMA(1,1) загварыг үнэл:\n\narima(\n  x,\n  order=c(1,0,1)\n)\n\nҮнэлсэн коэффициентүүдийг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-27",
+    "href": "10-exercises.html#дасгал-27",
+    "title": "11  Дасгалууд",
+    "section": "19.1 Дасгал 27",
+    "text": "19.1 Дасгал 27\nСанамсаргүй алхалт үүсгэ.\nЗур:\n\nанхны цуваа,\nялгавар авсан цуваа.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-28",
+    "href": "10-exercises.html#дасгал-28",
+    "title": "11  Дасгалууд",
+    "section": "19.2 Дасгал 28",
+    "text": "19.2 Дасгал 28\nДараахь зүйлсийн ACF-ийг зур:\n\nсанамсаргүй алхалт,\nялгавар авсан цуваа.\n\nЯлгааг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-29",
+    "href": "10-exercises.html#дасгал-29",
+    "title": "11  Дасгалууд",
+    "section": "19.3 Дасгал 29",
+    "text": "19.3 Дасгал 29\nДараахьын утгыг тайлбарла:\n\\[\nARIMA(1,1,1).\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-30",
+    "href": "10-exercises.html#дасгал-30",
+    "title": "11  Дасгалууд",
+    "section": "19.4 Дасгал 30",
+    "text": "19.4 Дасгал 30\nДараахьыг тохируул:\n\narima(\n  x,\n  order=c(1,1,1)\n)\n\nГаралтыг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-31",
+    "href": "10-exercises.html#дасгал-31",
+    "title": "11  Дасгалууд",
+    "section": "19.5 Дасгал 31",
+    "text": "19.5 Дасгал 31\nДараахьыг ашигла:\n\nforecast::auto.arima(x)\n\nСонгогдсон загварыг гараар тодорхойлсон загвартай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-32",
+    "href": "10-exercises.html#дасгал-32",
+    "title": "11  Дасгалууд",
+    "section": "20.1 Дасгал 32",
+    "text": "20.1 Дасгал 32\nХугацааны цувааг дараахь байдлаар хуваа:\n\nсургалтын олонлог,\nтестийн олонлог.\n\nЭнэ яагаад чухал вэ?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-33",
+    "href": "10-exercises.html#дасгал-33",
+    "title": "11  Дасгалууд",
+    "section": "20.2 Дасгал 33",
+    "text": "20.2 Дасгал 33\nТооцоол:\n\\[\nMAE,\n\\quad\nMSE,\n\\quad\nRMSE.\n\\]\nЭдгээр хэмжүүрүүдийн ялгааг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-34",
+    "href": "10-exercises.html#дасгал-34",
+    "title": "11  Дасгалууд",
+    "section": "20.3 Дасгал 34",
+    "text": "20.3 Дасгал 34\nЭнгийн (naive) таамаглалын загварыг тохируул.\nҮүнийг ARIMA таамаглалтай харьцуул.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-35",
+    "href": "10-exercises.html#дасгал-35",
+    "title": "11  Дасгалууд",
+    "section": "20.4 Дасгал 35",
+    "text": "20.4 Дасгал 35\nТохируулсан таамаглалын загварын хувьд:\n\n12 алхамын таамаглал гарга.\nТаамаглалын интервалуудыг зур.\nТаамаглалын тодорхойгүй байдлыг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-36",
+    "href": "10-exercises.html#дасгал-36",
+    "title": "11  Дасгалууд",
+    "section": "20.5 Дасгал 36",
+    "text": "20.5 Дасгал 36\nҮлдэгдлийн оношлогоо гүйцэтгэ.\nШалга:\n\nүлдэгдлийн графикууд,\nүлдэгдлийн ACF,\nLjung-Box шалгалт.\n\nҮлдэгдэл нь цагаан чимээтэй төстэй байх ёстой юу?\nЯагаад?",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-37",
+    "href": "10-exercises.html#дасгал-37",
+    "title": "11  Дасгалууд",
+    "section": "21.1 Дасгал 37",
+    "text": "21.1 Дасгал 37\nӨөрийн сонгосон бодит өгөгдлийн олонлогийг ашиглан:\n\nЦувааг зур.\nСтационар байдлыг шалга.\nACF ба PACF-ийг шалга.\nAR, MA, ARMA, ARIMA загваруудыг тохируул.\nAIC утгуудыг харьцуул.\nЭцсийн загварыг сонго.\nТаамаглал гарга.\nТаамаглалын нарийвчлалыг үнэл.\nОлдсон үр дүнгээ нэгтгэн товч тайлан бич.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-38",
+    "href": "10-exercises.html#дасгал-38",
+    "title": "11  Дасгалууд",
+    "section": "22.1 Дасгал 38",
+    "text": "22.1 Дасгал 38\n(k) хоцролт дээрх түүврийн автокорреляцыг тооцоолдог R функц бич.\nacf() бэлэн функцийг бүү ашигла.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-39",
+    "href": "10-exercises.html#дасгал-39",
+    "title": "11  Дасгалууд",
+    "section": "22.2 Дасгал 39",
+    "text": "22.2 Дасгал 39\nAR(1) процессыг симуляцладаг R функц бич.\nОролт:\n\n()\n(n)\n\nГаралт:\n\nсимуляцлагдсан цуваа",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "10-exercises.html#дасгал-40",
+    "href": "10-exercises.html#дасгал-40",
+    "title": "11  Дасгалууд",
+    "section": "22.3 Дасгал 40",
+    "text": "22.3 Дасгал 40\nMA(1) процессыг симуляцладаг R функц бич.\nОролт:\n\n()\n(n)\n\nГаралт:\n\nсимуляцлагдсан цуваа",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Дасгалууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html",
+    "href": "11-solutions.html",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "",
+    "text": "12.1 Оршил\nЭнэ бүлэгт 10-р бүлгийн дасгалуудаас сонгосон дасгалуудын бодолтыг үзүүлэв.\nУншигчдыг бодолтыг харахаасаа өмнө дасгал бүрийг бие даан бодохыг уриалж байна.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-1",
+    "href": "11-solutions.html#дасгал-1",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "13.1 Дасгал 1",
+    "text": "13.1 Дасгал 1\n200 урттай цагаан чимээний цуваа үүсгэж, график зур.\n\n13.1.1 R код\n\nset.seed(123)\n\ny &lt;- rnorm(200)\n\nplot.ts(\n  y,\n  main=\"Цагаан чимээ\",\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n13.1.2 Хэлэлцүүлэг\nЦуваа нь тэг орчимд санамсаргүйгээр хэлбэлздэг.\nЯмар ч тренд эсвэл улирлын байдал харагдахгүй.\nДисперс нь цаг хугацааны явцад ойролцоогоор тогтмол харагдаж байна.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-2",
+    "href": "11-solutions.html#дасгал-2",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "14.1 Дасгал 2",
+    "text": "14.1 Дасгал 2\nЦагаан чимээний процессын ACF-ийг зур.\n\n14.1.1 R код\n\nacf(y)\n\n\n\n\n\n\n\n\n\n\n14.1.2 Хэлэлцүүлэг\nЦагаан чимээний хувьд\n\\[\n\\rho(k)=0,\n\\qquad k&gt;0.\n\\]\nПрактикт түүврийн автокорреляцууд санамсаргүй түүврийн хэлбэлзлээс болж тэг орчимд хэлбэлздэг.\nИхэнх корреляцууд 95% итгэлцлийн хязгаар дотор байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-4",
+    "href": "11-solutions.html#дасгал-4",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "15.1 Дасгал 4",
+    "text": "15.1 Дасгал 4\nПроцесс бүрийн хувьд стационар эсэхийг тодорхойл.\n\n15.1.1 (a)\n\\[\nY_t=\\varepsilon_t\n\\]\n\n15.1.1.1 Хариу\nСтационар.\nЭнэ нь цагаан чимээний процесс юм.\n\n\n\n\n15.1.2 (b)\n\\[\nY_t=t+\\varepsilon_t\n\\]\n\n15.1.2.1 Хариу\nСтационар бус.\nДундаж нь цаг хугацааны явцад өөрчлөгддөг:\n\\[\nE(Y_t)=t.\n\\]\n\n\n\n\n15.1.3 (c)\n\\[\nY_t=0.5Y_{t-1}+\\varepsilon_t\n\\]\n\n15.1.3.1 Хариу\nСтационар.\nУчир нь\n\\[\n|0.5|&lt;1.\n\\]\n\n\n\n\n15.1.4 (d)\n\\[\nY_t=Y_{t-1}+\\varepsilon_t\n\\]\n\n15.1.4.1 Хариу\nСтационар бус.\nЭнэ нь санамсаргүй алхалт юм.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-7",
+    "href": "11-solutions.html#дасгал-7",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "16.1 Дасгал 7",
+    "text": "16.1 Дасгал 7\nДараахьыг өгөгдсөн гэж үзье:\n\\[\n\\rho(k)=0.8^k.\n\\]\nОл:\n\\[\n\\rho(1),\n\\quad\n\\rho(2),\n\\quad\n\\rho(3).\n\\]\n\n16.1.1 Тооцоолол\n\\[\n\\rho(1)=0.8\n\\]\n\\[\n\\rho(2)=0.8^2=0.64\n\\]\n\\[\n\\rho(3)=0.8^3=0.512\n\\]\n\n\n16.1.2 Хариу\n\\[\n\\rho(1)=0.8,\n\\qquad\n\\rho(2)=0.64,\n\\qquad\n\\rho(3)=0.512.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-11",
+    "href": "11-solutions.html#дасгал-11",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "17.1 Дасгал 11",
+    "text": "17.1 Дасгал 11\nACF ба PACF-ийн ялгаа юу вэ?\n\n17.1.1 Хариу\nACF нь\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын нийт шугаман хамаарлыг хэмждэг.\nPACF нь завсрын ажиглалтуудын нөлөөг арилгасны дараа\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын шууд хамаарлыг хэмждэг.\n\n\n17.1.2 Жишээ\nAR(1) процессын хувьд:\n\nACF аажмаар буурдаг.\nPACF 1 хоцролтын дараа тасардаг.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-14",
+    "href": "11-solutions.html#дасгал-14",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "18.1 Дасгал 14",
+    "text": "18.1 Дасгал 14\nДараахьыг авч үзье:\n\\[\nY_t=0.6Y_{t-1}+\\varepsilon_t.\n\\]\nДараахьыг өгөгдсөн гэж үз:\n\\[\n\\sigma^2=1.\n\\]\nДундаж ба дисперсийг ол.\n\n18.1.1 Дундаж\nСтационар AR(1) процессын хувьд\n\\[\nE(Y_t)=0.\n\\]\n\n\n18.1.2 Дисперс\n\\[\nVar(Y_t)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2}\n=\n\\frac{1}\n     {1-0.36}.\n\\]\nИймд\n\\[\nVar(Y_t)\n=\n\\frac{1}{0.64}\n=\n1.5625.\n\\]\n\n\n18.1.3 Хариу\n\\[\nE(Y_t)=0\n\\]\n\\[\nVar(Y_t)=1.5625.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-18",
+    "href": "11-solutions.html#дасгал-18",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "19.1 Дасгал 18",
+    "text": "19.1 Дасгал 18\nДараахьын хувьд\n\\[\n\\theta=0.5,\n\\]\nтооцоол:\n\\[\n\\rho(1).\n\\]\n\n19.1.1 Тооцоолол\n\\[\n\\rho(1)\n=\n\\frac{\\theta}\n     {1+\\theta^2}\n=\n\\frac{0.5}\n     {1.25}\n=\n0.4.\n\\]\n\n\n19.1.2 Хариу\n\\[\n\\rho(1)=0.4.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-19",
+    "href": "11-solutions.html#дасгал-19",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "20.1 Дасгал 19",
+    "text": "20.1 Дасгал 19\nДараахьын хувьд\n\\[\n\\theta=0.2,\n\\]\n1 хоцролтын автокорреляцыг тооцоол.\n\n20.1.1 Тооцоолол\n\\[\n\\rho(1)\n=\n\\frac{0.2}\n     {1+0.04}\n=\n\\frac{0.2}\n     {1.04}\n=\n0.1923.\n\\]\n\n\n20.1.2 Хариу\n\\[\n\\rho(1)\\approx0.1923.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-20",
+    "href": "11-solutions.html#дасгал-20",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "21.1 Дасгал 20",
+    "text": "21.1 Дасгал 20\nMA(1) процесс яагаад\n\\[\n\\rho(k)=0,\n\\qquad\nk&gt;1\n\\]\nбайдаг вэ?\n\n21.1.1 Тайлбар\nЗагвар нь\n\\[\nY_t\n=\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nНэгээс илүү хугацааны нэгжээр тусгаарлагдсан ажиглалтууд ямар ч нийтлэг алдааны гишүүн хуваалцдаггүй.\nЦагаан чимээний дараалал корреляцгүй тул\n\\[\nCov(Y_t,Y_{t-k})=0\n\\]\nнь\n\\[\nk&gt;1\n\\]\n-ийн хувьд биелнэ.\nИймд\n\\[\n\\rho(k)=0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-23",
+    "href": "11-solutions.html#дасгал-23",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "22.1 Дасгал 23",
+    "text": "22.1 Дасгал 23\nAR(1), MA(1), ARMA(1,1)-ийн ялгааг бич.\n\n22.1.1 AR(1)\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t.\n\\]\nШинж чанар:\n\nACF аажмаар буурна.\nPACF 1 хоцролт дээр тасарна.\n\n\n\n\n22.1.2 MA(1)\n\\[\nY_t\n=\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nШинж чанар:\n\nACF 1 хоцролт дээр тасарна.\nPACF аажмаар буурна.\n\n\n\n\n22.1.3 ARMA(1,1)\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t\n+\n\\theta\\varepsilon_{t-1}.\n\\]\nШинж чанар:\n\nACF аажмаар буурна.\nPACF аажмаар буурна.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-29",
+    "href": "11-solutions.html#дасгал-29",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "23.1 Дасгал 29",
+    "text": "23.1 Дасгал 29\nARIMA(1,1,1) гэж юу гэсэн үг вэ?\n\n23.1.1 Хариу\nARIMA(1,1,1) загвар нь дараахь зүйлийг агуулна:\n\nнэг авторегрессив гишүүн,\nнэг эрэмбийн ялгавар,\nнэг хөдөлгөөнт дундажийн гишүүн.\n\nМатематикаар\n\\[\n(1-\\phi B)(1-B)Y_t\n=\n(1+\\theta B)\\varepsilon_t.\n\\]\nЯлгавар авах алхам нь стационар бус байдлыг арилгахад ашиглагддаг.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-33",
+    "href": "11-solutions.html#дасгал-33",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "24.1 Дасгал 33",
+    "text": "24.1 Дасгал 33\nТодорхойл:\n\\[\nMAE,\n\\quad\nMSE,\n\\quad\nRMSE.\n\\]\n\n24.1.1 MAE\n\\[\nMAE\n=\n\\frac1n\n\\sum |e_t|.\n\\]\nДундаж абсолют алдааг хэмждэг.\n\n\n\n24.1.2 MSE\n\\[\nMSE\n=\n\\frac1n\n\\sum e_t^2.\n\\]\nТом алдаануудыг илүү хүндээр шийтгэдэг.\n\n\n\n24.1.3 RMSE\n\\[\nRMSE\n=\n\\sqrt{MSE}.\n\\]\nАнхны өгөгдөлтэй ижил нэгжтэй байдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
+    ]
+  },
+  {
+    "objectID": "11-solutions.html#дасгал-36",
+    "href": "11-solutions.html#дасгал-36",
+    "title": "12  Сонгосон бодолтууд",
+    "section": "25.1 Дасгал 36",
+    "text": "25.1 Дасгал 36\nҮлдэгдэл яагаад цагаан чимээтэй төстэй байх ёстой вэ?\n\n25.1.1 Хариу\nСайн хугацааны цувааны загвар нь өгөгдөлд байгаа бүх системтэй бүтцийг тайлбарлах ёстой.\nХэрэв үлдэгдэлд автокорреляц үлдсэн бол ашигтай мэдээлэл тайлбарлагдаагүй үлдсэн гэсэн үг.\nСайн тохируулсан загвар нь дараахь шинж чанартай үлдэгдэл гаргадаг:\n\nдундаж нь тэг,\nдисперс нь тогтмол,\nач холбогдолтой автокорреляцгүй.\n\nИймд үлдэгдлийн цуваа цагаан чимээтэй төстэй байх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Сонгосон бодолтууд</span>"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; The Autoregressive Moving Average Process: ARMA – Хугацааны цуваа:R хэлний хэрэглээ</title>
+<title>8&nbsp; Авторегрессив хөдөлгөөнт дундаж процесс: ARMA – Хугацааны цуваа:R хэлний хэрэглээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,6 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./08-arima.html" rel="next">
 <link href="./06-ma1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -152,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-arma.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-arma.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,31 +199,55 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Autocorrelation Function (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Partial Autocorrelation Function (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Autoregressive Process of Order One: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Таамаглал</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
     </ul>
@@ -235,36 +260,36 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">8.1</span> Introduction</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">8.2</span> Definition</a></li>
-  <li><a href="#special-cases" id="toc-special-cases" class="nav-link" data-scroll-target="#special-cases"><span class="header-section-number">8.3</span> Special Cases</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">8.1</span> Оршил</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">8.2</span> Тодорхойлолт</a></li>
+  <li><a href="#онцгой-тохиолдлууд" id="toc-онцгой-тохиолдлууд" class="nav-link" data-scroll-target="#онцгой-тохиолдлууд"><span class="header-section-number">8.3</span> Онцгой тохиолдлууд</a>
   <ul class="collapse">
-  <li><a href="#ar-model" id="toc-ar-model" class="nav-link" data-scroll-target="#ar-model"><span class="header-section-number">8.3.1</span> AR Model</a></li>
-  <li><a href="#ma-model" id="toc-ma-model" class="nav-link" data-scroll-target="#ma-model"><span class="header-section-number">8.3.2</span> MA Model</a></li>
+  <li><a href="#ar-загвар" id="toc-ar-загвар" class="nav-link" data-scroll-target="#ar-загвар"><span class="header-section-number">8.3.1</span> AR загвар</a></li>
+  <li><a href="#ma-загвар" id="toc-ma-загвар" class="nav-link" data-scroll-target="#ma-загвар"><span class="header-section-number">8.3.2</span> MA загвар</a></li>
   </ul></li>
-  <li><a href="#the-arma11-model" id="toc-the-arma11-model" class="nav-link" data-scroll-target="#the-arma11-model"><span class="header-section-number">8.4</span> The ARMA(1,1) Model</a></li>
-  <li><a href="#stationarity" id="toc-stationarity" class="nav-link" data-scroll-target="#stationarity"><span class="header-section-number">8.5</span> Stationarity</a>
+  <li><a href="#arma11-загвар" id="toc-arma11-загвар" class="nav-link" data-scroll-target="#arma11-загвар"><span class="header-section-number">8.4</span> ARMA(1,1) загвар</a></li>
+  <li><a href="#стационар-байдал" id="toc-стационар-байдал" class="nav-link" data-scroll-target="#стационар-байдал"><span class="header-section-number">8.5</span> Стационар байдал</a>
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">8.5.1</span> Examples</a></li>
+  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">8.5.1</span> Жишээнүүд</a></li>
   </ul></li>
-  <li><a href="#invertibility" id="toc-invertibility" class="nav-link" data-scroll-target="#invertibility"><span class="header-section-number">8.6</span> Invertibility</a></li>
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">8.7</span> Mean</a></li>
-  <li><a href="#simulation-of-arma11" id="toc-simulation-of-arma11" class="nav-link" data-scroll-target="#simulation-of-arma11"><span class="header-section-number">8.8</span> Simulation of ARMA(1,1)</a></li>
-  <li><a href="#acf-of-an-arma-process" id="toc-acf-of-an-arma-process" class="nav-link" data-scroll-target="#acf-of-an-arma-process"><span class="header-section-number">8.9</span> ACF of an ARMA Process</a></li>
-  <li><a href="#pacf-of-an-arma-process" id="toc-pacf-of-an-arma-process" class="nav-link" data-scroll-target="#pacf-of-an-arma-process"><span class="header-section-number">8.10</span> PACF of an ARMA Process</a></li>
-  <li><a href="#model-identification" id="toc-model-identification" class="nav-link" data-scroll-target="#model-identification"><span class="header-section-number">8.11</span> Model Identification</a>
+  <li><a href="#буцаах-боломжтой-байдал" id="toc-буцаах-боломжтой-байдал" class="nav-link" data-scroll-target="#буцаах-боломжтой-байдал"><span class="header-section-number">8.6</span> Буцаах боломжтой байдал</a></li>
+  <li><a href="#дундаж" id="toc-дундаж" class="nav-link" data-scroll-target="#дундаж"><span class="header-section-number">8.7</span> Дундаж</a></li>
+  <li><a href="#arma11-ийн-симуляц" id="toc-arma11-ийн-симуляц" class="nav-link" data-scroll-target="#arma11-ийн-симуляц"><span class="header-section-number">8.8</span> ARMA(1,1)-ийн симуляц</a></li>
+  <li><a href="#arma-процессын-acf" id="toc-arma-процессын-acf" class="nav-link" data-scroll-target="#arma-процессын-acf"><span class="header-section-number">8.9</span> ARMA процессын ACF</a></li>
+  <li><a href="#arma-процессын-pacf" id="toc-arma-процессын-pacf" class="nav-link" data-scroll-target="#arma-процессын-pacf"><span class="header-section-number">8.10</span> ARMA процессын PACF</a></li>
+  <li><a href="#загвар-тодорхойлох" id="toc-загвар-тодорхойлох" class="nav-link" data-scroll-target="#загвар-тодорхойлох"><span class="header-section-number">8.11</span> Загвар тодорхойлох</a>
   <ul class="collapse">
   <li><a href="#arp" id="toc-arp" class="nav-link" data-scroll-target="#arp"><span class="header-section-number">8.11.1</span> AR(p)</a></li>
   <li><a href="#maq" id="toc-maq" class="nav-link" data-scroll-target="#maq"><span class="header-section-number">8.11.2</span> MA(q)</a></li>
   <li><a href="#armapq" id="toc-armapq" class="nav-link" data-scroll-target="#armapq"><span class="header-section-number">8.11.3</span> ARMA(p,q)</a></li>
   </ul></li>
-  <li><a href="#comparing-ar1-ma1-and-arma11" id="toc-comparing-ar1-ma1-and-arma11" class="nav-link" data-scroll-target="#comparing-ar1-ma1-and-arma11"><span class="header-section-number">8.12</span> Comparing AR(1), MA(1), and ARMA(1,1)</a></li>
-  <li><a href="#lag-plot" id="toc-lag-plot" class="nav-link" data-scroll-target="#lag-plot"><span class="header-section-number">8.13</span> Lag Plot</a></li>
-  <li><a href="#model-estimation" id="toc-model-estimation" class="nav-link" data-scroll-target="#model-estimation"><span class="header-section-number">8.14</span> Model Estimation</a></li>
-  <li><a href="#model-selection-using-aic" id="toc-model-selection-using-aic" class="nav-link" data-scroll-target="#model-selection-using-aic"><span class="header-section-number">8.15</span> Model Selection Using AIC</a></li>
-  <li><a href="#forecasting" id="toc-forecasting" class="nav-link" data-scroll-target="#forecasting"><span class="header-section-number">8.16</span> Forecasting</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.17</span> Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.18</span> Exercises</a></li>
+  <li><a href="#ar1-ma1-arma11-ийг-харьцуулах" id="toc-ar1-ma1-arma11-ийг-харьцуулах" class="nav-link" data-scroll-target="#ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">8.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</a></li>
+  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">8.13</span> Хоцролтын график</a></li>
+  <li><a href="#загварын-үнэлгээ" id="toc-загварын-үнэлгээ" class="nav-link" data-scroll-target="#загварын-үнэлгээ"><span class="header-section-number">8.14</span> Загварын үнэлгээ</a></li>
+  <li><a href="#aic-ашиглан-загвар-сонгох" id="toc-aic-ашиглан-загвар-сонгох" class="nav-link" data-scroll-target="#aic-ашиглан-загвар-сонгох"><span class="header-section-number">8.15</span> AIC ашиглан загвар сонгох</a></li>
+  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">8.16</span> Таамаглал</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">8.17</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">8.18</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +298,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The Autoregressive Moving Average Process: ARMA</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></h1>
 </div>
 
 
@@ -290,19 +315,19 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.1</span> Introduction</h2>
-<p>The ARMA model combines the ideas of autoregressive (AR) and moving average (MA) processes.</p>
-<p>It is one of the most important classes of stationary time series models and forms the foundation of the Box-Jenkins methodology.</p>
-<p>An ARMA model can capture both:</p>
+<section id="оршил" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">8.1</span> Оршил</h2>
+<p>ARMA загвар нь авторегрессив (AR) болон хөдөлгөөнт дундаж (MA) процессуудын санааг нэгтгэдэг.</p>
+<p>Энэ нь стационар хугацааны цувааны загваруудын хамгийн чухал ангиллын нэг бөгөөд Box-Jenkins аргачлалын үндэс болдог.</p>
+<p>ARMA загвар нь дараахь хоёрыг хоёуланг нь илэрхийлж чадна:</p>
 <ul>
-<li>persistence through past observations,</li>
-<li>short-term dependence through past shocks.</li>
+<li>өнгөрсөн ажиглалтуудаар дамжих үргэлжлэл,</li>
+<li>өнгөрсөн шокоор дамжих богино хугацааны хамаарал.</li>
 </ul>
 </section>
-<section id="definition" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">8.2</span> Definition</h2>
-<p>An ARMA((p,q)) process is defined by</p>
+<section id="тодорхойлолт" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">8.2</span> Тодорхойлолт</h2>
+<p>ARMA((p,q)) процессыг</p>
 <p><span class="math display">\[
 Y_t
 =
@@ -318,47 +343,47 @@ Y_t
 +\cdots
 +\theta_q\varepsilon_{t-q},
 \]</span></p>
-<p>where</p>
+<p>гэж тодорхойлдог бөгөөд энд</p>
 <p><span class="math display">\[
 \{\varepsilon_t\}
 \sim
 WN(0,\sigma^2).
 \]</span></p>
-<p>Here:</p>
+<p>Энд:</p>
 <ul>
-<li>(p) = autoregressive order,</li>
-<li>(q) = moving average order.</li>
+<li>(p) = авторегрессив эрэмбэ,</li>
+<li>(q) = хөдөлгөөнт дундажийн эрэмбэ.</li>
 </ul>
 </section>
-<section id="special-cases" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="special-cases"><span class="header-section-number">8.3</span> Special Cases</h2>
-<section id="ar-model" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="ar-model"><span class="header-section-number">8.3.1</span> AR Model</h3>
-<p>If</p>
+<section id="онцгой-тохиолдлууд" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="онцгой-тохиолдлууд"><span class="header-section-number">8.3</span> Онцгой тохиолдлууд</h2>
+<section id="ar-загвар" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="ar-загвар"><span class="header-section-number">8.3.1</span> AR загвар</h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 q=0,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 ARMA(p,0)=AR(p).
 \]</span></p>
 </section>
-<section id="ma-model" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="ma-model"><span class="header-section-number">8.3.2</span> MA Model</h3>
-<p>If</p>
+<section id="ma-загвар" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="ma-загвар"><span class="header-section-number">8.3.2</span> MA загвар</h3>
+<p>Хэрэв</p>
 <p><span class="math display">\[
 p=0,
 \]</span></p>
-<p>then</p>
+<p>бол</p>
 <p><span class="math display">\[
 ARMA(0,q)=MA(q).
 \]</span></p>
-<p>Thus AR and MA processes are special cases of the ARMA model.</p>
+<p>Иймд AR ба MA процессууд нь ARMA загварын онцгой тохиолдлууд юм.</p>
 </section>
 </section>
-<section id="the-arma11-model" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="the-arma11-model"><span class="header-section-number">8.4</span> The ARMA(1,1) Model</h2>
-<p>The simplest ARMA model is</p>
+<section id="arma11-загвар" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="arma11-загвар"><span class="header-section-number">8.4</span> ARMA(1,1) загвар</h2>
+<p>Хамгийн энгийн ARMA загвар нь</p>
 <p><span class="math display">\[
 Y_t
 =
@@ -368,75 +393,75 @@ Y_t
 +
 \theta\varepsilon_{t-1}.
 \]</span></p>
-<p>This model combines:</p>
+<p>Энэ загвар нь дараахь хоёрыг нэгтгэдэг:</p>
 <ul>
-<li>the dependence structure of AR(1),</li>
-<li>the shock structure of MA(1).</li>
+<li>AR(1)-ийн хамаарлын бүтэц,</li>
+<li>MA(1)-ийн шокийн бүтэц.</li>
 </ul>
 </section>
-<section id="stationarity" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="stationarity"><span class="header-section-number">8.5</span> Stationarity</h2>
-<p>For ARMA processes, stationarity depends on the AR part.</p>
-<p>For ARMA(1,1),</p>
+<section id="стационар-байдал" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="стационар-байдал"><span class="header-section-number">8.5</span> Стационар байдал</h2>
+<p>ARMA процессуудын хувьд стационар байдал нь AR хэсгээс хамаарна.</p>
+<p>ARMA(1,1)-ийн хувьд стационар байхын тулд</p>
 <p><span class="math display">\[
 |\phi|&lt;1
 \]</span></p>
-<p>is required for stationarity.</p>
-<section id="examples" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">8.5.1</span> Examples</h3>
+<p>шаардлагатай.</p>
+<section id="жишээнүүд" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">8.5.1</span> Жишээнүүд</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>()</th>
-<th>Stationary?</th>
+<th>Стационар уу?</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>0.3</td>
-<td>Yes</td>
+<td>Тийм</td>
 </tr>
 <tr class="even">
 <td>0.8</td>
-<td>Yes</td>
+<td>Тийм</td>
 </tr>
 <tr class="odd">
 <td>-0.5</td>
-<td>Yes</td>
+<td>Тийм</td>
 </tr>
 <tr class="even">
 <td>1.0</td>
-<td>No</td>
+<td>Үгүй</td>
 </tr>
 <tr class="odd">
 <td>1.1</td>
-<td>No</td>
+<td>Үгүй</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="invertibility" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="invertibility"><span class="header-section-number">8.6</span> Invertibility</h2>
-<p>Invertibility depends on the MA part.</p>
-<p>For ARMA(1,1),</p>
+<section id="буцаах-боломжтой-байдал" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="буцаах-боломжтой-байдал"><span class="header-section-number">8.6</span> Буцаах боломжтой байдал</h2>
+<p>Буцаах боломжтой байдал нь MA хэсгээс хамаарна.</p>
+<p>ARMA(1,1)-ийн хувьд буцаах боломжтой байхын тулд</p>
 <p><span class="math display">\[
 |\theta|&lt;1
 \]</span></p>
-<p>is required for invertibility.</p>
-<p>This ensures a unique representation of the process.</p>
+<p>шаардлагатай.</p>
+<p>Энэ нь процессын цор ганц дүрслэлийг баталгаажуулдаг.</p>
 </section>
-<section id="mean" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="mean"><span class="header-section-number">8.7</span> Mean</h2>
-<p>For a stationary ARMA(1,1),</p>
+<section id="дундаж" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="дундаж"><span class="header-section-number">8.7</span> Дундаж</h2>
+<p>Стационар ARMA(1,1)-ийн хувьд</p>
 <p><span class="math display">\[
 E(Y_t)=0.
 \]</span></p>
-<p>More generally, if a constant term is included, the mean is constant over time.</p>
+<p>Ерөнхийдөө, хэрэв тогтмол гишүүн орсон бол дундаж нь цаг хугацааны явцад тогтмол байна.</p>
 </section>
-<section id="simulation-of-arma11" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="simulation-of-arma11"><span class="header-section-number">8.8</span> Simulation of ARMA(1,1)</h2>
-<p>Consider</p>
+<section id="arma11-ийн-симуляц" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="arma11-ийн-симуляц"><span class="header-section-number">8.8</span> ARMA(1,1)-ийн симуляц</h2>
+<p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t
 =
@@ -456,7 +481,7 @@ Y_t
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ARMA(1,1) Process"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ARMA(1,1) процесс"</span>,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab=</span><span class="fu">expression</span>(Y[t])</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -467,14 +492,14 @@ Y_t
 </div>
 </div>
 </div>
-<p>Observe the persistence created by the AR component and the short-term effects created by the MA component.</p>
+<p>AR бүрэлдэхүүнээс үүсэх үргэлжлэл ба MA бүрэлдэхүүнээс үүсэх богино хугацааны нөлөөг ажиглаарай.</p>
 </section>
-<section id="acf-of-an-arma-process" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="acf-of-an-arma-process"><span class="header-section-number">8.9</span> ACF of an ARMA Process</h2>
+<section id="arma-процессын-acf" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="arma-процессын-acf"><span class="header-section-number">8.9</span> ARMA процессын ACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ACF of ARMA(1,1)"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ARMA(1,1)-ийн ACF"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -484,16 +509,16 @@ Y_t
 </div>
 </div>
 </div>
-<p>Unlike MA models, the ACF does not cut off.</p>
-<p>Unlike pure AR models, the pattern is often more complex.</p>
-<p>The ACF generally tails off toward zero.</p>
+<p>MA загваруудаас ялгаатай нь ACF тасардаггүй.</p>
+<p>Цэвэр AR загваруудаас ялгаатай нь хэв маяг нь ихэвчлэн илүү төвөгтэй байдаг.</p>
+<p>ACF ерөнхийдөө тэг рүү аажмаар буурдаг.</p>
 </section>
-<section id="pacf-of-an-arma-process" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="pacf-of-an-arma-process"><span class="header-section-number">8.10</span> PACF of an ARMA Process</h2>
+<section id="arma-процессын-pacf" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="arma-процессын-pacf"><span class="header-section-number">8.10</span> ARMA процессын PACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"PACF of ARMA(1,1)"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main=</span><span class="st">"ARMA(1,1)-ийн PACF"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -503,36 +528,36 @@ Y_t
 </div>
 </div>
 </div>
-<p>The PACF also tails off.</p>
-<p>This is one of the identifying characteristics of ARMA models.</p>
+<p>PACF мөн аажмаар буурдаг.</p>
+<p>Энэ нь ARMA загваруудын таних шинж чанаруудын нэг юм.</p>
 </section>
-<section id="model-identification" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="model-identification"><span class="header-section-number">8.11</span> Model Identification</h2>
+<section id="загвар-тодорхойлох" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="загвар-тодорхойлох"><span class="header-section-number">8.11</span> Загвар тодорхойлох</h2>
 <section id="arp" class="level3" data-number="8.11.1">
 <h3 data-number="8.11.1" class="anchored" data-anchor-id="arp"><span class="header-section-number">8.11.1</span> AR(p)</h3>
 <ul>
-<li>ACF tails off.</li>
-<li>PACF cuts off.</li>
+<li>ACF аажмаар буурна.</li>
+<li>PACF тасарна.</li>
 </ul>
 </section>
 <section id="maq" class="level3" data-number="8.11.2">
 <h3 data-number="8.11.2" class="anchored" data-anchor-id="maq"><span class="header-section-number">8.11.2</span> MA(q)</h3>
 <ul>
-<li>ACF cuts off.</li>
-<li>PACF tails off.</li>
+<li>ACF тасарна.</li>
+<li>PACF аажмаар буурна.</li>
 </ul>
 </section>
 <section id="armapq" class="level3" data-number="8.11.3">
 <h3 data-number="8.11.3" class="anchored" data-anchor-id="armapq"><span class="header-section-number">8.11.3</span> ARMA(p,q)</h3>
 <ul>
-<li>ACF tails off.</li>
-<li>PACF tails off.</li>
+<li>ACF аажмаар буурна.</li>
+<li>PACF аажмаар буурна.</li>
 </ul>
-<p>Therefore ARMA models are usually identified by examining both functions simultaneously.</p>
+<p>Иймд ARMA загваруудыг ихэвчлэн хоёр функцийг нэгэн зэрэг шалгаж тодорхойлдог.</p>
 </section>
 </section>
-<section id="comparing-ar1-ma1-and-arma11" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="comparing-ar1-ma1-and-arma11"><span class="header-section-number">8.12</span> Comparing AR(1), MA(1), and ARMA(1,1)</h2>
+<section id="ar1-ma1-arma11-ийг-харьцуулах" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">8.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -567,11 +592,11 @@ Y_t
 </div>
 </div>
 </div>
-<p>Compare the characteristic patterns.</p>
+<p>Онцлог хэв маягуудыг харьцуулаарай.</p>
 </section>
-<section id="lag-plot" class="level2" data-number="8.13">
-<h2 data-number="8.13" class="anchored" data-anchor-id="lag-plot"><span class="header-section-number">8.13</span> Lag Plot</h2>
-<p>A lag plot may be used to visualize dependence.</p>
+<section id="хоцролтын-график" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">8.13</span> Хоцролтын график</h2>
+<p>Хамаарлыг дүрслэхэд хоцролтын график ашиглаж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> arma11[<span class="sc">-</span><span class="fu">length</span>(arma11)],</span>
@@ -588,11 +613,11 @@ Y_t
 </div>
 </div>
 </div>
-<p>The relationship is generally stronger than white noise and reflects both AR and MA effects.</p>
+<p>Хамаарал нь ерөнхийдөө цагаан чимээнээс илүү хүчтэй бөгөөд AR ба MA нөлөөг хоёуланг нь илэрхийлдэг.</p>
 </section>
-<section id="model-estimation" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="model-estimation"><span class="header-section-number">8.14</span> Model Estimation</h2>
-<p>An ARMA(1,1) model may be estimated using maximum likelihood.</p>
+<section id="загварын-үнэлгээ" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="загварын-үнэлгээ"><span class="header-section-number">8.14</span> Загварын үнэлгээ</h2>
+<p>ARMA(1,1) загварыг хамгийн их магадлалын аргаар үнэлж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
@@ -613,11 +638,11 @@ s.e.  0.0509  0.0733     0.2623
 sigma^2 estimated as 1.029:  log likelihood = -430.61,  aic = 869.22</code></pre>
 </div>
 </div>
-<p>The estimated coefficients should be close to the values used in simulation.</p>
+<p>Үнэлсэн коэффициентүүд нь симуляцад ашигласан утгуудтай ойрхон байх ёстой.</p>
 </section>
-<section id="model-selection-using-aic" class="level2" data-number="8.15">
-<h2 data-number="8.15" class="anchored" data-anchor-id="model-selection-using-aic"><span class="header-section-number">8.15</span> Model Selection Using AIC</h2>
-<p>Different ARMA models can be compared using the Akaike Information Criterion (AIC).</p>
+<section id="aic-ашиглан-загвар-сонгох" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="aic-ашиглан-загвар-сонгох"><span class="header-section-number">8.15</span> AIC ашиглан загвар сонгох</h2>
+<p>Өөр өөр ARMA загваруудыг Акайке мэдээллийн шалгуур (AIC) ашиглан харьцуулж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">arima</span>(arma11, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">arima</span>(arma11, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
@@ -631,14 +656,14 @@ fit2  3 976.2085
 fit3  4 869.2151</code></pre>
 </div>
 </div>
-<p>The model with the smallest AIC is usually preferred.</p>
+<p>Хамгийн бага AIC-тай загварыг ихэвчлэн илүүд үздэг.</p>
 </section>
-<section id="forecasting" class="level2" data-number="8.16">
-<h2 data-number="8.16" class="anchored" data-anchor-id="forecasting"><span class="header-section-number">8.16</span> Forecasting</h2>
-<p>Forecasts are based on:</p>
+<section id="таамаглал" class="level2" data-number="8.16">
+<h2 data-number="8.16" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">8.16</span> Таамаглал</h2>
+<p>Таамаглалууд нь дараахь зүйлд үндэслэнэ:</p>
 <ul>
-<li>past observations,</li>
-<li>estimated model parameters.</li>
+<li>өнгөрсөн ажиглалтууд,</li>
+<li>үнэлсэн загварын параметрүүд.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forecast)</span>
@@ -663,16 +688,16 @@ fit3  4 869.2151</code></pre>
 310    -0.02734728 -2.377560 2.3228654 -3.621687 3.566993</code></pre>
 </div>
 </div>
-<p>The forecast gradually approaches the long-run mean of the process.</p>
+<p>Таамаглал нь процессын урт хугацааны дундаж руу аажмаар ойртдог.</p>
 </section>
-<section id="summary" class="level2" data-number="8.17">
-<h2 data-number="8.17" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.17</span> Summary</h2>
-<p>An ARMA((p,q)) model combines:</p>
+<section id="дүгнэлт" class="level2" data-number="8.17">
+<h2 data-number="8.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">8.17</span> Дүгнэлт</h2>
+<p>ARMA((p,q)) загвар нь дараахь хоёрыг нэгтгэдэг:</p>
 <ul>
-<li>autoregressive dependence,</li>
-<li>moving average dependence.</li>
+<li>авторегрессив хамаарал,</li>
+<li>хөдөлгөөнт дундажийн хамаарал.</li>
 </ul>
-<p>For ARMA(1,1),</p>
+<p>ARMA(1,1)-ийн хувьд</p>
 <p><span class="math display">\[
 Y_t
 =
@@ -682,27 +707,27 @@ Y_t
 +
 \theta\varepsilon_{t-1}.
 \]</span></p>
-<p>Important properties:</p>
+<p>Чухал шинж чанарууд:</p>
 <ul>
-<li>Stationarity depends on the AR component.</li>
-<li>Invertibility depends on the MA component.</li>
-<li>ACF tails off.</li>
-<li>PACF tails off.</li>
-<li>Widely used for stationary time series.</li>
+<li>Стационар байдал нь AR бүрэлдэхүүнээс хамаарна.</li>
+<li>Буцаах боломжтой байдал нь MA бүрэлдэхүүнээс хамаарна.</li>
+<li>ACF аажмаар буурна.</li>
+<li>PACF аажмаар буурна.</li>
+<li>Стационар хугацааны цуваанд өргөн ашиглагддаг.</li>
 </ul>
-<p>ARMA models provide a flexible framework for describing many real-world time series.</p>
+<p>ARMA загварууд нь олон бодит хугацааны цувааг дүрслэх уян хатан хүрээг бүрдүүлдэг.</p>
 </section>
-<section id="exercises" class="level2" data-number="8.18">
-<h2 data-number="8.18" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.18</span> Exercises</h2>
+<section id="дасгал" class="level2" data-number="8.18">
+<h2 data-number="8.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">8.18</span> Дасгал</h2>
 <ol type="1">
-<li>Simulate an ARMA(1,1) process with () and ().</li>
-<li>Plot the series.</li>
-<li>Compute and interpret the ACF.</li>
-<li>Compute and interpret the PACF.</li>
-<li>Estimate an ARMA(1,1) model using <code>arima()</code>.</li>
-<li>Compare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.</li>
-<li>Use AIC to compare competing models.</li>
-<li>Produce 10-step-ahead forecasts and interpret the results.</li>
+<li>() ба () бүхий ARMA(1,1) процессыг симуляцла.</li>
+<li>Цувааг зур.</li>
+<li>ACF-ийг тооцоолж, тайлбарла.</li>
+<li>PACF-ийг тооцоолж, тайлбарла.</li>
+<li><code>arima()</code> ашиглан ARMA(1,1) загварыг үнэл.</li>
+<li>AR(1), MA(1), ARMA(1,1)-ийг ACF ба PACF графикууд ашиглан харьцуул.</li>
+<li>AIC ашиглан өрсөлдөж буй загваруудыг харьцуул.</li>
+<li>10 алхамын урьдчилсан таамаглал гаргаж, үр дүнг тайлбарла.</li>
 </ol>
 
 
@@ -1187,11 +1212,14 @@ Y_t
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./06-ma1.html" class="pagination-link" aria-label="The Moving Average Process of Order One: MA(1)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Moving Average Process of Order One: MA(1)</span></span>
+      <a href="./06-ma1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./08-arima.html" class="pagination-link" aria-label="Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
