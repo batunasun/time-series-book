@@ -16,6 +16,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Initialize GitHub Pages branch
+        run: |
+          source_branch=$(git branch --show-current)
+          if ! git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git switch --orphan gh-pages
+            git -c user.name="GitHub Actions" \
+                -c user.email="github-actions[bot]@users.noreply.github.com" \
+                commit --allow-empty -m "Initialize GitHub Pages branch"
+            git push origin gh-pages
+            git switch "$source_branch"
+          fi
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
