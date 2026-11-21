@@ -4,20 +4,20 @@
 
 A stochastic process \(\{Y_t\}\) is called a white noise process if
 
-\[
+$$
 E(Y_t)=0,
-\]
+$$
 
-\[
+$$
 Var(Y_t)=\sigma^2,
-\]
+$$
 
 and
 
-\[
+$$
 Cov(Y_t,Y_{t-k})=0,
 \qquad k\neq 0.
-\]
+$$
 
 We write
 
