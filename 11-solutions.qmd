@@ -1,20 +1,20 @@
-# Selected Solutions
+# Сонгосон бодолтууд
 
-## Introduction
+## Оршил
 
-This chapter provides solutions to selected exercises from Chapter 10.
+Энэ бүлэгт 10-р бүлгийн дасгалуудаас сонгосон дасгалуудын бодолтыг үзүүлэв.
 
-Readers are encouraged to attempt each problem independently before consulting the solutions.
+Уншигчдыг бодолтыг харахаасаа өмнө дасгал бүрийг бие даан бодохыг уриалж байна.
 
 ---
 
-# Solution 1
+# Бодолт 1
 
-## Exercise 1
+## Дасгал 1
 
-Generate a white noise series of length 200 and plot it.
+200 урттай цагаан чимээний цуваа үүсгэж, график зур.
 
-### R Code
+### R код
 
 ```{r}
 set.seed(123)
@@ -23,53 +23,53 @@ y <- rnorm(200)
 
 plot.ts(
   y,
-  main="White Noise",
+  main="Цагаан чимээ",
   ylab=expression(Y[t])
 )
 ```
 
-### Discussion
+### Хэлэлцүүлэг
 
-The series fluctuates randomly around zero.
+Цуваа нь тэг орчимд санамсаргүйгээр хэлбэлздэг.
 
-No trend or seasonality is visible.
+Ямар ч тренд эсвэл улирлын байдал харагдахгүй.
 
-The variance appears approximately constant through time.
+Дисперс нь цаг хугацааны явцад ойролцоогоор тогтмол харагдаж байна.
 
 ---
 
-# Solution 2
+# Бодолт 2
 
-## Exercise 2
+## Дасгал 2
 
-Plot the ACF of a white noise process.
+Цагаан чимээний процессын ACF-ийг зур.
 
-### R Code
+### R код
 
 ```{r}
 acf(y)
 ```
 
-### Discussion
+### Хэлэлцүүлэг
 
-For white noise,
+Цагаан чимээний хувьд
 
 $$
 \rho(k)=0,
 \qquad k>0.
 $$
 
-In practice, sample autocorrelations fluctuate around zero due to random sampling variation.
+Практикт түүврийн автокорреляцууд санамсаргүй түүврийн хэлбэлзлээс болж тэг орчимд хэлбэлздэг.
 
-Most correlations should lie inside the 95% confidence bounds.
+Ихэнх корреляцууд 95% итгэлцлийн хязгаар дотор байх ёстой.
 
 ---
 
-# Solution 3
+# Бодолт 3
 
-## Exercise 4
+## Дасгал 4
 
-Determine whether each process is stationary.
+Процесс бүрийн хувьд стационар эсэхийг тодорхойл.
 
 ### (a)
 
@@ -77,11 +77,11 @@ $$
 Y_t=\varepsilon_t
 $$
 
-#### Answer
+#### Хариу
 
-Stationary.
+Стационар.
 
-This is a white noise process.
+Энэ нь цагаан чимээний процесс юм.
 
 ---
 
@@ -91,11 +91,11 @@ $$
 Y_t=t+\varepsilon_t
 $$
 
-#### Answer
+#### Хариу
 
-Not stationary.
+Стационар бус.
 
-The mean changes over time:
+Дундаж нь цаг хугацааны явцад өөрчлөгддөг:
 
 $$
 E(Y_t)=t.
@@ -109,11 +109,11 @@ $$
 Y_t=0.5Y_{t-1}+\varepsilon_t
 $$
 
-#### Answer
+#### Хариу
 
-Stationary.
+Стационар.
 
-Because
+Учир нь
 
 $$
 |0.5|<1.
@@ -127,25 +127,25 @@ $$
 Y_t=Y_{t-1}+\varepsilon_t
 $$
 
-#### Answer
+#### Хариу
 
-Not stationary.
+Стационар бус.
 
-This is a random walk.
+Энэ нь санамсаргүй алхалт юм.
 
 ---
 
-# Solution 4
+# Бодолт 4
 
-## Exercise 7
+## Дасгал 7
 
-Suppose
+Дараахьыг өгөгдсөн гэж үзье:
 
 $$
 \rho(k)=0.8^k.
 $$
 
-Find:
+Ол:
 
 $$
 \rho(1),
@@ -155,7 +155,7 @@ $$
 \rho(3).
 $$
 
-### Calculations
+### Тооцоолол
 
 $$
 \rho(1)=0.8
@@ -169,7 +169,7 @@ $$
 \rho(3)=0.8^3=0.512
 $$
 
-### Answer
+### Хариу
 
 $$
 \rho(1)=0.8,
@@ -181,76 +181,78 @@ $$
 
 ---
 
-# Solution 5
+# Бодолт 5
 
-## Exercise 11
+## Дасгал 11
 
-What is the difference between ACF and PACF?
+ACF ба PACF-ийн ялгаа юу вэ?
 
-### Answer
+### Хариу
 
-The ACF measures the total linear dependence between
-
-$$
-Y_t
-$$
-
-and
-
-$$
-Y_{t-k}.
-$$
-
-The PACF measures the direct dependence between
+ACF нь
 
 $$
 Y_t
 $$
 
-and
+ба
 
 $$
-Y_{t-k},
+Y_{t-k}
 $$
 
-after removing the effects of intermediate observations.
+хоорондын нийт шугаман хамаарлыг хэмждэг.
 
-### Example
+PACF нь завсрын ажиглалтуудын нөлөөг арилгасны дараа
 
-For an AR(1) process:
+$$
+Y_t
+$$
 
-- ACF tails off gradually.
-- PACF cuts off after lag 1.
+ба
+
+$$
+Y_{t-k}
+$$
+
+хоорондын шууд хамаарлыг хэмждэг.
+
+### Жишээ
+
+AR(1) процессын хувьд:
+
+- ACF аажмаар буурдаг.
+- PACF 1 хоцролтын дараа тасардаг.
 
 ---
 
-# Solution 6
+# Бодолт 6
 
-## Exercise 14
+## Дасгал 14
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=0.6Y_{t-1}+\varepsilon_t.
 $$
 
-Assume
+Дараахьыг өгөгдсөн гэж үз:
 
 $$
 \sigma^2=1.
 $$
 
-Find the mean and variance.
+Дундаж ба дисперсийг ол.
 
-### Mean
+### Дундаж
 
-For a stationary AR(1) process,
+Стационар AR(1) процессын хувьд
 
 $$
 E(Y_t)=0.
 $$
 
-### Variance
+### Дисперс
 
 $$
 Var(Y_t)
@@ -262,7 +264,7 @@ Var(Y_t)
      {1-0.36}.
 $$
 
-Therefore,
+Иймд
 
 $$
 Var(Y_t)
@@ -272,7 +274,7 @@ Var(Y_t)
 1.5625.
 $$
 
-### Answer
+### Хариу
 
 $$
 E(Y_t)=0
@@ -284,23 +286,23 @@ $$
 
 ---
 
-# Solution 7
+# Бодолт 7
 
-## Exercise 18
+## Дасгал 18
 
-For
+Дараахьын хувьд
 
 $$
 \theta=0.5,
 $$
 
-compute
+тооцоол:
 
 $$
 \rho(1).
 $$
 
-### Calculation
+### Тооцоолол
 
 $$
 \rho(1)
@@ -314,7 +316,7 @@ $$
 0.4.
 $$
 
-### Answer
+### Хариу
 
 $$
 \rho(1)=0.4.
@@ -322,19 +324,19 @@ $$
 
 ---
 
-# Solution 8
+# Бодолт 8
 
-## Exercise 19
+## Дасгал 19
 
-For
+Дараахьын хувьд
 
 $$
 \theta=0.2,
 $$
 
-compute the lag-1 autocorrelation.
+1 хоцролтын автокорреляцыг тооцоол.
 
-### Calculation
+### Тооцоолол
 
 $$
 \rho(1)
@@ -348,7 +350,7 @@ $$
 0.1923.
 $$
 
-### Answer
+### Хариу
 
 $$
 \rho(1)\approx0.1923.
@@ -356,21 +358,23 @@ $$
 
 ---
 
-# Solution 9
+# Бодолт 9
 
-## Exercise 20
+## Дасгал 20
 
-Why does an MA(1) process have
+MA(1) процесс яагаад
 
 $$
 \rho(k)=0,
 \qquad
-k>1?
+k>1
 $$
 
-### Explanation
+байдаг вэ?
 
-The model is
+### Тайлбар
+
+Загвар нь
 
 $$
 Y_t
@@ -380,21 +384,23 @@ Y_t
 \theta\varepsilon_{t-1}.
 $$
 
-Observations more than one time unit apart do not share any common error terms.
+Нэгээс илүү хугацааны нэгжээр тусгаарлагдсан ажиглалтууд ямар ч нийтлэг алдааны гишүүн хуваалцдаггүй.
 
-Since the white noise sequence is uncorrelated,
+Цагаан чимээний дараалал корреляцгүй тул
 
 $$
 Cov(Y_t,Y_{t-k})=0
 $$
 
-for
+нь
 
 $$
-k>1.
+k>1
 $$
 
-Hence
+-ийн хувьд биелнэ.
+
+Иймд
 
 $$
 \rho(k)=0.
@@ -402,11 +408,11 @@ $$
 
 ---
 
-# Solution 10
+# Бодолт 10
 
-## Exercise 23
+## Дасгал 23
 
-State the differences between AR(1), MA(1), and ARMA(1,1).
+AR(1), MA(1), ARMA(1,1)-ийн ялгааг бич.
 
 ### AR(1)
 
@@ -418,10 +424,10 @@ Y_t
 \varepsilon_t.
 $$
 
-Characteristics:
+Шинж чанар:
 
-- ACF tails off.
-- PACF cuts off at lag 1.
+- ACF аажмаар буурна.
+- PACF 1 хоцролт дээр тасарна.
 
 ---
 
@@ -435,10 +441,10 @@ Y_t
 \theta\varepsilon_{t-1}.
 $$
 
-Characteristics:
+Шинж чанар:
 
-- ACF cuts off at lag 1.
-- PACF tails off.
+- ACF 1 хоцролт дээр тасарна.
+- PACF аажмаар буурна.
 
 ---
 
@@ -454,28 +460,28 @@ Y_t
 \theta\varepsilon_{t-1}.
 $$
 
-Characteristics:
+Шинж чанар:
 
-- ACF tails off.
-- PACF tails off.
+- ACF аажмаар буурна.
+- PACF аажмаар буурна.
 
 ---
 
-# Solution 11
+# Бодолт 11
 
-## Exercise 29
+## Дасгал 29
 
-What does ARIMA(1,1,1) mean?
+ARIMA(1,1,1) гэж юу гэсэн үг вэ?
 
-### Answer
+### Хариу
 
-An ARIMA(1,1,1) model has:
+ARIMA(1,1,1) загвар нь дараахь зүйлийг агуулна:
 
-- one autoregressive term,
-- one order of differencing,
-- one moving-average term.
+- нэг авторегрессив гишүүн,
+- нэг эрэмбийн ялгавар,
+- нэг хөдөлгөөнт дундажийн гишүүн.
 
-Mathematically,
+Математикаар
 
 $$
 (1-\phi B)(1-B)Y_t
@@ -483,15 +489,15 @@ $$
 (1+\theta B)\varepsilon_t.
 $$
 
-The differencing step is used to remove nonstationarity.
+Ялгавар авах алхам нь стационар бус байдлыг арилгахад ашиглагддаг.
 
 ---
 
-# Solution 12
+# Бодолт 12
 
-## Exercise 33
+## Дасгал 33
 
-Define:
+Тодорхойл:
 
 $$
 MAE,
@@ -510,7 +516,7 @@ MAE
 \sum |e_t|.
 $$
 
-Measures average absolute error.
+Дундаж абсолют алдааг хэмждэг.
 
 ---
 
@@ -523,7 +529,7 @@ MSE
 \sum e_t^2.
 $$
 
-Penalizes large errors more heavily.
+Том алдаануудыг илүү хүндээр шийтгэдэг.
 
 ---
 
@@ -535,44 +541,44 @@ RMSE
 \sqrt{MSE}.
 $$
 
-Has the same units as the original data.
+Анхны өгөгдөлтэй ижил нэгжтэй байдаг.
 
 ---
 
-# Solution 13
+# Бодолт 13
 
-## Exercise 36
+## Дасгал 36
 
-Why should residuals resemble white noise?
+Үлдэгдэл яагаад цагаан чимээтэй төстэй байх ёстой вэ?
 
-### Answer
+### Хариу
 
-A good time series model should explain all systematic structure present in the data.
+Сайн хугацааны цувааны загвар нь өгөгдөлд байгаа бүх системтэй бүтцийг тайлбарлах ёстой.
 
-If residuals still contain autocorrelation, useful information remains unexplained.
+Хэрэв үлдэгдэлд автокорреляц үлдсэн бол ашигтай мэдээлэл тайлбарлагдаагүй үлдсэн гэсэн үг.
 
-A well-fitted model produces residuals that:
+Сайн тохируулсан загвар нь дараахь шинж чанартай үлдэгдэл гаргадаг:
 
-- have mean zero,
-- have constant variance,
-- exhibit no significant autocorrelation.
+- дундаж нь тэг,
+- дисперс нь тогтмол,
+- ач холбогдолтой автокорреляцгүй.
 
-Therefore the residual series should resemble white noise.
+Иймд үлдэгдлийн цуваа цагаан чимээтэй төстэй байх ёстой.
 
 ---
 
-# Further Practice
+# Цаашдын дадлага
 
-Readers are encouraged to complete the remaining exercises independently.
+Уншигчдыг үлдсэн дасгалуудыг бие даан гүйцэтгэхийг уриалж байна.
 
-The best way to learn time series analysis is to:
+Хугацааны цувааны шинжилгээг сурах хамгийн сайн арга бол:
 
-1. Simulate processes.
-2. Plot the data.
-3. Examine ACF and PACF.
-4. Fit models.
-5. Study residual diagnostics.
-6. Produce forecasts.
-7. Compare models using real data.
+1. Процессуудыг симуляцлах.
+2. Өгөгдлийг зурах.
+3. ACF ба PACF-ийг шалгах.
+4. Загваруудыг тохируулах.
+5. Үлдэгдлийн оношлогоог судлах.
+6. Таамаглал гаргах.
+7. Бодит өгөгдөл ашиглан загваруудыг харьцуулах.
 
-Repeated practice with both theory and computation is essential for mastery.
+Онол ба тооцоолол хоёуланг нь давтан дадлага хийх нь эзэмшихэд зайлшгүй шаардлагатай.

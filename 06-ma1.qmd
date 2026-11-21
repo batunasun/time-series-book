@@ -1,31 +1,31 @@
-# The Moving Average Process of Order One: MA(1)
+# Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)
 
-## Introduction
+## Оршил
 
-The MA(1) model is the simplest moving average process.
+MA(1) загвар нь хамгийн энгийн хөдөлгөөнт дундаж процесс юм.
 
-Unlike an autoregressive model, an MA(1) process does not depend directly on past observations. Instead, it depends on the current and previous random shocks.
+Авторегрессив загвараас ялгаатай нь MA(1) процесс нь өнгөрсөн ажиглалтуудаас шууд хамаардаггүй. Харин одоогийн болон өмнөх санамсаргүй шокиос хамаардаг.
 
-The MA(1) model is fundamental in time series analysis and serves as a building block for higher-order MA and ARMA models.
+MA(1) загвар нь хугацааны цувааны шинжилгээнд үндсэн ач холбогдолтой бөгөөд дээд эрэмбийн MA болон ARMA загваруудын бүрэлдэхүүн хэсэг болдог.
 
-## Definition
+## Тодорхойлолт
 
-An MA(1) process is defined by
+MA(1) процессыг
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 $$
 
-where
+гэж тодорхойлдог бөгөөд энд
 
-- \(\{\varepsilon_t\}\) is a white noise process,
-- \(E(\varepsilon_t)=0\),
-- \(Var(\varepsilon_t)=\sigma^2\),
-- \(\theta\) is the moving average parameter.
+- $\{\varepsilon_t\}$ нь цагаан чимээний процесс,
+- $E(\varepsilon_t)=0$,
+- $Var(\varepsilon_t)=\sigma^2$,
+- $\theta$ нь хөдөлгөөнт дундажийн параметр.
 
-## Mean
+## Дундаж
 
-Taking expectations,
+Математик хүлээлт авбал
 
 $$
 E(Y_t)
@@ -35,21 +35,21 @@ E(\varepsilon_t)
 \theta E(\varepsilon_{t-1}).
 $$
 
-Since
+Учир нь
 
 $$
 E(\varepsilon_t)=0,
 $$
 
-it follows that
+иймд
 
 $$
 E(Y_t)=0.
 $$
 
-## Variance
+## Дисперс
 
-Since the white noise terms are uncorrelated,
+Цагаан чимээний гишүүд корреляцгүй тул
 
 $$
 Var(Y_t)
@@ -57,7 +57,7 @@ Var(Y_t)
 Var(\varepsilon_t+\theta\varepsilon_{t-1}),
 $$
 
-which gives
+үүнээс
 
 $$
 Var(Y_t)
@@ -65,9 +65,9 @@ Var(Y_t)
 (1+\theta^2)\sigma^2.
 $$
 
-## Autocovariance Function
+## Автоковариацын функц
 
-### Lag 0
+### 0 хоцролт
 
 $$
 \gamma(0)
@@ -75,7 +75,7 @@ $$
 (1+\theta^2)\sigma^2.
 $$
 
-### Lag 1
+### 1 хоцролт
 
 $$
 \gamma(1)
@@ -83,13 +83,13 @@ $$
 \theta\sigma^2.
 $$
 
-### Lag \(k>1\)
+### \(k>1\) хоцролт
 
 $$
 \gamma(k)=0.
 $$
 
-Therefore,
+Иймд
 
 $$
 \gamma(k)=
@@ -100,9 +100,9 @@ $$
 \end{cases}
 $$
 
-## Autocorrelation Function
+## Автокорреляцын функц
 
-Dividing by \(\gamma(0)\),
+$\gamma(0)$-д хуваавал
 
 $$
 \rho(1)
@@ -111,26 +111,26 @@ $$
      {1+\theta^2},
 $$
 
-and
+ба
 
 $$
 \rho(k)=0,
 \qquad k>1.
 $$
 
-This is the most important property of an MA(1) process.
+Энэ нь MA(1) процессын хамгийн чухал шинж чанар юм.
 
-The ACF cuts off after lag 1.
+ACF нь 1 хоцролтын дараа тасардаг.
 
-## Example
+## Жишээ
 
-If
+Хэрэв
 
 $$
 \theta=0.5,
 $$
 
-then
+бол
 
 $$
 \rho(1)
@@ -140,13 +140,13 @@ $$
 0.40.
 $$
 
-If
+Хэрэв
 
 $$
 \theta=0.2,
 $$
 
-then
+бол
 
 $$
 \rho(1)
@@ -155,35 +155,35 @@ $$
 \approx 0.192.
 $$
 
-This value should appear in the sample ACF.
+Энэ утга түүврийн ACF-д харагдах ёстой.
 
-## Invertibility
+## Буцаах боломжтой байдал
 
-For an MA(1) model,
+MA(1) загварын хувьд
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 $$
 
-invertibility requires
+буцаах боломжтой байх нөхцөл нь
 
 $$
 |\theta|<1.
 $$
 
-Invertibility ensures a unique representation of the process.
+Буцаах боломжтой байдал нь процессын цор ганц дүрслэлийг баталгаажуулдаг.
 
-This condition plays a role similar to the stationarity condition
+Энэ нөхцөл нь AR загваруудын стационар байдлын
 
 $$
 |\phi|<1
 $$
 
-for AR models.
+нөхцөлтэй төстэй үүрэг гүйцэтгэдэг.
 
-## Simulation
+## Симуляц
 
-### MA(1) with \(\theta=0.5\)
+### \(\theta=0.5\) бүхий MA(1)
 
 ```{r}
 set.seed(123)
@@ -200,7 +200,7 @@ plot.ts(
 )
 ```
 
-### MA(1) with \(\theta=-0.5\)
+### \(\theta=-0.5\) бүхий MA(1)
 
 ```{r}
 set.seed(123)
@@ -217,50 +217,48 @@ plot.ts(
 )
 ```
 
-## ACF of an MA(1) Process
+## MA(1) процессын ACF
 
 ```{r}
 acf(
   as.numeric(ma1),
-  main="ACF of MA(1)"
+  main="MA(1)-ийн ACF"
 )
 ```
 
-Observe:
+Ажиглаарай:
 
-- Significant spike at lag 1.
-- Near-zero autocorrelations for lags greater than 1.
+- 1 хоцролт дээр ач холбогдолтой оргил.
+- 1-ээс их хоцролтуудад тэгтэй ойрхон автокорреляцууд.
 
-This cutoff behavior is the hallmark of an MA(1) process.
+Энэ тасралтын зан төлөв нь MA(1) процессын онцлог шинж юм.
 
-## PACF of an MA(1) Process
+## MA(1) процессын PACF
 
 ```{r}
 pacf(
   as.numeric(ma1),
-  main="PACF of MA(1)"
+  main="MA(1)-ийн PACF"
 )
 ```
 
-Unlike the ACF, the PACF does not cut off.
+ACF-ээс ялгаатай нь PACF тасардаггүй.
 
-Instead, it decreases gradually toward zero.
+Харин аажмаар тэг рүү буурдаг.
 
-## Lag-1 Scatter Plot
-
-The relationship between
+## 1 хоцролтын сарнилын график
 
 $$
 Y_t
 $$
 
-and
+ба
 
 $$
 Y_{t-1}
 $$
 
-may be examined using a lag plot.
+хоорондын хамаарлыг хоцролтын график ашиглан шалгаж болно.
 
 ```{r}
 plot(
@@ -272,13 +270,13 @@ plot(
 )
 ```
 
-For positive \(\theta\), the plot tends to exhibit a weak positive linear pattern.
+Эерэг $\theta$-ийн хувьд график сул эерэг шугаман хэв маяг харуулах хандлагатай.
 
-For negative \(\theta\), the pattern slopes downward.
+Сөрөг $\theta$-ийн хувьд хэв маяг доош налуу байна.
 
-## Lag-2 Scatter Plot
+## 2 хоцролтын сарнилын график
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 (Y_{t-2},Y_t).
@@ -294,31 +292,31 @@ plot(
 )
 ```
 
-Since
+Учир нь
 
 $$
 \rho(2)=0,
 $$
 
-the points should display little or no linear pattern.
+цэгүүд бага буюу шугаман хэв маяггүй байх ёстой.
 
-The scatter plot generally resembles a random cloud.
+Сарнилын график ерөнхийдөө санамсаргүй үүлтэй төстэй байна.
 
-## Comparison with AR(1)
+## AR(1)-тэй харьцуулалт
 
-| Property | AR(1) | MA(1) |
+| Шинж чанар | AR(1) | MA(1) |
 |-----------|-----------|-----------|
-| Model | \(Y_t=\phi Y_{t-1}+\varepsilon_t\) | \(Y_t=\varepsilon_t+\theta\varepsilon_{t-1}\) |
-| Stationarity | \(|\phi|<1\) | Always stationary |
-| Invertibility | Not required | \(|\theta|<1\) |
-| ACF | Tails off | Cuts off after lag 1 |
-| PACF | Cuts off after lag 1 | Tails off |
+| Загвар | $Y_t=\phi Y_{t-1}+\varepsilon_t$ | $Y_t=\varepsilon_t+\theta\varepsilon_{t-1}$ |
+| Стационар байдал | $|\phi|<1$ | Үргэлж стационар |
+| Буцаах боломжтой байдал | Шаардлагагүй | $|\theta|<1$ |
+| ACF | Аажмаар буурна | 1 хоцролтын дараа тасарна |
+| PACF | 1 хоцролтын дараа тасарна | Аажмаар буурна |
 
-These patterns are central to Box-Jenkins model identification.
+Эдгээр хэв маяг нь Box-Jenkins загвар тодорхойлоход төвлөрсөн ач холбогдолтой.
 
-## Estimation
+## Үнэлгээ
 
-An MA(1) model can be estimated using maximum likelihood.
+MA(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.
 
 ```{r}
 fit <- arima(
@@ -329,9 +327,9 @@ fit <- arima(
 fit
 ```
 
-The estimated value should be close to the true value used in simulation.
+Үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.
 
-## Example: \(\theta=0.2\)
+## Жишээ: \(\theta=0.2\)
 
 ```{r}
 set.seed(123)
@@ -344,7 +342,7 @@ ma1.2 <- arima.sim(
 acf(ma1.2)
 ```
 
-The theoretical lag-1 autocorrelation is
+Онолын 1 хоцролтын автокорреляц нь
 
 $$
 \rho(1)
@@ -354,50 +352,50 @@ $$
 0.1923.
 $$
 
-Compare this value with the sample ACF.
+Энэ утгыг түүврийн ACF-тэй харьцуул.
 
-## Forecasting
+## Таамаглал
 
-For an MA(1) process,
+MA(1) процессын хувьд
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1},
 $$
 
-the one-step-ahead forecast depends on the most recent estimated shock.
+нэг алхамын урьдчилсан таамаглал нь хамгийн сүүлийн үнэлэгдсэн шокноос хамаарна.
 
-For horizons greater than one,
+Нэгээс их алсын зайн хувьд
 
 $$
 \hat Y_{t+h}
 $$
 
-rapidly converges to the mean of the process.
+процессын дундаж руу хурдан ойртдог.
 
-Since the mean is zero,
+Дундаж нь тэг тул
 
 $$
 \hat Y_{t+h}
 \rightarrow 0.
 $$
 
-## Summary
+## Дүгнэлт
 
-The MA(1) process
+MA(1) процесс
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}
 $$
 
-has the following properties:
+нь дараах шинж чанаруудтай:
 
-- Mean:
+- Дундаж:
 
 $$
 E(Y_t)=0.
 $$
 
-- Variance:
+- Дисперс:
 
 $$
 Var(Y_t)
@@ -418,22 +416,22 @@ $$
 \qquad k>1.
 $$
 
-- PACF tails off gradually.
-- Invertibility requires
+- PACF аажмаар буурна.
+- Буцаах боломжтой байх нөхцөл:
 
 $$
 |\theta|<1.
 $$
 
-The ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.
+ACF-ийн 1 хоцролт дээрх тасралт нь MA(1) процессын хамгийн чухал таних шинж юм.
 
-## Exercises
+## Дасгал
 
-1. Simulate an MA(1) process with \(\theta=0.2\).
-2. Compute and plot the sample ACF.
-3. Compare the sample lag-1 autocorrelation with the theoretical value.
-4. Simulate an MA(1) process with \(\theta=0.8\).
-5. Compare its ACF with that of \(\theta=0.2\).
-6. Create lag-1 and lag-2 scatter plots.
-7. Explain why the lag-2 scatter plot shows little pattern.
-8. Estimate an MA(1) model using `arima()` and compare the estimated parameter with the true value.
+1. \(\theta=0.2\) бүхий MA(1) процессыг симуляцла.
+2. Түүврийн ACF-ийг тооцоолж, график зур.
+3. Түүврийн 1 хоцролтын автокорреляцыг онолын утгатай харьцуул.
+4. \(\theta=0.8\) бүхий MA(1) процессыг симуляцла.
+5. Түүний ACF-ийг \(\theta=0.2\)-ын ACF-тэй харьцуул.
+6. 1 хоцролт ба 2 хоцролтын сарнилын графикуудыг байгуул.
+7. 2 хоцролтын сарнилын график яагаад бага хэв маяг харуулдаг вэ гэдгийг тайлбарла.
+8. `arima()` ашиглан MA(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.

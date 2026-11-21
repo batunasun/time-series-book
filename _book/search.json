@@ -312,11 +312,11 @@
   {
     "objectID": "04-pacf.html",
     "href": "04-pacf.html",
-    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
     "section": "",
-    "text": "5.1 Introduction\nThe autocorrelation function (ACF) measures the correlation between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-k}.\n\\]\nHowever, the autocorrelation at lag (k) may be influenced indirectly through intermediate lags.\nThe partial autocorrelation function (PACF) measures the direct relationship between\n\\[\nY_t\n\\]\nand\n\\[\nY_{t-k},\n\\]\nafter removing the linear effects of the intervening observations\n\\[\nY_{t-1},Y_{t-2},\\ldots,Y_{t-k+1}.\n\\]\nThe PACF is one of the most useful tools for identifying autoregressive models.",
+    "text": "5.1 Оршил\nАвтокорреляцын функц (ACF) нь\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын корреляцийг хэмждэг.\nГэхдээ (k) хоцролт дээрх автокорреляц нь завсрын хоцролтуудаар дамжин шууд бус байдлаар нөлөөлөгдөж болно.\nХэсэгчилсэн автокорреляцын функц (PACF) нь завсрын ажиглалтуудын\n\\[\nY_{t-1},Y_{t-2},\\ldots,Y_{t-k+1}\n\\]\nшугаман нөлөөг арилгасны дараа\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын шууд хамаарлыг хэмждэг.\nPACF нь авторегрессив загваруудыг тодорхойлох хамгийн ашигтай хэрэгслүүдийн нэг юм.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
     ]
   },
   {
@@ -1007,6 +1007,136 @@
     "text": "8.18 Exercises\n\nSimulate an ARMA(1,1) process with () and ().\nPlot the series.\nCompute and interpret the ACF.\nCompute and interpret the PACF.\nEstimate an ARMA(1,1) model using arima().\nCompare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.\nUse AIC to compare competing models.\nProduce 10-step-ahead forecasts and interpret the results.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#урам-зориг",
+    "href": "04-pacf.html#урам-зориг",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.2 Урам зориг",
+    "text": "5.2 Урам зориг\nAR(1) процессыг авч үзье:\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t.\n\\]\nУчир нь\n\\[\nY_t\n\\]\nзөвхөн\n\\[\nY_{t-1}\n\\]\n-ээс шууд хамаардаг тул\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-2}\n\\]\nхоорондын аливаа илэрхий корреляц нь\n\\[\nY_{t-1}\n\\]\n-ээр дамжин үүсдэг.\nPACF энэ шууд бус нөлөөг арилгадаг.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#тодорхойлолт",
+    "href": "04-pacf.html#тодорхойлолт",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.3 Тодорхойлолт",
+    "text": "5.3 Тодорхойлолт\n(k) хоцролт дээрх хэсэгчилсэн автокорреляцыг\n\\[\n\\alpha(k)\n\\]\nгэж тэмдэглэх бөгөөд энэ нь\n\\[\nY_{t-1},Y_{t-2},\\ldots,Y_{t-k+1}\n\\]\n-ийг хянасны дараа\n\\[\nY_t\n\\]\nба\n\\[\nY_{t-k}\n\\]\nхоорондын корреляц юм.\nИймд\n\\[\n\\alpha(k)\n\\]\nнь (k) хоцролтын шууд хувь нэмрийг хэмждэг.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#pacf-ийг-тооцоолох",
+    "href": "04-pacf.html#pacf-ийг-тооцоолох",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.4 PACF-ийг тооцоолох",
+    "text": "5.4 PACF-ийг тооцоолох\nПрактикт PACF-ийг рекурсив регрессийн арга эсвэл Yule-Walker тэгшитгэлээр үнэлдэг.\nАз болоход R үүнийг автоматаар тооцоолдог.\n\nset.seed(123)\n\ny &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(y)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#цагаан-чимээний-pacf",
+    "href": "04-pacf.html#цагаан-чимээний-pacf",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.5 Цагаан чимээний PACF",
+    "text": "5.5 Цагаан чимээний PACF\nЦагаан чимээний хувьд\n\\[\nY_t \\sim WN(0,\\sigma^2),\n\\]\nажиглалтуудын хооронд хамаарал байхгүй.\nИймд\n\\[\n\\alpha(k)=0,\n\\qquad k\\ge1.\n\\]\n\n5.5.1 Симуляц\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\npacf(\n  wn,\n  main=\"Цагаан чимээний PACF\"\n)\n\n\n\n\n\n\n\n\nБүх баганууд тэг орчимд санамсаргүйгээр хэлбэлзэх ёстой.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#ar1-процессын-pacf",
+    "href": "04-pacf.html#ar1-процессын-pacf",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.6 AR(1) процессын PACF",
+    "text": "5.6 AR(1) процессын PACF\nДараахьыг авч үзье:\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nэнд\n\\[\n|\\phi|&lt;1.\n\\]\nОнолын PACF нь\n\\[\n\\alpha(1)=\\phi,\n\\]\nба\n\\[\n\\alpha(k)=0,\n\\qquad k&gt;1.\n\\]\nИймд PACF нь 1 хоцролтын дараа тасардаг.\n\n5.6.1 Жишээ\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(\n  ar1,\n  main=\"AR(1)-ийн PACF\"\n)\n\n\n\n\n\n\n\n\n1 хоцролт дээр ач холбогдолтой оргил гарч, дараагийн хоцролтууд тэгтэй ойрхон байна.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#ar2-процессын-pacf",
+    "href": "04-pacf.html#ar2-процессын-pacf",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.7 AR(2) процессын PACF",
+    "text": "5.7 AR(2) процессын PACF\nДараахьыг авч үзье:\n\\[\nY_t\n=\n0.7Y_{t-1}\n-\n0.3Y_{t-2}\n+\n\\varepsilon_t.\n\\]\n\nset.seed(123)\n\nar2 &lt;- arima.sim(\n  model=list(ar=c(.7,-.3)),\n  n=500\n)\n\npacf(\n  ar2,\n  main=\"AR(2)-ын PACF\"\n)\n\n\n\n\n\n\n\n\nPACF нь 1 ба 2 хоцролтууд дээр ач холбогдолтой утгуудыг харуулсны дараа тасардаг.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#ma1-процессын-pacf",
+    "href": "04-pacf.html#ma1-процессын-pacf",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.8 MA(1) процессын PACF",
+    "text": "5.8 MA(1) процессын PACF\nДараахьыг авч үзье:\n\\[\nY_t=\\varepsilon_t+\\theta\\varepsilon_{t-1}.\n\\]\nAR процессоос ялгаатай нь PACF тасардаггүй.\nХарин аажмаар тэг рүү буурдаг.\n\n5.8.1 Жишээ\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\npacf(\n  ma1,\n  main=\"MA(1)-ийн PACF\"\n)\n\n\n\n\n\n\n\n\nPACF огцом зогсохын оронд аажмаар буурдаг.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#acf-ба-pacf-ийн-харьцуулалт",
+    "href": "04-pacf.html#acf-ба-pacf-ийн-харьцуулалт",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.9 ACF ба PACF-ийн харьцуулалт",
+    "text": "5.9 ACF ба PACF-ийн харьцуулалт\n\n5.9.1 AR загварууд\nAR((p)) процессын хувьд:\n\nACF аажмаар буурдаг.\nPACF (p) хоцролтын дараа тасардаг.\n\n\n\n5.9.2 MA загварууд\nMA((q)) процессын хувьд:\n\nACF (q) хоцролтын дараа тасардаг.\nPACF аажмаар буурдаг.\n\n\n\n5.9.3 ARMA загварууд\nARMA((p,q)) процессын хувьд:\n\nACF аажмаар буурдаг.\nPACF аажмаар буурдаг.\n\nАль ч функц огцом тасралт харуулдаггүй.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#загвар-тодорхойлох",
+    "href": "04-pacf.html#загвар-тодорхойлох",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.10 Загвар тодорхойлох",
+    "text": "5.10 Загвар тодорхойлох\nBox-Jenkins арга нь ACF ба PACF-ийг хамт ашигладаг.\n\n\n\nЗагвар\nACF\nPACF\n\n\n\n\nAR(1)\nАажмаар буурна\n1 хоцролтын дараа тасарна\n\n\nAR(2)\nАажмаар буурна\n2 хоцролтын дараа тасарна\n\n\nMA(1)\n1 хоцролтын дараа тасарна\nАажмаар буурна\n\n\nMA(2)\n2 хоцролтын дараа тасарна\nАажмаар буурна\n\n\nARMA(1,1)\nАажмаар буурна\nАажмаар буурна\n\n\n\nЭдгээр хэв маяг нь практик загвар тодорхойлоход үндсэн чухал юм.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#жишээ-ar-ба-ma-загваруудыг-харьцуулах",
+    "href": "04-pacf.html#жишээ-ar-ба-ma-загваруудыг-харьцуулах",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.11 Жишээ: AR ба MA загваруудыг харьцуулах",
+    "text": "5.11 Жишээ: AR ба MA загваруудыг харьцуулах\n\npar(mfrow=c(2,2))\n\nar1 &lt;- arima.sim(model=list(ar=.8), n=300)\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(model=list(ma=.8), n=300)\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\n\n\n\n\n\n\n\nАжиглаарай:\n\nAR(1): ACF аажмаар буурна, PACF тасарна.\nMA(1): ACF тасарна, PACF аажмаар буурна.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#статистик-ач-холбогдол",
+    "href": "04-pacf.html#статистик-ач-холбогдол",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.12 Статистик ач холбогдол",
+    "text": "5.12 Статистик ач холбогдол\nТом түүврийн хувьд\n\\[\nSE(r_k)\n\\approx\n\\frac{1}{\\sqrt{n}}.\n\\]\nPACF график нь ойролцоогоор 95% итгэлцлийн хязгаарыг харуулдаг:\n\\[\n\\pm\\frac{1.96}{\\sqrt n}.\n\\]\nЭдгээр хязгаараас гадуур байгаа утгууд нь ач холбогдолтой хамаарлыг илтгэж болно.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#дүгнэлт",
+    "href": "04-pacf.html#дүгнэлт",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.13 Дүгнэлт",
+    "text": "5.13 Дүгнэлт\n\nPACF нь өгөгдсөн хоцролт дээрх шууд хамаарлыг хэмждэг.\nPACF нь завсрын ажиглалтуудын нөлөөг арилгадаг.\nAR((p)) процессуудын PACF нь (p) хоцролтын дараа тасардаг.\nMA((q)) процессуудын PACF нь аажмаар буурдаг.\nACF ба PACF хамтдаа загвар тодорхойлох үндсэн хэрэгсэл болдог.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#дасгал",
+    "href": "04-pacf.html#дасгал",
+    "title": "5  Хэсэгчилсэн автокорреляцын функц (PACF)",
+    "section": "5.14 Дасгал",
+    "text": "5.14 Дасгал\n\n() бүхий AR(1) процессыг симуляцла.\nТүүний ACF ба PACF-ийг зур.\nPACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.\nAR(2) процессыг симуляцла.\nPACF-ээс тасралтын хоцролтыг тодорхойл.\nMA(1) процессыг симуляцла.\nТүүний ACF ба PACF-ийг харьцуул.\nPACF нь AR загварын эрэмбийг сонгоход яагаад ашигтай байдаг вэ гэдгийг тайлбарла.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Хэсэгчилсэн автокорреляцын функц (PACF)</span>"
     ]
   }
 ]

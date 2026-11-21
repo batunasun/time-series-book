@@ -1,120 +1,128 @@
-# The Partial Autocorrelation Function (PACF)
+# Хэсэгчилсэн автокорреляцын функц (PACF)
 
-## Introduction
+## Оршил
 
-The autocorrelation function (ACF) measures the correlation between
-
-$$
-Y_t
-$$
-
-and
-
-$$
-Y_{t-k}.
-$$
-
-However, the autocorrelation at lag \(k\) may be influenced indirectly through intermediate lags.
-
-The partial autocorrelation function (PACF) measures the direct relationship between
+Автокорреляцын функц (ACF) нь
 
 $$
 Y_t
 $$
 
-and
-
-$$
-Y_{t-k},
-$$
-
-after removing the linear effects of the intervening observations
-
-$$
-Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}.
-$$
-
-The PACF is one of the most useful tools for identifying autoregressive models.
-
-## Motivation
-
-Consider an AR(1) process
-
-$$
-Y_t=\phi Y_{t-1}+\varepsilon_t.
-$$
-
-Since
-
-$$
-Y_t
-$$
-
-depends directly only on
-
-$$
-Y_{t-1},
-$$
-
-any apparent correlation between
-
-$$
-Y_t
-$$
-
-and
-
-$$
-Y_{t-2}
-$$
-
-arises through
-
-$$
-Y_{t-1}.
-$$
-
-The PACF removes this indirect effect.
-
-## Definition
-
-The partial autocorrelation at lag \(k\), denoted by
-
-$$
-\alpha(k),
-$$
-
-is the correlation between
-
-$$
-Y_t
-$$
-
-and
+ба
 
 $$
 Y_{t-k}
 $$
 
-after controlling for
+хоорондын корреляцийг хэмждэг.
+
+Гэхдээ \(k\) хоцролт дээрх автокорреляц нь завсрын хоцролтуудаар дамжин шууд бус байдлаар нөлөөлөгдөж болно.
+
+Хэсэгчилсэн автокорреляцын функц (PACF) нь завсрын ажиглалтуудын
 
 $$
-Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}.
+Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}
 $$
 
-Thus,
+шугаман нөлөөг арилгасны дараа
+
+$$
+Y_t
+$$
+
+ба
+
+$$
+Y_{t-k}
+$$
+
+хоорондын шууд хамаарлыг хэмждэг.
+
+PACF нь авторегрессив загваруудыг тодорхойлох хамгийн ашигтай хэрэгслүүдийн нэг юм.
+
+## Урам зориг
+
+AR(1) процессыг авч үзье:
+
+$$
+Y_t=\phi Y_{t-1}+\varepsilon_t.
+$$
+
+Учир нь
+
+$$
+Y_t
+$$
+
+зөвхөн
+
+$$
+Y_{t-1}
+$$
+
+-ээс шууд хамаардаг тул
+
+$$
+Y_t
+$$
+
+ба
+
+$$
+Y_{t-2}
+$$
+
+хоорондын аливаа илэрхий корреляц нь
+
+$$
+Y_{t-1}
+$$
+
+-ээр дамжин үүсдэг.
+
+PACF энэ шууд бус нөлөөг арилгадаг.
+
+## Тодорхойлолт
+
+\(k\) хоцролт дээрх хэсэгчилсэн автокорреляцыг
 
 $$
 \alpha(k)
 $$
 
-measures the direct contribution of lag \(k\).
+гэж тэмдэглэх бөгөөд энэ нь
 
-## Computing the PACF
+$$
+Y_{t-1},Y_{t-2},\ldots,Y_{t-k+1}
+$$
 
-In practice the PACF is estimated using recursive regression methods or the Yule-Walker equations.
+-ийг хянасны дараа
 
-Fortunately, R computes it automatically.
+$$
+Y_t
+$$
+
+ба
+
+$$
+Y_{t-k}
+$$
+
+хоорондын корреляц юм.
+
+Иймд
+
+$$
+\alpha(k)
+$$
+
+нь \(k\) хоцролтын шууд хувь нэмрийг хэмждэг.
+
+## PACF-ийг тооцоолох
+
+Практикт PACF-ийг рекурсив регрессийн арга эсвэл Yule-Walker тэгшитгэлээр үнэлдэг.
+
+Аз болоход R үүнийг автоматаар тооцоолдог.
 
 ```{r}
 set.seed(123)
@@ -127,24 +135,24 @@ y <- arima.sim(
 pacf(y)
 ```
 
-## PACF of White Noise
+## Цагаан чимээний PACF
 
-For white noise,
+Цагаан чимээний хувьд
 
 $$
 Y_t \sim WN(0,\sigma^2),
 $$
 
-there is no dependence between observations.
+ажиглалтуудын хооронд хамаарал байхгүй.
 
-Therefore
+Иймд
 
 $$
 \alpha(k)=0,
 \qquad k\ge1.
 $$
 
-### Simulation
+### Симуляц
 
 ```{r}
 set.seed(123)
@@ -153,42 +161,42 @@ wn <- rnorm(200)
 
 pacf(
   wn,
-  main="PACF of White Noise"
+  main="Цагаан чимээний PACF"
 )
 ```
 
-All bars should fluctuate randomly around zero.
+Бүх баганууд тэг орчимд санамсаргүйгээр хэлбэлзэх ёстой.
 
-## PACF of an AR(1) Process
+## AR(1) процессын PACF
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=\phi Y_{t-1}+\varepsilon_t,
 $$
 
-with
+энд
 
 $$
 |\phi|<1.
 $$
 
-The theoretical PACF is
+Онолын PACF нь
 
 $$
 \alpha(1)=\phi,
 $$
 
-and
+ба
 
 $$
 \alpha(k)=0,
 \qquad k>1.
 $$
 
-Therefore, the PACF cuts off after lag 1.
+Иймд PACF нь 1 хоцролтын дараа тасардаг.
 
-### Example
+### Жишээ
 
 ```{r}
 set.seed(123)
@@ -200,15 +208,15 @@ ar1 <- arima.sim(
 
 pacf(
   ar1,
-  main="PACF of AR(1)"
+  main="AR(1)-ийн PACF"
 )
 ```
 
-A significant spike appears at lag 1, while later lags are close to zero.
+1 хоцролт дээр ач холбогдолтой оргил гарч, дараагийн хоцролтууд тэгтэй ойрхон байна.
 
-## PACF of an AR(2) Process
+## AR(2) процессын PACF
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t
@@ -230,25 +238,25 @@ ar2 <- arima.sim(
 
 pacf(
   ar2,
-  main="PACF of AR(2)"
+  main="AR(2)-ын PACF"
 )
 ```
 
-The PACF exhibits significant values at lags 1 and 2 and then cuts off.
+PACF нь 1 ба 2 хоцролтууд дээр ач холбогдолтой утгуудыг харуулсны дараа тасардаг.
 
-## PACF of an MA(1) Process
+## MA(1) процессын PACF
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 $$
 
-Unlike an AR process, the PACF does not cut off.
+AR процессоос ялгаатай нь PACF тасардаггүй.
 
-Instead, it decreases gradually toward zero.
+Харин аажмаар тэг рүү буурдаг.
 
-### Example
+### Жишээ
 
 ```{r}
 set.seed(123)
@@ -260,52 +268,52 @@ ma1 <- arima.sim(
 
 pacf(
   ma1,
-  main="PACF of MA(1)"
+  main="MA(1)-ийн PACF"
 )
 ```
 
-The PACF tails off rather than terminating abruptly.
+PACF огцом зогсохын оронд аажмаар буурдаг.
 
-## Comparison of ACF and PACF
+## ACF ба PACF-ийн харьцуулалт
 
-### AR Models
+### AR загварууд
 
-For an AR(\(p\)) process:
+AR(\(p\)) процессын хувьд:
 
-- ACF tails off.
-- PACF cuts off after lag \(p\).
+- ACF аажмаар буурдаг.
+- PACF \(p\) хоцролтын дараа тасардаг.
 
-### MA Models
+### MA загварууд
 
-For an MA(\(q\)) process:
+MA(\(q\)) процессын хувьд:
 
-- ACF cuts off after lag \(q\).
-- PACF tails off.
+- ACF \(q\) хоцролтын дараа тасардаг.
+- PACF аажмаар буурдаг.
 
-### ARMA Models
+### ARMA загварууд
 
-For an ARMA(\(p,q\)) process:
+ARMA(\(p,q\)) процессын хувьд:
 
-- ACF tails off.
-- PACF tails off.
+- ACF аажмаар буурдаг.
+- PACF аажмаар буурдаг.
 
-Neither function exhibits a sharp cutoff.
+Аль ч функц огцом тасралт харуулдаггүй.
 
-## Model Identification
+## Загвар тодорхойлох
 
-The Box-Jenkins approach uses ACF and PACF together.
+Box-Jenkins арга нь ACF ба PACF-ийг хамт ашигладаг.
 
-| Model | ACF | PACF |
+| Загвар | ACF | PACF |
 |---------|---------|---------|
-| AR(1) | Tails off | Cuts off after lag 1 |
-| AR(2) | Tails off | Cuts off after lag 2 |
-| MA(1) | Cuts off after lag 1 | Tails off |
-| MA(2) | Cuts off after lag 2 | Tails off |
-| ARMA(1,1) | Tails off | Tails off |
+| AR(1) | Аажмаар буурна | 1 хоцролтын дараа тасарна |
+| AR(2) | Аажмаар буурна | 2 хоцролтын дараа тасарна |
+| MA(1) | 1 хоцролтын дараа тасарна | Аажмаар буурна |
+| MA(2) | 2 хоцролтын дараа тасарна | Аажмаар буурна |
+| ARMA(1,1) | Аажмаар буурна | Аажмаар буурна |
 
-These patterns are fundamental in practical model identification.
+Эдгээр хэв маяг нь практик загвар тодорхойлоход үндсэн чухал юм.
 
-## Example: Comparing AR and MA Models
+## Жишээ: AR ба MA загваруудыг харьцуулах
 
 ```{r}
 par(mfrow=c(2,2))
@@ -319,14 +327,14 @@ acf(ma1, main="MA(1): ACF")
 pacf(ma1, main="MA(1): PACF")
 ```
 
-Observe:
+Ажиглаарай:
 
-- AR(1): ACF tails off, PACF cuts off.
-- MA(1): ACF cuts off, PACF tails off.
+- AR(1): ACF аажмаар буурна, PACF тасарна.
+- MA(1): ACF тасарна, PACF аажмаар буурна.
 
-## Statistical Significance
+## Статистик ач холбогдол
 
-For large samples,
+Том түүврийн хувьд
 
 $$
 SE(r_k)
@@ -334,29 +342,29 @@ SE(r_k)
 \frac{1}{\sqrt{n}}.
 $$
 
-The PACF plot displays approximate 95% confidence limits
+PACF график нь ойролцоогоор 95% итгэлцлийн хязгаарыг харуулдаг:
 
 $$
 \pm\frac{1.96}{\sqrt n}.
 $$
 
-Values outside these limits may indicate significant dependence.
+Эдгээр хязгаараас гадуур байгаа утгууд нь ач холбогдолтой хамаарлыг илтгэж болно.
 
-## Summary
+## Дүгнэлт
 
-- The PACF measures direct dependence at a given lag.
-- PACF removes the effect of intermediate observations.
-- AR(\(p\)) processes have PACFs that cut off after lag \(p\).
-- MA(\(q\)) processes have PACFs that tail off.
-- ACF and PACF together are the primary tools for model identification.
+- PACF нь өгөгдсөн хоцролт дээрх шууд хамаарлыг хэмждэг.
+- PACF нь завсрын ажиглалтуудын нөлөөг арилгадаг.
+- AR(\(p\)) процессуудын PACF нь \(p\) хоцролтын дараа тасардаг.
+- MA(\(q\)) процессуудын PACF нь аажмаар буурдаг.
+- ACF ба PACF хамтдаа загвар тодорхойлох үндсэн хэрэгсэл болдог.
 
-## Exercises
+## Дасгал
 
-1. Simulate an AR(1) process with \(\phi=0.7\).
-2. Plot its ACF and PACF.
-3. Verify that the PACF cuts off after lag 1.
-4. Simulate an AR(2) process.
-5. Identify the cutoff lag from the PACF.
-6. Simulate an MA(1) process.
-7. Compare its ACF and PACF.
-8. Explain why PACF is useful for selecting the order of an AR model.
+1. \(\phi=0.7\) бүхий AR(1) процессыг симуляцла.
+2. Түүний ACF ба PACF-ийг зур.
+3. PACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.
+4. AR(2) процессыг симуляцла.
+5. PACF-ээс тасралтын хоцролтыг тодорхойл.
+6. MA(1) процессыг симуляцла.
+7. Түүний ACF ба PACF-ийг харьцуул.
+8. PACF нь AR загварын эрэмбийг сонгоход яагаад ашигтай байдаг вэ гэдгийг тайлбарла.

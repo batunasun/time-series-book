@@ -1,58 +1,60 @@
-# The Autoregressive Process of Order One: AR(1)
+# Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)
 
-## Introduction
+## Оршил
 
-The AR(1) model is the simplest and most important autoregressive model.
+AR(1) загвар нь хамгийн энгийн бөгөөд хамгийн чухал авторегрессив загвар юм.
 
-In an AR(1) process, the current observation depends on the immediately preceding observation and a random error.
+AR(1) процесс дээр одоогийн ажиглалт нь шууд өмнөх ажиглалт болон санамсаргүй алдаанаас хамаардаг.
 
-The model serves as a foundation for understanding higher-order autoregressive models and many forecasting methods.
+Энэ загвар нь дээд эрэмбийн авторегрессив загварууд болон олон таамаглах аргуудыг ойлгох үндэс болдог.
 
-## Definition
+## Тодорхойлолт
 
-An AR(1) process is defined by
+AR(1) процессыг
 
 $$
-Y_t=\phi Y_{t-1}+\varepsilon_t,
+Y_t=\phi Y_{t-1}+\varepsilon_t
 $$
 
-where
+гэж тодорхойлдог бөгөөд энд
 
-- $\phi$ is the autoregressive parameter,
+- $\phi$ нь авторегрессив параметр,
 - $\varepsilon_t\sim WN(0,\sigma^2)$,
-- $\{\varepsilon_t\}$ is a white noise process.
+- $\{\varepsilon_t\}$ нь цагаан чимээний процесс.
 
-The parameter $\phi$ determines the strength of dependence between consecutive observations.
+$\phi$ параметр нь дараалсан ажиглалтуудын хоорондын хамаарлын хүчийг тодорхойлдог.
 
-## Stationarity Condition
+## Стационар байдлын нөхцөл
 
-The AR(1) process is stationary if
-
-$$
-|\phi|<1.
-$$
-
-If
+AR(1) процесс нь
 
 $$
-|\phi|\ge 1,
+|\phi|<1
 $$
 
-the process is nonstationary.
+бол стационар байна.
 
-### Examples
+Хэрэв
 
-| Value of $\phi$ | Interpretation |
+$$
+|\phi|\ge 1
+$$
+
+бол процесс стационар бус байна.
+
+### Жишээнүүд
+
+| $\phi$-ийн утга | Тайлбар |
 |------|------|
-| $0$ | White noise |
-| $0.3$ | Weak dependence |
-| $0.8$ | Strong persistence |
-| $-0.8$ | Alternating behavior |
-| $1$ | Random walk (nonstationary) |
+| $0$ | Цагаан чимээ |
+| $0.3$ | Сул хамаарал |
+| $0.8$ | Хүчтэй үргэлжлэл |
+| $-0.8$ | Ээлжлэх зан төлөв |
+| $1$ | Санамсаргүй алхалт (стационар бус) |
 
-## Mean of an AR(1) Process
+## AR(1) процессын дундаж
 
-Taking expectations,
+Математик хүлээлт авбал
 
 $$
 E(Y_t)
@@ -60,33 +62,33 @@ E(Y_t)
 \phi E(Y_{t-1}).
 $$
 
-Under stationarity,
+Стационар нөхцөлд
 
 $$
 E(Y_t)=\mu.
 $$
 
-Therefore,
+Иймд
 
 $$
 \mu=\phi\mu.
 $$
 
-Hence,
+Тиймээс
 
 $$
 \mu=0.
 $$
 
-## Variance of an AR(1) Process
+## AR(1) процессын дисперс
 
-Since
+Учир нь
 
 $$
 Y_t=\phi Y_{t-1}+\varepsilon_t,
 $$
 
-the stationary variance is
+стационар дисперс нь
 
 $$
 Var(Y_t)
@@ -95,11 +97,11 @@ Var(Y_t)
      {1-\phi^2}.
 $$
 
-As $|\phi|$ approaches 1, the variance increases.
+$|\phi|$ 1-д ойртох тусам дисперс нэмэгддэг.
 
-## Autocovariance Function
+## Автоковариацын функц
 
-For a stationary AR(1) process,
+Стационар AR(1) процессын хувьд
 
 $$
 \gamma(k)
@@ -107,7 +109,7 @@ $$
 \phi^{k}\gamma(0).
 $$
 
-Since
+Учир нь
 
 $$
 \gamma(0)
@@ -116,27 +118,27 @@ $$
      {1-\phi^2},
 $$
 
-all autocovariances are determined by $\phi$.
+бүх автоковариацууд $\phi$-ээр тодорхойлогдоно.
 
-## Autocorrelation Function
+## Автокорреляцын функц
 
-The ACF of an AR(1) process is
+AR(1) процессын ACF нь
 
 $$
 \rho(k)=\phi^k.
 $$
 
-This is one of the most important results in time series analysis.
+Энэ нь хугацааны цувааны шинжилгээний хамгийн чухал үр дүнгүүдийн нэг юм.
 
-### Consequences
+### Үр дагавар
 
-If
+Хэрэв
 
 $$
 \phi=0.8,
 $$
 
-then
+бол
 
 $$
 \rho(1)=0.8,
@@ -150,30 +152,30 @@ $$
 \rho(3)=0.512.
 $$
 
-Thus the ACF decreases gradually toward zero.
+Иймд ACF тэг рүү аажмаар буурдаг.
 
-## Partial Autocorrelation Function
+## Хэсэгчилсэн автокорреляцын функц
 
-For an AR(1) process,
+AR(1) процессын хувьд
 
 $$
 PACF(1)=\phi,
 $$
 
-and
+ба
 
 $$
 PACF(k)=0,
 \qquad k>1.
 $$
 
-Therefore the PACF cuts off after lag 1.
+Иймд PACF нь 1 хоцролтын дараа тасардаг.
 
-This property is widely used to identify AR(1) models.
+Энэ шинж чанарыг AR(1) загварыг тодорхойлоход өргөн ашигладаг.
 
-## Simulation
+## Симуляц
 
-### Positive Dependence
+### Эерэг хамаарал
 
 ```{r}
 set.seed(123)
@@ -190,9 +192,9 @@ plot.ts(
 )
 ```
 
-Observe the persistence of consecutive observations.
+Дараалсан ажиглалтуудын үргэлжлэлийг ажиглаарай.
 
-### Negative Dependence
+### Сөрөг хамаарал
 
 ```{r}
 set.seed(123)
@@ -209,35 +211,35 @@ plot.ts(
 )
 ```
 
-Successive observations tend to alternate in sign.
+Дараалсан ажиглалтууд тэмдгээрээ ээлжлэн солигдох хандлагатай байдаг.
 
-## ACF of an AR(1) Process
+## AR(1) процессын ACF
 
 ```{r}
 acf(
   ar1,
-  main="ACF of AR(1)"
+  main="AR(1)-ийн ACF"
 )
 ```
 
-The ACF decays geometrically.
+ACF геометрээр буурдаг.
 
-This tailing-off behavior is characteristic of autoregressive processes.
+Энэ аажмаар буурах зан төлөв нь авторегрессив процессуудын онцлог шинж юм.
 
-## PACF of an AR(1) Process
+## AR(1) процессын PACF
 
 ```{r}
 pacf(
   ar1,
-  main="PACF of AR(1)"
+  main="AR(1)-ийн PACF"
 )
 ```
 
-Only the first lag should be significant.
+Зөвхөн эхний хоцролт ач холбогдолтой байх ёстой.
 
-## Lag Plot
+## Хоцролтын график
 
-A lag plot reveals the dependence between $Y_t$ and $Y_{t-1}$.
+Хоцролтын график нь $Y_t$ ба $Y_{t-1}$ хоорондын хамаарлыг илрүүлдэг.
 
 ```{r}
 plot(
@@ -249,9 +251,9 @@ plot(
 )
 ```
 
-A positive linear pattern should be visible.
+Эерэг шугаман хэв маяг харагдах ёстой.
 
-## Comparison of Different Values of $\phi$
+## $\phi$-ийн өөр өөр утгуудын харьцуулалт
 
 ```{r}
 par(mfrow=c(2,2))
@@ -277,11 +279,11 @@ plot.ts(
 )
 ```
 
-Observe how the degree of dependence changes as $\phi$ changes.
+$\phi$ өөрчлөгдөх тусам хамаарлын зэрэг хэрхэн өөрчлөгдөж байгааг ажиглаарай.
 
-## Parameter Estimation
+## Параметрийн үнэлгээ
 
-An AR(1) model can be estimated using maximum likelihood.
+AR(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.
 
 ```{r}
 fit <- arima(
@@ -292,11 +294,11 @@ fit <- arima(
 fit
 ```
 
-The estimated value of $\phi$ should be close to the true value used in simulation.
+$\phi$-ийн үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.
 
-## Forecasting
+## Таамаглал
 
-For an AR(1) model,
+AR(1) загварын хувьд
 
 $$
 \hat{Y}_{t+1}
@@ -304,7 +306,7 @@ $$
 \phi Y_t.
 $$
 
-More generally,
+Ерөнхийдөө
 
 $$
 \hat{Y}_{t+h}
@@ -312,73 +314,73 @@ $$
 \phi^h Y_t.
 $$
 
-As $h$ increases,
+$h$ нэмэгдэх тусам
 
 $$
 \phi^h \rightarrow 0,
 $$
 
-and forecasts approach the mean of the process.
+бөгөөд таамаглалууд процессын дундаж руу ойртдог.
 
-## Interpretation
+## Тайлбар
 
-### Positive $\phi$
+### Эерэг $\phi$
 
-If
+Хэрэв
 
 $$
 \phi>0,
 $$
 
-large values tend to follow large values and small values tend to follow small values.
+бол том утгууд том утгуудыг дагах, жижиг утгууд жижиг утгуудыг дагах хандлагатай байдаг.
 
-### Negative $\phi$
+### Сөрөг $\phi$
 
-If
+Хэрэв
 
 $$
 \phi<0,
 $$
 
-successive observations tend to move in opposite directions.
+бол дараалсан ажиглалтууд эсрэг чиглэлд хөдлөх хандлагатай байдаг.
 
-### Near Zero
+### Тэгтэй ойролцоо
 
-If
+Хэрэв
 
 $$
 \phi\approx 0,
 $$
 
-the process resembles white noise.
+бол процесс цагаан чимээтэй төстэй болдог.
 
-## Summary
+## Дүгнэлт
 
-The AR(1) process
+AR(1) процесс
 
 $$
 Y_t=\phi Y_{t-1}+\varepsilon_t
 $$
 
-is the simplest autoregressive model.
+нь хамгийн энгийн авторегрессив загвар юм.
 
-Key properties:
+Гол шинж чанарууд:
 
-- Stationary when $|\phi|<1$.
-- Mean equals zero.
-- Variance equals $\frac{\sigma^2}{1-\phi^2}$.
+- $|\phi|<1$ үед стационар.
+- Дундаж нь тэгтэй тэнцүү.
+- Дисперс нь $\frac{\sigma^2}{1-\phi^2}$-тэй тэнцүү.
 - ACF: $\rho(k)=\phi^k$.
-- PACF cuts off after lag 1.
+- PACF нь 1 хоцролтын дараа тасарна.
 
-These characteristics make AR(1) a fundamental model in time series analysis.
+Эдгээр шинж чанарууд AR(1)-ийг хугацааны цувааны шинжилгээний үндсэн загвар болгодог.
 
-## Exercises
+## Дасгал
 
-1. Simulate an AR(1) process with $\phi=0.5$.
-2. Plot the series, ACF, and PACF.
-3. Verify that the ACF decays geometrically.
-4. Verify that the PACF cuts off after lag 1.
-5. Compare AR(1) processes with $\phi=0.2$, $0.5$, and $0.9$.
-6. Simulate an AR(1) process with $\phi=-0.8$.
-7. Construct a lag plot and describe the pattern.
-8. Estimate an AR(1) model using `arima()` and compare the estimated parameter with the true value.
+1. $\phi=0.5$ бүхий AR(1) процессыг симуляцла.
+2. Цуваа, ACF, PACF-ийг зур.
+3. ACF геометрээр буурдаг эсэхийг шалга.
+4. PACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.
+5. $\phi=0.2$, $0.5$, $0.9$ бүхий AR(1) процессуудыг харьцуул.
+6. $\phi=-0.8$ бүхий AR(1) процессыг симуляцла.
+7. Хоцролтын график байгуулж, хэв маягийг тайлбарла.
+8. `arima()` ашиглан AR(1) загварыг үнэлж, үнэлсэн параметрийг жинхэнэ утгатай харьцуул.

@@ -1,42 +1,42 @@
-# The Autoregressive Integrated Moving Average Process: ARIMA
+# Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA
 
-## Introduction
+## Оршил
 
-Many real-world time series are nonstationary.
+Бодит ертөнцийн олон хугацааны цуваа стационар бус байдаг.
 
-Examples include:
+Жишээнүүд:
 
-- population growth,
-- economic indicators,
-- stock prices,
-- energy consumption,
-- environmental measurements.
+- хүн амын өсөлт,
+- эдийн засгийн үзүүлэлтүүд,
+- хувьцааны үнэ,
+- эрчим хүчний хэрэглээ,
+- байгаль орчны хэмжилтүүд.
 
-Since ARMA models require stationarity, a transformation is often necessary before modeling.
+ARMA загварууд стационар байдлыг шаарддаг тул загварчлахаас өмнө хувиргалт хийх шаардлагатай болдог.
 
-The ARIMA model extends ARMA models by incorporating differencing.
+ARIMA загвар нь ялгавар авах замаар ARMA загварыг өргөтгөдөг.
 
-ARIMA stands for:
+ARIMA гэдэг нь:
 
-- **AR**: Autoregressive
-- **I**: Integrated
-- **MA**: Moving Average
+- **AR**: Авторегрессив
+- **I**: Нэгтгэсэн (Integrated)
+- **MA**: Хөдөлгөөнт дундаж
 
-## Motivation
+## Урам зориг
 
-Consider a random walk:
+Санамсаргүй алхалтыг авч үзье:
 
 $$
 Y_t=Y_{t-1}+\varepsilon_t.
 $$
 
-This series is nonstationary because:
+Энэ цуваа нь стационар бус, учир нь:
 
-- the variance increases over time,
-- the mean is not stable,
-- the ACF decays very slowly.
+- дисперс цаг хугацааны явцад нэмэгддэг,
+- дундаж нь тогтвортой биш,
+- ACF маш удаан буурдаг.
 
-However,
+Гэхдээ
 
 $$
 Y_t-Y_{t-1}
@@ -44,13 +44,13 @@ Y_t-Y_{t-1}
 \varepsilon_t
 $$
 
-is white noise.
+нь цагаан чимээ юм.
 
-Thus a nonstationary process may become stationary after differencing.
+Иймд стационар бус процесс ялгавар авсны дараа стационар болж болно.
 
-## Differencing
+## Ялгавар авах
 
-The first difference of a time series is
+Хугацааны цувааны эхний ялгавар нь
 
 $$
 \nabla Y_t
@@ -58,7 +58,7 @@ $$
 Y_t-Y_{t-1}.
 $$
 
-### R Example
+### R жишээ
 
 ```{r}
 set.seed(123)
@@ -68,380 +68,391 @@ rw <- cumsum(e)
 
 plot.ts(
   rw,
-  main="Random Walk",
+  main="Санамсаргүй алхалт",
   ylab=expression(Y[t])
 )
 ```
 
-Now compute the first difference:
+Одоо эхний ялгаврыг тооцоолъё:
 
 ```{r}
 drw <- diff(rw)
 
 plot.ts(
   drw,
-  main="First Difference",
+  main="Эхний ялгавар",
   ylab=expression(nabla*Y[t])
 )
 ```
 
-The differenced series*appears stationary.
+Ялгавар авсан цуваа стационар харагдаж байна.
 
-## Definition*of an ARIMA Model
+## ARIMA загварын тодорхойлолт
 
-An*ARIMA($p,d,q$) model satisfies*
-\*
+ARIMA($p,d,q$) загвар нь
+
+$$
 \phi(B)(1-B)^dY_t
 =
-\theta(B)\var*psilon_t,
+\theta(B)\varepsilon_t,
 $$
 
-where
+нөхцлийг хангана, энд
 
-- $p$ = AR *rder,
-- $d$ = number of differen*es,
-- \*q$ = MA order.
+- $p$ = AR эрэмбэ,
+- $d$ = ялгаврын тоо,
+- $q$ = MA эрэмбэ.
 
-The operator
+Оператор
 
-\*
+$$
 (1-B)^d
 $$
 
-represents differenci*g.
+нь ялгавар авахыг илэрхийлнэ.
 
-## Backshift Operator
+## Хойш шилжилтийн оператор
 
-The bac*shift operator is defined by
+Хойш шилжилтийн операторыг
 
-\*
-BY_t=Y_{t-1}.
+$$
+BY_t=Y_{t-1}
 $$
 
-Therefore
+гэж тодорхойлдог.
 
-\*
+Иймд
+
+$$
 (1-B)Y_t
 =
 Y_t-Y_{t-1}.
 $$
 
-This *otation simplifies*model expressions.
+Энэ тэмдэглэгээ нь загварын илэрхийллийг хялбаршуулдаг.
 
-### Example
+### Жишээ
 
-A*(1):
+AR(1):
 
-\*
+$$
 (1-\phi B)Y_t
 =
 \varepsilon_t.
-\]*
+$$
+
 MA(1):
 
-\*
+$$
 Y_t
 =
 (1+\theta B)\varepsilon_t.
-*]
+$$
 
 ARIMA(1,1,1):
 
-\*
+$$
 (1-\phi B)(1-B)Y_t
 =
-(1+\theta B)*varepsilon_t.
+(1+\theta B)\varepsilon_t.
 $$
 
-##*ARIMA(0,1,0)
+## ARIMA(0,1,0)
 
-The simplest ARIMA m*del is*
-\*
+Хамгийн энгийн ARIMA загвар нь
+
+$$
 (1-B)Y_t
 =
 \varepsilon_t.
 $$
 
-Equ*valently,
+Үүнтэй ижил утгаар
 
 $$
-Y_t=Y_{t-1}+\varepsi*on_t.
+Y_t=Y_{t-1}+\varepsilon_t.
 $$
 
-This is the random walk *odel.
+Энэ нь санамсаргүй алхалтын загвар юм.
 
-### Simulation
+### Симуляц
 
 ```{r}
-set.*eed(123)
+set.seed(123)
 
-rw <- cumsum(rnorm(300*)
+rw <- cumsum(rnorm(300))
 
 plot.ts(
   rw,
-  main="Random W*lk: ARIMA(0,1,0)"
+  main="Санамсаргүй алхалт: ARIMA(0,1,0)"
 )
 ```
 
-##*ACF of a Random Walk
+## Санамсаргүй алхалтын ACF
 
 ```{r}
-*cf(
+acf(
   rw,
-  main="ACF of Random Wa*k"
+  main="Санамсаргүй алхалтын ACF"
 )
 ```
 
-The correlations decay v*ry slowly.
+Корреляцууд маш удаан буурдаг.
 
-This behavior is typic*l of nonstationary processes.
+Энэ зан төлөв нь стационар бус процессуудад ердийн зүйл юм.
 
-## *CF After Differencing
+## Ялгавар авсны дараах ACF
 
 ```{r}
-acf(*  diff(rw),
-  main="ACF of Differe*ced Random Walk"
+acf(
+  diff(rw),
+  main="Ялгавар авсан санамсаргүй алхалтын ACF"
 )
 ```
 
-The differ*nced series behaves much more like*white noise.
+Ялгавар авсан цуваа нь цагаан чимээтэй илүү төстэй ажилладаг.
 
-## ARIMA(1,1,0*
+## ARIMA(1,1,0)
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 (1-\phi B)(1-B)Y_t
-*
+=
 \varepsilon_t.
 $$
 
-This model app*ies an AR(1) structure to the diff*renced series.
+Энэ загвар нь ялгавар авсан цуваанд AR(1) бүтцийг хэрэглэдэг.
 
-### Simulation
+### Симуляц
 
-``*{r}
+```{r}
 set.seed(123)
 
-arima110 <- ari*a.sim(
+arima110 <- arima.sim(
   model=list(ar=.6),
-  n=30*
+  n=300
 )
 
 plot.ts(
   cumsum(arima110),
- *main="ARIMA*1,1,0)"
+  main="ARIMA(1,1,0)"
 )
 ```
 
-## ARIMA(0*1,1)
+## ARIMA(0,1,1)
 
-Consider
+Дараахьыг авч үзье:
 
-\*
+$$
 (1-B)Y_t
 =
-(1+\theta B)\varepsilo*_t.
+(1+\theta B)\varepsilon_t.
 $$
 
-This model is often useful*for forecasting.
+Энэ загвар нь таамаглахад ихэвчлэн ашигтай байдаг.
 
-### Simulation
+### Симуляц
 
-*``{r}
+```{r}
 set.seed(123)
 
-arima011 <- a*ima.sim(
+arima011 <- arima.sim(
   model=list(ma=.7),
-  n=*00
+  n=300
 )
 
 plot.ts(
-  cumsum(arima011),*  main="ARIMA(0,1,1)"
+  cumsum(arima011),
+  main="ARIMA(0,1,1)"
 )
 ```
 
-## Id*ntifying Nonstationarity
+## Стационар бус байдлыг илрүүлэх
 
-Typical *ndicators include:
+Ердийн үзүүлэлтүүд:
 
-### Time Serie* Plot
+### Хугацааны цувааны график
 
-- trend,
-- changing level,
-* increasing variability.
+- тренд,
+- түвшний өөрчлөлт,
+- нэмэгдэж буй хувьсах байдал.
 
 ### ACF
-*- very slow decay,
-- large positiv* autocorrelations.
 
-### Example*
+- маш удаан бууралт,
+- том эерэг автокорреляцууд.
+
+### Жишээ
+
 ```{r}
-par(mfrow=c*1,2))
+par(mfrow=c(1,2))
 
-plot.ts(r*)
+plot.ts(rw)
 acf(rw)
 ```
 
-## Unit Root
+## Нэгж язгуур
 
-*onsider
+Дараахьыг авч үзье:
 
-\*
+$$
 Y_t=\phi Y_{t-1}+\varepsilon_t.
-\*
+$$
 
-If*
+Хэрэв
 $$
 \phi=1,
 $$
-
-then
+бол
 
 $$
 Y_t=Y_{t-1}+\varepsilon_t,
 $$
+энэ нь санамсаргүй алхалт юм.
 
-w*ich is a random walk.
+Процесс нь нэгж язгуур агуулдаг.
 
-The process*contains a unit root.
+Нэгж язгуур нь стационар бус байдлыг илтгэнэ.
 
-Unit roots *mply nonstationarity.
+## Нэгж язгуурыг шалгах
 
-## Testing *or a Unit Root
+Нийтлэг статистик шалгалт нь Өргөтгөсөн Дики-Фуллер (ADF) шалгалт юм.
 
-A common*statistical test is the Augmented *ickey-Fuller (ADF) test.
-
-```{r ev*l=FALSE}
+```{r eval=FALSE}
 library(tseries)
 
-adf.tes*(rw)
-*``
-
-### Interpretation
-
-- Small p*value → reject unit root.
-- Large *-value → evidence of nonstationari*y.
-
-## Fitting an ARIMA Model
-
-The*function `arima()` may be used.
-
-`*`{r}
-fit <- ar*ma(
-  rw,
-  order=c(0,1,0)
-*
-
-fit
+adf.test(rw)
 ```
 
-Alternatively:
+### Тайлбар
 
-```{* eval=FALSE}
-library(forecast)
+- Бага p-утга → нэгж язгуурыг үгүйсгэнэ.
+- Том p-утга → стационар бус байдлын нотолгоо.
 
-fi* <- Arima*
+## ARIMA загварыг тохируулах
+
+`arima()` функцийг ашиглаж болно.
+
+```{r}
+fit <- arima(
   rw,
   order=c(0,1,0)
 )
-``*
-
-## Automatic Model Selection
-
-Th* `forecast` package provides
-
-```{* eval=FALSE}
-library(forecast)
-
-fi* <- auto.arima(rw)
 
 fit
 ```
 
-The a*gorithm automatically selects valu*s of:
-
-$$
-p,d,q.
-$$
-
-## Forecastin*
+Өөр хувилбар:
 
 ```{r eval=FALSE}
-library(foreca*t)
+library(forecast)
+
+fit <- Arima(
+  rw,
+  order=c(0,1,0)
+)
+```
+
+## Загварыг автоматаар сонгох
+
+`forecast` багц нь дараахь боломжийг олгодог:
+
+```{r eval=FALSE}
+library(forecast)
 
 fit <- auto.arima(rw)
 
-fc <- f*recast(
+fit
+```
+
+Алгоритм нь
+
+$$
+p,d,q
+$$
+
+-ийн утгуудыг автоматаар сонгодог.
+
+## Таамаглал
+
+```{r eval=FALSE}
+library(forecast)
+
+fit <- auto.arima(rw)
+
+fc <- forecast(
   fit,
   h=20
 )
 
 plot(fc)
-*``
+```
 
-The*resulting forecast includes:
+Үүссэн таамаглал нь дараахь зүйлийг агуулна:
 
-- po*nt forecasts,
-- 80% prediction int*rvals,
-- 95% prediction intervals.*
-## ARMA versus ARIMA
+- цэгэн таамаглалууд,
+- 80% таамаглалын интервалууд,
+- 95% таамаглалын интервалууд.
 
-| Model | S*ationary? | Differencing? |
-|-----*---|---------|---------|
-| AR(p) |*Yes | No |
-| MA(q* | Yes | No |
-| ARMA(p,q) | Yes |*No |
-| ARIMA(p,d,q) | Not*necessarily | Yes |
+## ARMA ба ARIMA-г харьцуулах
 
-ARIMA extends*ARMA by allowing nonstationary tim* series to be modeled.
+| Загвар | Стационар уу? | Ялгавар авах уу? |
+|---------|---------|---------|
+| AR($p$) | Тийм | Үгүй |
+| MA($q$) | Тийм | Үгүй |
+| ARMA($p,q$) | Тийм | Үгүй |
+| ARIMA($p,d,q$) | Заавал биш | Тийм |
 
-## Box-Jen*ins Modeling*Procedure
+ARIMA нь стационар бус хугацааны цувааг загварчлах боломжийг олгосноор ARMA-г өргөтгөдөг.
 
-The classical Box-Jenki*s procedure consists of:
+## Box-Jenkins загварчлалын журам
 
-1. Ident*fication
-   - Time series plot
-   * ACF
+Сонгодог Box-Jenkins журам нь дараахь үе шатуудаас бүрдэнэ:
+
+1. Тодорхойлох
+   - Хугацааны цувааны график
+   - ACF
    - PACF
 
-2. Estimation
-   -*Estimate model parameters
+2. Үнэлэх
+   - Загварын параметрүүдийг үнэлэх
 
-3.*Diagnostic Checking
-   - Residual *lots
-   - Residual*ACF
-   - Ljung-Box test
+3. Оношлогооны шалгалт
+   - Үлдэгдлийн графикууд
+   - Үлдэгдлийн ACF
+   - Ljung-Box шалгалт
 
-4. Foreca*ting
-   - Produce future values
+4. Таамаглах
+   - Ирээдүйн утгуудыг гаргах
 
-#* Summary
+## Дүгнэлт
 
-An ARIMA($p,d,q$) mode* combines:
+ARIMA($p,d,q$) загвар нь дараахь зүйлийг нэгтгэдэг:
 
-- autoregression,
-- di*ferencing,
-- moving averages.
+- авторегресс,
+- ялгавар авах,
+- хөдөлгөөнт дундаж.
 
-Key*concepts:
+Гол ойлголтууд:
 
-- Nonstationary series *ften require differencing.
-- Rando* walks are ARIMA(0,1,0) processes.*- Unit roots imply nonstationarity*
-- ARIMA models generalize ARMA mo*els.
-- Forecasting is a primary ap*lication of ARIMA.
+- Стационар бус цуваа нь ихэвчлэн ялгавар авахыг шаарддаг.
+- Санамсаргүй алхалтууд нь ARIMA(0,1,0) процессууд юм.
+- Нэгж язгуур нь стационар бус байдлыг илтгэнэ.
+- ARIMA загварууд нь ARMA загваруудыг ерөнхий болгодог.
+- Таамаглал нь ARIMA-гийн үндсэн хэрэглээ юм.
 
-ARIMA remains *ne of the most widely used forecas*ing methods in practice.
+ARIMA нь практикт хамгийн өргөн хэрэглэгддэг таамаглах аргуудын нэг хэвээр байна.
 
-## Exerc*ses
+## Дасгал
 
-1. Simulate a random walk of *ength 300.
-2. Plot the series and *ts ACF.
-3. Compute the first diffe*ence.
-4. Plot the differenced seri*s and its ACF.
-5. Fit an ARIMA(0,1*0) model using `arima()`.
-6. Perfo*m an ADF test.
-7. Fit an ARIMA(1,1*0) model.
-8. Use `auto.arima()` to*select a model automatically.
-9. P*oduce 20-step-ahead forecasts.
-10.*Compare ARMA and ARIMA models conc*ptually.
+1. 300 урттай санамсаргүй алхалтыг симуляцла.
+2. Цуваа ба түүний ACF-ийг зур.
+3. Эхний ялгаврыг тооцоол.
+4. Ялгавар авсан цуваа ба түүний ACF-ийг зур.
+5. `arima()` ашиглан ARIMA(0,1,0) загварыг тохируул.
+6. ADF шалгалт гүйцэтгэ.
+7. ARIMA(1,1,0) загварыг тохируул.
+8. `auto.arima()` ашиглан загварыг автоматаар сонго.
+9. 20 алхамын урьдчилсан таамаглал гарга.
+10. ARMA ба ARIMA загваруудыг үзэл баримтлалын хувьд харьцуул.

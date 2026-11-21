@@ -1,32 +1,32 @@
-# Exercises
+# Дасгалууд
 
-## Introduction
+## Оршил
 
-This chapter contains exercises covering:
+Энэ бүлэгт дараахь сэдвүүдийг хамарсан дасгалууд багтсан:
 
-- White Noise
-- Stationarity
+- Цагаан чимээ
+- Стационар байдал
 - ACF
 - PACF
 - AR(1)
 - MA(1)
 - ARMA
 - ARIMA
-- Forecasting
+- Таамаглал
 
-The exercises range from basic concepts to practical applications in R.
+Дасгалууд нь үндсэн ойлголтуудаас эхлээд R дээрх практик хэрэглээ хүртэл хамардаг.
 
 ---
 
-# Part I: White Noise
+# I хэсэг: Цагаан чимээ
 
-## Exercise 1
+## Дасгал 1
 
-Generate a white noise series of length 200.
+200 урттай цагаан чимээний цуваа үүсгэ.
 
-Plot the series and describe its behavior.
+Цувааг зурж, зан төлөвийг нь тайлбарла.
 
-### Hint
+### Зөвлөмж
 
 ```{r eval=FALSE}
 y <- rnorm(200)
@@ -35,17 +35,17 @@ plot.ts(y)
 
 ---
 
-## Exercise 2
+## Дасгал 2
 
-Compute and plot the ACF of a white noise process.
+Цагаан чимээний процессын ACF-ийг тооцоолж, график зур.
 
-Explain why most autocorrelations should lie within the 95% confidence limits.
+Яагаад ихэнх автокорреляцууд 95% итгэлцлийн хязгаар дотор байх ёстойг тайлбарла.
 
 ---
 
-## Exercise 3
+## Дасгал 3
 
-Construct a lag-1 scatter plot.
+1 хоцролтын сарнилын график байгуул.
 
 ```{r eval=FALSE}
 plot(
@@ -54,15 +54,15 @@ plot(
 )
 ```
 
-What pattern do you observe?
+Ямар хэв маяг ажиглаж байна вэ?
 
 ---
 
-# Part II: Stationarity
+# II хэсэг: Стационар байдал
 
-## Exercise 4
+## Дасгал 4
 
-For each of the following processes, determine whether it is stationary.
+Дараах процесс бүрийн хувьд стационар эсэхийг тодорхойл.
 
 ### (a)
 
@@ -90,9 +90,9 @@ $$
 
 ---
 
-## Exercise 5
+## Дасгал 5
 
-Simulate a random walk and explain why it is not stationary.
+Санамсаргүй алхалтыг симуляцлаж, яагаад стационар бус байгааг тайлбарла.
 
 ```{r eval=FALSE}
 rw <- cumsum(rnorm(300))
@@ -100,29 +100,29 @@ rw <- cumsum(rnorm(300))
 
 ---
 
-## Exercise 6
+## Дасгал 6
 
-Difference the random walk and examine the resulting series.
+Санамсаргүй алхалтаас ялгавар авч, үүссэн цувааг шалга.
 
 ```{r eval=FALSE}
 diff(rw)
 ```
 
-Does the differenced series appear stationary?
+Ялгавар авсан цуваа стационар харагдаж байна уу?
 
 ---
 
-# Part III: ACF
+# III хэсэг: ACF
 
-## Exercise 7
+## Дасгал 7
 
-Suppose
+Дараахьыг өгөгдсөн гэж үзье:
 
 $$
 \rho(k)=0.8^k.
 $$
 
-Compute:
+Тооцоол:
 
 $$
 \rho(1),
@@ -134,82 +134,82 @@ $$
 
 ---
 
-## Exercise 8
+## Дасгал 8
 
-Explain the difference between:
+Дараахь хоёрын ялгааг тайлбарла:
 
-- autocovariance,
-- autocorrelation.
+- автоковариац,
+- автокорреляц.
 
 ---
 
-## Exercise 9
+## Дасгал 9
 
-Generate an AR(1) process with
+Дараах параметртэй AR(1) процессыг үүсгэ:
 
 $$
 \phi=0.8.
 $$
 
-Plot its ACF.
+Түүний ACF-ийг зур.
 
-How does it differ from the ACF of white noise?
-
----
-
-## Exercise 10
-
-Why does the ACF of an MA(1) process cut off after lag 1?
+Цагаан чимээний ACF-ээс юугаараа ялгаатай вэ?
 
 ---
 
-# Part IV: PACF
+## Дасгал 10
 
-## Exercise 11
-
-Explain the difference between ACF and PACF.
+MA(1) процессын ACF яагаад 1 хоцролтын дараа тасардаг вэ?
 
 ---
 
-## Exercise 12
+# IV хэсэг: PACF
 
-For an AR(1) process,
+## Дасгал 11
+
+ACF ба PACF-ийн ялгааг тайлбарла.
+
+---
+
+## Дасгал 12
+
+AR(1) процессын хувьд
 
 $$
 Y_t=0.7Y_{t-1}+\varepsilon_t,
 $$
 
-describe the expected PACF pattern.
+хүлээгдэж буй PACF хэв маягийг тайлбарла.
 
 ---
 
-## Exercise 13
+## Дасгал 13
 
-Plot both the ACF and PACF of an AR(2) process.
+AR(2) процессын ACF ба PACF-ийг хоёуланг нь зур.
 
-Which plot helps identify the order?
+Аль график нь эрэмбийг тодорхойлоход тусалдаг вэ?
 
 ---
 
-# Part V: AR(1)
+# V хэсэг: AR(1)
 
-## Exercise 14
+## Дасгал 14
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=0.6Y_{t-1}+\varepsilon_t.
 $$
 
-Calculate:
+Тооцоол:
 
-### Mean
+### Дундаж
 
 $$
 E(Y_t)
 $$
 
-### Variance
+### Дисперс
 
 $$
 Var(Y_t)
@@ -218,7 +218,7 @@ Var(Y_t)
      {1-\phi^2}.
 $$
 
-Assume
+Дараахьыг өгөгдсөн гэж үз:
 
 $$
 \sigma^2=1.
@@ -226,21 +226,21 @@ $$
 
 ---
 
-## Exercise 15
+## Дасгал 15
 
-Show that
+AR(1) процессын хувьд
 
 $$
 \rho(k)=\phi^k
 $$
 
-for an AR(1) process.
+гэдгийг батал.
 
 ---
 
-## Exercise 16
+## Дасгал 16
 
-Simulate AR(1) processes with
+Дараах параметртэй AR(1) процессуудыг симуляцла:
 
 $$
 \phi=0.2,
@@ -250,13 +250,13 @@ $$
 0.8.
 $$
 
-Compare the resulting series.
+Үүссэн цуваануудыг харьцуул.
 
 ---
 
-## Exercise 17
+## Дасгал 17
 
-Fit an AR(1) model using:
+Дараахьыг ашиглан AR(1) загварыг тохируул:
 
 ```{r eval=FALSE}
 arima(
@@ -265,21 +265,21 @@ arima(
 )
 ```
 
-Compare the estimated parameter with the true value.
+Үнэлсэн параметрийг жинхэнэ утгатай харьцуул.
 
 ---
 
-# Part VI: MA(1)
+# VI хэсэг: MA(1)
 
-## Exercise 18
+## Дасгал 18
 
-For
+Дараахьын хувьд
 
 $$
 \theta=0.5,
 $$
 
-compute
+тооцоол:
 
 $$
 \rho(1)
@@ -290,60 +290,60 @@ $$
 
 ---
 
-## Exercise 19
+## Дасгал 19
 
-For
+Дараахьын хувьд
 
 $$
 \theta=0.2,
 $$
 
-compute the theoretical lag-1 autocorrelation.
+онолын 1 хоцролтын автокорреляцыг тооцоол.
 
 ---
 
-## Exercise 20
+## Дасгал 20
 
-Explain why
+MA(1) процессын хувьд яагаад
 
 $$
 \rho(k)=0,
-\qquad k>1.
+\qquad k>1
 $$
 
-for an MA(1) process.
+байдаг вэ гэдгийг тайлбарла.
 
 ---
 
-## Exercise 21
+## Дасгал 21
 
-Generate an MA(1) process with
+Дараах параметртэй MA(1) процессыг үүсгэ:
 
 $$
 \theta=0.5.
 $$
 
-Compare:
+Харьцуул:
 
-- time plot,
+- хугацааны график,
 - ACF,
 - PACF.
 
 ---
 
-## Exercise 22
+## Дасгал 22
 
-Produce lag-1 and lag-2 scatter plots.
+1 хоцролт ба 2 хоцролтын сарнилын графикуудыг гарга.
 
-Which one exhibits stronger dependence?
+Аль нь илүү хүчтэй хамаарал харуулж байна вэ?
 
 ---
 
-# Part VII: ARMA Models
+# VII хэсэг: ARMA загварууд
 
-## Exercise 23
+## Дасгал 23
 
-Explain the difference between:
+Дараахь хоёрын ялгааг тайлбарла:
 
 - AR(1),
 - MA(1),
@@ -351,9 +351,9 @@ Explain the difference between:
 
 ---
 
-## Exercise 24
+## Дасгал 24
 
-Simulate
+Дараахьыг симуляцла:
 
 $$
 ARMA(1,1):
@@ -369,21 +369,21 @@ Y_t
 0.4\varepsilon_{t-1}.
 $$
 
-Plot the series.
+Цувааг зур.
 
 ---
 
-## Exercise 25
+## Дасгал 25
 
-Plot both the ACF and PACF.
+ACF ба PACF-ийг хоёуланг нь зур.
 
-How do the patterns differ from pure AR and MA models?
+Хэв маягууд нь цэвэр AR ба MA загваруудаас юугаараа ялгаатай вэ?
 
 ---
 
-## Exercise 26
+## Дасгал 26
 
-Estimate an ARMA(1,1) model using:
+Дараахьыг ашиглан ARMA(1,1) загварыг үнэл:
 
 ```{r eval=FALSE}
 arima(
@@ -392,37 +392,37 @@ arima(
 )
 ```
 
-Interpret the estimated coefficients.
+Үнэлсэн коэффициентүүдийг тайлбарла.
 
 ---
 
-# Part VIII: ARIMA Models
+# VIII хэсэг: ARIMA загварууд
 
-## Exercise 27
+## Дасгал 27
 
-Generate a random walk.
+Санамсаргүй алхалт үүсгэ.
 
-Plot:
+Зур:
 
-- the original series,
-- the differenced series.
-
----
-
-## Exercise 28
-
-Plot the ACF of:
-
-- the random walk,
-- the differenced series.
-
-Explain the differences.
+- анхны цуваа,
+- ялгавар авсан цуваа.
 
 ---
 
-## Exercise 29
+## Дасгал 28
 
-Explain the meaning of:
+Дараахь зүйлсийн ACF-ийг зур:
+
+- санамсаргүй алхалт,
+- ялгавар авсан цуваа.
+
+Ялгааг тайлбарла.
+
+---
+
+## Дасгал 29
+
+Дараахьын утгыг тайлбарла:
 
 $$
 ARIMA(1,1,1).
@@ -430,9 +430,9 @@ $$
 
 ---
 
-## Exercise 30
+## Дасгал 30
 
-Fit:
+Дараахьыг тохируул:
 
 ```{r eval=FALSE}
 arima(
@@ -441,38 +441,38 @@ arima(
 )
 ```
 
-Interpret the output.
+Гаралтыг тайлбарла.
 
 ---
 
-## Exercise 31
+## Дасгал 31
 
-Use
+Дараахьыг ашигла:
 
 ```{r eval=FALSE}
-auto.arima(x)
+forecast::auto.arima(x)
 ```
 
-and compare the selected model with your manually specified model.
+Сонгогдсон загварыг гараар тодорхойлсон загвартай харьцуул.
 
 ---
 
-# Part IX: Forecasting
+# IX хэсэг: Таамаглал
 
-## Exercise 32
+## Дасгал 32
 
-Split a time series into:
+Хугацааны цувааг дараахь байдлаар хуваа:
 
-- training set,
-- test set.
+- сургалтын олонлог,
+- тестийн олонлог.
 
-Why is this important?
+Энэ яагаад чухал вэ?
 
 ---
 
-## Exercise 33
+## Дасгал 33
 
-Compute:
+Тооцоол:
 
 $$
 MAE,
@@ -482,115 +482,115 @@ MSE,
 RMSE.
 $$
 
-Explain the differences among these measures.
+Эдгээр хэмжүүрүүдийн ялгааг тайлбарла.
 
 ---
 
-## Exercise 34
+## Дасгал 34
 
-Fit a naive forecasting model.
+Энгийн (naive) таамаглалын загварыг тохируул.
 
-Compare it with an ARIMA forecast.
-
----
-
-## Exercise 35
-
-For a fitted forecasting model:
-
-1. Produce 12-step forecasts.
-2. Plot prediction intervals.
-3. Interpret the forecast uncertainty.
+Үүнийг ARIMA таамаглалтай харьцуул.
 
 ---
 
-## Exercise 36
+## Дасгал 35
 
-Perform residual diagnostics.
+Тохируулсан таамаглалын загварын хувьд:
 
-Examine:
-
-- residual plots,
-- residual ACF,
-- Ljung-Box test.
-
-Should the residuals resemble white noise?
-
-Why?
+1. 12 алхамын таамаглал гарга.
+2. Таамаглалын интервалуудыг зур.
+3. Таамаглалын тодорхойгүй байдлыг тайлбарла.
 
 ---
 
-# Comprehensive Project
+## Дасгал 36
 
-## Exercise 37
+Үлдэгдлийн оношлогоо гүйцэтгэ.
 
-Using a real data set of your choice:
+Шалга:
 
-1. Plot the series.
-2. Investigate stationarity.
-3. Examine ACF and PACF.
-4. Fit AR, MA, ARMA, and ARIMA models.
-5. Compare AIC values.
-6. Select a final model.
-7. Produce forecasts.
-8. Evaluate forecast accuracy.
-9. Write a short report summarizing your findings.
+- үлдэгдлийн графикууд,
+- үлдэгдлийн ACF,
+- Ljung-Box шалгалт.
+
+Үлдэгдэл нь цагаан чимээтэй төстэй байх ёстой юу?
+
+Яагаад?
 
 ---
 
-# Programming Challenges
+# Цогц төсөл
 
-## Exercise 38
+## Дасгал 37
 
-Write an R function that computes the sample autocorrelation at lag \(k\).
+Өөрийн сонгосон бодит өгөгдлийн олонлогийг ашиглан:
 
-Do not use the built-in `acf()` function.
+1. Цувааг зур.
+2. Стационар байдлыг шалга.
+3. ACF ба PACF-ийг шалга.
+4. AR, MA, ARMA, ARIMA загваруудыг тохируул.
+5. AIC утгуудыг харьцуул.
+6. Эцсийн загварыг сонго.
+7. Таамаглал гарга.
+8. Таамаглалын нарийвчлалыг үнэл.
+9. Олдсон үр дүнгээ нэгтгэн товч тайлан бич.
 
 ---
 
-## Exercise 39
+# Програмчлалын сорилтууд
 
-Write an R function that simulates an AR(1) process.
+## Дасгал 38
 
-Inputs:
+\(k\) хоцролт дээрх түүврийн автокорреляцыг тооцоолдог R функц бич.
+
+`acf()` бэлэн функцийг бүү ашигла.
+
+---
+
+## Дасгал 39
+
+AR(1) процессыг симуляцладаг R функц бич.
+
+Оролт:
 
 - \(\phi\)
 - \(n\)
 
-Output:
+Гаралт:
 
-- simulated series
+- симуляцлагдсан цуваа
 
 ---
 
-## Exercise 40
+## Дасгал 40
 
-Write an R function that simulates an MA(1) process.
+MA(1) процессыг симуляцладаг R функц бич.
 
-Inputs:
+Оролт:
 
 - \(\theta\)
 - \(n\)
 
-Output:
+Гаралт:
 
-- simulated series
-
----
-
-# Review Questions
-
-1. What is white noise?
-2. What is stationarity?
-3. What is differencing?
-4. What is the ACF?
-5. What is the PACF?
-6. What is the difference between AR and MA models?
-7. What is invertibility?
-8. What is a unit root?
-9. What is an ARIMA model?
-10. Why are prediction intervals important?
+- симуляцлагдсан цуваа
 
 ---
 
-Congratulations! You have now completed the core exercises for the book *Time Series Analysis with R*.
+# Дүгнэлт асуултууд
+
+1. Цагаан чимээ гэж юу вэ?
+2. Стационар байдал гэж юу вэ?
+3. Ялгавар авах гэж юу вэ?
+4. ACF гэж юу вэ?
+5. PACF гэж юу вэ?
+6. AR ба MA загваруудын ялгаа юу вэ?
+7. Буцаах боломжтой байдал гэж юу вэ?
+8. Нэгж язгуур гэж юу вэ?
+9. ARIMA загвар гэж юу вэ?
+10. Таамаглалын интервалууд яагаад чухал вэ?
+
+---
+
+Баяр хүргэе! Та *Time Series Analysis with R* номын үндсэн дасгалуудыг одоо гүйцэтгэж дууслаа.

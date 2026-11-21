@@ -1,39 +1,41 @@
-# The Autocorrelation Function (ACF)
+# Автокорреляцын функц (ACF)
 
-## Introduction
+## Оршил
 
-The autocorrelation function (ACF) describes the dependence between observations separated by a given lag.
+Автокорреляцын функц (ACF) нь өгөгдсөн хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг тодорхойлдог.
 
-For a time series
+Хугацааны цувааны хувьд
 
 $$
 \{Y_t\},
 $$
 
-the ACF measures the strength of the linear relationship between
+ACF нь
 
 $$
 Y_t
 $$
 
-and
+ба
 
 $$
-Y_{t-k}.
+Y_{t-k}
 $$
 
-The ACF is one of the most important tools in time series analysis.
+хоорондын шугаман хамаарлын хүчийг хэмждэг.
 
-It is widely used to:
+ACF нь хугацааны цувааны шинжилгээний хамгийн чухал хэрэгслүүдийн нэг юм.
 
-- identify serial dependence,
-- detect nonstationarity,
-- distinguish AR and MA models,
-- guide model selection.
+Үүнийг өргөнөөр ашигладаг:
 
-## Autocovariance Function
+- цувааны хамаарлыг илрүүлэх,
+- стационар бус байдлыг илрүүлэх,
+- AR ба MA загваруудыг ялгах,
+- загварын сонголтыг чиглүүлэх.
 
-For a weakly stationary process,
+## Автоковариацын функц
+
+Сул стационар процессийн хувьд
 
 $$
 \gamma(k)
@@ -41,9 +43,9 @@ $$
 Cov(Y_t,Y_{t-k})
 $$
 
-is called the autocovariance function.
+-ийг автоковариацын функц гэнэ.
 
-Since
+Учир нь
 
 $$
 Cov(Y_t,Y_{t-k})
@@ -51,25 +53,25 @@ Cov(Y_t,Y_{t-k})
 E[(Y_t-\mu)(Y_{t-k}-\mu)],
 $$
 
-the autocovariance measures the dependence between observations separated by lag \(k\).
+автоковариац нь \(k\) хоцролтоор тусгаарлагдсан ажиглалтуудын хоорондын хамаарлыг хэмждэг.
 
-### Properties
+### Шинж чанар
 
 $$
 \gamma(0)=Var(Y_t)
 $$
 
-and
+ба
 
 $$
 \gamma(k)=\gamma(-k).
 $$
 
-Thus the autocovariance function is symmetric.
+Иймд автоковариацын функц нь тэгш хэмтэй.
 
-## Definition of the ACF
+## ACF-ийн тодорхойлолт
 
-The autocorrelation function is
+Автокорреляцын функц нь
 
 $$
 \rho(k)
@@ -78,39 +80,39 @@ $$
 {\gamma(0)}.
 $$
 
-Since
+Учир нь
 
 $$
 \gamma(0)=Var(Y_t),
 $$
 
-the ACF standardizes the covariance.
+ACF нь ковариацыг стандартчилдаг.
 
-Therefore
+Иймд
 
 $$
 -1 \le \rho(k) \le 1.
 $$
 
-### Important Values
+### Чухал утгууд
 
-At lag zero,
+Тэг хоцролт дээр
 
 $$
 \rho(0)=1.
 $$
 
-A value close to 1 indicates strong positive dependence.
+1-д ойрхон утга нь хүчтэй эерэг хамаарлыг илтгэнэ.
 
-A value close to -1 indicates strong negative dependence.
+-1-д ойрхон утга нь хүчтэй сөрөг хамаарлыг илтгэнэ.
 
-A value near 0 indicates little linear dependence.
+0-д ойрхон утга нь бага шугаман хамаарлыг илтгэнэ.
 
-## Sample Autocorrelation Function
+## Түүврийн автокорреляцын функц
 
-In practice the theoretical autocorrelation is unknown.
+Практикт онолын автокорреляц нь тодорхойгүй байдаг.
 
-The sample autocorrelation at lag \(k\) is
+\(k\) хоцролт дээрх түүврийн автокорреляц нь
 
 $$
 r_k
@@ -126,30 +128,30 @@ r_k
 }.
 $$
 
-The collection of sample autocorrelations is shown by the correlogram.
+Түүврийн автокорреляцуудын цуглуулгыг коррелограмм гэж үзүүлдэг.
 
-## White Noise
+## Цагаан чимээ
 
-Consider a white noise process
+Цагаан чимээний процессыг авч үзье:
 
 $$
 Y_t \sim WN(0,\sigma^2).
 $$
 
-Its autocorrelation function is
+Түүний автокорреляцын функц нь
 
 $$
 \rho(0)=1,
 $$
 
-and
+ба
 
 $$
 \rho(k)=0,
 \qquad k\ne0.
 $$
 
-### Simulation
+### Симуляц
 
 ```{r}
 set.seed(123)
@@ -158,45 +160,45 @@ wn <- rnorm(200)
 
 plot.ts(
   wn,
-  main = "White Noise",
+  main = "Цагаан чимээ",
   ylab = expression(Y[t])
 )
 ```
 
-### ACF Plot
+### ACF график
 
 ```{r}
 acf(
   wn,
-  main = "ACF of White Noise"
+  main = "Цагаан чимээний ACF"
 )
 ```
 
-The sample autocorrelations fluctuate randomly around zero.
+Түүврийн автокорреляцууд тэг орчимд санамсаргүйгээр хэлбэлздэг.
 
-## AR(1) Process
+## AR(1) процесс
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=\phi Y_{t-1}+\varepsilon_t,
 $$
 
-where
+энд
 
 $$
 |\phi|<1.
 $$
 
-For an AR(1) process,
+AR(1) процессын хувьд
 
 $$
 \rho(k)=\phi^k.
 $$
 
-Thus the ACF decays geometrically.
+Иймд ACF нь геометрээр буурдаг.
 
-### Example
+### Жишээ
 
 ```{r}
 set.seed(123)
@@ -208,21 +210,21 @@ ar1 <- arima.sim(
 
 acf(
   ar1,
-  main="ACF of AR(1)"
+  main="AR(1)-ийн ACF"
 )
 ```
 
-The autocorrelations decrease gradually as the lag increases.
+Хоцролт нэмэгдэх тусам автокорреляцууд аажмаар буурдаг.
 
-## MA(1) Process
+## MA(1) процесс
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 $$
 
-The autocorrelation function is
+Автокорреляцын функц нь
 
 $$
 \rho(1)
@@ -231,16 +233,16 @@ $$
 {1+\theta^2}
 $$
 
-and
+ба
 
 $$
 \rho(k)=0,
 \qquad k>1.
 $$
 
-Therefore the ACF cuts off after lag 1.
+Иймд ACF нь 1 хоцролтын дараа тасардаг.
 
-### Example
+### Жишээ
 
 ```{r}
 set.seed(123)
@@ -252,32 +254,32 @@ ma1 <- arima.sim(
 
 acf(
   ma1,
-  main="ACF of MA(1)"
+  main="MA(1)-ийн ACF"
 )
 ```
 
-Only the first lag tends to be significant.
+Зөвхөн эхний хоцролт нь ихэвчлэн ач холбогдолтой байдаг.
 
-## Interpretation of the ACF
+## ACF-ийн тайлбар
 
-### White Noise
+### Цагаан чимээ
 
-- All autocorrelations are approximately zero.
-- No systematic dependence.
+- Бүх автокорреляцууд ойролцоогоор тэг.
+- Системтэй хамаарал байхгүй.
 
-### AR Process
+### AR процесс
 
-- Slow decay.
-- Correlations persist across lags.
+- Удаан бууралт.
+- Хамаарал хоцролтуудын дагуу үргэлжилдэг.
 
-### MA Process
+### MA процесс
 
-- Sharp cutoff.
-- Dependence exists only for a limited number of lags.
+- Огцом тасралт.
+- Хамаарал зөвхөн хязгаарлагдмал тооны хоцролтуудад оршино.
 
-## Statistical Significance
+## Статистик ач холбогдол
 
-For a white noise process,
+Цагаан чимээний процессын хувьд
 
 $$
 SE(r_k)
@@ -285,19 +287,19 @@ SE(r_k)
 \frac{1}{\sqrt n}.
 $$
 
-Approximate 95% bounds are
+Ойролцоогоор 95% хязгаарууд нь
 
 $$
 \pm \frac{1.96}{\sqrt n}.
 $$
 
-For example, if
+Жишээлбэл, хэрэв
 
 $$
 n=200,
 $$
 
-then
+бол
 
 $$
 \pm\frac{1.96}{\sqrt{200}}
@@ -305,27 +307,27 @@ $$
 \pm0.139.
 $$
 
-Bars outside these bounds may indicate significant autocorrelation.
+Эдгээр хязгаараас гадуур байгаа баганууд нь ач холбогдолтой автокорреляцыг илтгэж болно.
 
-## Example with Real Data
+## Бодит өгөгдөлтэй жишээ
 
 ```{r}
 data(AirPassengers)
 
 acf(
   AirPassengers,
-  main="ACF of AirPassengers"
+  main="AirPassengers-ийн ACF"
 )
 ```
 
-Observe the strong persistence and seasonality.
+Хүчтэй үргэлжлэл ба улирлын байдлыг ажиглаарай.
 
-## Exercises
+## Дасгал
 
-1. Generate a white noise series of length 200 and plot its ACF.
-2. Simulate an AR(1) process with $\phi=0.7$.
-3. Verify that the theoretical ACF equals $\phi^k$.
-4. Simulate an MA(1) process with $\theta=0.5$.
-5. Verify that the ACF cuts off after lag 1.
-6. Compare the ACFs of white noise, AR(1), and MA(1).
-7. Explain the difference between gradual decay and cutoff behavior.
+1. 200 урттай цагаан чимээний цуваа үүсгэж, ACF-ийг нь зур.
+2. $\phi=0.7$ бүхий AR(1) процессыг симуляцла.
+3. Онолын ACF нь $\phi^k$-тэй тэнцүү эсэхийг шалга.
+4. $\theta=0.5$ бүхий MA(1) процессыг симуляцла.
+5. ACF нь 1 хоцролтын дараа тасардаг эсэхийг шалга.
+6. Цагаан чимээ, AR(1), MA(1)-ийн ACF-уудыг харьцуул.
+7. Аажмаар бууралт ба тасралтын зан төлөвийн ялгааг тайлбарла.

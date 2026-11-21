@@ -1,61 +1,63 @@
-# Forecasting
+# 9. Таамаглал
 
-## Introduction
+## Оршил
 
-Forecasting is one of the primary objectives of time series analysis.
+Таамаглал нь хугацааны цувааны шинжилгээний үндсэн зорилтуудын нэг юм.
 
-A forecast is a prediction of future observations based on information available at the present time.
+Таамаглал гэдэг нь одоогийн цагт байгаа мэдээлэлд үндэслэн ирээдүйн ажиглалтуудыг урьдчилан таамаглахыг хэлнэ.
 
-Forecasting is used in:
+Таамаглалыг дараахь салбаруудад ашигладаг:
 
-- economics,
-- finance,
-- environmental science,
-- energy demand planning,
-- public health,
-- business analytics.
+- эдийн засаг,
+- санхүү,
+- байгаль орчны шинжлэх ухаан,
+- эрчим хүчний эрэлтийн төлөвлөлт,
+- нийгмийн эрүүл мэнд,
+- бизнесийн аналитик.
 
-The goal is to obtain accurate predictions together with a measure of uncertainty.
+Зорилго нь тодорхойгүй байдлын хэмжүүрийн хамт үнэн зөв таамаглал гаргах явдал юм.
 
-## Basic Forecasting Notation
+## Таамаглалын үндсэн тэмдэглэгээ
 
-Suppose observations are available through time \(t\).
+$t$ хугацаа хүртэл ажиглалтууд байгаа гэж үзье.
 
-A forecast made at time \(t\) for horizon \(h\) is denoted by
+$t$ хугацаанд $h$ алсын зайд хийсэн таамаглалыг
 
 $$
-\hat{Y}_{t+h|t}.
+\hat{Y}_{t+h|t}
 $$
 
-This represents the prediction of
+гэж тэмдэглэнэ.
+
+Энэ нь $t$ хугацаанд байгаа мэдээлэлд үндэслэн
 
 $$
 Y_{t+h}
 $$
 
-based on information available at time \(t\).
+-ийн таамаглалыг илэрхийлнэ.
 
-### One-Step-Ahead Forecast
+### Нэг алхамын таамаглал
 
 $$
 \hat{Y}_{t+1|t}.
 $$
 
-### Multi-Step Forecast
+### Олон алхамын таамаглал
 
 $$
 \hat{Y}_{t+h|t}.
 $$
 
-for
+энд
 
 $$
 h=2,3,\ldots
 $$
 
-## Forecast Errors
+## Таамаглалын алдаа
 
-The forecast error is
+Таамаглалын алдаа нь
 
 $$
 e_{t+h}
@@ -65,11 +67,11 @@ Y_{t+h}
 \hat{Y}_{t+h|t}.
 $$
 
-Good forecasting models produce small forecast errors.
+Сайн таамаглалын загварууд бага таамаглалын алдаа гаргадаг.
 
-## Measures of Forecast Accuracy
+## Таамаглалын нарийвчлалын хэмжүүрүүд
 
-### Mean Error (ME)
+### Дундаж алдаа (ME)
 
 $$
 ME
@@ -79,9 +81,9 @@ ME
 e_t.
 $$
 
-Measures forecast bias.
+Таамаглалын хазайлтыг хэмждэг.
 
-### Mean Absolute Error (MAE)
+### Дундаж абсолют алдаа (MAE)
 
 $$
 MAE
@@ -91,9 +93,9 @@ MAE
 |e_t|.
 $$
 
-Easy to interpret because it uses the original units.
+Анхны нэгжээр илэрхийлэгддэг тул тайлбарлахад хялбар.
 
-### Mean Squared Error (MSE)
+### Дундаж квадрат алдаа (MSE)
 
 $$
 MSE
@@ -103,9 +105,9 @@ MSE
 e_t^2.
 $$
 
-Large errors receive greater weight.
+Том алдаануудад илүү их жин өгдөг.
 
-### Root Mean Squared Error (RMSE)
+### Квадрат дундажийн язгуур алдаа (RMSE)
 
 $$
 RMSE
@@ -113,9 +115,9 @@ RMSE
 \sqrt{MSE}.
 $$
 
-One of the most commonly used measures.
+Хамгийн өргөн хэрэглэгддэг хэмжүүрүүдийн нэг.
 
-### Mean Absolute Percentage Error (MAPE)
+### Дундаж абсолют хувийн алдаа (MAPE)
 
 $$
 MAPE
@@ -127,21 +129,21 @@ MAPE
 \right|.
 $$
 
-Expresses error as a percentage.
+Алдааг хувиар илэрхийлдэг.
 
-## Training and Test Sets
+## Сургалтын ба тестийн олонлогууд
 
-To evaluate forecasting performance, data are commonly divided into:
+Таамаглалын гүйцэтгэлийг үнэлэхийн тулд өгөгдлийг ихэвчлэн дараахь байдлаар хуваадаг:
 
-### Training Set
+### Сургалтын олонлог
 
-Used to estimate model parameters.
+Загварын параметрүүдийг үнэлэхэд ашиглана.
 
-### Test Set
+### Тестийн олонлог
 
-Used to assess forecast accuracy.
+Таамаглалын нарийвчлалыг үнэлэхэд ашиглана.
 
-Example:
+Жишээ:
 
 ```{r}
 n <- length(AirPassengers)
@@ -157,11 +159,11 @@ test <- window(
 )
 ```
 
-## Benchmark Forecasting Methods
+## Жишиг таамаглалын аргууд
 
-Before fitting sophisticated models, benchmark forecasts should be considered.
+Нарийн төвөгтэй загваруудыг тохируулахаас өмнө жишиг таамаглалуудыг авч үзэх хэрэгтэй.
 
-### Mean Forecast
+### Дундаж таамаглал
 
 $$
 \hat Y_{t+h}
@@ -169,9 +171,9 @@ $$
 \bar Y.
 $$
 
-All future forecasts equal the historical mean.
+Бүх ирээдүйн таамаглалууд түүхэн дундажтай тэнцүү.
 
-### Naive Forecast
+### Энгийн (naive) таамаглал
 
 $$
 \hat Y_{t+h}
@@ -179,9 +181,9 @@ $$
 Y_t.
 $$
 
-The next observation is assumed to equal the most recent observation.
+Дараагийн ажиглалт нь хамгийн сүүлийн ажиглалттай тэнцүү гэж үзнэ.
 
-### Drift Forecast
+### Дрифт таамаглал
 
 $$
 \hat Y_{t+h}
@@ -192,11 +194,11 @@ h
 \frac{Y_t-Y_1}{t-1}.
 $$
 
-Projects the historical trend forward.
+Түүхэн трендийг урагшлуулна.
 
-### Seasonal Naive Forecast
+### Улирлын энгийн таамаглал
 
-For seasonal data,
+Улирлын өгөгдлийн хувьд
 
 $$
 \hat Y_{t+h}
@@ -204,9 +206,9 @@ $$
 Y_{t+h-m},
 $$
 
-where \(m\) is the seasonal period.
+энд \(m\) нь улирлын үе.
 
-## Example: Naive Forecast
+## Жишээ: Энгийн таамаглал
 
 ```{r eval=FALSE}
 library(forecast)
@@ -216,11 +218,11 @@ fit <- naive(AirPassengers)
 autoplot(fit)
 ```
 
-The naive method is surprisingly effective for many economic and financial time series.
+Энгийн арга нь олон эдийн засаг, санхүүгийн хугацааны цуваанд гайхмаар үр дүнтэй байдаг.
 
-## AR(1) Forecasting
+## AR(1) таамаглал
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t
@@ -230,7 +232,7 @@ Y_t
 \varepsilon_t.
 $$
 
-The one-step forecast is
+Нэг алхамын таамаглал нь
 
 $$
 \hat Y_{t+1|t}
@@ -238,7 +240,7 @@ $$
 \phi Y_t.
 $$
 
-The \(h\)-step forecast is
+\(h\)-алхамын таамаглал нь
 
 $$
 \hat Y_{t+h|t}
@@ -246,17 +248,11 @@ $$
 \phi^h Y_t.
 $$
 
-As
+\(h\rightarrow\infty\) үед таамаглал процессын дундаж руу ойртдог.
 
-$$
-h\rightarrow\infty,
-$$
+## ARIMA таамаглал
 
-the forecast approaches the mean of the process.
-
-## ARIMA Forecasting
-
-Suppose an ARIMA model has been fitted.
+ARIMA загвар тохируулсан гэж үзье.
 
 ```{r eval=FALSE}
 library(forecast)
@@ -266,7 +262,7 @@ fit <- auto.arima(AirPassengers)
 fit
 ```
 
-Forecasts are obtained using
+Таамаглалыг дараахь байдлаар гаргана:
 
 ```{r eval=FALSE}
 fc <- forecast(
@@ -277,19 +273,19 @@ fc <- forecast(
 autoplot(fc)
 ```
 
-The output includes:
+Гаралт нь дараахь зүйлийг агуулна:
 
-- point forecasts,
-- prediction intervals,
-- future horizons.
+- цэгэн таамаглалууд,
+- таамаглалын интервалууд,
+- ирээдүйн алсын зай.
 
-## Prediction Intervals
+## Таамаглалын интервалууд
 
-Point forecasts alone are insufficient.
+Зөвхөн цэгэн таамаглал хангалтгүй.
 
-Prediction intervals quantify uncertainty.
+Таамаглалын интервалууд тодорхойгүй байдлыг тоон хэлбэрээр илэрхийлдэг.
 
-A 95% prediction interval has the form
+95% таамаглалын интервал нь дараах хэлбэртэй:
 
 $$
 \hat Y_{t+h}
@@ -299,9 +295,9 @@ $$
 SE(\hat Y_{t+h}).
 $$
 
-Forecast uncertainty generally increases with horizon length.
+Таамаглалын тодорхойгүй байдал ерөнхийдөө алсын зайны урттай хамт нэмэгддэг.
 
-## Example: AirPassengers Data
+## Жишээ: AirPassengers өгөгдөл
 
 ```{r eval=FALSE}
 library(forecast)
@@ -316,47 +312,47 @@ fc <- forecast(
 plot(fc)
 ```
 
-Observe:
+Ажиглаарай:
 
-- increasing uncertainty,
-- seasonal structure,
-- widening prediction intervals.
+- нэмэгдэж буй тодорхойгүй байдал,
+- улирлын бүтэц,
+- өргөжиж буй таамаглалын интервалууд.
 
-## Residual Diagnostics
+## Үлдэгдлийн оношлогоо
 
-A forecasting model should leave residuals that resemble white noise.
+Таамаглалын загвар нь цагаан чимээтэй төстэй үлдэгдэл үлдээх ёстой.
 
-### Residual Plot
+### Үлдэгдлийн график
 
 ```{r eval=FALSE}
 checkresiduals(fit)
 ```
 
-### Desired Properties
+### Хүсээгүй шинж чанарууд
 
-Residuals should exhibit:
+Үлдэгдэл нь дараахь шинж чанаруудыг харуулах ёстой:
 
-- zero mean,
-- constant variance,
-- no significant autocorrelation.
+- тэг дундаж,
+- тогтмол дисперс,
+- ач холбогдолтой автокорреляцгүй байх.
 
-## Ljung-Box Test
+## Ljung-Box шалгалт
 
-The Ljung-Box test checks whether residual autocorrelations remain.
+Ljung-Box шалгалт нь үлдэгдлийн автокорреляцууд үлдсэн эсэхийг шалгадаг.
 
-### Hypotheses
+### Таамаглалууд
 
 $$
 H_0:
-\text{Residuals are uncorrelated}
+\text{Үлдэгдлүүд корреляцгүй}
 $$
 
 $$
 H_1:
-\text{Residual autocorrelation exists}.
+\text{Үлдэгдлийн автокорреляц байна}.
 $$
 
-### Example
+### Жишээ
 
 ```{r eval=FALSE}
 Box.test(
@@ -366,23 +362,23 @@ Box.test(
 )
 ```
 
-A large p-value supports the adequacy of the model.
+Том p-утга нь загварын тохиромжтой байдлыг дэмждэг.
 
-## Forecasting Workflow
+## Таамаглалын ажлын урсгал
 
-A typical forecasting procedure is:
+Ердийн таамаглалын журам нь:
 
-1. Plot the series.
-2. Check stationarity.
-3. Difference if necessary.
-4. Examine ACF and PACF.
-5. Fit candidate models.
-6. Compare AIC values.
-7. Check residual diagnostics.
-8. Produce forecasts.
-9. Evaluate forecast accuracy.
+1. Цувааг зурах.
+2. Стационар байдлыг шалгах.
+3. Шаардлагатай бол ялгавар авах.
+4. ACF ба PACF-ийг шалгах.
+5. Боломжит загваруудыг тохируулах.
+6. AIC утгуудыг харьцуулах.
+7. Үлдэгдлийн оношлогоог шалгах.
+8. Таамаглалуудыг гаргах.
+9. Таамаглалын нарийвчлалыг үнэлэх.
 
-## Example Using Simulated AR(1) Data
+## Симуляцлагдсан AR(1) өгөгдөл ашигласан жишээ
 
 ```{r}
 set.seed(123)
@@ -394,11 +390,11 @@ x <- arima.sim(
 
 plot.ts(
   x,
-  main="Simulated AR(1) Series"
+  main="Симуляцлагдсан AR(1) цуваа"
 )
 ```
 
-Estimate the model:
+Загварыг үнэл:
 
 ```{r}
 fit <- arima(
@@ -409,66 +405,66 @@ fit <- arima(
 fit
 ```
 
-Compare the estimated parameter with the true value.
+Үнэлсэн параметрийг жинхэнэ утгатай харьцуул.
 
-## Forecast Horizon
+## Таамаглалын алсын зай
 
-Forecast quality generally decreases as the horizon increases.
+Таамаглалын чанар ерөнхийдөө алсын зай нэмэгдэх тусам буурдаг.
 
-### Short-Term Forecasts
+### Богино хугацааны таамаглалууд
 
-- Usually more accurate.
-- Smaller prediction intervals.
+- Ихэвчлэн илүү нарийвчлалтай.
+- Бага таамаглалын интервалууд.
 
-### Long-Term Forecasts
+### Урт хугацааны таамаглалууд
 
-- Greater uncertainty.
-- Wider prediction intervals.
+- Илүү их тодорхойгүй байдал.
+- Өргөн таамаглалын интервалууд.
 
-## Practical Considerations
+## Практик анхаарах зүйлс
 
-Good forecasts require:
+Сайн таамаглал нь дараахь зүйлийг шаарддаг:
 
-- adequate data quality,
-- stationarity when appropriate,
-- careful model selection,
-- diagnostic checking.
+- хангалттай өгөгдлийн чанар,
+- тохиромжтой үед стационар байдал,
+- болгоомжтой загварын сонголт,
+- оношлогооны шалгалт.
 
-Forecasting is not only about obtaining the smallest in-sample error, but also about producing reliable future predictions.
+Таамаглал нь зөвхөн түүвэр доторх хамгийн бага алдаа гаргах тухай биш, харин найдвартай ирээдүйн таамаглалуудыг гаргах тухай юм.
 
-## Summary
+## Дүгнэлт
 
-Forecasting is the central goal of many time series analyses.
+Таамаглал нь олон хугацааны цувааны шинжилгээний төв зорилго юм.
 
-Important concepts include:
+Чухал ойлголтууд нь:
 
-- forecast horizons,
-- forecast errors,
+- таамаглалын алсын зай,
+- таамаглалын алдаа,
 - MAE,
 - MSE,
 - RMSE,
 - MAPE,
-- prediction intervals,
-- residual diagnostics.
+- таамаглалын интервалууд,
+- үлдэгдлийн оношлогоо.
 
-ARIMA models provide a powerful framework for forecasting stationary and nonstationary time series.
+ARIMA загварууд нь стационар ба стационар бус хугацааны цувааг таамаглах хүчирхэг хүрээг бүрдүүлдэг.
 
-Accurate forecasting requires:
+Үнэн зөв таамаглал нь дараахь зүйлийг шаарддаг:
 
-- appropriate model identification,
-- parameter estimation,
-- model validation,
-- realistic assessment of uncertainty.
+- зохистой загвар тодорхойлох,
+- параметрийн үнэлгээ,
+- загварын баталгаажуулалт,
+- тодорхойгүй байдлын бодит үнэлгээ.
 
-## Exercises
+## Дасгал
 
-1. Fit a naive forecasting model to a time series.
-2. Compute MAE and RMSE.
-3. Split a series into training and test sets.
-4. Fit an AR(1) model and produce forecasts.
-5. Fit an ARIMA model using `auto.arima()`.
-6. Compare forecast accuracy across competing models.
-7. Construct 95% prediction intervals.
-8. Perform Ljung-Box tests on residuals.
-9. Explain why forecast uncertainty grows with horizon length.
-10. Compare naive forecasts and ARIMA forecasts for the same series.
+1. Хугацааны цуваанд энгийн таамаглалын загварыг тохируул.
+2. MAE ба RMSE-ийг тооцоол.
+3. Цувааг сургалтын ба тестийн олонлогт хуваа.
+4. AR(1) загварыг тохируулж, таамаглал гарга.
+5. `auto.arima()` ашиглан ARIMA загварыг тохируул.
+6. Өрсөлдөж буй загваруудын таамаглалын нарийвчлалыг харьцуул.
+7. 95% таамаглалын интервалуудыг байгуул.
+8. Үлдэгдэлд Ljung-Box шалгалт гүйцэтгэ.
+9. Таамаглалын тодорхойгүй байдал яагаад алсын зайны урттай хамт өсдөг вэ гэдгийг тайлбарла.
+10. Ижил цувааны хувьд энгийн таамаглал ба ARIMA таамаглалыг харьцуул.

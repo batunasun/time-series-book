@@ -1,19 +1,19 @@
-# The Autoregressive Moving Average Process: ARMA
+# Авторегрессив хөдөлгөөнт дундаж процесс: ARMA
 
-## Introduction
+## Оршил
 
-The ARMA model combines the ideas of autoregressive (AR) and moving average (MA) processes.
+ARMA загвар нь авторегрессив (AR) болон хөдөлгөөнт дундаж (MA) процессуудын санааг нэгтгэдэг.
 
-It is one of the most important classes of stationary time series models and forms the foundation of the Box-Jenkins methodology.
+Энэ нь стационар хугацааны цувааны загваруудын хамгийн чухал ангиллын нэг бөгөөд Box-Jenkins аргачлалын үндэс болдог.
 
-An ARMA model can capture both:
+ARMA загвар нь дараахь хоёрыг хоёуланг нь илэрхийлж чадна:
 
-- persistence through past observations,
-- short-term dependence through past shocks.
+- өнгөрсөн ажиглалтуудаар дамжих үргэлжлэл,
+- өнгөрсөн шокоор дамжих богино хугацааны хамаарал.
 
-## Definition
+## Тодорхойлолт
 
-An ARMA(\(p,q\)) process is defined by
+ARMA(\(p,q\)) процессыг
 
 $$
 Y_t
@@ -31,7 +31,7 @@ Y_t
 +\theta_q\varepsilon_{t-q},
 $$
 
-where
+гэж тодорхойлдог бөгөөд энд
 
 $$
 \{\varepsilon_t\}
@@ -39,46 +39,46 @@ $$
 WN(0,\sigma^2).
 $$
 
-Here:
+Энд:
 
-- \(p\) = autoregressive order,
-- \(q\) = moving average order.
+- \(p\) = авторегрессив эрэмбэ,
+- \(q\) = хөдөлгөөнт дундажийн эрэмбэ.
 
-## Special Cases
+## Онцгой тохиолдлууд
 
-### AR Model
+### AR загвар
 
-If
+Хэрэв
 
 $$
 q=0,
 $$
 
-then
+бол
 
 $$
 ARMA(p,0)=AR(p).
 $$
 
-### MA Model
+### MA загвар
 
-If
+Хэрэв
 
 $$
 p=0,
 $$
 
-then
+бол
 
 $$
 ARMA(0,q)=MA(q).
 $$
 
-Thus AR and MA processes are special cases of the ARMA model.
+Иймд AR ба MA процессууд нь ARMA загварын онцгой тохиолдлууд юм.
 
-## The ARMA(1,1) Model
+## ARMA(1,1) загвар
 
-The simplest ARMA model is
+Хамгийн энгийн ARMA загвар нь
 
 $$
 Y_t
@@ -90,60 +90,60 @@ Y_t
 \theta\varepsilon_{t-1}.
 $$
 
-This model combines:
+Энэ загвар нь дараахь хоёрыг нэгтгэдэг:
 
-- the dependence structure of AR(1),
-- the shock structure of MA(1).
+- AR(1)-ийн хамаарлын бүтэц,
+- MA(1)-ийн шокийн бүтэц.
 
-## Stationarity
+## Стационар байдал
 
-For ARMA processes, stationarity depends on the AR part.
+ARMA процессуудын хувьд стационар байдал нь AR хэсгээс хамаарна.
 
-For ARMA(1,1),
+ARMA(1,1)-ийн хувьд стационар байхын тулд
 
 $$
 |\phi|<1
 $$
 
-is required for stationarity.
+шаардлагатай.
 
-### Examples
+### Жишээнүүд
 
-| \(\phi\) | Stationary? |
+| \(\phi\) | Стационар уу? |
 |-----------|-----------|
-| 0.3 | Yes |
-| 0.8 | Yes |
-| -0.5 | Yes |
-| 1.0 | No |
-| 1.1 | No |
+| 0.3 | Тийм |
+| 0.8 | Тийм |
+| -0.5 | Тийм |
+| 1.0 | Үгүй |
+| 1.1 | Үгүй |
 
-## Invertibility
+## Буцаах боломжтой байдал
 
-Invertibility depends on the MA part.
+Буцаах боломжтой байдал нь MA хэсгээс хамаарна.
 
-For ARMA(1,1),
+ARMA(1,1)-ийн хувьд буцаах боломжтой байхын тулд
 
 $$
 |\theta|<1
 $$
 
-is required for invertibility.
+шаардлагатай.
 
-This ensures a unique representation of the process.
+Энэ нь процессын цор ганц дүрслэлийг баталгаажуулдаг.
 
-## Mean
+## Дундаж
 
-For a stationary ARMA(1,1),
+Стационар ARMA(1,1)-ийн хувьд
 
 $$
 E(Y_t)=0.
 $$
 
-More generally, if a constant term is included, the mean is constant over time.
+Ерөнхийдөө, хэрэв тогтмол гишүүн орсон бол дундаж нь цаг хугацааны явцад тогтмол байна.
 
-## Simulation of ARMA(1,1)
+## ARMA(1,1)-ийн симуляц
 
-Consider
+Дараахьыг авч үзье:
 
 $$
 Y_t
@@ -165,61 +165,61 @@ arma11 <- arima.sim(
 
 plot.ts(
   arma11,
-  main="ARMA(1,1) Process",
+  main="ARMA(1,1) процесс",
   ylab=expression(Y[t])
 )
 ```
 
-Observe the persistence created by the AR component and the short-term effects created by the MA component.
+AR бүрэлдэхүүнээс үүсэх үргэлжлэл ба MA бүрэлдэхүүнээс үүсэх богино хугацааны нөлөөг ажиглаарай.
 
-## ACF of an ARMA Process
+## ARMA процессын ACF
 
 ```{r}
 acf(
   arma11,
-  main="ACF of ARMA(1,1)"
+  main="ARMA(1,1)-ийн ACF"
 )
 ```
 
-Unlike MA models, the ACF does not cut off.
+MA загваруудаас ялгаатай нь ACF тасардаггүй.
 
-Unlike pure AR models, the pattern is often more complex.
+Цэвэр AR загваруудаас ялгаатай нь хэв маяг нь ихэвчлэн илүү төвөгтэй байдаг.
 
-The ACF generally tails off toward zero.
+ACF ерөнхийдөө тэг рүү аажмаар буурдаг.
 
-## PACF of an ARMA Process
+## ARMA процессын PACF
 
 ```{r}
 pacf(
   arma11,
-  main="PACF of ARMA(1,1)"
+  main="ARMA(1,1)-ийн PACF"
 )
 ```
 
-The PACF also tails off.
+PACF мөн аажмаар буурдаг.
 
-This is one of the identifying characteristics of ARMA models.
+Энэ нь ARMA загваруудын таних шинж чанаруудын нэг юм.
 
-## Model Identification
+## Загвар тодорхойлох
 
 ### AR(p)
 
-- ACF tails off.
-- PACF cuts off.
+- ACF аажмаар буурна.
+- PACF тасарна.
 
 ### MA(q)
 
-- ACF cuts off.
-- PACF tails off.
+- ACF тасарна.
+- PACF аажмаар буурна.
 
 ### ARMA(p,q)
 
-- ACF tails off.
-- PACF tails off.
+- ACF аажмаар буурна.
+- PACF аажмаар буурна.
 
-Therefore ARMA models are usually identified by examining both functions simultaneously.
+Иймд ARMA загваруудыг ихэвчлэн хоёр функцийг нэгэн зэрэг шалгаж тодорхойлдог.
 
-## Comparing AR(1), MA(1), and ARMA(1,1)
+## AR(1), MA(1), ARMA(1,1)-ийг харьцуулах
 
 ```{r}
 par(mfrow=c(3,2))
@@ -249,11 +249,11 @@ acf(arma11, main="ARMA(1,1): ACF")
 pacf(arma11, main="ARMA(1,1): PACF")
 ```
 
-Compare the characteristic patterns.
+Онцлог хэв маягуудыг харьцуулаарай.
 
-## Lag Plot
+## Хоцролтын график
 
-A lag plot may be used to visualize dependence.
+Хамаарлыг дүрслэхэд хоцролтын график ашиглаж болно.
 
 ```{r}
 plot(
@@ -265,11 +265,11 @@ plot(
 )
 ```
 
-The relationship is generally stronger than white noise and reflects both AR and MA effects.
+Хамаарал нь ерөнхийдөө цагаан чимээнээс илүү хүчтэй бөгөөд AR ба MA нөлөөг хоёуланг нь илэрхийлдэг.
 
-## Model Estimation
+## Загварын үнэлгээ
 
-An ARMA(1,1) model may be estimated using maximum likelihood.
+ARMA(1,1) загварыг хамгийн их магадлалын аргаар үнэлж болно.
 
 ```{r}
 fit <- arima(
@@ -280,11 +280,11 @@ fit <- arima(
 fit
 ```
 
-The estimated coefficients should be close to the values used in simulation.
+Үнэлсэн коэффициентүүд нь симуляцад ашигласан утгуудтай ойрхон байх ёстой.
 
-## Model Selection Using AIC
+## AIC ашиглан загвар сонгох
 
-Different ARMA models can be compared using the Akaike Information Criterion (AIC).
+Өөр өөр ARMA загваруудыг Акайке мэдээллийн шалгуур (AIC) ашиглан харьцуулж болно.
 
 ```{r}
 fit1 <- arima(arma11, order=c(1,0,0))
@@ -294,14 +294,14 @@ fit3 <- arima(arma11, order=c(1,0,1))
 AIC(fit1, fit2, fit3)
 ```
 
-The model with the smallest AIC is usually preferred.
+Хамгийн бага AIC-тай загварыг ихэвчлэн илүүд үздэг.
 
-## Forecasting
+## Таамаглал
 
-Forecasts are based on:
+Таамаглалууд нь дараахь зүйлд үндэслэнэ:
 
-- past observations,
-- estimated model parameters.
+- өнгөрсөн ажиглалтууд,
+- үнэлсэн загварын параметрүүд.
 
 ```{r}
 library(forecast)
@@ -314,16 +314,16 @@ fit <- Arima(
 forecast(fit, h=10)
 ```
 
-The forecast gradually approaches the long-run mean of the process.
+Таамаглал нь процессын урт хугацааны дундаж руу аажмаар ойртдог.
 
-## Summary
+## Дүгнэлт
 
-An ARMA(\(p,q\)) model combines:
+ARMA(\(p,q\)) загвар нь дараахь хоёрыг нэгтгэдэг:
 
-- autoregressive dependence,
-- moving average dependence.
+- авторегрессив хамаарал,
+- хөдөлгөөнт дундажийн хамаарал.
 
-For ARMA(1,1),
+ARMA(1,1)-ийн хувьд
 
 $$
 Y_t
@@ -335,23 +335,23 @@ Y_t
 \theta\varepsilon_{t-1}.
 $$
 
-Important properties:
+Чухал шинж чанарууд:
 
-- Stationarity depends on the AR component.
-- Invertibility depends on the MA component.
-- ACF tails off.
-- PACF tails off.
-- Widely used for stationary time series.
+- Стационар байдал нь AR бүрэлдэхүүнээс хамаарна.
+- Буцаах боломжтой байдал нь MA бүрэлдэхүүнээс хамаарна.
+- ACF аажмаар буурна.
+- PACF аажмаар буурна.
+- Стационар хугацааны цуваанд өргөн ашиглагддаг.
 
-ARMA models provide a flexible framework for describing many real-world time series.
+ARMA загварууд нь олон бодит хугацааны цувааг дүрслэх уян хатан хүрээг бүрдүүлдэг.
 
-## Exercises
+## Дасгал
 
-1. Simulate an ARMA(1,1) process with \(\phi=0.7\) and \(\theta=0.4\).
-2. Plot the series.
-3. Compute and interpret the ACF.
-4. Compute and interpret the PACF.
-5. Estimate an ARMA(1,1) model using `arima()`.
-6. Compare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.
-7. Use AIC to compare competing models.
-8. Produce 10-step-ahead forecasts and interpret the results.
+1. \(\phi=0.7\) ба \(\theta=0.4\) бүхий ARMA(1,1) процессыг симуляцла.
+2. Цувааг зур.
+3. ACF-ийг тооцоолж, тайлбарла.
+4. PACF-ийг тооцоолж, тайлбарла.
+5. `arima()` ашиглан ARMA(1,1) загварыг үнэл.
+6. AR(1), MA(1), ARMA(1,1)-ийг ACF ба PACF графикууд ашиглан харьцуул.
+7. AIC ашиглан өрсөлдөж буй загваруудыг харьцуул.
+8. 10 алхамын урьдчилсан таамаглал гаргаж, үр дүнг тайлбарла.
