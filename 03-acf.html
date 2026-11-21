@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fd437c11ef914449285a5c26e0daa494.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,6 +112,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -164,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -268,11 +297,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
 <p>The autocorrelation function (ACF) describes the dependence between observations separated by a given lag.</p>
 <p>For a time series</p>
-<p>[ {Y_t}, ]</p>
+<p><span class="math display">\[
+\{Y_t\},
+\]</span></p>
 <p>the ACF measures the strength of the linear relationship between</p>
-<p>[ Y_t ]</p>
+<p><span class="math display">\[
+Y_t
+\]</span></p>
 <p>and</p>
-<p>[ Y_{t-k}. ]</p>
+<p><span class="math display">\[
+Y_{t-k}.
+\]</span></p>
 <p>The ACF is one of the most important tools in time series analysis.</p>
 <p>It is widely used to:</p>
 <ul>
@@ -285,32 +320,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="autocovariance-function" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="autocovariance-function"><span class="header-section-number">4.2</span> Autocovariance Function</h2>
 <p>For a weakly stationary process,</p>
-<p>[ (k) = Cov(Y_t,Y_{t-k}) ]</p>
+<p><span class="math display">\[
+\gamma(k)
+=
+Cov(Y_t,Y_{t-k})
+\]</span></p>
 <p>is called the autocovariance function.</p>
 <p>Since</p>
-<p>[ Cov(Y_t,Y_{t-k}) = E[(Y_t-)(Y_{t-k}-)], ]</p>
+<p><span class="math display">\[
+Cov(Y_t,Y_{t-k})
+=
+E[(Y_t-\mu)(Y_{t-k}-\mu)],
+\]</span></p>
 <p>the autocovariance measures the dependence between observations separated by lag (k).</p>
 <section id="properties" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">4.2.1</span> Properties</h3>
-<p>[ (0)=Var(Y_t) ]</p>
+<p><span class="math display">\[
+\gamma(0)=Var(Y_t)
+\]</span></p>
 <p>and</p>
-<p>[ (k)=(-k). ]</p>
+<p><span class="math display">\[
+\gamma(k)=\gamma(-k).
+\]</span></p>
 <p>Thus the autocovariance function is symmetric.</p>
 </section>
 </section>
 <section id="definition-of-the-acf" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="definition-of-the-acf"><span class="header-section-number">4.3</span> Definition of the ACF</h2>
 <p>The autocorrelation function is</p>
-<p>[ (k) = {(0)}. ]</p>
+<p><span class="math display">\[
+\rho(k)
+=
+\frac{\gamma(k)}
+{\gamma(0)}.
+\]</span></p>
 <p>Since</p>
-<p>[ (0)=Var(Y_t), ]</p>
+<p><span class="math display">\[
+\gamma(0)=Var(Y_t),
+\]</span></p>
 <p>the ACF standardizes the covariance.</p>
 <p>Therefore</p>
-<p>[ -1 (k) . ]</p>
+<p><span class="math display">\[
+-1 \le \rho(k) \le 1.
+\]</span></p>
 <section id="important-values" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="important-values"><span class="header-section-number">4.3.1</span> Important Values</h3>
 <p>At lag zero,</p>
-<p>[ (0)=1. ]</p>
+<p><span class="math display">\[
+\rho(0)=1.
+\]</span></p>
 <p>A value close to 1 indicates strong positive dependence.</p>
 <p>A value close to -1 indicates strong negative dependence.</p>
 <p>A value near 0 indicates little linear dependence.</p>
@@ -320,17 +378,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.4" class="anchored" data-anchor-id="sample-autocorrelation-function"><span class="header-section-number">4.4</span> Sample Autocorrelation Function</h2>
 <p>In practice the theoretical autocorrelation is unknown.</p>
 <p>The sample autocorrelation at lag (k) is</p>
-<p>[ r_k = { _{t=1}^{n} (Y_t-Y)^2 }. ]</p>
+<p><span class="math display">\[
+r_k
+=
+\frac{
+\sum_{t=k+1}^{n}
+(Y_t-\bar Y)
+(Y_{t-k}-\bar Y)
+}
+{
+\sum_{t=1}^{n}
+(Y_t-\bar Y)^2
+}.
+\]</span></p>
 <p>The collection of sample autocorrelations is shown by the correlogram.</p>
 </section>
 <section id="white-noise" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="white-noise"><span class="header-section-number">4.5</span> White Noise</h2>
 <p>Consider a white noise process</p>
-<p>[ Y_t WN(0,^2). ]</p>
+<p><span class="math display">\[
+Y_t \sim WN(0,\sigma^2).
+\]</span></p>
 <p>Its autocorrelation function is</p>
-<p>[ (0)=1, ]</p>
+<p><span class="math display">\[
+\rho(0)=1,
+\]</span></p>
 <p>and</p>
-<p>[ (k)=0, k. ]</p>
+<p><span class="math display">\[
+\rho(k)=0,
+\qquad k\ne0.
+\]</span></p>
 <section id="simulation" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="simulation"><span class="header-section-number">4.5.1</span> Simulation</h3>
 <div class="cell">
@@ -373,11 +450,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ar1-process" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="ar1-process"><span class="header-section-number">4.6</span> AR(1) Process</h2>
 <p>Consider</p>
-<p>[ Y_t=Y_{t-1}+_t, ]</p>
+<p><span class="math display">\[
+Y_t=\phi Y_{t-1}+\varepsilon_t,
+\]</span></p>
 <p>where</p>
-<p>[ ||&lt;1. ]</p>
+<p><span class="math display">\[
+|\phi|&lt;1.
+\]</span></p>
 <p>For an AR(1) process,</p>
-<p>[ (k)=^k. ]</p>
+<p><span class="math display">\[
+\rho(k)=\phi^k.
+\]</span></p>
 <p>Thus the ACF decays geometrically.</p>
 <section id="example" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="example"><span class="header-section-number">4.6.1</span> Example</h3>
@@ -407,11 +490,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ma1-process" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="ma1-process"><span class="header-section-number">4.7</span> MA(1) Process</h2>
 <p>Consider</p>
-<p>[ Y_t=<em>t+</em>{t-1}. ]</p>
+<p><span class="math display">\[
+Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
+\]</span></p>
 <p>The autocorrelation function is</p>
-<p>[ (1) = {1+^2} ]</p>
+<p><span class="math display">\[
+\rho(1)
+=
+\frac{\theta}
+{1+\theta^2}
+\]</span></p>
 <p>and</p>
-<p>[ (k)=0, k&gt;1. ]</p>
+<p><span class="math display">\[
+\rho(k)=0,
+\qquad k&gt;1.
+\]</span></p>
 <p>Therefore the ACF cuts off after lag 1.</p>
 <section id="example-1" class="level3" data-number="4.7.1">
 <h3 data-number="4.7.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">4.7.1</span> Example</h3>
@@ -465,13 +558,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="statistical-significance" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="statistical-significance"><span class="header-section-number">4.9</span> Statistical Significance</h2>
 <p>For a white noise process,</p>
-<p>[ SE(r_k) . ]</p>
+<p><span class="math display">\[
+SE(r_k)
+\approx
+\frac{1}{\sqrt n}.
+\]</span></p>
 <p>Approximate 95% bounds are</p>
-<p>[ . ]</p>
+<p><span class="math display">\[
+\pm \frac{1.96}{\sqrt n}.
+\]</span></p>
 <p>For example, if</p>
-<p>[ n=200, ]</p>
+<p><span class="math display">\[
+n=200,
+\]</span></p>
 <p>then</p>
-<p>[ . ]</p>
+<p><span class="math display">\[
+\pm\frac{1.96}{\sqrt{200}}
+\approx
+\pm0.139.
+\]</span></p>
 <p>Bars outside these bounds may indicate significant autocorrelation.</p>
 </section>
 <section id="example-with-real-data" class="level2" data-number="4.10">
@@ -987,8 +1092,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./02-stationarity.html" class="pagination-link" aria-label="Stationarity">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stationarity</span></span>
+      <a href="./02-stationarity.html" class="pagination-link" aria-label="Стационар байдал">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
