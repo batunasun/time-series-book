@@ -1,0 +1,1012 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Хугацааны цуваа:R хэлний хэрэглээ",
+    "section": "",
+    "text": "1 Time Series Analysis with R\nAuthor: Batnasan Davaanyam\nThis book covers\n\nWhite Noise\nStationarity\nACF\nPACF\nAR Models\nMA Models\nARMA Models\nForecasting\n\n\nset.seed(123)\n\nx &lt;- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot(x)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Time Series Analysis with R</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html",
+    "href": "01-white-noise.html",
+    "title": "2  White Noise",
+    "section": "",
+    "text": "2.1 Definition\nA stochastic process ({Y_t}) is called a white noise process if\n\\[\nE(Y_t)=0,\n\\]\n\\[\nVar(Y_t)=\\sigma^2,\n\\]\nand\n\\[\nCov(Y_t,Y_{t-k})=0,\n\\qquad k\\neq 0.\n\\]\nWe write\n\\[\nY_t \\sim WN(0,\\sigma^2).\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#properties",
+    "href": "01-white-noise.html#properties",
+    "title": "2  White Noise",
+    "section": "2.2 Properties",
+    "text": "2.2 Properties\nFor a white noise process:\n\nThe mean is constant.\nThe variance is constant.\nObservations are uncorrelated.\n\nThe autocorrelation function is\n\\[\n\\rho(0)=1,\n\\]\nand\n\\[\n\\rho(k)=0,\n\\qquad k\\ne0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#simulation-in-r",
+    "href": "01-white-noise.html#simulation-in-r",
+    "title": "2  White Noise",
+    "section": "2.3 Simulation in R",
+    "text": "2.3 Simulation in R\n\nset.seed(123)\n\ny &lt;- rnorm(200)\n\nplot.ts(\n  y,\n  main=\"White Noise Series\",\n  ylab=expression(Y[t])\n)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#autocorrelation-function",
+    "href": "01-white-noise.html#autocorrelation-function",
+    "title": "2  White Noise",
+    "section": "2.4 Autocorrelation Function",
+    "text": "2.4 Autocorrelation Function\n\nacf(\n  y,\n  main=\"ACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nFor a white noise process, the sample autocorrelations fluctuate randomly around zero.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#lag-plot",
+    "href": "01-white-noise.html#lag-plot",
+    "title": "2  White Noise",
+    "section": "2.5 Lag Plot",
+    "text": "2.5 Lag Plot\n\nplot(\n  x = y[-200],\n  y = y[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nThe lag plot exhibits no systematic pattern.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#example",
+    "href": "01-white-noise.html#example",
+    "title": "2  White Noise",
+    "section": "2.6 Example",
+    "text": "2.6 Example\nSuppose\n\\[\nY_t \\sim N(0,1),\n\\]\nindependently for all \\(t\\).\nThen \\(\\{Y_t\\}\\) is white noise.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "01-white-noise.html#exercise",
+    "href": "01-white-noise.html#exercise",
+    "title": "2  White Noise",
+    "section": "2.7 Exercise",
+    "text": "2.7 Exercise\n\nGenerate a white noise series of length 500.\nPlot the series.\nPlot the ACF.\nProduce a lag-1 scatterplot.\nExplain whether the observations appear correlated.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>White Noise</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html",
+    "href": "02-stationarity.html",
+    "title": "3  Stationarity",
+    "section": "",
+    "text": "3.1 Introduction\nStationarity is one of the most important concepts in time series analysis.\nMany statistical methods for time series, including autocorrelation analysis, AR models, MA models, and ARMA models, assume that the underlying process is stationary.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#strict-stationarity",
+    "href": "02-stationarity.html#strict-stationarity",
+    "title": "3  Stationarity",
+    "section": "3.2 Strict Stationarity",
+    "text": "3.2 Strict Stationarity\nA stochastic process ({Y_t}) is said to be strictly stationary if the joint distribution of\n[ (Y_{t_1},Y_{t_2},,Y_{t_n}) ]\nis identical to the joint distribution of\n[ (Y_{t_1+h},Y_{t_2+h},,Y_{t_n+h}) ]\nfor every integer (h) and every collection of time points\n[ t_1,t_2,,t_n. ]\nThus, the probabilistic behavior of the process does not change over time.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#weak-stationarity",
+    "href": "02-stationarity.html#weak-stationarity",
+    "title": "3  Stationarity",
+    "section": "3.3 Weak Stationarity",
+    "text": "3.3 Weak Stationarity\nIn practice, weak stationarity is used more frequently.\nA process is weakly stationary if\n\n3.3.1 Mean\n[ E(Y_t)= ]\nis constant for all (t).\n\n\n3.3.2 Variance\n[ Var(Y_t)=^2 ]\nis constant for all (t).\n\n\n3.3.3 Covariance\n[ Cov(Y_t,Y_{t-k}) ]\ndepends only on the lag (k), not on the time (t).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#autocovariance-function",
+    "href": "02-stationarity.html#autocovariance-function",
+    "title": "3  Stationarity",
+    "section": "3.4 Autocovariance Function",
+    "text": "3.4 Autocovariance Function\nThe autocovariance function is\n[ (k) = Cov(Y_t,Y_{t-k}). ]\nFor a weakly stationary process,\n[ (k) ]\ndepends only on (k).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#autocorrelation-function",
+    "href": "02-stationarity.html#autocorrelation-function",
+    "title": "3  Stationarity",
+    "section": "3.5 Autocorrelation Function",
+    "text": "3.5 Autocorrelation Function\nThe autocorrelation function (ACF) is\n[ (k) = {(0)}. ]\nSince\n[ (0)=Var(Y_t), ]\nthe ACF measures dependence between observations separated by lag (k).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#white-noise-as-a-stationary-process",
+    "href": "02-stationarity.html#white-noise-as-a-stationary-process",
+    "title": "3  Stationarity",
+    "section": "3.6 White Noise as a Stationary Process",
+    "text": "3.6 White Noise as a Stationary Process\nA white noise process\n[ Y_t WN(0,^2) ]\nis stationary because\n[ E(Y_t)=0, ]\n[ Var(Y_t)=^2, ]\nand\n[ Cov(Y_t,Y_{t-k})=0 ]\nfor all (k ).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#example-stationary-series",
+    "href": "02-stationarity.html#example-stationary-series",
+    "title": "3  Stationarity",
+    "section": "3.7 Example: Stationary Series",
+    "text": "3.7 Example: Stationary Series\n\nset.seed(123)\n\ny &lt;- arima.sim(\n  model = list(ar = 0.6),\n  n = 200\n)\n\nplot.ts(\n  y,\n  main = \"Stationary AR(1) Series\",\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nThe series fluctuates around a constant mean and exhibits approximately constant variance.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#example-nonstationary-series",
+    "href": "02-stationarity.html#example-nonstationary-series",
+    "title": "3  Stationarity",
+    "section": "3.8 Example: Nonstationary Series",
+    "text": "3.8 Example: Nonstationary Series\nConsider a random walk\n[ Y_t = Y_{t-1} + _t, ]\nwhere\n[ _t WN(0,^2). ]\n\nset.seed(123)\n\ne &lt;- rnorm(200)\nrw &lt;- cumsum(e)\n\nplot.ts(\n  rw,\n  main = \"Random Walk\",\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nThe variability increases over time and the process has no stable mean.\nTherefore the random walk is nonstationary.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#comparing-acfs",
+    "href": "02-stationarity.html#comparing-acfs",
+    "title": "3  Stationarity",
+    "section": "3.9 Comparing ACFs",
+    "text": "3.9 Comparing ACFs\n\n3.9.1 Stationary Series\n\nacf(\n  y,\n  main = \"ACF of Stationary AR(1)\"\n)\n\n\n\n\n\n\n\n\n\n\n3.9.2 Random Walk\n\nacf(\n  rw,\n  main = \"ACF of Random Walk\"\n)\n\n\n\n\n\n\n\n\nThe random walk typically exhibits very slow decay in the autocorrelation function.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#why-stationarity-matters",
+    "href": "02-stationarity.html#why-stationarity-matters",
+    "title": "3  Stationarity",
+    "section": "3.10 Why Stationarity Matters",
+    "text": "3.10 Why Stationarity Matters\nMost classical forecasting models require stationarity.\nExamples include:\n\nAR((p))\nMA((q))\nARMA((p,q))\n\nWhen a series is nonstationary, transformations are often applied:\n\nDifferencing\nLogarithms\nSeasonal differencing\n\nThese transformations are used to obtain a stationary series before modeling.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "02-stationarity.html#exercises",
+    "href": "02-stationarity.html#exercises",
+    "title": "3  Stationarity",
+    "section": "3.11 Exercises",
+    "text": "3.11 Exercises\n\nSimulate a white noise series of length 200.\nVerify that the white noise series appears stationary.\nSimulate an AR(1) process with ().\nSimulate a random walk.\nCompare the ACFs of the AR(1) process and the random walk.\nExplain why the random walk is nonstationary.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Stationarity</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html",
+    "href": "03-acf.html",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "",
+    "text": "4.1 Introduction\nThe autocorrelation function (ACF) describes the dependence between observations separated by a given lag.\nFor a time series\n[ {Y_t}, ]\nthe ACF measures the strength of the linear relationship between\n[ Y_t ]\nand\n[ Y_{t-k}. ]\nThe ACF is one of the most important tools in time series analysis.\nIt is widely used to:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#introduction",
+    "href": "03-acf.html#introduction",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "",
+    "text": "identify serial dependence,\ndetect nonstationarity,\ndistinguish AR and MA models,\nguide model selection.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#autocovariance-function",
+    "href": "03-acf.html#autocovariance-function",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.2 Autocovariance Function",
+    "text": "4.2 Autocovariance Function\nFor a weakly stationary process,\n[ (k) = Cov(Y_t,Y_{t-k}) ]\nis called the autocovariance function.\nSince\n[ Cov(Y_t,Y_{t-k}) = E[(Y_t-)(Y_{t-k}-)], ]\nthe autocovariance measures the dependence between observations separated by lag (k).\n\n4.2.1 Properties\n[ (0)=Var(Y_t) ]\nand\n[ (k)=(-k). ]\nThus the autocovariance function is symmetric.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#definition-of-the-acf",
+    "href": "03-acf.html#definition-of-the-acf",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.3 Definition of the ACF",
+    "text": "4.3 Definition of the ACF\nThe autocorrelation function is\n[ (k) = {(0)}. ]\nSince\n[ (0)=Var(Y_t), ]\nthe ACF standardizes the covariance.\nTherefore\n[ -1 (k) . ]\n\n4.3.1 Important Values\nAt lag zero,\n[ (0)=1. ]\nA value close to 1 indicates strong positive dependence.\nA value close to -1 indicates strong negative dependence.\nA value near 0 indicates little linear dependence.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#sample-autocorrelation-function",
+    "href": "03-acf.html#sample-autocorrelation-function",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.4 Sample Autocorrelation Function",
+    "text": "4.4 Sample Autocorrelation Function\nIn practice the theoretical autocorrelation is unknown.\nThe sample autocorrelation at lag (k) is\n[ r_k = { _{t=1}^{n} (Y_t-Y)^2 }. ]\nThe collection of sample autocorrelations is shown by the correlogram.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#white-noise",
+    "href": "03-acf.html#white-noise",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.5 White Noise",
+    "text": "4.5 White Noise\nConsider a white noise process\n[ Y_t WN(0,^2). ]\nIts autocorrelation function is\n[ (0)=1, ]\nand\n[ (k)=0, k. ]\n\n4.5.1 Simulation\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\nplot.ts(\n  wn,\n  main = \"White Noise\",\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n4.5.2 ACF Plot\n\nacf(\n  wn,\n  main = \"ACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nThe sample autocorrelations fluctuate randomly around zero.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#ar1-process",
+    "href": "03-acf.html#ar1-process",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.6 AR(1) Process",
+    "text": "4.6 AR(1) Process\nConsider\n[ Y_t=Y_{t-1}+_t, ]\nwhere\n[ ||&lt;1. ]\nFor an AR(1) process,\n[ (k)=^k. ]\nThus the ACF decays geometrically.\n\n4.6.1 Example\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\nacf(\n  ar1,\n  main=\"ACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nThe autocorrelations decrease gradually as the lag increases.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#ma1-process",
+    "href": "03-acf.html#ma1-process",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.7 MA(1) Process",
+    "text": "4.7 MA(1) Process\nConsider\n[ Y_t=t+{t-1}. ]\nThe autocorrelation function is\n[ (1) = {1+^2} ]\nand\n[ (k)=0, k&gt;1. ]\nTherefore the ACF cuts off after lag 1.\n\n4.7.1 Example\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nacf(\n  ma1,\n  main=\"ACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nOnly the first lag tends to be significant.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#interpretation-of-the-acf",
+    "href": "03-acf.html#interpretation-of-the-acf",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.8 Interpretation of the ACF",
+    "text": "4.8 Interpretation of the ACF\n\n4.8.1 White Noise\n\nAll autocorrelations are approximately zero.\nNo systematic dependence.\n\n\n\n4.8.2 AR Process\n\nSlow decay.\nCorrelations persist across lags.\n\n\n\n4.8.3 MA Process\n\nSharp cutoff.\nDependence exists only for a limited number of lags.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#statistical-significance",
+    "href": "03-acf.html#statistical-significance",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.9 Statistical Significance",
+    "text": "4.9 Statistical Significance\nFor a white noise process,\n[ SE(r_k) . ]\nApproximate 95% bounds are\n[ . ]\nFor example, if\n[ n=200, ]\nthen\n[ . ]\nBars outside these bounds may indicate significant autocorrelation.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#example-with-real-data",
+    "href": "03-acf.html#example-with-real-data",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.10 Example with Real Data",
+    "text": "4.10 Example with Real Data\n\ndata(AirPassengers)\n\nacf(\n  AirPassengers,\n  main=\"ACF of AirPassengers\"\n)\n\n\n\n\n\n\n\n\nObserve the strong persistence and seasonality.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "03-acf.html#exercises",
+    "href": "03-acf.html#exercises",
+    "title": "4  The Autocorrelation Function (ACF)",
+    "section": "4.11 Exercises",
+    "text": "4.11 Exercises\n\nGenerate a white noise series of length 200 and plot its ACF.\nSimulate an AR(1) process with ().\nVerify that the theoretical ACF equals (^k).\nSimulate an MA(1) process with ().\nVerify that the ACF cuts off after lag 1.\nCompare the ACFs of white noise, AR(1), and MA(1).\nExplain the difference between gradual decay and cutoff behavior.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Autocorrelation Function (ACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html",
+    "href": "04-pacf.html",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "",
+    "text": "5.1 Introduction\nThe autocorrelation function (ACF) measures the correlation between\n[ Y_t ]\nand\n[ Y_{t-k}. ]\nHowever, the autocorrelation at lag (k) may be influenced indirectly through intermediate lags.\nThe partial autocorrelation function (PACF) measures the direct relationship between\n[ Y_t ]\nand\n[ Y_{t-k}, ]\nafter removing the linear effects of the intervening observations\n[ Y_{t-1},Y_{t-2},,Y_{t-k+1}. ]\nThe PACF is one of the most useful tools for identifying autoregressive models.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#motivation",
+    "href": "04-pacf.html#motivation",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.2 Motivation",
+    "text": "5.2 Motivation\nConsider an AR(1) process\n[ Y_t=Y_{t-1}+_t. ]\nSince\n[ Y_t ]\ndepends directly only on\n[ Y_{t-1}, ]\nany apparent correlation between\n[ Y_t ]\nand\n[ Y_{t-2} ]\narises through\n[ Y_{t-1}. ]\nThe PACF removes this indirect effect.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#definition",
+    "href": "04-pacf.html#definition",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.3 Definition",
+    "text": "5.3 Definition\nThe partial autocorrelation at lag (k), denoted by\n[ (k), ]\nis the correlation between\n[ Y_t ]\nand\n[ Y_{t-k} ]\nafter controlling for\n[ Y_{t-1},Y_{t-2},,Y_{t-k+1}. ]\nThus,\n[ (k) ]\nmeasures the direct contribution of lag (k).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#computing-the-pacf",
+    "href": "04-pacf.html#computing-the-pacf",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.4 Computing the PACF",
+    "text": "5.4 Computing the PACF\nIn practice the PACF is estimated using recursive regression methods or the Yule-Walker equations.\nFortunately, R computes it automatically.\n\nset.seed(123)\n\ny &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(y)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#pacf-of-white-noise",
+    "href": "04-pacf.html#pacf-of-white-noise",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.5 PACF of White Noise",
+    "text": "5.5 PACF of White Noise\nFor white noise,\n[ Y_t WN(0,^2), ]\nthere is no dependence between observations.\nTherefore\n[ (k)=0, k. ]\n\n5.5.1 Simulation\n\nset.seed(123)\n\nwn &lt;- rnorm(200)\n\npacf(\n  wn,\n  main=\"PACF of White Noise\"\n)\n\n\n\n\n\n\n\n\nAll bars should fluctuate randomly around zero.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#pacf-of-an-ar1-process",
+    "href": "04-pacf.html#pacf-of-an-ar1-process",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.6 PACF of an AR(1) Process",
+    "text": "5.6 PACF of an AR(1) Process\nConsider\n[ Y_t=Y_{t-1}+_t, ]\nwith\n[ ||&lt;1. ]\nThe theoretical PACF is\n[ (1)=, ]\nand\n[ (k)=0, k&gt;1. ]\nTherefore, the PACF cuts off after lag 1.\n\n5.6.1 Example\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\npacf(\n  ar1,\n  main=\"PACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nA significant spike appears at lag 1, while later lags are close to zero.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#pacf-of-an-ar2-process",
+    "href": "04-pacf.html#pacf-of-an-ar2-process",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.7 PACF of an AR(2) Process",
+    "text": "5.7 PACF of an AR(2) Process\nConsider\n[ Y_t = 0.7Y_{t-1} - 0.3Y_{t-2} + _t. ]\n\nset.seed(123)\n\nar2 &lt;- arima.sim(\n  model=list(ar=c(.7,-.3)),\n  n=500\n)\n\npacf(\n  ar2,\n  main=\"PACF of AR(2)\"\n)\n\n\n\n\n\n\n\n\nThe PACF exhibits significant values at lags 1 and 2 and then cuts off.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#pacf-of-an-ma1-process",
+    "href": "04-pacf.html#pacf-of-an-ma1-process",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.8 PACF of an MA(1) Process",
+    "text": "5.8 PACF of an MA(1) Process\nConsider\n[ Y_t=t+{t-1}. ]\nUnlike an AR process, the PACF does not cut off.\nInstead, it decreases gradually toward zero.\n\n5.8.1 Example\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\npacf(\n  ma1,\n  main=\"PACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nThe PACF tails off rather than terminating abruptly.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#comparison-of-acf-and-pacf",
+    "href": "04-pacf.html#comparison-of-acf-and-pacf",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.9 Comparison of ACF and PACF",
+    "text": "5.9 Comparison of ACF and PACF\n\n5.9.1 AR Models\nFor an AR((p)) process:\n\nACF tails off.\nPACF cuts off after lag (p).\n\n\n\n5.9.2 MA Models\nFor an MA((q)) process:\n\nACF cuts off after lag (q).\nPACF tails off.\n\n\n\n5.9.3 ARMA Models\nFor an ARMA((p,q)) process:\n\nACF tails off.\nPACF tails off.\n\nNeither function exhibits a sharp cutoff.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#model-identification",
+    "href": "04-pacf.html#model-identification",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.10 Model Identification",
+    "text": "5.10 Model Identification\nThe Box-Jenkins approach uses ACF and PACF together.\n\n\n\nModel\nACF\nPACF\n\n\n\n\nAR(1)\nTails off\nCuts off after lag 1\n\n\nAR(2)\nTails off\nCuts off after lag 2\n\n\nMA(1)\nCuts off after lag 1\nTails off\n\n\nMA(2)\nCuts off after lag 2\nTails off\n\n\nARMA(1,1)\nTails off\nTails off\n\n\n\nThese patterns are fundamental in practical model identification.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#example-comparing-ar-and-ma-models",
+    "href": "04-pacf.html#example-comparing-ar-and-ma-models",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.11 Example: Comparing AR and MA Models",
+    "text": "5.11 Example: Comparing AR and MA Models\n\npar(mfrow=c(2,2))\n\nar1 &lt;- arima.sim(model=list(ar=.8), n=300)\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(model=list(ma=.8), n=300)\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\n\n\n\n\n\n\n\nObserve:\n\nAR(1): ACF tails off, PACF cuts off.\nMA(1): ACF cuts off, PACF tails off.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#statistical-significance",
+    "href": "04-pacf.html#statistical-significance",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.12 Statistical Significance",
+    "text": "5.12 Statistical Significance\nFor large samples,\n[ SE(r_k) . ]\nThe PACF plot displays approximate 95% confidence limits\n[ . ]\nValues outside these limits may indicate significant dependence.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#summary",
+    "href": "04-pacf.html#summary",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.13 Summary",
+    "text": "5.13 Summary\n\nThe PACF measures direct dependence at a given lag.\nPACF removes the effect of intermediate observations.\nAR((p)) processes have PACFs that cut off after lag (p).\nMA((q)) processes have PACFs that tail off.\nACF and PACF together are the primary tools for model identification.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "04-pacf.html#exercises",
+    "href": "04-pacf.html#exercises",
+    "title": "5  The Partial Autocorrelation Function (PACF)",
+    "section": "5.14 Exercises",
+    "text": "5.14 Exercises\n\nSimulate an AR(1) process with ().\nPlot its ACF and PACF.\nVerify that the PACF cuts off after lag 1.\nSimulate an AR(2) process.\nIdentify the cutoff lag from the PACF.\nSimulate an MA(1) process.\nCompare its ACF and PACF.\nExplain why PACF is useful for selecting the order of an AR model.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Partial Autocorrelation Function (PACF)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html",
+    "href": "05-ar1.html",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "",
+    "text": "6.1 Introduction\nThe AR(1) model is the simplest and most important autoregressive model.\nIn an AR(1) process, the current observation depends on the immediately preceding observation and a random error.\nThe model serves as a foundation for understanding higher-order autoregressive models and many forecasting methods.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#definition",
+    "href": "05-ar1.html#definition",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.2 Definition",
+    "text": "6.2 Definition\nAn AR(1) process is defined by\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nwhere\n\n\\(\\phi\\) is the autoregressive parameter,\n\\(\\varepsilon_t\\sim WN(0,\\sigma^2)\\),\n\\(\\{\\varepsilon_t\\}\\) is a white noise process.\n\nThe parameter \\(\\phi\\) determines the strength of dependence between consecutive observations.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#stationarity-condition",
+    "href": "05-ar1.html#stationarity-condition",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.3 Stationarity Condition",
+    "text": "6.3 Stationarity Condition\nThe AR(1) process is stationary if\n\\[\n|\\phi|&lt;1.\n\\]\nIf\n\\[\n|\\phi|\\ge 1,\n\\]\nthe process is nonstationary.\n\n6.3.1 Examples\n\n\n\nValue of \\(\\phi\\)\nInterpretation\n\n\n\n\n\\(0\\)\nWhite noise\n\n\n\\(0.3\\)\nWeak dependence\n\n\n\\(0.8\\)\nStrong persistence\n\n\n\\(-0.8\\)\nAlternating behavior\n\n\n\\(1\\)\nRandom walk (nonstationary)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#mean-of-an-ar1-process",
+    "href": "05-ar1.html#mean-of-an-ar1-process",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.4 Mean of an AR(1) Process",
+    "text": "6.4 Mean of an AR(1) Process\nTaking expectations,\n\\[\nE(Y_t)\n=\n\\phi E(Y_{t-1}).\n\\]\nUnder stationarity,\n\\[\nE(Y_t)=\\mu.\n\\]\nTherefore,\n\\[\n\\mu=\\phi\\mu.\n\\]\nHence,\n\\[\n\\mu=0.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#variance-of-an-ar1-process",
+    "href": "05-ar1.html#variance-of-an-ar1-process",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.5 Variance of an AR(1) Process",
+    "text": "6.5 Variance of an AR(1) Process\nSince\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t,\n\\]\nthe stationary variance is\n\\[\nVar(Y_t)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2}.\n\\]\nAs \\(|\\phi|\\) approaches 1, the variance increases.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#autocovariance-function",
+    "href": "05-ar1.html#autocovariance-function",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.6 Autocovariance Function",
+    "text": "6.6 Autocovariance Function\nFor a stationary AR(1) process,\n\\[\n\\gamma(k)\n=\n\\phi^{k}\\gamma(0).\n\\]\nSince\n\\[\n\\gamma(0)\n=\n\\frac{\\sigma^2}\n     {1-\\phi^2},\n\\]\nall autocovariances are determined by \\(\\phi\\).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#autocorrelation-function",
+    "href": "05-ar1.html#autocorrelation-function",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.7 Autocorrelation Function",
+    "text": "6.7 Autocorrelation Function\nThe ACF of an AR(1) process is\n\\[\n\\rho(k)=\\phi^k.\n\\]\nThis is one of the most important results in time series analysis.\n\n6.7.1 Consequences\nIf\n\\[\n\\phi=0.8,\n\\]\nthen\n\\[\n\\rho(1)=0.8,\n\\]\n\\[\n\\rho(2)=0.64,\n\\]\n\\[\n\\rho(3)=0.512.\n\\]\nThus the ACF decreases gradually toward zero.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#partial-autocorrelation-function",
+    "href": "05-ar1.html#partial-autocorrelation-function",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.8 Partial Autocorrelation Function",
+    "text": "6.8 Partial Autocorrelation Function\nFor an AR(1) process,\n\\[\nPACF(1)=\\phi,\n\\]\nand\n\\[\nPACF(k)=0,\n\\qquad k&gt;1.\n\\]\nTherefore the PACF cuts off after lag 1.\nThis property is widely used to identify AR(1) models.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#simulation",
+    "href": "05-ar1.html#simulation",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.9 Simulation",
+    "text": "6.9 Simulation\n\n6.9.1 Positive Dependence\n\nset.seed(123)\n\nar1 &lt;- arima.sim(\n  model = list(ar = 0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1,\n  main = expression(AR(1)~with~phi==0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nObserve the persistence of consecutive observations.\n\n\n6.9.2 Negative Dependence\n\nset.seed(123)\n\nar1neg &lt;- arima.sim(\n  model = list(ar = -0.8),\n  n = 200\n)\n\nplot.ts(\n  ar1neg,\n  main = expression(AR(1)~with~phi==-0.8),\n  ylab = expression(Y[t])\n)\n\n\n\n\n\n\n\n\nSuccessive observations tend to alternate in sign.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#acf-of-an-ar1-process",
+    "href": "05-ar1.html#acf-of-an-ar1-process",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.10 ACF of an AR(1) Process",
+    "text": "6.10 ACF of an AR(1) Process\n\nacf(\n  ar1,\n  main=\"ACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nThe ACF decays geometrically.\nThis tailing-off behavior is characteristic of autoregressive processes.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#pacf-of-an-ar1-process",
+    "href": "05-ar1.html#pacf-of-an-ar1-process",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.11 PACF of an AR(1) Process",
+    "text": "6.11 PACF of an AR(1) Process\n\npacf(\n  ar1,\n  main=\"PACF of AR(1)\"\n)\n\n\n\n\n\n\n\n\nOnly the first lag should be significant.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#lag-plot",
+    "href": "05-ar1.html#lag-plot",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.12 Lag Plot",
+    "text": "6.12 Lag Plot\nA lag plot reveals the dependence between \\(Y_t\\) and \\(Y_{t-1}\\).\n\nplot(\n  x = ar1[-length(ar1)],\n  y = ar1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nA positive linear pattern should be visible.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#comparison-of-different-values-of-phi",
+    "href": "05-ar1.html#comparison-of-different-values-of-phi",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.13 Comparison of Different Values of \\(\\phi\\)",
+    "text": "6.13 Comparison of Different Values of \\(\\phi\\)\n\npar(mfrow=c(2,2))\n\nplot.ts(\n  arima.sim(model=list(ar=.2), n=200),\n  main=expression(phi==0.2)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.5), n=200),\n  main=expression(phi==0.5)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=.8), n=200),\n  main=expression(phi==0.8)\n)\n\nplot.ts(\n  arima.sim(model=list(ar=-0.8), n=200),\n  main=expression(phi==-0.8)\n)\n\n\n\n\n\n\n\n\nObserve how the degree of dependence changes as \\(\\phi\\) changes.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#parameter-estimation",
+    "href": "05-ar1.html#parameter-estimation",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.14 Parameter Estimation",
+    "text": "6.14 Parameter Estimation\nAn AR(1) model can be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  ar1,\n  order=c(1,0,0)\n)\n\nfit\n\n\nCall:\narima(x = ar1, order = c(1, 0, 0))\n\nCoefficients:\n         ar1  intercept\n      0.7235    -0.0239\ns.e.  0.0491     0.2363\n\nsigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46\n\n\nThe estimated value of \\(\\phi\\) should be close to the true value used in simulation.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#forecasting",
+    "href": "05-ar1.html#forecasting",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.15 Forecasting",
+    "text": "6.15 Forecasting\nFor an AR(1) model,\n\\[\n\\hat{Y}_{t+1}\n=\n\\phi Y_t.\n\\]\nMore generally,\n\\[\n\\hat{Y}_{t+h}\n=\n\\phi^h Y_t.\n\\]\nAs \\(h\\) increases,\n\\[\n\\phi^h \\rightarrow 0,\n\\]\nand forecasts approach the mean of the process.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#interpretation",
+    "href": "05-ar1.html#interpretation",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.16 Interpretation",
+    "text": "6.16 Interpretation\n\n6.16.1 Positive \\(\\phi\\)\nIf\n\\[\n\\phi&gt;0,\n\\]\nlarge values tend to follow large values and small values tend to follow small values.\n\n\n6.16.2 Negative \\(\\phi\\)\nIf\n\\[\n\\phi&lt;0,\n\\]\nsuccessive observations tend to move in opposite directions.\n\n\n6.16.3 Near Zero\nIf\n\\[\n\\phi\\approx 0,\n\\]\nthe process resembles white noise.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#summary",
+    "href": "05-ar1.html#summary",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.17 Summary",
+    "text": "6.17 Summary\nThe AR(1) process\n\\[\nY_t=\\phi Y_{t-1}+\\varepsilon_t\n\\]\nis the simplest autoregressive model.\nKey properties:\n\nStationary when \\(|\\phi|&lt;1\\).\nMean equals zero.\nVariance equals \\(\\frac{\\sigma^2}{1-\\phi^2}\\).\nACF: \\(\\rho(k)=\\phi^k\\).\nPACF cuts off after lag 1.\n\nThese characteristics make AR(1) a fundamental model in time series analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "05-ar1.html#exercises",
+    "href": "05-ar1.html#exercises",
+    "title": "6  The Autoregressive Process of Order One: AR(1)",
+    "section": "6.18 Exercises",
+    "text": "6.18 Exercises\n\nSimulate an AR(1) process with \\(\\phi=0.5\\).\nPlot the series, ACF, and PACF.\nVerify that the ACF decays geometrically.\nVerify that the PACF cuts off after lag 1.\nCompare AR(1) processes with \\(\\phi=0.2\\), \\(0.5\\), and \\(0.9\\).\nSimulate an AR(1) process with \\(\\phi=-0.8\\).\nConstruct a lag plot and describe the pattern.\nEstimate an AR(1) model using arima() and compare the estimated parameter with the true value.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The Autoregressive Process of Order One: AR(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html",
+    "href": "06-ma1.html",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "",
+    "text": "7.1 Introduction\nThe MA(1) model is the simplest moving average process.\nUnlike an autoregressive model, an MA(1) process does not depend directly on past observations. Instead, it depends on the current and previous random shocks.\nThe MA(1) model is fundamental in time series analysis and serves as a building block for higher-order MA and ARMA models.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#definition",
+    "href": "06-ma1.html#definition",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.2 Definition",
+    "text": "7.2 Definition\nAn MA(1) process is defined by\n[ Y_t=t+{t-1}, ]\nwhere\n\n({_t}) is a white noise process,\n(E(_t)=0),\n(Var(_t)=^2),\n() is the moving average parameter.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#mean",
+    "href": "06-ma1.html#mean",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.3 Mean",
+    "text": "7.3 Mean\nTaking expectations,\n[ E(Y_t) = E(t) + E({t-1}). ]\nSince\n[ E(_t)=0, ]\nit follows that\n[ E(Y_t)=0. ]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#variance",
+    "href": "06-ma1.html#variance",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.4 Variance",
+    "text": "7.4 Variance\nSince the white noise terms are uncorrelated,\n[ Var(Y_t) = Var(t+{t-1}), ]\nwhich gives\n[ Var(Y_t) = (1+2)2. ]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#autocovariance-function",
+    "href": "06-ma1.html#autocovariance-function",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.5 Autocovariance Function",
+    "text": "7.5 Autocovariance Function\n\n7.5.1 Lag 0\n[ (0) = (1+2)2. ]\n\n\n7.5.2 Lag 1\n[ (1) = ^2. ]\n\n\n7.5.3 Lag (k&gt;1)\n[ (k)=0. ]\nTherefore,\n[ (k)=\n\\[\\begin{cases}\n(1+\\theta^2)\\sigma^2, & k=0,\\\\\n\\theta\\sigma^2, & k=1,\\\\\n0, & k&gt;1.\n\\end{cases}\\]\n]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#autocorrelation-function",
+    "href": "06-ma1.html#autocorrelation-function",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.6 Autocorrelation Function",
+    "text": "7.6 Autocorrelation Function\nDividing by ((0)),\n[ (1) = {1+^2}, ]\nand\n[ (k)=0, k&gt;1. ]\nThis is the most important property of an MA(1) process.\nThe ACF cuts off after lag 1.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#example",
+    "href": "06-ma1.html#example",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.7 Example",
+    "text": "7.7 Example\nIf\n[ , ]\nthen\n[ (1) = = 0.40. ]\nIf\n[ , ]\nthen\n[ (1) = . ]\nThis value should appear in the sample ACF.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#invertibility",
+    "href": "06-ma1.html#invertibility",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.8 Invertibility",
+    "text": "7.8 Invertibility\nFor an MA(1) model,\n[ Y_t=t+{t-1}, ]\ninvertibility requires\n[ ||&lt;1. ]\nInvertibility ensures a unique representation of the process.\nThis condition plays a role similar to the stationarity condition\n[ ||&lt;1 ]\nfor AR models.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#simulation",
+    "href": "06-ma1.html#simulation",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.9 Simulation",
+    "text": "7.9 Simulation\n\n7.9.1 MA(1) with ()\n\nset.seed(123)\n\nma1 &lt;- arima.sim(\n  model=list(ma=.5),\n  n=200\n)\n\nplot.ts(\n  ma1,\n  main=expression(MA(1)~with~theta==0.5),\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\n\n\n7.9.2 MA(1) with ()\n\nset.seed(123)\n\nma1neg &lt;- arima.sim(\n  model=list(ma=-.5),\n  n=200\n)\n\nplot.ts(\n  ma1neg,\n  main=expression(MA(1)~with~theta==-0.5),\n  ylab=expression(Y[t])\n)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#acf-of-an-ma1-process",
+    "href": "06-ma1.html#acf-of-an-ma1-process",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.10 ACF of an MA(1) Process",
+    "text": "7.10 ACF of an MA(1) Process\n\nacf(\n  ma1,\n  main=\"ACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nObserve:\n\nSignificant spike at lag 1.\nNear-zero autocorrelations for lags greater than 1.\n\nThis cutoff behavior is the hallmark of an MA(1) process.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#pacf-of-an-ma1-process",
+    "href": "06-ma1.html#pacf-of-an-ma1-process",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.11 PACF of an MA(1) Process",
+    "text": "7.11 PACF of an MA(1) Process\n\npacf(\n  ma1,\n  main=\"PACF of MA(1)\"\n)\n\n\n\n\n\n\n\n\nUnlike the ACF, the PACF does not cut off.\nInstead, it decreases gradually toward zero.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#lag-1-scatter-plot",
+    "href": "06-ma1.html#lag-1-scatter-plot",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.12 Lag-1 Scatter Plot",
+    "text": "7.12 Lag-1 Scatter Plot\nThe relationship between\n[ Y_t ]\nand\n[ Y_{t-1} ]\nmay be examined using a lag plot.\n\nplot(\n  x = ma1[-length(ma1)],\n  y = ma1[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nFor positive (), the plot tends to exhibit a weak positive linear pattern.\nFor negative (), the pattern slopes downward.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#lag-2-scatter-plot",
+    "href": "06-ma1.html#lag-2-scatter-plot",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.13 Lag-2 Scatter Plot",
+    "text": "7.13 Lag-2 Scatter Plot\nConsider\n[ (Y_{t-2},Y_t). ]\n\nplot(\n  x = ma1[-c(length(ma1)-1,length(ma1))],\n  y = ma1[-c(1,2)],\n  xlab = expression(Y[t-2]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nSince\n[ (2)=0, ]\nthe points should display little or no linear pattern.\nThe scatter plot generally resembles a random cloud.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#comparison-with-ar1",
+    "href": "06-ma1.html#comparison-with-ar1",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.14 Comparison with AR(1)",
+    "text": "7.14 Comparison with AR(1)\n\n\n\n\n\n\n\n\nProperty\nAR(1)\nMA(1)\n\n\n\n\nModel\n(Y_t=Y_{t-1}+_t)\n(Y_t=t+{t-1})\n\n\nStationarity\n(\n\n\n\nInvertibility\nNot required\n(\n\n\nACF\nTails off\nCuts off after lag 1\n\n\nPACF\nCuts off after lag 1\nTails off\n\n\n\nThese patterns are central to Box-Jenkins model identification.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#estimation",
+    "href": "06-ma1.html#estimation",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.15 Estimation",
+    "text": "7.15 Estimation\nAn MA(1) model can be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  ma1,\n  order=c(0,0,1)\n)\n\nfit\n\n\nCall:\narima(x = ma1, order = c(0, 0, 1))\n\nCoefficients:\n         ma1  intercept\n      0.5124     0.0041\ns.e.  0.0874     0.1018\n\nsigma^2 estimated as 0.9091:  log likelihood = -274.41,  aic = 554.83\n\n\nThe estimated value should be close to the true value used in simulation.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#example-1",
+    "href": "06-ma1.html#example-1",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.16 Example: ()",
+    "text": "7.16 Example: ()\n\nset.seed(123)\n\nma1.2 &lt;- arima.sim(\n  model=list(ma=.2),\n  n=500\n)\n\nacf(ma1.2)\n\n\n\n\n\n\n\n\nThe theoretical lag-1 autocorrelation is\n[ (1) = = 0.1923. ]\nCompare this value with the sample ACF.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#forecasting",
+    "href": "06-ma1.html#forecasting",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.17 Forecasting",
+    "text": "7.17 Forecasting\nFor an MA(1) process,\n[ Y_t=t+{t-1}, ]\nthe one-step-ahead forecast depends on the most recent estimated shock.\nFor horizons greater than one,\n[ Y_{t+h} ]\nrapidly converges to the mean of the process.\nSince the mean is zero,\n[ Y_{t+h} . ]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#summary",
+    "href": "06-ma1.html#summary",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.18 Summary",
+    "text": "7.18 Summary\nThe MA(1) process\n[ Y_t=t+{t-1} ]\nhas the following properties:\n\nMean:\n\n[ E(Y_t)=0. ]\n\nVariance:\n\n[ Var(Y_t) = (1+2)2. ]\n\nACF:\n\n[ (1) = , ]\n[ (k)=0, k&gt;1. ]\n\nPACF tails off gradually.\nInvertibility requires\n\n[ ||&lt;1. ]\nThe ACF cutoff at lag 1 is the most important identifying characteristic of an MA(1) process.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "06-ma1.html#exercises",
+    "href": "06-ma1.html#exercises",
+    "title": "7  The Moving Average Process of Order One: MA(1)",
+    "section": "7.19 Exercises",
+    "text": "7.19 Exercises\n\nSimulate an MA(1) process with ().\nCompute and plot the sample ACF.\nCompare the sample lag-1 autocorrelation with the theoretical value.\nSimulate an MA(1) process with ().\nCompare its ACF with that of ().\nCreate lag-1 and lag-2 scatter plots.\nExplain why the lag-2 scatter plot shows little pattern.\nEstimate an MA(1) model using arima() and compare the estimated parameter with the true value.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>The Moving Average Process of Order One: MA(1)</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html",
+    "href": "07-arma.html",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "",
+    "text": "8.1 Introduction\nThe ARMA model combines the ideas of autoregressive (AR) and moving average (MA) processes.\nIt is one of the most important classes of stationary time series models and forms the foundation of the Box-Jenkins methodology.\nAn ARMA model can capture both:",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#introduction",
+    "href": "07-arma.html#introduction",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "",
+    "text": "persistence through past observations,\nshort-term dependence through past shocks.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#definition",
+    "href": "07-arma.html#definition",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.2 Definition",
+    "text": "8.2 Definition\nAn ARMA((p,q)) process is defined by\n[ Y_t = 1Y{t-1} +2Y{t-2} + +pY{t-p} + _t + 1{t-1} +2{t-2} + +q{t-q}, ]\nwhere\n[ {_t} WN(0,^2). ]\nHere:\n\n(p) = autoregressive order,\n(q) = moving average order.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#special-cases",
+    "href": "07-arma.html#special-cases",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.3 Special Cases",
+    "text": "8.3 Special Cases\n\n8.3.1 AR Model\nIf\n[ q=0, ]\nthen\n[ ARMA(p,0)=AR(p). ]\n\n\n8.3.2 MA Model\nIf\n[ p=0, ]\nthen\n[ ARMA(0,q)=MA(q). ]\nThus AR and MA processes are special cases of the ARMA model.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#the-arma11-model",
+    "href": "07-arma.html#the-arma11-model",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.4 The ARMA(1,1) Model",
+    "text": "8.4 The ARMA(1,1) Model\nThe simplest ARMA model is\n[ Y_t = Y_{t-1} + t + {t-1}. ]\nThis model combines:\n\nthe dependence structure of AR(1),\nthe shock structure of MA(1).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#stationarity",
+    "href": "07-arma.html#stationarity",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.5 Stationarity",
+    "text": "8.5 Stationarity\nFor ARMA processes, stationarity depends on the AR part.\nFor ARMA(1,1),\n[ ||&lt;1 ]\nis required for stationarity.\n\n8.5.1 Examples\n\n\n\n()\nStationary?\n\n\n\n\n0.3\nYes\n\n\n0.8\nYes\n\n\n-0.5\nYes\n\n\n1.0\nNo\n\n\n1.1\nNo",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#invertibility",
+    "href": "07-arma.html#invertibility",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.6 Invertibility",
+    "text": "8.6 Invertibility\nInvertibility depends on the MA part.\nFor ARMA(1,1),\n[ ||&lt;1 ]\nis required for invertibility.\nThis ensures a unique representation of the process.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#mean",
+    "href": "07-arma.html#mean",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.7 Mean",
+    "text": "8.7 Mean\nFor a stationary ARMA(1,1),\n[ E(Y_t)=0. ]\nMore generally, if a constant term is included, the mean is constant over time.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#simulation-of-arma11",
+    "href": "07-arma.html#simulation-of-arma11",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.8 Simulation of ARMA(1,1)",
+    "text": "8.8 Simulation of ARMA(1,1)\nConsider\n[ Y_t = 0.7Y_{t-1} + t + 0.4{t-1}. ]\n\nset.seed(123)\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nplot.ts(\n  arma11,\n  main=\"ARMA(1,1) Process\",\n  ylab=expression(Y[t])\n)\n\n\n\n\n\n\n\n\nObserve the persistence created by the AR component and the short-term effects created by the MA component.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#acf-of-an-arma-process",
+    "href": "07-arma.html#acf-of-an-arma-process",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.9 ACF of an ARMA Process",
+    "text": "8.9 ACF of an ARMA Process\n\nacf(\n  arma11,\n  main=\"ACF of ARMA(1,1)\"\n)\n\n\n\n\n\n\n\n\nUnlike MA models, the ACF does not cut off.\nUnlike pure AR models, the pattern is often more complex.\nThe ACF generally tails off toward zero.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#pacf-of-an-arma-process",
+    "href": "07-arma.html#pacf-of-an-arma-process",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.10 PACF of an ARMA Process",
+    "text": "8.10 PACF of an ARMA Process\n\npacf(\n  arma11,\n  main=\"PACF of ARMA(1,1)\"\n)\n\n\n\n\n\n\n\n\nThe PACF also tails off.\nThis is one of the identifying characteristics of ARMA models.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#model-identification",
+    "href": "07-arma.html#model-identification",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.11 Model Identification",
+    "text": "8.11 Model Identification\n\n8.11.1 AR(p)\n\nACF tails off.\nPACF cuts off.\n\n\n\n8.11.2 MA(q)\n\nACF cuts off.\nPACF tails off.\n\n\n\n8.11.3 ARMA(p,q)\n\nACF tails off.\nPACF tails off.\n\nTherefore ARMA models are usually identified by examining both functions simultaneously.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#comparing-ar1-ma1-and-arma11",
+    "href": "07-arma.html#comparing-ar1-ma1-and-arma11",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.12 Comparing AR(1), MA(1), and ARMA(1,1)",
+    "text": "8.12 Comparing AR(1), MA(1), and ARMA(1,1)\n\npar(mfrow=c(3,2))\n\nar1 &lt;- arima.sim(\n  model=list(ar=.7),\n  n=300\n)\n\nacf(ar1, main=\"AR(1): ACF\")\npacf(ar1, main=\"AR(1): PACF\")\n\nma1 &lt;- arima.sim(\n  model=list(ma=.7),\n  n=300\n)\n\nacf(ma1, main=\"MA(1): ACF\")\npacf(ma1, main=\"MA(1): PACF\")\n\narma11 &lt;- arima.sim(\n  model=list(ar=.7, ma=.4),\n  n=300\n)\n\nacf(arma11, main=\"ARMA(1,1): ACF\")\npacf(arma11, main=\"ARMA(1,1): PACF\")\n\n\n\n\n\n\n\n\nCompare the characteristic patterns.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#lag-plot",
+    "href": "07-arma.html#lag-plot",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.13 Lag Plot",
+    "text": "8.13 Lag Plot\nA lag plot may be used to visualize dependence.\n\nplot(\n  x = arma11[-length(arma11)],\n  y = arma11[-1],\n  xlab = expression(Y[t-1]),\n  ylab = expression(Y[t]),\n  pch = 16\n)\n\n\n\n\n\n\n\n\nThe relationship is generally stronger than white noise and reflects both AR and MA effects.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#model-estimation",
+    "href": "07-arma.html#model-estimation",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.14 Model Estimation",
+    "text": "8.14 Model Estimation\nAn ARMA(1,1) model may be estimated using maximum likelihood.\n\nfit &lt;- arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nfit\n\n\nCall:\narima(x = arma11, order = c(1, 0, 1))\n\nCoefficients:\n         ar1     ma1  intercept\n      0.6933  0.3851    -0.0051\ns.e.  0.0509  0.0733     0.2623\n\nsigma^2 estimated as 1.029:  log likelihood = -430.61,  aic = 869.22\n\n\nThe estimated coefficients should be close to the values used in simulation.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#model-selection-using-aic",
+    "href": "07-arma.html#model-selection-using-aic",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.15 Model Selection Using AIC",
+    "text": "8.15 Model Selection Using AIC\nDifferent ARMA models can be compared using the Akaike Information Criterion (AIC).\n\nfit1 &lt;- arima(arma11, order=c(1,0,0))\nfit2 &lt;- arima(arma11, order=c(0,0,1))\nfit3 &lt;- arima(arma11, order=c(1,0,1))\n\nAIC(fit1, fit2, fit3)\n\n     df      AIC\nfit1  3 890.8641\nfit2  3 976.2085\nfit3  4 869.2151\n\n\nThe model with the smallest AIC is usually preferred.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#forecasting",
+    "href": "07-arma.html#forecasting",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.16 Forecasting",
+    "text": "8.16 Forecasting\nForecasts are based on:\n\npast observations,\nestimated model parameters.\n\n\nlibrary(forecast)\n\nfit &lt;- Arima(\n  arma11,\n  order=c(1,0,1)\n)\n\nforecast(fit, h=10)\n\n    Point Forecast     Lo 80     Hi 80     Lo 95    Hi 95\n301    -0.60561759 -1.912139 0.7009042 -2.603770 1.392535\n302    -0.42142755 -2.342873 1.5000181 -3.360025 2.517170\n303    -0.29373540 -2.449182 1.8617111 -3.590206 3.002735\n304    -0.20521116 -2.464515 2.0540925 -3.660518 3.250096\n305    -0.14384057 -2.451397 2.1637157 -3.672943 3.385262\n306    -0.10129461 -2.431686 2.2290971 -3.665321 3.462732\n307    -0.07179908 -2.413087 2.2694884 -3.652489 3.508891\n308    -0.05135091 -2.397857 2.2951552 -3.640022 3.537321\n309    -0.03717495 -2.386185 2.3118352 -3.629676 3.555326\n310    -0.02734728 -2.377560 2.3228654 -3.621687 3.566993\n\n\nThe forecast gradually approaches the long-run mean of the process.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#summary",
+    "href": "07-arma.html#summary",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.17 Summary",
+    "text": "8.17 Summary\nAn ARMA((p,q)) model combines:\n\nautoregressive dependence,\nmoving average dependence.\n\nFor ARMA(1,1),\n[ Y_t = Y_{t-1} + t + {t-1}. ]\nImportant properties:\n\nStationarity depends on the AR component.\nInvertibility depends on the MA component.\nACF tails off.\nPACF tails off.\nWidely used for stationary time series.\n\nARMA models provide a flexible framework for describing many real-world time series.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  },
+  {
+    "objectID": "07-arma.html#exercises",
+    "href": "07-arma.html#exercises",
+    "title": "8  The Autoregressive Moving Average Process: ARMA",
+    "section": "8.18 Exercises",
+    "text": "8.18 Exercises\n\nSimulate an ARMA(1,1) process with () and ().\nPlot the series.\nCompute and interpret the ACF.\nCompute and interpret the PACF.\nEstimate an ARMA(1,1) model using arima().\nCompare AR(1), MA(1), and ARMA(1,1) using ACF and PACF plots.\nUse AIC to compare competing models.\nProduce 10-step-ahead forecasts and interpret the results.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>The Autoregressive Moving Average Process: ARMA</span>"
+    ]
+  }
+]
