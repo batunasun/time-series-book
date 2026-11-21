@@ -1222,201 +1222,201 @@
   {
     "objectID": "09-forecasting.html",
     "href": "09-forecasting.html",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "",
     "text": "10.1 Оршил\nТаамаглал нь хугацааны цувааны шинжилгээний үндсэн зорилтуудын нэг юм.\nТаамаглал гэдэг нь одоогийн цагт байгаа мэдээлэлд үндэслэн ирээдүйн ажиглалтуудыг урьдчилан таамаглахыг хэлнэ.\nТаамаглалыг дараахь салбаруудад ашигладаг:\nЗорилго нь тодорхойгүй байдлын хэмжүүрийн хамт үнэн зөв таамаглал гаргах явдал юм.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#оршил",
     "href": "09-forecasting.html#оршил",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "",
     "text": "эдийн засаг,\nсанхүү,\nбайгаль орчны шинжлэх ухаан,\nэрчим хүчний эрэлтийн төлөвлөлт,\nнийгмийн эрүүл мэнд,\nбизнесийн аналитик.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-үндсэн-тэмдэглэгээ",
     "href": "09-forecasting.html#таамаглалын-үндсэн-тэмдэглэгээ",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.2 Таамаглалын үндсэн тэмдэглэгээ",
     "text": "10.2 Таамаглалын үндсэн тэмдэглэгээ\n\\(t\\) хугацаа хүртэл ажиглалтууд байгаа гэж үзье.\n\\(t\\) хугацаанд \\(h\\) алсын зайд хийсэн таамаглалыг\n\\[\n\\hat{Y}_{t+h|t}\n\\]\nгэж тэмдэглэнэ.\nЭнэ нь \\(t\\) хугацаанд байгаа мэдээлэлд үндэслэн\n\\[\nY_{t+h}\n\\]\n-ийн таамаглалыг илэрхийлнэ.\n\n10.2.1 Нэг алхамын таамаглал\n\\[\n\\hat{Y}_{t+1|t}.\n\\]\n\n\n10.2.2 Олон алхамын таамаглал\n\\[\n\\hat{Y}_{t+h|t}.\n\\]\nэнд\n\\[\nh=2,3,\\ldots\n\\]",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-алдаа",
     "href": "09-forecasting.html#таамаглалын-алдаа",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.3 Таамаглалын алдаа",
     "text": "10.3 Таамаглалын алдаа\nТаамаглалын алдаа нь\n\\[\ne_{t+h}\n=\nY_{t+h}\n-\n\\hat{Y}_{t+h|t}.\n\\]\nСайн таамаглалын загварууд бага таамаглалын алдаа гаргадаг.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-нарийвчлалын-хэмжүүрүүд",
     "href": "09-forecasting.html#таамаглалын-нарийвчлалын-хэмжүүрүүд",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.4 Таамаглалын нарийвчлалын хэмжүүрүүд",
     "text": "10.4 Таамаглалын нарийвчлалын хэмжүүрүүд\n\n10.4.1 Дундаж алдаа (ME)\n\\[\nME\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\ne_t.\n\\]\nТаамаглалын хазайлтыг хэмждэг.\n\n\n10.4.2 Дундаж абсолют алдаа (MAE)\n\\[\nMAE\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\n|e_t|.\n\\]\nАнхны нэгжээр илэрхийлэгддэг тул тайлбарлахад хялбар.\n\n\n10.4.3 Дундаж квадрат алдаа (MSE)\n\\[\nMSE\n=\n\\frac{1}{n}\n\\sum_{t=1}^{n}\ne_t^2.\n\\]\nТом алдаануудад илүү их жин өгдөг.\n\n\n10.4.4 Квадрат дундажийн язгуур алдаа (RMSE)\n\\[\nRMSE\n=\n\\sqrt{MSE}.\n\\]\nХамгийн өргөн хэрэглэгддэг хэмжүүрүүдийн нэг.\n\n\n10.4.5 Дундаж абсолют хувийн алдаа (MAPE)\n\\[\nMAPE\n=\n\\frac{100}{n}\n\\sum_{t=1}^{n}\n\\left|\n\\frac{e_t}{Y_t}\n\\right|.\n\\]\nАлдааг хувиар илэрхийлдэг.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#сургалтын-ба-тестийн-олонлогууд",
     "href": "09-forecasting.html#сургалтын-ба-тестийн-олонлогууд",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.5 Сургалтын ба тестийн олонлогууд",
     "text": "10.5 Сургалтын ба тестийн олонлогууд\nТаамаглалын гүйцэтгэлийг үнэлэхийн тулд өгөгдлийг ихэвчлэн дараахь байдлаар хуваадаг:\n\n10.5.1 Сургалтын олонлог\nЗагварын параметрүүдийг үнэлэхэд ашиглана.\n\n\n10.5.2 Тестийн олонлог\nТаамаглалын нарийвчлалыг үнэлэхэд ашиглана.\nЖишээ:\n\nn &lt;- length(AirPassengers)\n\ntrain &lt;- window(\n  AirPassengers,\n  end = c(1958,12)\n)\n\ntest &lt;- window(\n  AirPassengers,\n  start = c(1959,1)\n)",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#жишиг-таамаглалын-аргууд",
     "href": "09-forecasting.html#жишиг-таамаглалын-аргууд",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.6 Жишиг таамаглалын аргууд",
     "text": "10.6 Жишиг таамаглалын аргууд\nНарийн төвөгтэй загваруудыг тохируулахаас өмнө жишиг таамаглалуудыг авч үзэх хэрэгтэй.\n\n10.6.1 Дундаж таамаглал\n\\[\n\\hat Y_{t+h}\n=\n\\bar Y.\n\\]\nБүх ирээдүйн таамаглалууд түүхэн дундажтай тэнцүү.\n\n\n10.6.2 Энгийн (naive) таамаглал\n\\[\n\\hat Y_{t+h}\n=\nY_t.\n\\]\nДараагийн ажиглалт нь хамгийн сүүлийн ажиглалттай тэнцүү гэж үзнэ.\n\n\n10.6.3 Дрифт таамаглал\n\\[\n\\hat Y_{t+h}\n=\nY_t\n+\nh\n\\frac{Y_t-Y_1}{t-1}.\n\\]\nТүүхэн трендийг урагшлуулна.\n\n\n10.6.4 Улирлын энгийн таамаглал\nУлирлын өгөгдлийн хувьд\n\\[\n\\hat Y_{t+h}\n=\nY_{t+h-m},\n\\]\nэнд (m) нь улирлын үе.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#жишээ-энгийн-таамаглал",
     "href": "09-forecasting.html#жишээ-энгийн-таамаглал",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.7 Жишээ: Энгийн таамаглал",
     "text": "10.7 Жишээ: Энгийн таамаглал\n\nlibrary(forecast)\n\nfit &lt;- naive(AirPassengers)\n\nautoplot(fit)\n\nЭнгийн арга нь олон эдийн засаг, санхүүгийн хугацааны цуваанд гайхмаар үр дүнтэй байдаг.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#ar1-таамаглал",
     "href": "09-forecasting.html#ar1-таамаглал",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.8 AR(1) таамаглал",
     "text": "10.8 AR(1) таамаглал\nДараахьыг авч үзье:\n\\[\nY_t\n=\n\\phi Y_{t-1}\n+\n\\varepsilon_t.\n\\]\nНэг алхамын таамаглал нь\n\\[\n\\hat Y_{t+1|t}\n=\n\\phi Y_t.\n\\]\n(h)-алхамын таамаглал нь\n\\[\n\\hat Y_{t+h|t}\n=\n\\phi^h Y_t.\n\\]\n(h) үед таамаглал процессын дундаж руу ойртдог.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#arima-таамаглал",
     "href": "09-forecasting.html#arima-таамаглал",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.9 ARIMA таамаглал",
     "text": "10.9 ARIMA таамаглал\nARIMA загвар тохируулсан гэж үзье.\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(AirPassengers)\n\nfit\n\nТаамаглалыг дараахь байдлаар гаргана:\n\nfc &lt;- forecast(\n  fit,\n  h = 24\n)\n\nautoplot(fc)\n\nГаралт нь дараахь зүйлийг агуулна:\n\nцэгэн таамаглалууд,\nтаамаглалын интервалууд,\nирээдүйн алсын зай.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-интервалууд",
     "href": "09-forecasting.html#таамаглалын-интервалууд",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.10 Таамаглалын интервалууд",
     "text": "10.10 Таамаглалын интервалууд\nЗөвхөн цэгэн таамаглал хангалтгүй.\nТаамаглалын интервалууд тодорхойгүй байдлыг тоон хэлбэрээр илэрхийлдэг.\n95% таамаглалын интервал нь дараах хэлбэртэй:\n\\[\n\\hat Y_{t+h}\n\\pm\n1.96\n\\times\nSE(\\hat Y_{t+h}).\n\\]\nТаамаглалын тодорхойгүй байдал ерөнхийдөө алсын зайны урттай хамт нэмэгддэг.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#жишээ-airpassengers-өгөгдөл",
     "href": "09-forecasting.html#жишээ-airpassengers-өгөгдөл",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.11 Жишээ: AirPassengers өгөгдөл",
     "text": "10.11 Жишээ: AirPassengers өгөгдөл\n\nlibrary(forecast)\n\nfit &lt;- auto.arima(AirPassengers)\n\nfc &lt;- forecast(\n  fit,\n  h = 24\n)\n\nplot(fc)\n\nАжиглаарай:\n\nнэмэгдэж буй тодорхойгүй байдал,\nулирлын бүтэц,\nөргөжиж буй таамаглалын интервалууд.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#үлдэгдлийн-оношлогоо",
     "href": "09-forecasting.html#үлдэгдлийн-оношлогоо",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.12 Үлдэгдлийн оношлогоо",
     "text": "10.12 Үлдэгдлийн оношлогоо\nТаамаглалын загвар нь цагаан чимээтэй төстэй үлдэгдэл үлдээх ёстой.\n\n10.12.1 Үлдэгдлийн график\n\ncheckresiduals(fit)\n\n\n\n10.12.2 Хүсээгүй шинж чанарууд\nҮлдэгдэл нь дараахь шинж чанаруудыг харуулах ёстой:\n\nтэг дундаж,\nтогтмол дисперс,\nач холбогдолтой автокорреляцгүй байх.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#ljung-box-шалгалт",
     "href": "09-forecasting.html#ljung-box-шалгалт",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.13 Ljung-Box шалгалт",
     "text": "10.13 Ljung-Box шалгалт\nLjung-Box шалгалт нь үлдэгдлийн автокорреляцууд үлдсэн эсэхийг шалгадаг.\n\n10.13.1 Таамаглалууд\n\\[\nH_0:\n\\text{Үлдэгдлүүд корреляцгүй}\n\\]\n\\[\nH_1:\n\\text{Үлдэгдлийн автокорреляц байна}.\n\\]\n\n\n10.13.2 Жишээ\n\nBox.test(\n  residuals(fit),\n  lag = 20,\n  type = \"Ljung-Box\"\n)\n\nТом p-утга нь загварын тохиромжтой байдлыг дэмждэг.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-ажлын-урсгал",
     "href": "09-forecasting.html#таамаглалын-ажлын-урсгал",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.14 Таамаглалын ажлын урсгал",
     "text": "10.14 Таамаглалын ажлын урсгал\nЕрдийн таамаглалын журам нь:\n\nЦувааг зурах.\nСтационар байдлыг шалгах.\nШаардлагатай бол ялгавар авах.\nACF ба PACF-ийг шалгах.\nБоломжит загваруудыг тохируулах.\nAIC утгуудыг харьцуулах.\nҮлдэгдлийн оношлогоог шалгах.\nТаамаглалуудыг гаргах.\nТаамаглалын нарийвчлалыг үнэлэх.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#симуляцлагдсан-ar1-өгөгдөл-ашигласан-жишээ",
     "href": "09-forecasting.html#симуляцлагдсан-ar1-өгөгдөл-ашигласан-жишээ",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.15 Симуляцлагдсан AR(1) өгөгдөл ашигласан жишээ",
     "text": "10.15 Симуляцлагдсан AR(1) өгөгдөл ашигласан жишээ\n\nset.seed(123)\n\nx &lt;- arima.sim(\n  model=list(ar=.8),\n  n=200\n)\n\nplot.ts(\n  x,\n  main=\"Симуляцлагдсан AR(1) цуваа\"\n)\n\n\n\n\n\n\n\n\nЗагварыг үнэл:\n\nfit &lt;- arima(\n  x,\n  order=c(1,0,0)\n)\n\nfit\n\n\nCall:\narima(x = x, order = c(1, 0, 0))\n\nCoefficients:\n         ar1  intercept\n      0.7235    -0.0239\ns.e.  0.0491     0.2363\n\nsigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46\n\n\nҮнэлсэн параметрийг жинхэнэ утгатай харьцуул.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#таамаглалын-алсын-зай",
     "href": "09-forecasting.html#таамаглалын-алсын-зай",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.16 Таамаглалын алсын зай",
     "text": "10.16 Таамаглалын алсын зай\nТаамаглалын чанар ерөнхийдөө алсын зай нэмэгдэх тусам буурдаг.\n\n10.16.1 Богино хугацааны таамаглалууд\n\nИхэвчлэн илүү нарийвчлалтай.\nБага таамаглалын интервалууд.\n\n\n\n10.16.2 Урт хугацааны таамаглалууд\n\nИлүү их тодорхойгүй байдал.\nӨргөн таамаглалын интервалууд.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#практик-анхаарах-зүйлс",
     "href": "09-forecasting.html#практик-анхаарах-зүйлс",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.17 Практик анхаарах зүйлс",
     "text": "10.17 Практик анхаарах зүйлс\nСайн таамаглал нь дараахь зүйлийг шаарддаг:\n\nхангалттай өгөгдлийн чанар,\nтохиромжтой үед стационар байдал,\nболгоомжтой загварын сонголт,\nоношлогооны шалгалт.\n\nТаамаглал нь зөвхөн түүвэр доторх хамгийн бага алдаа гаргах тухай биш, харин найдвартай ирээдүйн таамаглалуудыг гаргах тухай юм.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#дүгнэлт",
     "href": "09-forecasting.html#дүгнэлт",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.18 Дүгнэлт",
     "text": "10.18 Дүгнэлт\nТаамаглал нь олон хугацааны цувааны шинжилгээний төв зорилго юм.\nЧухал ойлголтууд нь:\n\nтаамаглалын алсын зай,\nтаамаглалын алдаа,\nMAE,\nMSE,\nRMSE,\nMAPE,\nтаамаглалын интервалууд,\nүлдэгдлийн оношлогоо.\n\nARIMA загварууд нь стационар ба стационар бус хугацааны цувааг таамаглах хүчирхэг хүрээг бүрдүүлдэг.\nҮнэн зөв таамаглал нь дараахь зүйлийг шаарддаг:\n\nзохистой загвар тодорхойлох,\nпараметрийн үнэлгээ,\nзагварын баталгаажуулалт,\nтодорхойгүй байдлын бодит үнэлгээ.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
     "objectID": "09-forecasting.html#дасгал",
     "href": "09-forecasting.html#дасгал",
-    "title": "10  9. Таамаглал",
+    "title": "10  Таамаглал",
     "section": "10.19 Дасгал",
     "text": "10.19 Дасгал\n\nХугацааны цуваанд энгийн таамаглалын загварыг тохируул.\nMAE ба RMSE-ийг тооцоол.\nЦувааг сургалтын ба тестийн олонлогт хуваа.\nAR(1) загварыг тохируулж, таамаглал гарга.\nauto.arima() ашиглан ARIMA загварыг тохируул.\nӨрсөлдөж буй загваруудын таамаглалын нарийвчлалыг харьцуул.\n95% таамаглалын интервалуудыг байгуул.\nҮлдэгдэлд Ljung-Box шалгалт гүйцэтгэ.\nТаамаглалын тодорхойгүй байдал яагаад алсын зайны урттай хамт өсдөг вэ гэдгийг тайлбарла.\nИжил цувааны хувьд энгийн таамаглал ба ARIMA таамаглалыг харьцуул.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Таамаглал</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Таамаглал</span>"
     ]
   },
   {
