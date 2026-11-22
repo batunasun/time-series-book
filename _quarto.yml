@@ -1,6 +1,8 @@
 project:
   type: book
 
+lang: mn
+
 book:
   title: "Хугацааны цувааны шинжилгээ:R хэл дээрх практик хэрэглээ"
   author: "Давааням Батнасан"
@@ -23,6 +25,7 @@ book:
 
 format:
   html:
+    toc-title: "Дэд гарчиг"
     theme: cosmo
     toc: true
     number-sections: true
