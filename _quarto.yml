@@ -5,7 +5,12 @@ lang: mn
 
 book:
   title: "Хугацааны цувааны шинжилгээ:R хэл дээрх практик хэрэглээ"
-  cover-image: cover.png
+  cover-image: images/cover.png
+  favicon: images/must-logo.png
+
+website:
+  sidebar:
+    logo: images/must-logo.png
 
   chapters:
     - index.qmd
