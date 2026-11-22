@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1) – Хугацааны цувааны шинжилгээ</title>
+<title>5&nbsp; Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1) – Хугацааны цувааны шинжилгээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,10 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3dafd8cc5e5d05e6459be86de5c37a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,9 +147,180 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,7 +329,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-ar1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-ar1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,9 +342,16 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Хугацааны цувааны шинжилгээ</a> 
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -182,55 +364,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Агуулга</span></span></a>
+ <span class="menu-text">Агуулга</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -251,12 +439,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -267,48 +449,49 @@ window.Quarto = {
     <h2 id="toc-title">Дэд гарчиг</h2>
    
   <ul>
-  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">6.1</span> Оршил</a></li>
-  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">6.2</span> Тодорхойлолт</a></li>
-  <li><a href="#стационар-байдлын-нөхцөл" id="toc-стационар-байдлын-нөхцөл" class="nav-link" data-scroll-target="#стационар-байдлын-нөхцөл"><span class="header-section-number">6.3</span> Стационар байдлын нөхцөл</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">5.1</span> Оршил</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">5.2</span> Тодорхойлолт</a></li>
+  <li><a href="#стационар-байдлын-нөхцөл" id="toc-стационар-байдлын-нөхцөл" class="nav-link" data-scroll-target="#стационар-байдлын-нөхцөл"><span class="header-section-number">5.3</span> Стационар байдлын нөхцөл</a>
   <ul class="collapse">
-  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">6.3.1</span> Жишээнүүд</a></li>
+  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">5.3.1</span> Жишээнүүд</a></li>
   </ul></li>
-  <li><a href="#ar1-процессын-дундаж" id="toc-ar1-процессын-дундаж" class="nav-link" data-scroll-target="#ar1-процессын-дундаж"><span class="header-section-number">6.4</span> AR(1) процессын дундаж</a></li>
-  <li><a href="#ar1-процессын-дисперс" id="toc-ar1-процессын-дисперс" class="nav-link" data-scroll-target="#ar1-процессын-дисперс"><span class="header-section-number">6.5</span> AR(1) процессын дисперс</a></li>
-  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">6.6</span> Автоковариацын функц</a></li>
-  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">6.7</span> Автокорреляцын функц</a>
+  <li><a href="#ar1-процессын-дундаж" id="toc-ar1-процессын-дундаж" class="nav-link" data-scroll-target="#ar1-процессын-дундаж"><span class="header-section-number">5.4</span> AR(1) процессын дундаж</a></li>
+  <li><a href="#ar1-процессын-дисперс" id="toc-ar1-процессын-дисперс" class="nav-link" data-scroll-target="#ar1-процессын-дисперс"><span class="header-section-number">5.5</span> AR(1) процессын дисперс</a></li>
+  <li><a href="#автоковариацын-функц" id="toc-автоковариацын-функц" class="nav-link" data-scroll-target="#автоковариацын-функц"><span class="header-section-number">5.6</span> Автоковариацын функц</a></li>
+  <li><a href="#автокорреляцын-функц" id="toc-автокорреляцын-функц" class="nav-link" data-scroll-target="#автокорреляцын-функц"><span class="header-section-number">5.7</span> Автокорреляцын функц</a>
   <ul class="collapse">
-  <li><a href="#үр-дагавар" id="toc-үр-дагавар" class="nav-link" data-scroll-target="#үр-дагавар"><span class="header-section-number">6.7.1</span> Үр дагавар</a></li>
+  <li><a href="#үр-дагавар" id="toc-үр-дагавар" class="nav-link" data-scroll-target="#үр-дагавар"><span class="header-section-number">5.7.1</span> Үр дагавар</a></li>
   </ul></li>
-  <li><a href="#хэсэгчилсэн-автокорреляцын-функц" id="toc-хэсэгчилсэн-автокорреляцын-функц" class="nav-link" data-scroll-target="#хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">6.8</span> Хэсэгчилсэн автокорреляцын функц</a></li>
-  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">6.9</span> Симуляц</a>
+  <li><a href="#хэсэгчилсэн-автокорреляцын-функц" id="toc-хэсэгчилсэн-автокорреляцын-функц" class="nav-link" data-scroll-target="#хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">5.8</span> Хэсэгчилсэн автокорреляцын функц</a></li>
+  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">5.9</span> Симуляц</a>
   <ul class="collapse">
-  <li><a href="#эерэг-хамаарал" id="toc-эерэг-хамаарал" class="nav-link" data-scroll-target="#эерэг-хамаарал"><span class="header-section-number">6.9.1</span> Эерэг хамаарал</a></li>
-  <li><a href="#сөрөг-хамаарал" id="toc-сөрөг-хамаарал" class="nav-link" data-scroll-target="#сөрөг-хамаарал"><span class="header-section-number">6.9.2</span> Сөрөг хамаарал</a></li>
+  <li><a href="#эерэг-хамаарал" id="toc-эерэг-хамаарал" class="nav-link" data-scroll-target="#эерэг-хамаарал"><span class="header-section-number">5.9.1</span> Эерэг хамаарал</a></li>
+  <li><a href="#сөрөг-хамаарал" id="toc-сөрөг-хамаарал" class="nav-link" data-scroll-target="#сөрөг-хамаарал"><span class="header-section-number">5.9.2</span> Сөрөг хамаарал</a></li>
   </ul></li>
-  <li><a href="#ar1-процессын-acf" id="toc-ar1-процессын-acf" class="nav-link" data-scroll-target="#ar1-процессын-acf"><span class="header-section-number">6.10</span> AR(1) процессын ACF</a></li>
-  <li><a href="#ar1-процессын-pacf" id="toc-ar1-процессын-pacf" class="nav-link" data-scroll-target="#ar1-процессын-pacf"><span class="header-section-number">6.11</span> AR(1) процессын PACF</a></li>
-  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">6.12</span> Хоцролтын график</a></li>
-  <li><a href="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт" id="toc-phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="nav-link" data-scroll-target="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">6.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</a></li>
-  <li><a href="#параметрийн-үнэлгээ" id="toc-параметрийн-үнэлгээ" class="nav-link" data-scroll-target="#параметрийн-үнэлгээ"><span class="header-section-number">6.14</span> Параметрийн үнэлгээ</a></li>
-  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">6.15</span> Таамаглал</a></li>
-  <li><a href="#тайлбар" id="toc-тайлбар" class="nav-link" data-scroll-target="#тайлбар"><span class="header-section-number">6.16</span> Тайлбар</a>
+  <li><a href="#ar1-процессын-acf" id="toc-ar1-процессын-acf" class="nav-link" data-scroll-target="#ar1-процессын-acf"><span class="header-section-number">5.10</span> AR(1) процессын ACF</a></li>
+  <li><a href="#ar1-процессын-pacf" id="toc-ar1-процессын-pacf" class="nav-link" data-scroll-target="#ar1-процессын-pacf"><span class="header-section-number">5.11</span> AR(1) процессын PACF</a></li>
+  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">5.12</span> Хоцролтын график</a></li>
+  <li><a href="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт" id="toc-phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="nav-link" data-scroll-target="#phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">5.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</a></li>
+  <li><a href="#параметрийн-үнэлгээ" id="toc-параметрийн-үнэлгээ" class="nav-link" data-scroll-target="#параметрийн-үнэлгээ"><span class="header-section-number">5.14</span> Параметрийн үнэлгээ</a></li>
+  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">5.15</span> Таамаглал</a></li>
+  <li><a href="#тайлбар" id="toc-тайлбар" class="nav-link" data-scroll-target="#тайлбар"><span class="header-section-number">5.16</span> Тайлбар</a>
   <ul class="collapse">
-  <li><a href="#эерэг-phi" id="toc-эерэг-phi" class="nav-link" data-scroll-target="#эерэг-phi"><span class="header-section-number">6.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#сөрөг-phi" id="toc-сөрөг-phi" class="nav-link" data-scroll-target="#сөрөг-phi"><span class="header-section-number">6.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#тэгтэй-ойролцоо" id="toc-тэгтэй-ойролцоо" class="nav-link" data-scroll-target="#тэгтэй-ойролцоо"><span class="header-section-number">6.16.3</span> Тэгтэй ойролцоо</a></li>
+  <li><a href="#эерэг-phi" id="toc-эерэг-phi" class="nav-link" data-scroll-target="#эерэг-phi"><span class="header-section-number">5.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#сөрөг-phi" id="toc-сөрөг-phi" class="nav-link" data-scroll-target="#сөрөг-phi"><span class="header-section-number">5.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#тэгтэй-ойролцоо" id="toc-тэгтэй-ойролцоо" class="nav-link" data-scroll-target="#тэгтэй-ойролцоо"><span class="header-section-number">5.16.3</span> Тэгтэй ойролцоо</a></li>
   </ul></li>
-  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">6.17</span> Дүгнэлт</a></li>
-  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">6.18</span> Дасгал</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">5.17</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">5.18</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></h1>
 </div>
 
 
@@ -325,14 +508,14 @@ window.Quarto = {
 </header>
 
 
-<section id="оршил" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">6.1</span> Оршил</h2>
+<section id="оршил" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">5.1</span> Оршил</h2>
 <p>AR(1) загвар нь хамгийн энгийн бөгөөд хамгийн чухал авторегрессив загвар юм.</p>
 <p>AR(1) процесс дээр одоогийн ажиглалт нь шууд өмнөх ажиглалт болон санамсаргүй алдаанаас хамаардаг.</p>
 <p>Энэ загвар нь дээд эрэмбийн авторегрессив загварууд болон олон таамаглах аргуудыг ойлгох үндэс болдог.</p>
 </section>
-<section id="тодорхойлолт" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">6.2</span> Тодорхойлолт</h2>
+<section id="тодорхойлолт" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">5.2</span> Тодорхойлолт</h2>
 <p>AR(1) процессыг</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t
@@ -345,8 +528,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 </ul>
 <p><span class="math inline">\(\phi\)</span> параметр нь дараалсан ажиглалтуудын хоорондын хамаарлын хүчийг тодорхойлдог.</p>
 </section>
-<section id="стационар-байдлын-нөхцөл" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="стационар-байдлын-нөхцөл"><span class="header-section-number">6.3</span> Стационар байдлын нөхцөл</h2>
+<section id="стационар-байдлын-нөхцөл" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="стационар-байдлын-нөхцөл"><span class="header-section-number">5.3</span> Стационар байдлын нөхцөл</h2>
 <p>AR(1) процесс нь</p>
 <p><span class="math display">\[
 |\phi|&lt;1
@@ -357,8 +540,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 |\phi|\ge 1
 \]</span></p>
 <p>бол процесс стационар бус байна.</p>
-<section id="жишээнүүд" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">6.3.1</span> Жишээнүүд</h3>
+<section id="жишээнүүд" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">5.3.1</span> Жишээнүүд</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -391,8 +574,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 </table>
 </section>
 </section>
-<section id="ar1-процессын-дундаж" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="ar1-процессын-дундаж"><span class="header-section-number">6.4</span> AR(1) процессын дундаж</h2>
+<section id="ar1-процессын-дундаж" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="ar1-процессын-дундаж"><span class="header-section-number">5.4</span> AR(1) процессын дундаж</h2>
 <p>Математик хүлээлт авбал</p>
 <p><span class="math display">\[
 E(Y_t)
@@ -412,8 +595,8 @@ E(Y_t)=\mu.
 \mu=0.
 \]</span></p>
 </section>
-<section id="ar1-процессын-дисперс" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="ar1-процессын-дисперс"><span class="header-section-number">6.5</span> AR(1) процессын дисперс</h2>
+<section id="ar1-процессын-дисперс" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="ar1-процессын-дисперс"><span class="header-section-number">5.5</span> AR(1) процессын дисперс</h2>
 <p>Учир нь</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t,
@@ -427,8 +610,8 @@ Var(Y_t)
 \]</span></p>
 <p><span class="math inline">\(|\phi|\)</span> 1-д ойртох тусам дисперс нэмэгддэг.</p>
 </section>
-<section id="автоковариацын-функц" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">6.6</span> Автоковариацын функц</h2>
+<section id="автоковариацын-функц" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="автоковариацын-функц"><span class="header-section-number">5.6</span> Автоковариацын функц</h2>
 <p>Стационар AR(1) процессын хувьд</p>
 <p><span class="math display">\[
 \gamma(k)
@@ -444,15 +627,15 @@ Var(Y_t)
 \]</span></p>
 <p>бүх автоковариацууд <span class="math inline">\(\phi\)</span>-ээр тодорхойлогдоно.</p>
 </section>
-<section id="автокорреляцын-функц" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">6.7</span> Автокорреляцын функц</h2>
+<section id="автокорреляцын-функц" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="автокорреляцын-функц"><span class="header-section-number">5.7</span> Автокорреляцын функц</h2>
 <p>AR(1) процессын ACF нь</p>
 <p><span class="math display">\[
 \rho(k)=\phi^k.
 \]</span></p>
 <p>Энэ нь хугацааны цувааны шинжилгээний хамгийн чухал үр дүнгүүдийн нэг юм.</p>
-<section id="үр-дагавар" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="үр-дагавар"><span class="header-section-number">6.7.1</span> Үр дагавар</h3>
+<section id="үр-дагавар" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="үр-дагавар"><span class="header-section-number">5.7.1</span> Үр дагавар</h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 \phi=0.8,
@@ -470,8 +653,8 @@ Var(Y_t)
 <p>Иймд ACF тэг рүү аажмаар буурдаг.</p>
 </section>
 </section>
-<section id="хэсэгчилсэн-автокорреляцын-функц" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">6.8</span> Хэсэгчилсэн автокорреляцын функц</h2>
+<section id="хэсэгчилсэн-автокорреляцын-функц" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="хэсэгчилсэн-автокорреляцын-функц"><span class="header-section-number">5.8</span> Хэсэгчилсэн автокорреляцын функц</h2>
 <p>AR(1) процессын хувьд</p>
 <p><span class="math display">\[
 PACF(1)=\phi,
@@ -484,10 +667,10 @@ PACF(k)=0,
 <p>Иймд PACF нь 1 хоцролтын дараа тасардаг.</p>
 <p>Энэ шинж чанарыг AR(1) загварыг тодорхойлоход өргөн ашигладаг.</p>
 </section>
-<section id="симуляц" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">6.9</span> Симуляц</h2>
-<section id="эерэг-хамаарал" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="эерэг-хамаарал"><span class="header-section-number">6.9.1</span> Эерэг хамаарал</h3>
+<section id="симуляц" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">5.9</span> Симуляц</h2>
+<section id="эерэг-хамаарал" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="эерэг-хамаарал"><span class="header-section-number">5.9.1</span> Эерэг хамаарал</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -511,8 +694,8 @@ PACF(k)=0,
 </div>
 <p>Дараалсан ажиглалтуудын үргэлжлэлийг ажиглаарай.</p>
 </section>
-<section id="сөрөг-хамаарал" class="level3" data-number="6.9.2">
-<h3 data-number="6.9.2" class="anchored" data-anchor-id="сөрөг-хамаарал"><span class="header-section-number">6.9.2</span> Сөрөг хамаарал</h3>
+<section id="сөрөг-хамаарал" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="сөрөг-хамаарал"><span class="header-section-number">5.9.2</span> Сөрөг хамаарал</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -537,8 +720,8 @@ PACF(k)=0,
 <p>Дараалсан ажиглалтууд тэмдгээрээ ээлжлэн солигдох хандлагатай байдаг.</p>
 </section>
 </section>
-<section id="ar1-процессын-acf" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="ar1-процессын-acf"><span class="header-section-number">6.10</span> AR(1) процессын ACF</h2>
+<section id="ar1-процессын-acf" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="ar1-процессын-acf"><span class="header-section-number">5.10</span> AR(1) процессын ACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
@@ -555,8 +738,8 @@ PACF(k)=0,
 <p>ACF геометрээр буурдаг.</p>
 <p>Энэ аажмаар буурах зан төлөв нь авторегрессив процессуудын онцлог шинж юм.</p>
 </section>
-<section id="ar1-процессын-pacf" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="ar1-процессын-pacf"><span class="header-section-number">6.11</span> AR(1) процессын PACF</h2>
+<section id="ar1-процессын-pacf" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="ar1-процессын-pacf"><span class="header-section-number">5.11</span> AR(1) процессын PACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ar1,</span>
@@ -572,8 +755,8 @@ PACF(k)=0,
 </div>
 <p>Зөвхөн эхний хоцролт ач холбогдолтой байх ёстой.</p>
 </section>
-<section id="хоцролтын-график" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">6.12</span> Хоцролтын график</h2>
+<section id="хоцролтын-график" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">5.12</span> Хоцролтын график</h2>
 <p>Хоцролтын график нь <span class="math inline">\(Y_t\)</span> ба <span class="math inline">\(Y_{t-1}\)</span> хоорондын хамаарлыг илрүүлдэг.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
@@ -593,8 +776,8 @@ PACF(k)=0,
 </div>
 <p>Эерэг шугаман хэв маяг харагдах ёстой.</p>
 </section>
-<section id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">6.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</h2>
+<section id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="phi-ийн-өөр-өөр-утгуудын-харьцуулалт"><span class="header-section-number">5.13</span> <span class="math inline">\(\phi\)</span>-ийн өөр өөр утгуудын харьцуулалт</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -627,8 +810,8 @@ PACF(k)=0,
 </div>
 <p><span class="math inline">\(\phi\)</span> өөрчлөгдөх тусам хамаарлын зэрэг хэрхэн өөрчлөгдөж байгааг ажиглаарай.</p>
 </section>
-<section id="параметрийн-үнэлгээ" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="параметрийн-үнэлгээ"><span class="header-section-number">6.14</span> Параметрийн үнэлгээ</h2>
+<section id="параметрийн-үнэлгээ" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="параметрийн-үнэлгээ"><span class="header-section-number">5.14</span> Параметрийн үнэлгээ</h2>
 <p>AR(1) загварыг хамгийн их магадлалын аргаар үнэлж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(</span>
@@ -652,8 +835,8 @@ sigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46</code></pr
 </div>
 <p><span class="math inline">\(\phi\)</span>-ийн үнэлсэн утга нь симуляцад ашигласан жинхэнэ утгатай ойрхон байх ёстой.</p>
 </section>
-<section id="таамаглал" class="level2" data-number="6.15">
-<h2 data-number="6.15" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">6.15</span> Таамаглал</h2>
+<section id="таамаглал" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">5.15</span> Таамаглал</h2>
 <p>AR(1) загварын хувьд</p>
 <p><span class="math display">\[
 \hat{Y}_{t+1}
@@ -672,26 +855,26 @@ sigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46</code></pr
 \]</span></p>
 <p>бөгөөд таамаглалууд процессын дундаж руу ойртдог.</p>
 </section>
-<section id="тайлбар" class="level2" data-number="6.16">
-<h2 data-number="6.16" class="anchored" data-anchor-id="тайлбар"><span class="header-section-number">6.16</span> Тайлбар</h2>
-<section id="эерэг-phi" class="level3" data-number="6.16.1">
-<h3 data-number="6.16.1" class="anchored" data-anchor-id="эерэг-phi"><span class="header-section-number">6.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></h3>
+<section id="тайлбар" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="тайлбар"><span class="header-section-number">5.16</span> Тайлбар</h2>
+<section id="эерэг-phi" class="level3" data-number="5.16.1">
+<h3 data-number="5.16.1" class="anchored" data-anchor-id="эерэг-phi"><span class="header-section-number">5.16.1</span> Эерэг <span class="math inline">\(\phi\)</span></h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 \phi&gt;0,
 \]</span></p>
 <p>бол том утгууд том утгуудыг дагах, жижиг утгууд жижиг утгуудыг дагах хандлагатай байдаг.</p>
 </section>
-<section id="сөрөг-phi" class="level3" data-number="6.16.2">
-<h3 data-number="6.16.2" class="anchored" data-anchor-id="сөрөг-phi"><span class="header-section-number">6.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></h3>
+<section id="сөрөг-phi" class="level3" data-number="5.16.2">
+<h3 data-number="5.16.2" class="anchored" data-anchor-id="сөрөг-phi"><span class="header-section-number">5.16.2</span> Сөрөг <span class="math inline">\(\phi\)</span></h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 \phi&lt;0,
 \]</span></p>
 <p>бол дараалсан ажиглалтууд эсрэг чиглэлд хөдлөх хандлагатай байдаг.</p>
 </section>
-<section id="тэгтэй-ойролцоо" class="level3" data-number="6.16.3">
-<h3 data-number="6.16.3" class="anchored" data-anchor-id="тэгтэй-ойролцоо"><span class="header-section-number">6.16.3</span> Тэгтэй ойролцоо</h3>
+<section id="тэгтэй-ойролцоо" class="level3" data-number="5.16.3">
+<h3 data-number="5.16.3" class="anchored" data-anchor-id="тэгтэй-ойролцоо"><span class="header-section-number">5.16.3</span> Тэгтэй ойролцоо</h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 \phi\approx 0,
@@ -699,8 +882,8 @@ sigma^2 estimated as 0.8744:  log likelihood = -270.73,  aic = 547.46</code></pr
 <p>бол процесс цагаан чимээтэй төстэй болдог.</p>
 </section>
 </section>
-<section id="дүгнэлт" class="level2" data-number="6.17">
-<h2 data-number="6.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">6.17</span> Дүгнэлт</h2>
+<section id="дүгнэлт" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">5.17</span> Дүгнэлт</h2>
 <p>AR(1) процесс</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t
@@ -716,8 +899,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 </ul>
 <p>Эдгээр шинж чанарууд AR(1)-ийг хугацааны цувааны шинжилгээний үндсэн загвар болгодог.</p>
 </section>
-<section id="дасгал" class="level2" data-number="6.18">
-<h2 data-number="6.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">6.18</span> Дасгал</h2>
+<section id="дасгал" class="level2" data-number="5.18">
+<h2 data-number="5.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">5.18</span> Дасгал</h2>
 <ol type="1">
 <li><span class="math inline">\(\phi=0.5\)</span> бүхий AR(1) процессыг симуляцла.</li>
 <li>Цуваа, ACF, PACF-ийг зур.</li>
@@ -735,6 +918,54 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1212,12 +1443,12 @@ Y_t=\phi Y_{t-1}+\varepsilon_t
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./04-pacf.html" class="pagination-link" aria-label="Хэсэгчилсэн автокорреляцын функц (PACF)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./06-ma1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

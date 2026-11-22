@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Авторегрессив хөдөлгөөнт дундаж процесс: ARMA – Хугацааны цувааны шинжилгээ</title>
+<title>7&nbsp; Авторегрессив хөдөлгөөнт дундаж процесс: ARMA – Хугацааны цувааны шинжилгээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,10 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3dafd8cc5e5d05e6459be86de5c37a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,9 +147,180 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,7 +329,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-arma.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-arma.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,9 +342,16 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Хугацааны цувааны шинжилгээ</a> 
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -182,55 +364,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Агуулга</span></span></a>
+ <span class="menu-text">Агуулга</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -251,12 +439,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -267,45 +449,46 @@ window.Quarto = {
     <h2 id="toc-title">Дэд гарчиг</h2>
    
   <ul>
-  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">8.1</span> Оршил</a></li>
-  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">8.2</span> Тодорхойлолт</a></li>
-  <li><a href="#онцгой-тохиолдлууд" id="toc-онцгой-тохиолдлууд" class="nav-link" data-scroll-target="#онцгой-тохиолдлууд"><span class="header-section-number">8.3</span> Онцгой тохиолдлууд</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">7.1</span> Оршил</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">7.2</span> Тодорхойлолт</a></li>
+  <li><a href="#онцгой-тохиолдлууд" id="toc-онцгой-тохиолдлууд" class="nav-link" data-scroll-target="#онцгой-тохиолдлууд"><span class="header-section-number">7.3</span> Онцгой тохиолдлууд</a>
   <ul class="collapse">
-  <li><a href="#ar-загвар" id="toc-ar-загвар" class="nav-link" data-scroll-target="#ar-загвар"><span class="header-section-number">8.3.1</span> AR загвар</a></li>
-  <li><a href="#ma-загвар" id="toc-ma-загвар" class="nav-link" data-scroll-target="#ma-загвар"><span class="header-section-number">8.3.2</span> MA загвар</a></li>
+  <li><a href="#ar-загвар" id="toc-ar-загвар" class="nav-link" data-scroll-target="#ar-загвар"><span class="header-section-number">7.3.1</span> AR загвар</a></li>
+  <li><a href="#ma-загвар" id="toc-ma-загвар" class="nav-link" data-scroll-target="#ma-загвар"><span class="header-section-number">7.3.2</span> MA загвар</a></li>
   </ul></li>
-  <li><a href="#arma11-загвар" id="toc-arma11-загвар" class="nav-link" data-scroll-target="#arma11-загвар"><span class="header-section-number">8.4</span> ARMA(1,1) загвар</a></li>
-  <li><a href="#стационар-байдал" id="toc-стационар-байдал" class="nav-link" data-scroll-target="#стационар-байдал"><span class="header-section-number">8.5</span> Стационар байдал</a>
+  <li><a href="#arma11-загвар" id="toc-arma11-загвар" class="nav-link" data-scroll-target="#arma11-загвар"><span class="header-section-number">7.4</span> ARMA(1,1) загвар</a></li>
+  <li><a href="#стационар-байдал" id="toc-стационар-байдал" class="nav-link" data-scroll-target="#стационар-байдал"><span class="header-section-number">7.5</span> Стационар байдал</a>
   <ul class="collapse">
-  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">8.5.1</span> Жишээнүүд</a></li>
+  <li><a href="#жишээнүүд" id="toc-жишээнүүд" class="nav-link" data-scroll-target="#жишээнүүд"><span class="header-section-number">7.5.1</span> Жишээнүүд</a></li>
   </ul></li>
-  <li><a href="#буцаах-боломжтой-байдал" id="toc-буцаах-боломжтой-байдал" class="nav-link" data-scroll-target="#буцаах-боломжтой-байдал"><span class="header-section-number">8.6</span> Буцаах боломжтой байдал</a></li>
-  <li><a href="#дундаж" id="toc-дундаж" class="nav-link" data-scroll-target="#дундаж"><span class="header-section-number">8.7</span> Дундаж</a></li>
-  <li><a href="#arma11-ийн-симуляц" id="toc-arma11-ийн-симуляц" class="nav-link" data-scroll-target="#arma11-ийн-симуляц"><span class="header-section-number">8.8</span> ARMA(1,1)-ийн симуляц</a></li>
-  <li><a href="#arma-процессын-acf" id="toc-arma-процессын-acf" class="nav-link" data-scroll-target="#arma-процессын-acf"><span class="header-section-number">8.9</span> ARMA процессын ACF</a></li>
-  <li><a href="#arma-процессын-pacf" id="toc-arma-процессын-pacf" class="nav-link" data-scroll-target="#arma-процессын-pacf"><span class="header-section-number">8.10</span> ARMA процессын PACF</a></li>
-  <li><a href="#загвар-тодорхойлох" id="toc-загвар-тодорхойлох" class="nav-link" data-scroll-target="#загвар-тодорхойлох"><span class="header-section-number">8.11</span> Загвар тодорхойлох</a>
+  <li><a href="#буцаах-боломжтой-байдал" id="toc-буцаах-боломжтой-байдал" class="nav-link" data-scroll-target="#буцаах-боломжтой-байдал"><span class="header-section-number">7.6</span> Буцаах боломжтой байдал</a></li>
+  <li><a href="#дундаж" id="toc-дундаж" class="nav-link" data-scroll-target="#дундаж"><span class="header-section-number">7.7</span> Дундаж</a></li>
+  <li><a href="#arma11-ийн-симуляц" id="toc-arma11-ийн-симуляц" class="nav-link" data-scroll-target="#arma11-ийн-симуляц"><span class="header-section-number">7.8</span> ARMA(1,1)-ийн симуляц</a></li>
+  <li><a href="#arma-процессын-acf" id="toc-arma-процессын-acf" class="nav-link" data-scroll-target="#arma-процессын-acf"><span class="header-section-number">7.9</span> ARMA процессын ACF</a></li>
+  <li><a href="#arma-процессын-pacf" id="toc-arma-процессын-pacf" class="nav-link" data-scroll-target="#arma-процессын-pacf"><span class="header-section-number">7.10</span> ARMA процессын PACF</a></li>
+  <li><a href="#загвар-тодорхойлох" id="toc-загвар-тодорхойлох" class="nav-link" data-scroll-target="#загвар-тодорхойлох"><span class="header-section-number">7.11</span> Загвар тодорхойлох</a>
   <ul class="collapse">
-  <li><a href="#arp" id="toc-arp" class="nav-link" data-scroll-target="#arp"><span class="header-section-number">8.11.1</span> AR(p)</a></li>
-  <li><a href="#maq" id="toc-maq" class="nav-link" data-scroll-target="#maq"><span class="header-section-number">8.11.2</span> MA(q)</a></li>
-  <li><a href="#armapq" id="toc-armapq" class="nav-link" data-scroll-target="#armapq"><span class="header-section-number">8.11.3</span> ARMA(p,q)</a></li>
+  <li><a href="#arp" id="toc-arp" class="nav-link" data-scroll-target="#arp"><span class="header-section-number">7.11.1</span> AR(p)</a></li>
+  <li><a href="#maq" id="toc-maq" class="nav-link" data-scroll-target="#maq"><span class="header-section-number">7.11.2</span> MA(q)</a></li>
+  <li><a href="#armapq" id="toc-armapq" class="nav-link" data-scroll-target="#armapq"><span class="header-section-number">7.11.3</span> ARMA(p,q)</a></li>
   </ul></li>
-  <li><a href="#ar1-ma1-arma11-ийг-харьцуулах" id="toc-ar1-ma1-arma11-ийг-харьцуулах" class="nav-link" data-scroll-target="#ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">8.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</a></li>
-  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">8.13</span> Хоцролтын график</a></li>
-  <li><a href="#загварын-үнэлгээ" id="toc-загварын-үнэлгээ" class="nav-link" data-scroll-target="#загварын-үнэлгээ"><span class="header-section-number">8.14</span> Загварын үнэлгээ</a></li>
-  <li><a href="#aic-ашиглан-загвар-сонгох" id="toc-aic-ашиглан-загвар-сонгох" class="nav-link" data-scroll-target="#aic-ашиглан-загвар-сонгох"><span class="header-section-number">8.15</span> AIC ашиглан загвар сонгох</a></li>
-  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">8.16</span> Таамаглал</a></li>
-  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">8.17</span> Дүгнэлт</a></li>
-  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">8.18</span> Дасгал</a></li>
+  <li><a href="#ar1-ma1-arma11-ийг-харьцуулах" id="toc-ar1-ma1-arma11-ийг-харьцуулах" class="nav-link" data-scroll-target="#ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">7.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</a></li>
+  <li><a href="#хоцролтын-график" id="toc-хоцролтын-график" class="nav-link" data-scroll-target="#хоцролтын-график"><span class="header-section-number">7.13</span> Хоцролтын график</a></li>
+  <li><a href="#загварын-үнэлгээ" id="toc-загварын-үнэлгээ" class="nav-link" data-scroll-target="#загварын-үнэлгээ"><span class="header-section-number">7.14</span> Загварын үнэлгээ</a></li>
+  <li><a href="#aic-ашиглан-загвар-сонгох" id="toc-aic-ашиглан-загвар-сонгох" class="nav-link" data-scroll-target="#aic-ашиглан-загвар-сонгох"><span class="header-section-number">7.15</span> AIC ашиглан загвар сонгох</a></li>
+  <li><a href="#таамаглал" id="toc-таамаглал" class="nav-link" data-scroll-target="#таамаглал"><span class="header-section-number">7.16</span> Таамаглал</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">7.17</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">7.18</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></h1>
 </div>
 
 
@@ -322,8 +505,8 @@ window.Quarto = {
 </header>
 
 
-<section id="оршил" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">8.1</span> Оршил</h2>
+<section id="оршил" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">7.1</span> Оршил</h2>
 <p>ARMA загвар нь авторегрессив (AR) болон хөдөлгөөнт дундаж (MA) процессуудын санааг нэгтгэдэг.</p>
 <p>Энэ нь стационар хугацааны цувааны загваруудын хамгийн чухал ангиллын нэг бөгөөд Box-Jenkins аргачлалын үндэс болдог.</p>
 <p>ARMA загвар нь дараахь хоёрыг хоёуланг нь илэрхийлж чадна:</p>
@@ -332,8 +515,8 @@ window.Quarto = {
 <li>өнгөрсөн шокоор дамжих богино хугацааны хамаарал.</li>
 </ul>
 </section>
-<section id="тодорхойлолт" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">8.2</span> Тодорхойлолт</h2>
+<section id="тодорхойлолт" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">7.2</span> Тодорхойлолт</h2>
 <p>ARMA((p,q)) процессыг</p>
 <p><span class="math display">\[
 Y_t
@@ -362,10 +545,10 @@ WN(0,\sigma^2).
 <li>(q) = хөдөлгөөнт дундажийн эрэмбэ.</li>
 </ul>
 </section>
-<section id="онцгой-тохиолдлууд" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="онцгой-тохиолдлууд"><span class="header-section-number">8.3</span> Онцгой тохиолдлууд</h2>
-<section id="ar-загвар" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="ar-загвар"><span class="header-section-number">8.3.1</span> AR загвар</h3>
+<section id="онцгой-тохиолдлууд" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="онцгой-тохиолдлууд"><span class="header-section-number">7.3</span> Онцгой тохиолдлууд</h2>
+<section id="ar-загвар" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="ar-загвар"><span class="header-section-number">7.3.1</span> AR загвар</h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 q=0,
@@ -375,8 +558,8 @@ q=0,
 ARMA(p,0)=AR(p).
 \]</span></p>
 </section>
-<section id="ma-загвар" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="ma-загвар"><span class="header-section-number">8.3.2</span> MA загвар</h3>
+<section id="ma-загвар" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="ma-загвар"><span class="header-section-number">7.3.2</span> MA загвар</h3>
 <p>Хэрэв</p>
 <p><span class="math display">\[
 p=0,
@@ -388,8 +571,8 @@ ARMA(0,q)=MA(q).
 <p>Иймд AR ба MA процессууд нь ARMA загварын онцгой тохиолдлууд юм.</p>
 </section>
 </section>
-<section id="arma11-загвар" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="arma11-загвар"><span class="header-section-number">8.4</span> ARMA(1,1) загвар</h2>
+<section id="arma11-загвар" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="arma11-загвар"><span class="header-section-number">7.4</span> ARMA(1,1) загвар</h2>
 <p>Хамгийн энгийн ARMA загвар нь</p>
 <p><span class="math display">\[
 Y_t
@@ -406,16 +589,16 @@ Y_t
 <li>MA(1)-ийн шокийн бүтэц.</li>
 </ul>
 </section>
-<section id="стационар-байдал" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="стационар-байдал"><span class="header-section-number">8.5</span> Стационар байдал</h2>
+<section id="стационар-байдал" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="стационар-байдал"><span class="header-section-number">7.5</span> Стационар байдал</h2>
 <p>ARMA процессуудын хувьд стационар байдал нь AR хэсгээс хамаарна.</p>
 <p>ARMA(1,1)-ийн хувьд стационар байхын тулд</p>
 <p><span class="math display">\[
 |\phi|&lt;1
 \]</span></p>
 <p>шаардлагатай.</p>
-<section id="жишээнүүд" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">8.5.1</span> Жишээнүүд</h3>
+<section id="жишээнүүд" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="жишээнүүд"><span class="header-section-number">7.5.1</span> Жишээнүүд</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -448,8 +631,8 @@ Y_t
 </table>
 </section>
 </section>
-<section id="буцаах-боломжтой-байдал" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="буцаах-боломжтой-байдал"><span class="header-section-number">8.6</span> Буцаах боломжтой байдал</h2>
+<section id="буцаах-боломжтой-байдал" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="буцаах-боломжтой-байдал"><span class="header-section-number">7.6</span> Буцаах боломжтой байдал</h2>
 <p>Буцаах боломжтой байдал нь MA хэсгээс хамаарна.</p>
 <p>ARMA(1,1)-ийн хувьд буцаах боломжтой байхын тулд</p>
 <p><span class="math display">\[
@@ -458,16 +641,16 @@ Y_t
 <p>шаардлагатай.</p>
 <p>Энэ нь процессын цор ганц дүрслэлийг баталгаажуулдаг.</p>
 </section>
-<section id="дундаж" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="дундаж"><span class="header-section-number">8.7</span> Дундаж</h2>
+<section id="дундаж" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="дундаж"><span class="header-section-number">7.7</span> Дундаж</h2>
 <p>Стационар ARMA(1,1)-ийн хувьд</p>
 <p><span class="math display">\[
 E(Y_t)=0.
 \]</span></p>
 <p>Ерөнхийдөө, хэрэв тогтмол гишүүн орсон бол дундаж нь цаг хугацааны явцад тогтмол байна.</p>
 </section>
-<section id="arma11-ийн-симуляц" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="arma11-ийн-симуляц"><span class="header-section-number">8.8</span> ARMA(1,1)-ийн симуляц</h2>
+<section id="arma11-ийн-симуляц" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="arma11-ийн-симуляц"><span class="header-section-number">7.8</span> ARMA(1,1)-ийн симуляц</h2>
 <p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t
@@ -501,8 +684,8 @@ Y_t
 </div>
 <p>AR бүрэлдэхүүнээс үүсэх үргэлжлэл ба MA бүрэлдэхүүнээс үүсэх богино хугацааны нөлөөг ажиглаарай.</p>
 </section>
-<section id="arma-процессын-acf" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="arma-процессын-acf"><span class="header-section-number">8.9</span> ARMA процессын ACF</h2>
+<section id="arma-процессын-acf" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="arma-процессын-acf"><span class="header-section-number">7.9</span> ARMA процессын ACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
@@ -520,8 +703,8 @@ Y_t
 <p>Цэвэр AR загваруудаас ялгаатай нь хэв маяг нь ихэвчлэн илүү төвөгтэй байдаг.</p>
 <p>ACF ерөнхийдөө тэг рүү аажмаар буурдаг.</p>
 </section>
-<section id="arma-процессын-pacf" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="arma-процессын-pacf"><span class="header-section-number">8.10</span> ARMA процессын PACF</h2>
+<section id="arma-процессын-pacf" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="arma-процессын-pacf"><span class="header-section-number">7.10</span> ARMA процессын PACF</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  arma11,</span>
@@ -538,24 +721,24 @@ Y_t
 <p>PACF мөн аажмаар буурдаг.</p>
 <p>Энэ нь ARMA загваруудын таних шинж чанаруудын нэг юм.</p>
 </section>
-<section id="загвар-тодорхойлох" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="загвар-тодорхойлох"><span class="header-section-number">8.11</span> Загвар тодорхойлох</h2>
-<section id="arp" class="level3" data-number="8.11.1">
-<h3 data-number="8.11.1" class="anchored" data-anchor-id="arp"><span class="header-section-number">8.11.1</span> AR(p)</h3>
+<section id="загвар-тодорхойлох" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="загвар-тодорхойлох"><span class="header-section-number">7.11</span> Загвар тодорхойлох</h2>
+<section id="arp" class="level3" data-number="7.11.1">
+<h3 data-number="7.11.1" class="anchored" data-anchor-id="arp"><span class="header-section-number">7.11.1</span> AR(p)</h3>
 <ul>
 <li>ACF аажмаар буурна.</li>
 <li>PACF тасарна.</li>
 </ul>
 </section>
-<section id="maq" class="level3" data-number="8.11.2">
-<h3 data-number="8.11.2" class="anchored" data-anchor-id="maq"><span class="header-section-number">8.11.2</span> MA(q)</h3>
+<section id="maq" class="level3" data-number="7.11.2">
+<h3 data-number="7.11.2" class="anchored" data-anchor-id="maq"><span class="header-section-number">7.11.2</span> MA(q)</h3>
 <ul>
 <li>ACF тасарна.</li>
 <li>PACF аажмаар буурна.</li>
 </ul>
 </section>
-<section id="armapq" class="level3" data-number="8.11.3">
-<h3 data-number="8.11.3" class="anchored" data-anchor-id="armapq"><span class="header-section-number">8.11.3</span> ARMA(p,q)</h3>
+<section id="armapq" class="level3" data-number="7.11.3">
+<h3 data-number="7.11.3" class="anchored" data-anchor-id="armapq"><span class="header-section-number">7.11.3</span> ARMA(p,q)</h3>
 <ul>
 <li>ACF аажмаар буурна.</li>
 <li>PACF аажмаар буурна.</li>
@@ -563,8 +746,8 @@ Y_t
 <p>Иймд ARMA загваруудыг ихэвчлэн хоёр функцийг нэгэн зэрэг шалгаж тодорхойлдог.</p>
 </section>
 </section>
-<section id="ar1-ma1-arma11-ийг-харьцуулах" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">8.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</h2>
+<section id="ar1-ma1-arma11-ийг-харьцуулах" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="ar1-ma1-arma11-ийг-харьцуулах"><span class="header-section-number">7.12</span> AR(1), MA(1), ARMA(1,1)-ийг харьцуулах</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -601,8 +784,8 @@ Y_t
 </div>
 <p>Онцлог хэв маягуудыг харьцуулаарай.</p>
 </section>
-<section id="хоцролтын-график" class="level2" data-number="8.13">
-<h2 data-number="8.13" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">8.13</span> Хоцролтын график</h2>
+<section id="хоцролтын-график" class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="хоцролтын-график"><span class="header-section-number">7.13</span> Хоцролтын график</h2>
 <p>Хамаарлыг дүрслэхэд хоцролтын график ашиглаж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
@@ -622,8 +805,8 @@ Y_t
 </div>
 <p>Хамаарал нь ерөнхийдөө цагаан чимээнээс илүү хүчтэй бөгөөд AR ба MA нөлөөг хоёуланг нь илэрхийлдэг.</p>
 </section>
-<section id="загварын-үнэлгээ" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="загварын-үнэлгээ"><span class="header-section-number">8.14</span> Загварын үнэлгээ</h2>
+<section id="загварын-үнэлгээ" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="загварын-үнэлгээ"><span class="header-section-number">7.14</span> Загварын үнэлгээ</h2>
 <p>ARMA(1,1) загварыг хамгийн их магадлалын аргаар үнэлж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(</span>
@@ -647,8 +830,8 @@ sigma^2 estimated as 1.029:  log likelihood = -430.61,  aic = 869.22</code></pre
 </div>
 <p>Үнэлсэн коэффициентүүд нь симуляцад ашигласан утгуудтай ойрхон байх ёстой.</p>
 </section>
-<section id="aic-ашиглан-загвар-сонгох" class="level2" data-number="8.15">
-<h2 data-number="8.15" class="anchored" data-anchor-id="aic-ашиглан-загвар-сонгох"><span class="header-section-number">8.15</span> AIC ашиглан загвар сонгох</h2>
+<section id="aic-ашиглан-загвар-сонгох" class="level2" data-number="7.15">
+<h2 data-number="7.15" class="anchored" data-anchor-id="aic-ашиглан-загвар-сонгох"><span class="header-section-number">7.15</span> AIC ашиглан загвар сонгох</h2>
 <p>Өөр өөр ARMA загваруудыг Акайке мэдээллийн шалгуур (AIC) ашиглан харьцуулж болно.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">arima</span>(arma11, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
@@ -665,8 +848,8 @@ fit3  4 869.2151</code></pre>
 </div>
 <p>Хамгийн бага AIC-тай загварыг ихэвчлэн илүүд үздэг.</p>
 </section>
-<section id="таамаглал" class="level2" data-number="8.16">
-<h2 data-number="8.16" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">8.16</span> Таамаглал</h2>
+<section id="таамаглал" class="level2" data-number="7.16">
+<h2 data-number="7.16" class="anchored" data-anchor-id="таамаглал"><span class="header-section-number">7.16</span> Таамаглал</h2>
 <p>Таамаглалууд нь дараахь зүйлд үндэслэнэ:</p>
 <ul>
 <li>өнгөрсөн ажиглалтууд,</li>
@@ -697,8 +880,8 @@ fit3  4 869.2151</code></pre>
 </div>
 <p>Таамаглал нь процессын урт хугацааны дундаж руу аажмаар ойртдог.</p>
 </section>
-<section id="дүгнэлт" class="level2" data-number="8.17">
-<h2 data-number="8.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">8.17</span> Дүгнэлт</h2>
+<section id="дүгнэлт" class="level2" data-number="7.17">
+<h2 data-number="7.17" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">7.17</span> Дүгнэлт</h2>
 <p>ARMA((p,q)) загвар нь дараахь хоёрыг нэгтгэдэг:</p>
 <ul>
 <li>авторегрессив хамаарал,</li>
@@ -724,8 +907,8 @@ Y_t
 </ul>
 <p>ARMA загварууд нь олон бодит хугацааны цувааг дүрслэх уян хатан хүрээг бүрдүүлдэг.</p>
 </section>
-<section id="дасгал" class="level2" data-number="8.18">
-<h2 data-number="8.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">8.18</span> Дасгал</h2>
+<section id="дасгал" class="level2" data-number="7.18">
+<h2 data-number="7.18" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">7.18</span> Дасгал</h2>
 <ol type="1">
 <li>() ба () бүхий ARMA(1,1) процессыг симуляцла.</li>
 <li>Цувааг зур.</li>
@@ -743,6 +926,54 @@ Y_t
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1220,12 +1451,12 @@ Y_t
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./06-ma1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08-arima.html" class="pagination-link" aria-label="Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

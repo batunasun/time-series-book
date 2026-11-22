@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Стационар хугацааны цувааны загварууд – Хугацааны цувааны шинжилгээ</title>
+<title>9&nbsp; Стационар хугацааны цувааны загварууд – Хугацааны цувааны шинжилгээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./11-solutions.html" rel="prev">
+<link href="./09-forecasting.html" rel="next">
+<link href="./08-arima.html" rel="prev">
 <link href="./images/must-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,10 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-93ea9577cdbf6ced302812e0f26facab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3dafd8cc5e5d05e6459be86de5c37a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-06d6bd6e489181030889a02c125f20ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -142,9 +147,180 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +329,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,9 +342,16 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/must-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Хугацааны цувааны шинжилгээ</a> 
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -181,55 +364,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Агуулга</span></span></a>
+ <span class="menu-text">Агуулга</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -250,12 +439,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -266,61 +449,61 @@ window.Quarto = {
     <h2 id="toc-title">Дэд гарчиг</h2>
    
   <ul>
-  <li><a href="#ерөнхий-шугаман-процессууд" id="toc-ерөнхий-шугаман-процессууд" class="nav-link active" data-scroll-target="#ерөнхий-шугаман-процессууд"><span class="header-section-number">13.1</span> 4.1 Ерөнхий шугаман процессууд</a></li>
-  <li><a href="#шилжих-дунджийн-процессууд" id="toc-шилжих-дунджийн-процессууд" class="nav-link" data-scroll-target="#шилжих-дунджийн-процессууд"><span class="header-section-number">13.2</span> 4.2 Шилжих дунджийн процессууд</a>
+  <li><a href="#ерөнхий-шугаман-процессууд" id="toc-ерөнхий-шугаман-процессууд" class="nav-link active" data-scroll-target="#ерөнхий-шугаман-процессууд"><span class="header-section-number">9.1</span> 4.1 Ерөнхий шугаман процессууд</a></li>
+  <li><a href="#шилжих-дунджийн-процессууд" id="toc-шилжих-дунджийн-процессууд" class="nav-link" data-scroll-target="#шилжих-дунджийн-процессууд"><span class="header-section-number">9.2</span> 4.2 Шилжих дунджийн процессууд</a>
   <ul class="collapse">
-  <li><a href="#нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" id="toc-нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" class="nav-link" data-scroll-target="#нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">13.2.1</span> Нэгдүгээр эрэмбийн шилжих дунджийн процесс</a></li>
-  <li><a href="#хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" id="toc-хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" class="nav-link" data-scroll-target="#хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">13.2.2</span> Хоёрдугаар эрэмбийн шилжих дунджийн процесс</a></li>
-  <li><a href="#ерөнхий-textmaq-процесс" id="toc-ерөнхий-textmaq-процесс" class="nav-link" data-scroll-target="#ерөнхий-textmaq-процесс"><span class="header-section-number">13.2.3</span> Ерөнхий <span class="math inline">\(\text{MA}(q)\)</span> процесс</a></li>
+  <li><a href="#нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" id="toc-нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" class="nav-link" data-scroll-target="#нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">9.2.1</span> Нэгдүгээр эрэмбийн шилжих дунджийн процесс</a></li>
+  <li><a href="#хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" id="toc-хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" class="nav-link" data-scroll-target="#хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">9.2.2</span> Хоёрдугаар эрэмбийн шилжих дунджийн процесс</a></li>
+  <li><a href="#ерөнхий-textmaq-процесс" id="toc-ерөнхий-textmaq-процесс" class="nav-link" data-scroll-target="#ерөнхий-textmaq-процесс"><span class="header-section-number">9.2.3</span> Ерөнхий <span class="math inline">\(\text{MA}(q)\)</span> процесс</a></li>
   </ul></li>
-  <li><a href="#авторегрессийн-процессууд" id="toc-авторегрессийн-процессууд" class="nav-link" data-scroll-target="#авторегрессийн-процессууд"><span class="header-section-number">13.3</span> 4.3 Авторегрессийн процессууд</a>
+  <li><a href="#авторегрессийн-процессууд" id="toc-авторегрессийн-процессууд" class="nav-link" data-scroll-target="#авторегрессийн-процессууд"><span class="header-section-number">9.3</span> 4.3 Авторегрессийн процессууд</a>
   <ul class="collapse">
-  <li><a href="#нэгдүгээр-эрэмбийн-авторегрессийн-процесс" id="toc-нэгдүгээр-эрэмбийн-авторегрессийн-процесс" class="nav-link" data-scroll-target="#нэгдүгээр-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">13.3.1</span> Нэгдүгээр эрэмбийн авторегрессийн процесс</a></li>
-  <li><a href="#textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" id="toc-textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" class="nav-link" data-scroll-target="#textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар"><span class="header-section-number">13.3.2</span> <span class="math inline">\(\text{AR}(1)\)</span> загварын ерөнхий шугаман процессийн хувилбар</a></li>
-  <li><a href="#textar1-процессийн-стационар-чанар" id="toc-textar1-процессийн-стационар-чанар" class="nav-link" data-scroll-target="#textar1-процессийн-стационар-чанар"><span class="header-section-number">13.3.3</span> <span class="math inline">\(\text{AR}(1)\)</span> процессийн стационар чанар</a></li>
-  <li><a href="#хоёрдугаар-эрэмбийн-авторегрессийн-процесс" id="toc-хоёрдугаар-эрэмбийн-авторегрессийн-процесс" class="nav-link" data-scroll-target="#хоёрдугаар-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">13.3.4</span> Хоёрдугаар эрэмбийн авторегрессийн процесс</a></li>
-  <li><a href="#textar2-процессийн-стационар-чанар" id="toc-textar2-процессийн-стационар-чанар" class="nav-link" data-scroll-target="#textar2-процессийн-стационар-чанар"><span class="header-section-number">13.3.5</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн стационар чанар</a></li>
-  <li><a href="#textar2-процессийн-автокорреляцийн-функц" id="toc-textar2-процессийн-автокорреляцийн-функц" class="nav-link" data-scroll-target="#textar2-процессийн-автокорреляцийн-функц"><span class="header-section-number">13.3.6</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн автокорреляцийн функц</a></li>
-  <li><a href="#textar2-загварын-дисперс-the-variance-for-the-textar2-model" id="toc-textar2-загварын-дисперс-the-variance-for-the-textar2-model" class="nav-link" data-scroll-target="#textar2-загварын-дисперс-the-variance-for-the-textar2-model"><span class="header-section-number">13.3.7</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын дисперс (The Variance for the <span class="math inline">\(\text{AR}(2)\)</span> Model)</a></li>
-  <li><a href="#textar2-загварын-psi-коэффициентүүд" id="toc-textar2-загварын-psi-коэффициентүүд" class="nav-link" data-scroll-target="#textar2-загварын-psi-коэффициентүүд"><span class="header-section-number">13.3.8</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын <span class="math inline">\(\psi\)</span>-коэффициентүүд</a></li>
-  <li><a href="#ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" id="toc-ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" class="nav-link" data-scroll-target="#ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process"><span class="header-section-number">13.3.9</span> Ерөнхий авторегрессийн процесс (The General Autoregressive Process)</a></li>
+  <li><a href="#нэгдүгээр-эрэмбийн-авторегрессийн-процесс" id="toc-нэгдүгээр-эрэмбийн-авторегрессийн-процесс" class="nav-link" data-scroll-target="#нэгдүгээр-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">9.3.1</span> Нэгдүгээр эрэмбийн авторегрессийн процесс</a></li>
+  <li><a href="#textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" id="toc-textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" class="nav-link" data-scroll-target="#textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар"><span class="header-section-number">9.3.2</span> <span class="math inline">\(\text{AR}(1)\)</span> загварын ерөнхий шугаман процессийн хувилбар</a></li>
+  <li><a href="#textar1-процессийн-стационар-чанар" id="toc-textar1-процессийн-стационар-чанар" class="nav-link" data-scroll-target="#textar1-процессийн-стационар-чанар"><span class="header-section-number">9.3.3</span> <span class="math inline">\(\text{AR}(1)\)</span> процессийн стационар чанар</a></li>
+  <li><a href="#хоёрдугаар-эрэмбийн-авторегрессийн-процесс" id="toc-хоёрдугаар-эрэмбийн-авторегрессийн-процесс" class="nav-link" data-scroll-target="#хоёрдугаар-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">9.3.4</span> Хоёрдугаар эрэмбийн авторегрессийн процесс</a></li>
+  <li><a href="#textar2-процессийн-стационар-чанар" id="toc-textar2-процессийн-стационар-чанар" class="nav-link" data-scroll-target="#textar2-процессийн-стационар-чанар"><span class="header-section-number">9.3.5</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн стационар чанар</a></li>
+  <li><a href="#textar2-процессийн-автокорреляцийн-функц" id="toc-textar2-процессийн-автокорреляцийн-функц" class="nav-link" data-scroll-target="#textar2-процессийн-автокорреляцийн-функц"><span class="header-section-number">9.3.6</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн автокорреляцийн функц</a></li>
+  <li><a href="#textar2-загварын-дисперс-the-variance-for-the-textar2-model" id="toc-textar2-загварын-дисперс-the-variance-for-the-textar2-model" class="nav-link" data-scroll-target="#textar2-загварын-дисперс-the-variance-for-the-textar2-model"><span class="header-section-number">9.3.7</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын дисперс (The Variance for the <span class="math inline">\(\text{AR}(2)\)</span> Model)</a></li>
+  <li><a href="#textar2-загварын-psi-коэффициентүүд" id="toc-textar2-загварын-psi-коэффициентүүд" class="nav-link" data-scroll-target="#textar2-загварын-psi-коэффициентүүд"><span class="header-section-number">9.3.8</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын <span class="math inline">\(\psi\)</span>-коэффициентүүд</a></li>
+  <li><a href="#ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" id="toc-ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" class="nav-link" data-scroll-target="#ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process"><span class="header-section-number">9.3.9</span> Ерөнхий авторегрессийн процесс (The General Autoregressive Process)</a></li>
   </ul></li>
-  <li><a href="#холимог-авторегрессийн-дундаж-гулсалтын-загвар" id="toc-холимог-авторегрессийн-дундаж-гулсалтын-загвар" class="nav-link" data-scroll-target="#холимог-авторегрессийн-дундаж-гулсалтын-загвар"><span class="header-section-number">13.4</span> 4.4 Холимог авторегрессийн дундаж гулсалтын загвар</a>
+  <li><a href="#холимог-авторегрессийн-дундаж-гулсалтын-загвар" id="toc-холимог-авторегрессийн-дундаж-гулсалтын-загвар" class="nav-link" data-scroll-target="#холимог-авторегрессийн-дундаж-гулсалтын-загвар"><span class="header-section-number">9.4</span> 4.4 Холимог авторегрессийн дундаж гулсалтын загвар</a>
   <ul class="collapse">
-  <li><a href="#textarma11-загвар-the-textarma11-model" id="toc-textarma11-загвар-the-textarma11-model" class="nav-link" data-scroll-target="#textarma11-загвар-the-textarma11-model"><span class="header-section-number">13.4.1</span> <span class="math inline">\(\text{ARMA}(1,1)\)</span> загвар (The <span class="math inline">\(\text{ARMA}(1,1)\)</span> Model)</a></li>
+  <li><a href="#textarma11-загвар-the-textarma11-model" id="toc-textarma11-загвар-the-textarma11-model" class="nav-link" data-scroll-target="#textarma11-загвар-the-textarma11-model"><span class="header-section-number">9.4.1</span> <span class="math inline">\(\text{ARMA}(1,1)\)</span> загвар (The <span class="math inline">\(\text{ARMA}(1,1)\)</span> Model)</a></li>
   </ul></li>
-  <li><a href="#урвах-чанар-invertibility" id="toc-урвах-чанар-invertibility" class="nav-link" data-scroll-target="#урвах-чанар-invertibility"><span class="header-section-number">13.5</span> 4.5 Урвах чанар (Invertibility)</a></li>
-  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">13.6</span> 4.6 Дүгнэлт</a></li>
-  <li><a href="#дасгал-ажлууд" id="toc-дасгал-ажлууд" class="nav-link" data-scroll-target="#дасгал-ажлууд"><span class="header-section-number">13.7</span> Дасгал ажлууд</a></li>
-  <li><a href="#хавсралт-b-textar2-процессын-стационар-муж" id="toc-хавсралт-b-textar2-процессын-стационар-муж" class="nav-link" data-scroll-target="#хавсралт-b-textar2-процессын-стационар-муж"><span class="header-section-number">13.8</span> Хавсралт B: <span class="math inline">\(\text{AR}(2)\)</span> процессын стационар муж</a></li>
-  <li><a href="#хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" id="toc-хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" class="nav-link" data-scroll-target="#хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц"><span class="header-section-number">13.9</span> Хавсралт C: <span class="math inline">\(\text{ARMA}(p, q)\)</span> загварын автокорреляцийн функц</a></li>
-  <li><a href="#бодолт" id="toc-бодолт" class="nav-link" data-scroll-target="#бодолт"><span class="header-section-number">13.10</span> Бодолт</a>
+  <li><a href="#урвах-чанар-invertibility" id="toc-урвах-чанар-invertibility" class="nav-link" data-scroll-target="#урвах-чанар-invertibility"><span class="header-section-number">9.5</span> 4.5 Урвах чанар (Invertibility)</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">9.6</span> 4.6 Дүгнэлт</a></li>
+  <li><a href="#дасгал-ажлууд" id="toc-дасгал-ажлууд" class="nav-link" data-scroll-target="#дасгал-ажлууд"><span class="header-section-number">9.7</span> Дасгал ажлууд</a></li>
+  <li><a href="#хавсралт-b-textar2-процессын-стационар-муж" id="toc-хавсралт-b-textar2-процессын-стационар-муж" class="nav-link" data-scroll-target="#хавсралт-b-textar2-процессын-стационар-муж"><span class="header-section-number">9.8</span> Хавсралт B: <span class="math inline">\(\text{AR}(2)\)</span> процессын стационар муж</a></li>
+  <li><a href="#хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" id="toc-хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" class="nav-link" data-scroll-target="#хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц"><span class="header-section-number">9.9</span> Хавсралт C: <span class="math inline">\(\text{ARMA}(p, q)\)</span> загварын автокорреляцийн функц</a></li>
+  <li><a href="#бодолт" id="toc-бодолт" class="nav-link" data-scroll-target="#бодолт"><span class="header-section-number">9.10</span> Бодолт</a>
   <ul class="collapse">
-  <li><a href="#first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." id="toc-first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." class="nav-link" data-scroll-target="#first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол."><span class="header-section-number">13.10.1</span> 4.1. First principles-ийг ашиглан автокорреляцийн функцийг ол.</a></li>
-  <li><a href="#textma2-загваруудын-автокорреляцийн-функцийг-зур." id="toc-textma2-загваруудын-автокорреляцийн-функцийг-зур." class="nav-link" data-scroll-target="#textma2-загваруудын-автокорреляцийн-функцийг-зур."><span class="header-section-number">13.10.2</span> 4.2. <span class="math inline">\(\text{MA}(2)\)</span> загваруудын автокорреляцийн функцийг зур.</a></li>
-  <li><a href="#textma1-процессын-хувьд-батал." id="toc-textma1-процессын-хувьд-батал." class="nav-link" data-scroll-target="#textma1-процессын-хувьд-батал."><span class="header-section-number">13.10.3</span> 4.3. <span class="math inline">\(\text{MA}(1)\)</span> процессын хувьд батал.</a></li>
-  <li><a href="#textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." id="toc-textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." class="nav-link" data-scroll-target="#textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул."><span class="header-section-number">13.10.4</span> 4.4. <span class="math inline">\(\text{MA}(1)\)</span>-ийн хувьд <span class="math inline">\(\theta\)</span>-г <span class="math inline">\(1/\theta\)</span>-өөр солиход ACF өөрчлөгдөхгүй гэдгийг харуул.</a></li>
-  <li><a href="#textar1-загваруудын-acf-ийг-тооцоолж-зур." id="toc-textar1-загваруудын-acf-ийг-тооцоолж-зур." class="nav-link" data-scroll-target="#textar1-загваруудын-acf-ийг-тооцоолж-зур."><span class="header-section-number">13.10.5</span> 4.5. <span class="math inline">\(\text{AR}(1)\)</span> загваруудын ACF-ийг тооцоолж зур.</a></li>
-  <li><a href="#textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." id="toc-textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." class="nav-link" data-scroll-target="#textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1."><span class="header-section-number">13.10.6</span> 4.6. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t = \nabla Y_t = Y_t - Y_{t-1}\)</span>.</a></li>
-  <li><a href="#загваруудын-acf-ийн-чухал-шинж-чанарууд" id="toc-загваруудын-acf-ийн-чухал-шинж-чанарууд" class="nav-link" data-scroll-target="#загваруудын-acf-ийн-чухал-шинж-чанарууд"><span class="header-section-number">13.10.7</span> 4.7. Загваруудын ACF-ийн чухал шинж чанарууд</a></li>
-  <li><a href="#y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." id="toc-y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." class="nav-link" data-scroll-target="#y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол."><span class="header-section-number">13.10.8</span> 4.8. <span class="math inline">\(Y_t = \phi_2 Y_{t-2} + e_t\)</span> үед <span class="math inline">\(\phi_2\)</span>-ийн стационар байх мужийг ол.</a></li>
-  <li><a href="#textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." id="toc-textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." class="nav-link" data-scroll-target="#textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл."><span class="header-section-number">13.10.9</span> 4.9. <span class="math inline">\(\text{AR}(2)\)</span> загварын ACF-ийг рекурсив томьёогоор тооцоолж, шинж чанарыг тодорхойл.</a></li>
-  <li><a href="#textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." id="toc-textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." class="nav-link" data-scroll-target="#textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур."><span class="header-section-number">13.10.10</span> 4.10. <span class="math inline">\(\text{ARMA}(1,1)\)</span> загваруудын автокорреляцийн функцийг (ACF) зур.</a></li>
-  <li><a href="#textarma12-загварын-хувьд-батал." id="toc-textarma12-загварын-хувьд-батал." class="nav-link" data-scroll-target="#textarma12-загварын-хувьд-батал."><span class="header-section-number">13.10.11</span> 4.11. <span class="math inline">\(\text{ARMA}(1,2)\)</span> загварын хувьд батал.</a></li>
-  <li><a href="#хоёр-textma2-процессын-харьцуулалт." id="toc-хоёр-textma2-процессын-харьцуулалт." class="nav-link" data-scroll-target="#хоёр-textma2-процессын-харьцуулалт."><span class="header-section-number">13.10.12</span> 4.12. Хоёр <span class="math inline">\(\text{MA}(2)\)</span> процессын харьцуулалт.</a></li>
-  <li><a href="#rho_1-le-12-гэдгийг-батал." id="toc-rho_1-le-12-гэдгийг-батал." class="nav-link" data-scroll-target="#rho_1-le-12-гэдгийг-батал."><span class="header-section-number">13.10.13</span> 4.13. <span class="math inline">\(|\rho_1| \le 1/2\)</span> гэдгийг батал.</a></li>
-  <li><a href="#стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." id="toc-стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." class="nav-link" data-scroll-target="#стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул."><span class="header-section-number">13.10.14</span> 4.14. Стационар, <span class="math inline">\(|\rho_1| &lt; 0.5\)</span>, <span class="math inline">\(\rho_k = 0\)</span> (<span class="math inline">\(k &gt; 1\)</span>) процесс нь <span class="math inline">\(\text{MA}(1)\)</span> байхыг харуул.</a></li>
-  <li><a href="#textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." id="toc-textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." class="nav-link" data-scroll-target="#textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул."><span class="header-section-number">13.10.15</span> 4.15. <span class="math inline">\(\text{AR}(1)\)</span> процесст <span class="math inline">\(|\phi| = 1\)</span> үед стационар биш гэдгийг харуул.</a></li>
-  <li><a href="#стационар-бус-textar1-y_t-3-y_t-1-e_t." id="toc-стационар-бус-textar1-y_t-3-y_t-1-e_t." class="nav-link" data-scroll-target="#стационар-бус-textar1-y_t-3-y_t-1-e_t."><span class="header-section-number">13.10.16</span> 4.16. «Стационар бус» <span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = 3 Y_{t-1} + e_t\)</span>.</a></li>
-  <li><a href="#y_t-frac12-y_t-1-e_t-тэгшитгэл." id="toc-y_t-frac12-y_t-1-e_t-тэгшитгэл." class="nav-link" data-scroll-target="#y_t-frac12-y_t-1-e_t-тэгшитгэл."><span class="header-section-number">13.10.17</span> 4.17. <span class="math inline">\(Y_t = \frac{1}{2} Y_{t-1} + e_t\)</span> тэгшитгэл.</a></li>
-  <li><a href="#y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." id="toc-y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." class="nav-link" data-scroll-target="#y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit."><span class="header-section-number">13.10.18</span> 4.18. <span class="math inline">\(Y_t\)</span> нь <span class="math inline">\(|\phi| &lt; 1\)</span> бүхий тэг дундажтай <span class="math inline">\(\text{AR}(1)\)</span>. <span class="math inline">\(W_t = Y_t + c\phi^t\)</span>.</a></li>
-  <li><a href="#textma6-загварыг-хялбарчлах." id="toc-textma6-загварыг-хялбарчлах." class="nav-link" data-scroll-target="#textma6-загварыг-хялбарчлах."><span class="header-section-number">13.10.19</span> 4.19. <span class="math inline">\(\text{MA}(6)\)</span> загварыг хялбарчлах.</a></li>
-  <li><a href="#textma7-загварыг-хялбарчлах." id="toc-textma7-загварыг-хялбарчлах." class="nav-link" data-scroll-target="#textma7-загварыг-хялбарчлах."><span class="header-section-number">13.10.20</span> 4.20. <span class="math inline">\(\text{MA}(7)\)</span> загварыг хялбарчлах.</a></li>
-  <li><a href="#y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." id="toc-y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." class="nav-link" data-scroll-target="#y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд."><span class="header-section-number">13.10.21</span> 4.21. <span class="math inline">\(Y_t = e_{t-1} - e_{t-2} + 0.5 e_{t-3}\)</span> процессын хувьд.</a></li>
-  <li><a href="#хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." id="toc-хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." class="nav-link" data-scroll-target="#хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул."><span class="header-section-number">13.10.22</span> 4.22. Хоёр өгүүлбэрийн эквивалент байдлыг харуул.</a></li>
-  <li><a href="#textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." id="toc-textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." class="nav-link" data-scroll-target="#textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1."><span class="header-section-number">13.10.23</span> 4.23. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span>, <span class="math inline">\(b_t = Y_t - \phi Y_{t+1}\)</span>.</a></li>
-  <li><a href="#t-0-ээс-эхэлсэн-рекурсив-процесс." id="toc-t-0-ээс-эхэлсэн-рекурсив-процесс." class="nav-link" data-scroll-target="#t-0-ээс-эхэлсэн-рекурсив-процесс."><span class="header-section-number">13.10.24</span> 4.24. <span class="math inline">\(t = 0\)</span>-ээс эхэлсэн рекурсив процесс.</a></li>
-  <li><a href="#y_t-phi-y_t-1-e_t-процесс." id="toc-y_t-phi-y_t-1-e_t-процесс." class="nav-link" data-scroll-target="#y_t-phi-y_t-1-e_t-процесс."><span class="header-section-number">13.10.25</span> 4.25. <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> процесс.</a></li>
+  <li><a href="#first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." id="toc-first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." class="nav-link" data-scroll-target="#first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол."><span class="header-section-number">9.10.1</span> 4.1. First principles-ийг ашиглан автокорреляцийн функцийг ол.</a></li>
+  <li><a href="#textma2-загваруудын-автокорреляцийн-функцийг-зур." id="toc-textma2-загваруудын-автокорреляцийн-функцийг-зур." class="nav-link" data-scroll-target="#textma2-загваруудын-автокорреляцийн-функцийг-зур."><span class="header-section-number">9.10.2</span> 4.2. <span class="math inline">\(\text{MA}(2)\)</span> загваруудын автокорреляцийн функцийг зур.</a></li>
+  <li><a href="#textma1-процессын-хувьд-батал." id="toc-textma1-процессын-хувьд-батал." class="nav-link" data-scroll-target="#textma1-процессын-хувьд-батал."><span class="header-section-number">9.10.3</span> 4.3. <span class="math inline">\(\text{MA}(1)\)</span> процессын хувьд батал.</a></li>
+  <li><a href="#textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." id="toc-textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." class="nav-link" data-scroll-target="#textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул."><span class="header-section-number">9.10.4</span> 4.4. <span class="math inline">\(\text{MA}(1)\)</span>-ийн хувьд <span class="math inline">\(\theta\)</span>-г <span class="math inline">\(1/\theta\)</span>-өөр солиход ACF өөрчлөгдөхгүй гэдгийг харуул.</a></li>
+  <li><a href="#textar1-загваруудын-acf-ийг-тооцоолж-зур." id="toc-textar1-загваруудын-acf-ийг-тооцоолж-зур." class="nav-link" data-scroll-target="#textar1-загваруудын-acf-ийг-тооцоолж-зур."><span class="header-section-number">9.10.5</span> 4.5. <span class="math inline">\(\text{AR}(1)\)</span> загваруудын ACF-ийг тооцоолж зур.</a></li>
+  <li><a href="#textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." id="toc-textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." class="nav-link" data-scroll-target="#textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1."><span class="header-section-number">9.10.6</span> 4.6. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t = \nabla Y_t = Y_t - Y_{t-1}\)</span>.</a></li>
+  <li><a href="#загваруудын-acf-ийн-чухал-шинж-чанарууд" id="toc-загваруудын-acf-ийн-чухал-шинж-чанарууд" class="nav-link" data-scroll-target="#загваруудын-acf-ийн-чухал-шинж-чанарууд"><span class="header-section-number">9.10.7</span> 4.7. Загваруудын ACF-ийн чухал шинж чанарууд</a></li>
+  <li><a href="#y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." id="toc-y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." class="nav-link" data-scroll-target="#y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол."><span class="header-section-number">9.10.8</span> 4.8. <span class="math inline">\(Y_t = \phi_2 Y_{t-2} + e_t\)</span> үед <span class="math inline">\(\phi_2\)</span>-ийн стационар байх мужийг ол.</a></li>
+  <li><a href="#textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." id="toc-textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." class="nav-link" data-scroll-target="#textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл."><span class="header-section-number">9.10.9</span> 4.9. <span class="math inline">\(\text{AR}(2)\)</span> загварын ACF-ийг рекурсив томьёогоор тооцоолж, шинж чанарыг тодорхойл.</a></li>
+  <li><a href="#textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." id="toc-textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." class="nav-link" data-scroll-target="#textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур."><span class="header-section-number">9.10.10</span> 4.10. <span class="math inline">\(\text{ARMA}(1,1)\)</span> загваруудын автокорреляцийн функцийг (ACF) зур.</a></li>
+  <li><a href="#textarma12-загварын-хувьд-батал." id="toc-textarma12-загварын-хувьд-батал." class="nav-link" data-scroll-target="#textarma12-загварын-хувьд-батал."><span class="header-section-number">9.10.11</span> 4.11. <span class="math inline">\(\text{ARMA}(1,2)\)</span> загварын хувьд батал.</a></li>
+  <li><a href="#хоёр-textma2-процессын-харьцуулалт." id="toc-хоёр-textma2-процессын-харьцуулалт." class="nav-link" data-scroll-target="#хоёр-textma2-процессын-харьцуулалт."><span class="header-section-number">9.10.12</span> 4.12. Хоёр <span class="math inline">\(\text{MA}(2)\)</span> процессын харьцуулалт.</a></li>
+  <li><a href="#rho_1-le-12-гэдгийг-батал." id="toc-rho_1-le-12-гэдгийг-батал." class="nav-link" data-scroll-target="#rho_1-le-12-гэдгийг-батал."><span class="header-section-number">9.10.13</span> 4.13. <span class="math inline">\(|\rho_1| \le 1/2\)</span> гэдгийг батал.</a></li>
+  <li><a href="#стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." id="toc-стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." class="nav-link" data-scroll-target="#стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул."><span class="header-section-number">9.10.14</span> 4.14. Стационар, <span class="math inline">\(|\rho_1| &lt; 0.5\)</span>, <span class="math inline">\(\rho_k = 0\)</span> (<span class="math inline">\(k &gt; 1\)</span>) процесс нь <span class="math inline">\(\text{MA}(1)\)</span> байхыг харуул.</a></li>
+  <li><a href="#textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." id="toc-textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." class="nav-link" data-scroll-target="#textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул."><span class="header-section-number">9.10.15</span> 4.15. <span class="math inline">\(\text{AR}(1)\)</span> процесст <span class="math inline">\(|\phi| = 1\)</span> үед стационар биш гэдгийг харуул.</a></li>
+  <li><a href="#стационар-бус-textar1-y_t-3-y_t-1-e_t." id="toc-стационар-бус-textar1-y_t-3-y_t-1-e_t." class="nav-link" data-scroll-target="#стационар-бус-textar1-y_t-3-y_t-1-e_t."><span class="header-section-number">9.10.16</span> 4.16. «Стационар бус» <span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = 3 Y_{t-1} + e_t\)</span>.</a></li>
+  <li><a href="#y_t-frac12-y_t-1-e_t-тэгшитгэл." id="toc-y_t-frac12-y_t-1-e_t-тэгшитгэл." class="nav-link" data-scroll-target="#y_t-frac12-y_t-1-e_t-тэгшитгэл."><span class="header-section-number">9.10.17</span> 4.17. <span class="math inline">\(Y_t = \frac{1}{2} Y_{t-1} + e_t\)</span> тэгшитгэл.</a></li>
+  <li><a href="#y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." id="toc-y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." class="nav-link" data-scroll-target="#y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit."><span class="header-section-number">9.10.18</span> 4.18. <span class="math inline">\(Y_t\)</span> нь <span class="math inline">\(|\phi| &lt; 1\)</span> бүхий тэг дундажтай <span class="math inline">\(\text{AR}(1)\)</span>. <span class="math inline">\(W_t = Y_t + c\phi^t\)</span>.</a></li>
+  <li><a href="#textma6-загварыг-хялбарчлах." id="toc-textma6-загварыг-хялбарчлах." class="nav-link" data-scroll-target="#textma6-загварыг-хялбарчлах."><span class="header-section-number">9.10.19</span> 4.19. <span class="math inline">\(\text{MA}(6)\)</span> загварыг хялбарчлах.</a></li>
+  <li><a href="#textma7-загварыг-хялбарчлах." id="toc-textma7-загварыг-хялбарчлах." class="nav-link" data-scroll-target="#textma7-загварыг-хялбарчлах."><span class="header-section-number">9.10.20</span> 4.20. <span class="math inline">\(\text{MA}(7)\)</span> загварыг хялбарчлах.</a></li>
+  <li><a href="#y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." id="toc-y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." class="nav-link" data-scroll-target="#y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд."><span class="header-section-number">9.10.21</span> 4.21. <span class="math inline">\(Y_t = e_{t-1} - e_{t-2} + 0.5 e_{t-3}\)</span> процессын хувьд.</a></li>
+  <li><a href="#хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." id="toc-хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." class="nav-link" data-scroll-target="#хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул."><span class="header-section-number">9.10.22</span> 4.22. Хоёр өгүүлбэрийн эквивалент байдлыг харуул.</a></li>
+  <li><a href="#textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." id="toc-textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." class="nav-link" data-scroll-target="#textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1."><span class="header-section-number">9.10.23</span> 4.23. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span>, <span class="math inline">\(b_t = Y_t - \phi Y_{t+1}\)</span>.</a></li>
+  <li><a href="#t-0-ээс-эхэлсэн-рекурсив-процесс." id="toc-t-0-ээс-эхэлсэн-рекурсив-процесс." class="nav-link" data-scroll-target="#t-0-ээс-эхэлсэн-рекурсив-процесс."><span class="header-section-number">9.10.24</span> 4.24. <span class="math inline">\(t = 0\)</span>-ээс эхэлсэн рекурсив процесс.</a></li>
+  <li><a href="#y_t-phi-y_t-1-e_t-процесс." id="toc-y_t-phi-y_t-1-e_t-процесс." class="nav-link" data-scroll-target="#y_t-phi-y_t-1-e_t-процесс."><span class="header-section-number">9.10.25</span> 4.25. <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> процесс.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -328,9 +511,10 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></h1>
 </div>
 
 
@@ -348,8 +532,8 @@ window.Quarto = {
 
 
 <p>Энэхүү бүлэгт параметрик хугацааны цувааны загваруудын өргөн хүрээтэй анги болох авторегрессийн шилжих дунджийн (<em>autoregressive moving average</em> — ARMA) загваруудын үндсэн ойлголтуудыг авч үзнэ. Эдгээр загвар нь бодит ертөнцийн процессуудыг загварчлахад маш чухал байр суурь эзэлдэг.</p>
-<section id="ерөнхий-шугаман-процессууд" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="ерөнхий-шугаман-процессууд"><span class="header-section-number">13.1</span> 4.1 Ерөнхий шугаман процессууд</h2>
+<section id="ерөнхий-шугаман-процессууд" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="ерөнхий-шугаман-процессууд"><span class="header-section-number">9.1</span> 4.1 Ерөнхий шугаман процессууд</h2>
 <p>Бид ажиглагдсан хугацааны цувааг үргэлж <span class="math inline">\(Y_t\)</span> гэж тэмдэглэнэ. Үүнээс хойш бид мөн <span class="math inline">\(e_t\)</span>-ээр ажиглагдахгүй цагаан шуугианы цувааг буюу ижил тархалттай, тэг дундажтай, хамааралгүй санамсаргүй хувьсагчдын дарааллыг төлөөлүүлэн авч үзэх болно. Бидний судалгааны ихэнх хэсэгт үл хамаарлын таамаглалыг <span class="math inline">\(e_t\)</span> нь корреляцигүй санамсаргүй хувьсагчид байх гэсэн арай сул таамаглалаар орлуулж болох боловч бид энэхүү бага зэргийн ерөнхийллийг хөөцөлдөхгүй.</p>
 <p><strong>Ерөнхий шугаман процесс</strong> (<em>general linear process</em>) <span class="math inline">\(Y_t\)</span> гэдэг нь одоогийн болон өнгөрсөн үеийн цагаан шуугианы гишүүдийн жинлэсэн шугаман эвлүүлгээр дараах байдлаар илэрхийлэгдэх боломжтой процессийг хэлнэ:</p>
 <p><span class="math display">\[
@@ -406,15 +590,15 @@ E(Y_t) = 0, \qquad \gamma_k = \operatorname{Cov}(Y_t, Y_{t-k}) = \sigma_e^2 \sum
 <p>энд <span class="math inline">\(\psi_0 = 1\)</span> байна. Тэгээс ялгаатай <span class="math inline">\(\mu\)</span> дундажтай процессийг Тэгшитгэл (4.1.1)-ийн баруун гар талд <span class="math inline">\(\mu\)</span>-г нэмэх замаар гаргаж авч болно. Дундаж нь процессийн ковариацын шинж чанарт нөлөөлдөггүй тул бид өгөгдөлд загвар тохируулж эхлэх хүртлээ дунджийг тэг гэж таамаглах болно.</p>
 <hr>
 </section>
-<section id="шилжих-дунджийн-процессууд" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="шилжих-дунджийн-процессууд"><span class="header-section-number">13.2</span> 4.2 Шилжих дунджийн процессууд</h2>
+<section id="шилжих-дунджийн-процессууд" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="шилжих-дунджийн-процессууд"><span class="header-section-number">9.2</span> 4.2 Шилжих дунджийн процессууд</h2>
 <p>Зөвхөн төгсгөлөг тооны <span class="math inline">\(\psi\)</span>-жингүүд тэгээс ялгаатай байх тохиолдолд бид <strong>шилжих дунджийн процесс</strong> (<em>moving average process</em>) гэж нэрлэгдэх процесстой болно. Энэ тохиолдолд бид тэмдэглэгээг бага зэрэг өөрчилж дараах байдлаар бичнэ:</p>
 <p><span class="math display">\[
 Y_t = e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2} - \cdots - \theta_q e_{t-q} \tag{4.2.1}
 \]</span></p>
 <p>Бид ийм цувааг <span class="math inline">\(q\)</span> эрэмбийн шилжих дундаж (<em>moving average of order <span class="math inline">\(q\)</span></em>) гэж нэрлээд товчоор <span class="math inline">\(\text{MA}(q)\)</span> гэж тэмдэглэдэг. «Шилжих дундаж» гэдэг нэр томьёо нь <span class="math inline">\(Y_t\)</span>-ийг гаргаж авахдаа <span class="math inline">\(e_t, e_{t-1}, e_{t-2}, \ldots, e_{t-q}\)</span> хувьсагчдад <span class="math inline">\(1, -\theta_1, -\theta_2, \ldots, -\theta_q\)</span> жингүүдийг оноож, улмаар уг жингүүдээ шилжүүлэн <span class="math inline">\(e_{t+1}, e_t, e_{t-1}, \ldots, e_{t-q+1}\)</span> хувьсагчдад оноосноор <span class="math inline">\(Y_{t+1}\)</span>-ийг гаргаж авдаг гэх мэт зүй тогтлоос үүдэлтэй юм. Шилжих дунджийн загваруудыг анх Slutsky (1927) болон Wold (1938) нар судалсан байдаг.</p>
-<section id="нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">13.2.1</span> Нэгдүгээр эрэмбийн шилжих дунджийн процесс</h3>
+<section id="нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="нэгдүгээр-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">9.2.1</span> Нэгдүгээр эрэмбийн шилжих дунджийн процесс</h3>
 <p>Энгийн боловч маш чухал ач холбогдолтой 1-р эрэмбийн шилжих дунджийн процесс буюу <span class="math inline">\(\text{MA}(1)\)</span> цувааг дэлгэрэнгүй авч үзье. Тэгшитгэл (4.1.4) дэх томьёонуудыг ашиглаж, тухайлан буулгахын оронд үр дүнгүүдийг дахин гаргаж авах нь сургамжтай байдаг. Загвар нь <span class="math inline">\(Y_t = e_t - \theta e_{t-1}\)</span> хэлбэртэй байна. Энд зөвхөн ганц <span class="math inline">\(\theta\)</span> оролцож байгаа тул илүүц <span class="math inline">\(1\)</span> гэсэн доод индексийг орхив. Мэдээж <span class="math inline">\(E(Y_t) = 0\)</span> болон <span class="math inline">\(\operatorname{Var}(Y_t) = \sigma_e^2 (1 + \theta^2)\)</span> байна. Одоо:</p>
 <p><span class="math display">\[
 \operatorname{Cov}(Y_t, Y_{t-1}) = \operatorname{Cov}(e_t - \theta e_{t-1},\; e_{t-1} - \theta e_{t-2}) = \operatorname{Cov}(-\theta e_{t-1}, e_{t-1}) = -\theta \sigma_e^2
@@ -498,7 +682,7 @@ E(Y_t) &amp;= 0 \\
 <img src="12_files/figure-html/fig-4-1-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.1: Зураг 4.1. Өөр өөр θ утгуудын хувьд MA(1) процессийн лаг 1 дэх автокорреляци
+Figure&nbsp;9.1: Зураг 4.1. Өөр өөр θ утгуудын хувьд MA(1) процессийн лаг 1 дэх автокорреляци
 </figcaption>
 </figure>
 </div>
@@ -534,7 +718,7 @@ Attaching package: 'TSA'</code></pre>
 <img src="12_files/figure-html/fig-4-2-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.2: Зураг 4.2. θ = −0.9 бүхий MA(1) процессийн хугацааны график
+Figure&nbsp;9.2: Зураг 4.2. θ = −0.9 бүхий MA(1) процессийн хугацааны график
 </figcaption>
 </figure>
 </div>
@@ -553,7 +737,7 @@ Figure&nbsp;13.2: Зураг 4.2. θ = −0.9 бүхий MA(1) процесси�
 <img src="12_files/figure-html/fig-4-3-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.3: Зураг 4.3. MA(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.2 дахь) хамаарлын график
+Figure&nbsp;9.3: Зураг 4.3. MA(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.2 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -572,7 +756,7 @@ Figure&nbsp;13.3: Зураг 4.3. MA(1) цувааны Y_t ба Y_{t-1}-ийн (
 <img src="12_files/figure-html/fig-4-4-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.4: Зураг 4.4. Зураг 4.2 дахь MA(1) цувааны Y_t ба Y_{t-2}-ийн хамаарлын график
+Figure&nbsp;9.4: Зураг 4.4. Зураг 4.2 дахь MA(1) цувааны Y_t ба Y_{t-2}-ийн хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -592,7 +776,7 @@ Figure&nbsp;13.4: Зураг 4.4. Зураг 4.2 дахь MA(1) цувааны Y
 <img src="12_files/figure-html/fig-4-5-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.5: Зураг 4.5. θ = +0.9 бүхий MA(1) процессийн хугацааны график
+Figure&nbsp;9.5: Зураг 4.5. θ = +0.9 бүхий MA(1) процессийн хугацааны график
 </figcaption>
 </figure>
 </div>
@@ -611,7 +795,7 @@ Figure&nbsp;13.5: Зураг 4.5. θ = +0.9 бүхий MA(1) процессий�
 <img src="12_files/figure-html/fig-4-6-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.6: Зураг 4.6. MA(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.5 дахь) хамаарлын график
+Figure&nbsp;9.6: Зураг 4.6. MA(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.5 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -630,7 +814,7 @@ Figure&nbsp;13.6: Зураг 4.6. MA(1) цувааны Y_t ба Y_{t-1}-ийн (
 <img src="12_files/figure-html/fig-4-7-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.7: Зураг 4.7. MA(1) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.5 дахь) хамаарлын график
+Figure&nbsp;9.7: Зураг 4.7. MA(1) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.5 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -638,8 +822,8 @@ Figure&nbsp;13.7: Зураг 4.7. MA(1) цувааны Y_t ба Y_{t-2}-ийн (
 </div>
 <p><span class="math inline">\(\text{MA}(1)\)</span> процессууд нь лаг 1-ээс цааш автокорреляцигүй байдаг боловч процессийн эрэмбийг нэмэгдүүлэх замаар бид өндөр эрэмбийн корреляциудыг гаргаж авч чадна.</p>
 </section>
-<section id="хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">13.2.2</span> Хоёрдугаар эрэмбийн шилжих дунджийн процесс</h3>
+<section id="хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="хоёрдугаар-эрэмбийн-шилжих-дунджийн-процесс"><span class="header-section-number">9.2.2</span> Хоёрдугаар эрэмбийн шилжих дунджийн процесс</h3>
 <p>2-р эрэмбийн шилжих дунджийн процессийг авч үзье:</p>
 <p><span class="math display">\[
 Y_t = e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2}
@@ -687,7 +871,7 @@ Y_t = e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2}
 <img src="12_files/figure-html/fig-4-8-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.8: Зураг 4.8. θ_1 = 1 ба θ_2 = −0.6 бүхий MA(2) процессийн хугацааны график
+Figure&nbsp;9.8: Зураг 4.8. θ_1 = 1 ба θ_2 = −0.6 бүхий MA(2) процессийн хугацааны график
 </figcaption>
 </figure>
 </div>
@@ -706,7 +890,7 @@ Figure&nbsp;13.8: Зураг 4.8. θ_1 = 1 ба θ_2 = −0.6 бүхий MA(2) �
 <img src="12_files/figure-html/fig-4-9-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.9: Зураг 4.9. MA(2) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.8 дахь) хамаарлын график
+Figure&nbsp;9.9: Зураг 4.9. MA(2) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.8 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -725,7 +909,7 @@ Figure&nbsp;13.9: Зураг 4.9. MA(2) цувааны Y_t ба Y_{t-1}-ийн (
 <img src="12_files/figure-html/fig-4-10-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.10: Зураг 4.10. MA(2) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.8 дахь) хамаарлын график
+Figure&nbsp;9.10: Зураг 4.10. MA(2) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.8 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -744,15 +928,15 @@ Figure&nbsp;13.10: Зураг 4.10. MA(2) цувааны Y_t ба Y_{t-2}-ийн
 <img src="12_files/figure-html/fig-4-11-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.11: Зураг 4.11. MA(2) цувааны Y_t ба Y_{t-3}-ийн (Зураг 4.8 дахь) хамаарлын график
+Figure&nbsp;9.11: Зураг 4.11. MA(2) цувааны Y_t ба Y_{t-3}-ийн (Зураг 4.8 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ерөнхий-textmaq-процесс" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="ерөнхий-textmaq-процесс"><span class="header-section-number">13.2.3</span> Ерөнхий <span class="math inline">\(\text{MA}(q)\)</span> процесс</h3>
+<section id="ерөнхий-textmaq-процесс" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="ерөнхий-textmaq-процесс"><span class="header-section-number">9.2.3</span> Ерөнхий <span class="math inline">\(\text{MA}(q)\)</span> процесс</h3>
 <p>Ерөнхий <span class="math inline">\(\text{MA}(q)\)</span> процесс <span class="math inline">\(Y_t = e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2} - \cdots - \theta_q e_{t-q}\)</span>-ийн хувьд дээрхитэй төстэй тооцооллоор дараах томьёонуудыг гаргаж авч болно:</p>
 <p><span class="math display">\[
 \gamma_0 = (1 + \theta_1^2 + \theta_2^2 + \cdots + \theta_q^2)\sigma_e^2 \tag{4.2.4}
@@ -768,15 +952,15 @@ Figure&nbsp;13.11: Зураг 4.11. MA(2) цувааны Y_t ба Y_{t-3}-ийн
 <hr>
 </section>
 </section>
-<section id="авторегрессийн-процессууд" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="авторегрессийн-процессууд"><span class="header-section-number">13.3</span> 4.3 Авторегрессийн процессууд</h2>
+<section id="авторегрессийн-процессууд" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="авторегрессийн-процессууд"><span class="header-section-number">9.3</span> 4.3 Авторегрессийн процессууд</h2>
 <p>Авторегрессийн процессууд нь нэрнээсээ харахад л өөрсдийнхөө өмнөх утгууд дээр хийгдсэн регресс юм. Тодруулбал, <span class="math inline">\(p\)</span>-р эрэмбийн <strong>авторегрессийн процесс</strong> (<em>autoregressive process</em>) <span class="math inline">\(Y_t\)</span> нь дараах тэгшитгэлийг хангана:</p>
 <p><span class="math display">\[
 Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \cdots + \phi_p Y_{t-p} + e_t \tag{4.3.1}
 \]</span></p>
 <p>Цувааны одоогийн утга <span class="math inline">\(Y_t\)</span> нь өөрийнхөө хамгийн сүүлийн өнгөрсөн <span class="math inline">\(p\)</span> утгын шугаман эвлүүлэг дээр <span class="math inline">\(t\)</span> хугацааны агшинд цуваанд орж ирж буй, өнгөрсөн утгуудаар тайлбарлагдахгүй бүх шинэ мэдээллийг агуулсан «инновацийн» (<em>innovation</em>) гишүүн <span class="math inline">\(e_t\)</span>-ийг нэмсэнтэй тэнцүү байна. Иймд <span class="math inline">\(t\)</span> бүрийн хувьд <span class="math inline">\(e_t\)</span> нь <span class="math inline">\(Y_{t-1}, Y_{t-2}, Y_{t-3}, \ldots\)</span> утгуудаас хамааралгүй гэж таамаглана. Авторегрессийн процессийн анхны суурь судалгааг Yule (1926) хийсэн байдаг.</p>
-<section id="нэгдүгээр-эрэмбийн-авторегрессийн-процесс" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="нэгдүгээр-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">13.3.1</span> Нэгдүгээр эрэмбийн авторегрессийн процесс</h3>
+<section id="нэгдүгээр-эрэмбийн-авторегрессийн-процесс" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="нэгдүгээр-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">9.3.1</span> Нэгдүгээр эрэмбийн авторегрессийн процесс</h3>
 <p>Энд мөн товчоор <span class="math inline">\(\text{AR}(1)\)</span> гэж тэмдэглэдэг 1-р эрэмбийн загварыг дэлгэрэнгүй авч үзэх нь сургамжтай. Цувааг стационар бөгөөд дараах тэгшитгэлийг хангадаг гэж таамаглая:</p>
 <p><span class="math display">\[
 Y_t = \phi Y_{t-1} + e_t \tag{4.3.2}
@@ -835,7 +1019,7 @@ E(e_t Y_{t-k}) = E(e_t) E(Y_{t-k}) = 0
 <img src="12_files/figure-html/fig-4-12-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.12: Зураг 4.12. Хэд хэдэн AR(1) загварын автокорреляцийн функцүүд
+Figure&nbsp;9.12: Зураг 4.12. Хэд хэдэн AR(1) загварын автокорреляцийн функцүүд
 </figcaption>
 </figure>
 </div>
@@ -856,7 +1040,7 @@ Figure&nbsp;13.12: Зураг 4.12. Хэд хэдэн AR(1) загварын а�
 <img src="12_files/figure-html/fig-4-13-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.13: Зураг 4.13. φ = 0.9 бүхий AR(1) цувааны хугацааны график
+Figure&nbsp;9.13: Зураг 4.13. φ = 0.9 бүхий AR(1) цувааны хугацааны график
 </figcaption>
 </figure>
 </div>
@@ -875,7 +1059,7 @@ Figure&nbsp;13.13: Зураг 4.13. φ = 0.9 бүхий AR(1) цувааны х�
 <img src="12_files/figure-html/fig-4-14-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.14: Зураг 4.14. AR(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.13 дахь) хамаарлын график
+Figure&nbsp;9.14: Зураг 4.14. AR(1) цувааны Y_t ба Y_{t-1}-ийн (Зураг 4.13 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -894,7 +1078,7 @@ Figure&nbsp;13.14: Зураг 4.14. AR(1) цувааны Y_t ба Y_{t-1}-ийн
 <img src="12_files/figure-html/fig-4-15-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.15: Зураг 4.15. AR(1) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.13 дахь) хамаарлын график
+Figure&nbsp;9.15: Зураг 4.15. AR(1) цувааны Y_t ба Y_{t-2}-ийн (Зураг 4.13 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
@@ -913,15 +1097,15 @@ Figure&nbsp;13.15: Зураг 4.15. AR(1) цувааны Y_t ба Y_{t-2}-ийн
 <img src="12_files/figure-html/fig-4-16-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.16: Зураг 4.16. AR(1) цувааны Y_t ба Y_{t-3}-ийн (Зураг 4.13 дахь) хамаарлын график
+Figure&nbsp;9.16: Зураг 4.16. AR(1) цувааны Y_t ба Y_{t-3}-ийн (Зураг 4.13 дахь) хамаарлын график
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар"><span class="header-section-number">13.3.2</span> <span class="math inline">\(\text{AR}(1)\)</span> загварын ерөнхий шугаман процессийн хувилбар</h3>
+<section id="textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="textar1-загварын-ерөнхий-шугаман-процессийн-хувилбар"><span class="header-section-number">9.3.2</span> <span class="math inline">\(\text{AR}(1)\)</span> загварын ерөнхий шугаман процессийн хувилбар</h3>
 <p>Тэгшитгэл (4.3.2)-оор өгөгдсөн <span class="math inline">\(\text{AR}(1)\)</span> процессийн рекурсив тодорхойлолт нь загварыг утгачилан тайлбарлахад туйлын ашигтай байдаг. Харин бусад зорилгод <span class="math inline">\(\text{AR}(1)\)</span> загварыг Тэгшитгэл (4.1.1) шиг ерөнхий шугаман процесс хэлбэрээр илэрхийлэх нь тохиромжтой. Рекурсив тодорхойлолт нь бүх <span class="math inline">\(t\)</span>-ийн хувьд хүчинтэй. Хэрэв бид энэ тэгшитгэлд <span class="math inline">\(t\)</span>-г <span class="math inline">\(t - 1\)</span>-ээр орлуулбал <span class="math inline">\(Y_{t-1} = \phi Y_{t-2} + e_{t-1}\)</span> болно. Үүнийг анхны илэрхийлэлд орлуулбал:</p>
 <p><span class="math display">\[
 Y_t = \phi(\phi Y_{t-2} + e_{t-1}) + e_t = e_t + \phi e_{t-1} + \phi^2 Y_{t-2}
@@ -936,13 +1120,13 @@ Y_t = e_t + \phi e_{t-1} + \phi^2 e_{t-2} + \phi^3 e_{t-3} + \cdots \tag{4.3.8}
 \]</span></p>
 <p>Энэ нь 4.1 дүгээр зүйлд бидний аль хэдийн судалсан <span class="math inline">\(\psi_j = \phi^j\)</span> бүхий Тэгшитгэл (4.1.1)-ийн ерөнхий шугаман процессийн хэлбэр юм. Энэхүү дүрслэл нь <span class="math inline">\(|\phi| &lt; 1\)</span> гэсэн хязгаарлалт зайлшгүй шаардлагатай болохыг дахин тодотгож байгааг анхаарна уу.</p>
 </section>
-<section id="textar1-процессийн-стационар-чанар" class="level3" data-number="13.3.3">
-<h3 data-number="13.3.3" class="anchored" data-anchor-id="textar1-процессийн-стационар-чанар"><span class="header-section-number">13.3.3</span> <span class="math inline">\(\text{AR}(1)\)</span> процессийн стационар чанар</h3>
+<section id="textar1-процессийн-стационар-чанар" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="textar1-процессийн-стационар-чанар"><span class="header-section-number">9.3.3</span> <span class="math inline">\(\text{AR}(1)\)</span> процессийн стационар чанар</h3>
 <p><span class="math inline">\(e_t\)</span> нь <span class="math inline">\(Y_{t-1}, Y_{t-2}, Y_{t-3}, \ldots\)</span>-ээс хамааралгүй бөгөөд <span class="math inline">\(\sigma_e^2 &gt; 0\)</span> байх хязгаарлалт дор <span class="math inline">\(\text{AR}(1)\)</span>-ийг тодорхойлогч <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> рекурсив тэгшитгэлийн шийд нь зөвхөн ба гагцхүү <span class="math inline">\(|\phi| &lt; 1\)</span> үед л стационар байдгийг баталж болно. Хэдийгээр энд стационар чанараас ч илүү өргөн асуудал хамаардаг боловч <span class="math inline">\(|\phi| &lt; 1\)</span> шаардлагыг ихэвчлэн <span class="math inline">\(\text{AR}(1)\)</span> процессийн <strong>стационар чанарын нөхцөл</strong> (<em>stationarity condition</em>) гэж нэрлэдэг (Box, Jenkins, and Reinsel, 1994, 54-р хуудас; Nelson, 1973, 39-р хуудас; болон Wei, 2005, 32-р хуудсыг үзнэ үү). Ялангуяа Дасгал 4.16, 4.18 болон 4.25-ыг үзээрэй.</p>
 <p>Энэ хүрээд бид <span class="math inline">\(\text{AR}(1)\)</span> процессийн автокорреляцийн функцийг хоёр өөр аргаар гаргаж авснаа тэмдэглэх нь зүйтэй. Эхний арга нь Тэгшитгэл (4.1.3)-т хүргэдэг ерөнхий шугаман процессийн дүрслэлийг ашигласан. Хоёр дахь арга нь тодорхойлогч рекурсив хамаарал <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> болон Тэгшитгэл (4.3.4), (4.3.5), (4.3.6)-ийн гаргалгааг ашигласан. Гурав дахь гаргалгааг Тэгшитгэл (4.3.7)-ийн хоёр талыг <span class="math inline">\(Y_{t-k}\)</span>-аар үржүүлж, хоёр талын математик дунджийг аваад, <span class="math inline">\(e_t, e_{t-1}, e_{t-2}, \ldots, e_{t-(k-1)}\)</span> нь <span class="math inline">\(Y_{t-k}\)</span>-аас хамааралгүй гэдгийг ашиглах замаар хийж болно. Хоёр дахь аргыг онцгойлон анхаарах хэрэгтэй, учир нь энэ нь өндөр эрэмбийн процессуудад маш эвтэйхэн өргөтгөгдөнө.</p>
 </section>
-<section id="хоёрдугаар-эрэмбийн-авторегрессийн-процесс" class="level3" data-number="13.3.4">
-<h3 data-number="13.3.4" class="anchored" data-anchor-id="хоёрдугаар-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">13.3.4</span> Хоёрдугаар эрэмбийн авторегрессийн процесс</h3>
+<section id="хоёрдугаар-эрэмбийн-авторегрессийн-процесс" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="хоёрдугаар-эрэмбийн-авторегрессийн-процесс"><span class="header-section-number">9.3.4</span> Хоёрдугаар эрэмбийн авторегрессийн процесс</h3>
 <p>Одоо дараах тэгшитгэлийг хангах цувааг авч үзье:</p>
 <p><span class="math display">\[
 Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + e_t \tag{4.3.9}
@@ -957,8 +1141,8 @@ Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + e_t \tag{4.3.9}
 \]</span></p>
 <p>Квадрат тэгшитгэл нь үргэлж хоёр язгууртай (комплекс тоо байж болно) байдгийг бид мэднэ.</p>
 </section>
-<section id="textar2-процессийн-стационар-чанар" class="level3" data-number="13.3.5">
-<h3 data-number="13.3.5" class="anchored" data-anchor-id="textar2-процессийн-стационар-чанар"><span class="header-section-number">13.3.5</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн стационар чанар</h3>
+<section id="textar2-процессийн-стационар-чанар" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="textar2-процессийн-стационар-чанар"><span class="header-section-number">9.3.5</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн стационар чанар</h3>
 <p><span class="math inline">\(e_t\)</span> нь <span class="math inline">\(Y_{t-1}, Y_{t-2}, Y_{t-3}, \ldots\)</span>-ээс хамааралгүй байх нөхцөл дор Тэгшитгэл (4.3.9)-ийн стационар шийд оршин байх зайлшгүй бөгөөд хүрэлцээтэй нөхцөл нь AR характеристикийн тэгшитгэлийн язгуурууд абсолют утгаараа (модулиараа) 1-ээс их байх явдал гэдгийг баталж болно. Үүнийг бид заримдаа язгуурууд нь комплекс хавтгай дахь нэгж тойргийн гадна орших ёстой гэж хэлдэг. Энэхүү дүгнэлт нь <span class="math inline">\(p\)</span>-р эрэмбийн тохиолдолд ямар ч өөрчлөлтгүйгээр ерөнхийлөгдөнө.</p>
 <p>Хоёрдугаар эрэмбийн тохиолдолд квадрат характеристикийн тэгшитгэлийн язгууруудыг хялбархан олж болно:</p>
 <p><span class="math display">\[
@@ -987,15 +1171,15 @@ Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + e_t \tag{4.3.9}
 <img src="12_files/figure-html/fig-4-17-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.17: Зураг 4.17. AR(2) процессийн стационар параметрийн муж
+Figure&nbsp;9.17: Зураг 4.17. AR(2) процессийн стационар параметрийн муж
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="textar2-процессийн-автокорреляцийн-функц" class="level3" data-number="13.3.6">
-<h3 data-number="13.3.6" class="anchored" data-anchor-id="textar2-процессийн-автокорреляцийн-функц"><span class="header-section-number">13.3.6</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн автокорреляцийн функц</h3>
+<section id="textar2-процессийн-автокорреляцийн-функц" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="textar2-процессийн-автокорреляцийн-функц"><span class="header-section-number">9.3.6</span> <span class="math inline">\(\text{AR}(2)\)</span> процессийн автокорреляцийн функц</h3>
 <p><span class="math inline">\(\text{AR}(2)\)</span> тохиолдлын автокорреляцийн функцийг гаргаж авахын тулд бид Тэгшитгэл (4.3.9)-ийн тодорхойлогч рекурсив хамаарлын хоёр талыг <span class="math inline">\(Y_{t-k}\)</span>-аар үржүүлж, математик дунджийг авна. Стационар чанартай, тэг дундажтай бөгөөд <span class="math inline">\(e_t\)</span> нь <span class="math inline">\(Y_{t-k}\)</span>-аас хамааралгүй гэж үзвэл:</p>
 <p><span class="math display">\[
 \gamma_k = \phi_1 \gamma_{k-1} + \phi_2 \gamma_{k-2}, \qquad k = 1, 2, 3, \ldots \text{ хувьд} \tag{4.3.12}
@@ -1053,7 +1237,7 @@ G_1 = \frac{\phi_1 - \sqrt{\phi_1^2 + 4\phi_2}}{2} \qquad \text{болон} \qqu
 <img src="12_files/figure-html/fig-4-18-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.18: Зураг 4.18. Хэд хэдэн AR(2) загварын автокорреляцийн функцүүд (Lag = Хоцролт)
+Figure&nbsp;9.18: Зураг 4.18. Хэд хэдэн AR(2) загварын автокорреляцийн функцүүд (Lag = Хоцролт)
 </figcaption>
 </figure>
 </div>
@@ -1073,15 +1257,15 @@ Figure&nbsp;13.18: Зураг 4.18. Хэд хэдэн AR(2) загварын а�
 <img src="12_files/figure-html/fig-4-19-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.19: Зураг 4.19. φ_1 = 1.5 болон φ_2 = −0.75 параметртэй AR(2) цувааны хугацааны график
+Figure&nbsp;9.19: Зураг 4.19. φ_1 = 1.5 болон φ_2 = −0.75 параметртэй AR(2) цувааны хугацааны график
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="textar2-загварын-дисперс-the-variance-for-the-textar2-model" class="level3" data-number="13.3.7">
-<h3 data-number="13.3.7" class="anchored" data-anchor-id="textar2-загварын-дисперс-the-variance-for-the-textar2-model"><span class="header-section-number">13.3.7</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын дисперс (The Variance for the <span class="math inline">\(\text{AR}(2)\)</span> Model)</h3>
+<section id="textar2-загварын-дисперс-the-variance-for-the-textar2-model" class="level3" data-number="9.3.7">
+<h3 data-number="9.3.7" class="anchored" data-anchor-id="textar2-загварын-дисперс-the-variance-for-the-textar2-model"><span class="header-section-number">9.3.7</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын дисперс (The Variance for the <span class="math inline">\(\text{AR}(2)\)</span> Model)</h3>
 <p>Процессын дисперс <span class="math inline">\(\gamma_0\)</span>-ийг загварын параметрүүд болох <span class="math inline">\(\phi_1\)</span>, <span class="math inline">\(\phi_2\)</span> болон <span class="math inline">\(\sigma_e^2\)</span>-аар дараах байдлаар илэрхийлж болно: (4.3.9) тэгшитгэлийн хоёр талын дисперсийг авбал:</p>
 <p><span class="math display">\[
 \gamma_0 = (\phi_1^2 + \phi_2^2)\gamma_0 + 2\phi_1 \phi_2 \gamma_1 + \sigma_e^2 \tag{4.3.19}
@@ -1091,8 +1275,8 @@ Figure&nbsp;13.19: Зураг 4.19. φ_1 = 1.5 болон φ_2 = −0.75 пар�
 \gamma_0 = \frac{(1 - \phi_2)\sigma_e^2}{(1 - \phi_2)(1 - \phi_1^2 - \phi_2^2) - 2\phi_2 \phi_1^2} = \left(\frac{1 - \phi_2}{1 + \phi_2}\right) \frac{\sigma_e^2}{(1 - \phi_2)^2 - \phi_1^2} \tag{4.3.20}
 \]</span></p>
 </section>
-<section id="textar2-загварын-psi-коэффициентүүд" class="level3" data-number="13.3.8">
-<h3 data-number="13.3.8" class="anchored" data-anchor-id="textar2-загварын-psi-коэффициентүүд"><span class="header-section-number">13.3.8</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын <span class="math inline">\(\psi\)</span>-коэффициентүүд</h3>
+<section id="textar2-загварын-psi-коэффициентүүд" class="level3" data-number="9.3.8">
+<h3 data-number="9.3.8" class="anchored" data-anchor-id="textar2-загварын-psi-коэффициентүүд"><span class="header-section-number">9.3.8</span> <span class="math inline">\(\text{AR}(2)\)</span> загварын <span class="math inline">\(\psi\)</span>-коэффициентүүд</h3>
 <p><span class="math inline">\(\text{AR}(2)\)</span> цувааны ерөнхий шугаман процессын дүрслэл дэх <span class="math inline">\(\psi\)</span>-коэффициентүүд нь <span class="math inline">\(\text{AR}(1)\)</span> тохиолдлоос илүү төвөгтэй байдаг. Гэсэн хэдий ч бид (4.1.1) тэгшитгэлийг ашиглан <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(Y_{t-1}\)</span> болон <span class="math inline">\(Y_{t-2}\)</span>-ийн ерөнхий шугаман процессын дүрслэлийг <span class="math inline">\(Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + e_t\)</span> тэгшитгэлд орлуулж болно. Дараа нь <span class="math inline">\(e_j\)</span>-ийн өмнөх коэффициентүүдийг тэнцүүлбэл дараах рекурсив хамаарлууд гарна:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1116,8 +1300,8 @@ Figure&nbsp;13.19: Зураг 4.19. φ_1 = 1.5 болон φ_2 = −0.75 пар�
 \psi_j = (1 + j)\left(\frac{\phi_1}{2}\right)^j \tag{4.3.24}
 \]</span></p>
 </section>
-<section id="ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" class="level3" data-number="13.3.9">
-<h3 data-number="13.3.9" class="anchored" data-anchor-id="ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process"><span class="header-section-number">13.3.9</span> Ерөнхий авторегрессийн процесс (The General Autoregressive Process)</h3>
+<section id="ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process" class="level3" data-number="9.3.9">
+<h3 data-number="9.3.9" class="anchored" data-anchor-id="ерөнхий-авторегрессийн-процесс-the-general-autoregressive-process"><span class="header-section-number">9.3.9</span> Ерөнхий авторегрессийн процесс (The General Autoregressive Process)</h3>
 <p>Одоо <span class="math inline">\(p\)</span>-р эрэмбийн авторегрессийн загварыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \cdots + \phi_p Y_{t-p} + e_t \tag{4.3.25}
@@ -1165,15 +1349,15 @@ E(e_t Y_t) = E\big[e_t(\phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \cdots + \phi_p Y_{t-p}
 <hr>
 </section>
 </section>
-<section id="холимог-авторегрессийн-дундаж-гулсалтын-загвар" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="холимог-авторегрессийн-дундаж-гулсалтын-загвар"><span class="header-section-number">13.4</span> 4.4 Холимог авторегрессийн дундаж гулсалтын загвар</h2>
+<section id="холимог-авторегрессийн-дундаж-гулсалтын-загвар" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="холимог-авторегрессийн-дундаж-гулсалтын-загвар"><span class="header-section-number">9.4</span> 4.4 Холимог авторегрессийн дундаж гулсалтын загвар</h2>
 <p>Хэрэв бид цувааг зарим талаараа авторегрессийн, зарим талаараа дундаж гулсалтын шинжтэй гэж үзвэл нэлээд ерөнхий хугацааны цувааны загварыг гарган авна. Ерөнхий тохиолдолд, хэрэв:</p>
 <p><span class="math display">\[
 Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \cdots + \phi_p Y_{t-p} + e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2} - \cdots - \theta_q e_{t-q} \tag{4.4.1}
 \]</span></p>
 <p>байвал <span class="math inline">\(Y_t\)</span>-ийг харгалзан <span class="math inline">\(p\)</span> болон <span class="math inline">\(q\)</span> эрэмбийн <strong>холимог авторегрессийн дундаж гулсалтын</strong> (<em>autoregressive moving average</em>) процесс гэж нэрлэх бөгөөд нэрийг нь товчлоод <span class="math inline">\(\text{ARMA}(p, q)\)</span> гэж бичнэ. Ердийнх шигээ бид эхлээд нэгэн чухал тусгай тохиолдлыг авч үзье.</p>
-<section id="textarma11-загвар-the-textarma11-model" class="level3" data-number="13.4.1">
-<h3 data-number="13.4.1" class="anchored" data-anchor-id="textarma11-загвар-the-textarma11-model"><span class="header-section-number">13.4.1</span> <span class="math inline">\(\text{ARMA}(1,1)\)</span> загвар (The <span class="math inline">\(\text{ARMA}(1,1)\)</span> Model)</h3>
+<section id="textarma11-загвар-the-textarma11-model" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="textarma11-загвар-the-textarma11-model"><span class="header-section-number">9.4.1</span> <span class="math inline">\(\text{ARMA}(1,1)\)</span> загвар (The <span class="math inline">\(\text{ARMA}(1,1)\)</span> Model)</h3>
 <p>Тодорхойлогч тэгшитгэлийг дараах байдлаар бичиж болно:</p>
 <p><span class="math display">\[
 Y_t = \phi Y_{t-1} + e_t - \theta e_{t-1} \tag{4.4.2}
@@ -1231,8 +1415,8 @@ Y_t = e_t + (\phi - \theta) \sum_{j=1}^{\infty} \phi^{j-1} e_{t-j} \tag{4.4.6}
 <hr>
 </section>
 </section>
-<section id="урвах-чанар-invertibility" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="урвах-чанар-invertibility"><span class="header-section-number">13.5</span> 4.5 Урвах чанар (Invertibility)</h2>
+<section id="урвах-чанар-invertibility" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="урвах-чанар-invertibility"><span class="header-section-number">9.5</span> 4.5 Урвах чанар (Invertibility)</h2>
 <p><span class="math inline">\(\text{MA}(1)\)</span> процессын хувьд <span class="math inline">\(\theta\)</span>-ийг <span class="math inline">\(1/\theta\)</span>-аар солиход яг ижил автокорреляцийн функц гардаг болохыг бид өмнө нь харсан. Дасгал ажлуудад <span class="math inline">\(\text{MA}(2)\)</span> загварын хувьд мөн адил ийм цорын ганц биш байх (<em>nonuniqueness</em>) асуудалтай тулгарна. Ажиглагдсан хугацааны цуваанаас параметрүүдийн утгыг үнэлэхээс өмнө автокорреляцийн функц нь өгөгдсөн үед MA загварууд цорын ганц биш байдаг энэхүү асуудлыг шийдвэрлэх ёстой. Энэхүү цорын ганц биш байдал нь дараах өнгөц харахад хамааралгүй мэт санагдах асуулттай холбоотой болох нь тогтоогддог.</p>
 <p>Авторегрессийн процессыг <span class="math inline">\(\psi\)</span>-коэффициентүүдээр дамжуулан үргэлж ерөнхий шугаман процесс хэлбэрээр дахин илэрхийлж болдог тул AR процессыг хязгааргүй эрэмбийн дундаж гулсалтын процесс гэж үзэж бас болно. Гэсэн хэдий ч зарим зорилгод авторегрессийн дүрслэлүүд нь мөн тохиромжтой байдаг. Тэгвэл дундаж гулсалтын загварыг авторегресс хэлбэрээр дахин илэрхийлж болох уу?</p>
 <p>Санаагаа тодорхой болгохын тулд <span class="math inline">\(\text{MA}(1)\)</span> загварыг авч үзье:</p>
@@ -1269,13 +1453,13 @@ Y_t = \pi_1 Y_{t-1} + \pi_2 Y_{t-2} + \pi_3 Y_{t-3} + \cdots + e_t \tag{4.5.5}
 <p>Ерөнхий <span class="math inline">\(\text{ARMA}(p, q)\)</span> загварын хувьд бид стационар чанар болон урвуулагдах чанарыг хоёуланг нь шаардана.</p>
 <hr>
 </section>
-<section id="дүгнэлт" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">13.6</span> 4.6 Дүгнэлт</h2>
+<section id="дүгнэлт" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">9.6</span> 4.6 Дүгнэлт</h2>
 <p>Энэ бүлэгт энгийн боловч маш ашигтай авторегрессийн, дундаж гулсалтын (ARMA) хугацааны цувааны загваруудыг танилцууллаа. Эдгээр загварын статистикийн үндсэн шинж чанаруудыг ялангуяа 1 ба 2-р эрэмбийн дундаж гулсалтын болон 1 ба 2-р эрэмбийн авторегрессийн процессуудын чухал тусгай тохиолдлуудад гарган авсан болно. Эдгээр тохиолдлын хувьд стационар болон урвуулагдах чанарын асуудлуудыг авч үзлээ. Мөн холимог ARMA загваруудын шинж чанарыг судалсан болно. Та эдгээр загварын автокорреляцийн шинж чанарууд болон загваруудын янз бүрийн дүрслэлүүдийг сайтар эзэмшсэн байх шаардлагатай.</p>
 <hr>
 </section>
-<section id="дасгал-ажлууд" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="дасгал-ажлууд"><span class="header-section-number">13.7</span> Дасгал ажлууд</h2>
+<section id="дасгал-ажлууд" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="дасгал-ажлууд"><span class="header-section-number">9.7</span> Дасгал ажлууд</h2>
 <p><strong>4.1</strong> Дараах тэгшитгэлээр тодорхойлогдсон стационар процессын автокорреляцийн функцийг үндсэн тодорхойлолт (анхдагч зарчим) ашиглан ол: <span class="math display">\[
 Y_t = 5 + e_t - \frac{1}{2} e_{t-1} + \frac{1}{4} e_{t-2}
 \]</span></p>
@@ -1312,8 +1496,8 @@ t\sigma_e^2 + \sigma_0^2, &amp; |\phi| = 1 \text{ үед}
 \]</span> - (d) Одоо <span class="math inline">\(\mu_0 = 0\)</span> гэж үзье. Хэрэв <span class="math inline">\(Y_t\)</span> стационар бол <span class="math inline">\(|\phi| \ne 1\)</span> байх ёстойг үндэслэлтэй тайлбарла. - (e) Үргэлжлүүлэн <span class="math inline">\(\mu_0 = 0\)</span> гэж үзээд, хэрэв <span class="math inline">\(Y_t\)</span> стационар бол <span class="math inline">\(\operatorname{Var}(Y_t) = \frac{\sigma_e^2}{1 - \phi^2}\)</span> байх ба улмаар <span class="math inline">\(|\phi| &lt; 1\)</span> байх ёстойг батал.</p>
 <hr>
 </section>
-<section id="хавсралт-b-textar2-процессын-стационар-муж" class="level2" data-number="13.8">
-<h2 data-number="13.8" class="anchored" data-anchor-id="хавсралт-b-textar2-процессын-стационар-муж"><span class="header-section-number">13.8</span> Хавсралт B: <span class="math inline">\(\text{AR}(2)\)</span> процессын стационар муж</h2>
+<section id="хавсралт-b-textar2-процессын-стационар-муж" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="хавсралт-b-textar2-процессын-стационар-муж"><span class="header-section-number">9.8</span> Хавсралт B: <span class="math inline">\(\text{AR}(2)\)</span> процессын стационар муж</h2>
 <p>Хоёрдугаар эрэмбийн тохиолдолд квадрат характеристикийн олон гишүүнтийн язгууруудыг дараах байдлаар хялбархан олж болно:</p>
 <p><span class="math display">\[
 \frac{\phi_1 \pm \sqrt{\phi_1^2 + 4\phi_2}}{-2\phi_2} \tag{4.B.1}
@@ -1348,8 +1532,8 @@ G_2 = \frac{\phi_1 + \sqrt{\phi_1^2 + 4\phi_2}}{2}
 <p><strong>II. Комплекс язгуурууд (Complex Roots):</strong> Одоо <span class="math inline">\(\phi_1^2 + 4\phi_2 &lt; 0\)</span> байг. Энд <span class="math inline">\(G_1\)</span> болон <span class="math inline">\(G_2\)</span> нь харилцан хосмог комплекс тоонууд байх ба <span class="math inline">\(|G_1| = |G_2| &lt; 1\)</span> байх зайлшгүй бөгөөд хүрэлцээтэй нөхцөл нь <span class="math inline">\(|G_1|^2 &lt; 1\)</span> юм. Гэтэл <span class="math inline">\(|G_1|^2 = [\phi_1^2 + (-\phi_1^2 - 4\phi_2)]/4 = -\phi_2\)</span> тул <span class="math inline">\(\phi_2 &gt; -1\)</span> болно. Энэ нь <span class="math inline">\(\phi_1^2 + 4\phi_2 &lt; 0\)</span> тэнцэтгэл биштэй хамтдаа Зураг 4.17-д үзүүлсэн комплекс язгуурын стационар мужийн хэсгийг тодорхойлж, (4.3.11) тэгшитгэлийг баталж байна. Ийнхүү баталгаа дууслаа.</p>
 <hr>
 </section>
-<section id="хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" class="level2" data-number="13.9">
-<h2 data-number="13.9" class="anchored" data-anchor-id="хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц"><span class="header-section-number">13.9</span> Хавсралт C: <span class="math inline">\(\text{ARMA}(p, q)\)</span> загварын автокорреляцийн функц</h2>
+<section id="хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="хавсралт-c-textarmap-q-загварын-автокорреляцийн-функц"><span class="header-section-number">9.9</span> Хавсралт C: <span class="math inline">\(\text{ARMA}(p, q)\)</span> загварын автокорреляцийн функц</h2>
 <p><span class="math inline">\(Y_t\)</span> нь стационар, урвуулагддаг <span class="math inline">\(\text{ARMA}(p, q)\)</span> процесс байг. Ийм процессыг бид үргэлж ерөнхий шугаман процессын хэлбэрээр дараах байдлаар бичиж болдгийг саная:</p>
 <p><span class="math display">\[
 Y_t = \sum_{j=0}^{\infty} \psi_j e_{t-j} \tag{4.C.1}
@@ -1378,10 +1562,10 @@ E(Y_{t+k} e_t) = E\left(\sum_{j=0}^{\infty} \psi_j e_{t+k-j} e_t\right) = \psi_k
 <p>Параметрүүдийн өгөгдсөн утгууд болох <span class="math inline">\(\sigma_e^2\)</span>, <span class="math inline">\(\phi\)</span>-ууд болон <span class="math inline">\(\theta\)</span>-уудын (улмаар <span class="math inline">\(\psi\)</span>-уудын) хувьд эдгээр шугаман тэгшитгэлийг бодож <span class="math inline">\(\gamma_0, \gamma_1, \ldots, \gamma_p\)</span>-ийг олж болно. Дараа нь <span class="math inline">\(k &gt; p\)</span> үеийн <span class="math inline">\(\gamma_k\)</span>-ийн утгуудыг (4.4.8) рекурсив тэгшитгэлээс тооцоолно. Эцэст нь <span class="math inline">\(\rho_k\)</span>-ийг <span class="math inline">\(\rho_k = \gamma_k / \gamma_0\)</span> томьёогоор олно.</p>
 <hr>
 </section>
-<section id="бодолт" class="level2" data-number="13.10">
-<h2 data-number="13.10" class="anchored" data-anchor-id="бодолт"><span class="header-section-number">13.10</span> Бодолт</h2>
-<section id="first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." class="level3" data-number="13.10.1">
-<h3 data-number="13.10.1" class="anchored" data-anchor-id="first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол."><span class="header-section-number">13.10.1</span> 4.1. First principles-ийг ашиглан автокорреляцийн функцийг ол.</h3>
+<section id="бодолт" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="бодолт"><span class="header-section-number">9.10</span> Бодолт</h2>
+<section id="first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол." class="level3" data-number="9.10.1">
+<h3 data-number="9.10.1" class="anchored" data-anchor-id="first-principles-ийг-ашиглан-автокорреляцийн-функцийг-ол."><span class="header-section-number">9.10.1</span> 4.1. First principles-ийг ашиглан автокорреляцийн функцийг ол.</h3>
 <p>Процесс: <span class="math inline">\(Y_t = 5 + e_t - \frac{1}{2} e_{t-1} + \frac{1}{4} e_{t-2}\)</span>. Энэ нь <span class="math inline">\(\text{MA}(2)\)</span> процесс байна.</p>
 <ul>
 <li><strong>Дундаж:</strong> <span class="math inline">\(E(Y_t) = 5 + 0 - 0 + 0 = 5\)</span>.</li>
@@ -1402,8 +1586,8 @@ E(Y_{t+k} e_t) = E\left(\sum_{j=0}^{\infty} \psi_j e_{t+k-j} e_t\right) = \psi_k
 \rho_0 = 1, \quad \rho_1 = \frac{-5/8}{21/16} = -\frac{10}{21} \approx -0.476, \quad \rho_2 = \frac{1/4}{21/16} = \frac{4}{21} \approx 0.190, \quad \rho_k = 0 \;\;(k \ge 3).
 \]</span></p>
 </section>
-<section id="textma2-загваруудын-автокорреляцийн-функцийг-зур." class="level3" data-number="13.10.2">
-<h3 data-number="13.10.2" class="anchored" data-anchor-id="textma2-загваруудын-автокорреляцийн-функцийг-зур."><span class="header-section-number">13.10.2</span> 4.2. <span class="math inline">\(\text{MA}(2)\)</span> загваруудын автокорреляцийн функцийг зур.</h3>
+<section id="textma2-загваруудын-автокорреляцийн-функцийг-зур." class="level3" data-number="9.10.2">
+<h3 data-number="9.10.2" class="anchored" data-anchor-id="textma2-загваруудын-автокорреляцийн-функцийг-зур."><span class="header-section-number">9.10.2</span> 4.2. <span class="math inline">\(\text{MA}(2)\)</span> загваруудын автокорреляцийн функцийг зур.</h3>
 <p>Стандарт <span class="math inline">\(\text{MA}(2)\)</span> загвар: <span class="math inline">\(Y_t = e_t - \theta_1 e_{t-1} - \theta_2 e_{t-2}\)</span>. ACF-ийн томьёо: <span class="math display">\[
 \rho_1 = \frac{-\theta_1 + \theta_1 \theta_2}{1 + \theta_1^2 + \theta_2^2}, \qquad \rho_2 = \frac{-\theta_2}{1 + \theta_1^2 + \theta_2^2}, \qquad \rho_k = 0 \;\;(k \ge 3).
 \]</span></p>
@@ -1413,8 +1597,8 @@ E(Y_{t+k} e_t) = E\left(\sum_{j=0}^{\infty} \psi_j e_{t+k-j} e_t\right) = \psi_k
 <li><p><strong>(c) <span class="math inline">\(\theta_1 = -1, \theta_2 = -0.6\)</span>:</strong> <span class="math display">\[\rho_1 = \frac{-(-1) + (-1)(-0.6)}{1 + 1 + 0.36} = \frac{1.6}{2.36} \approx 0.678, \qquad \rho_2 = \frac{-(-0.6)}{2.36} = \frac{0.6}{2.36} \approx 0.254.\]</span> <em>Зураг:</em> Lag 1 ба lag 2-т хоёуланд нь эерэг утгатай багана.</p></li>
 </ul>
 </section>
-<section id="textma1-процессын-хувьд-батал." class="level3" data-number="13.10.3">
-<h3 data-number="13.10.3" class="anchored" data-anchor-id="textma1-процессын-хувьд-батал."><span class="header-section-number">13.10.3</span> 4.3. <span class="math inline">\(\text{MA}(1)\)</span> процессын хувьд батал.</h3>
+<section id="textma1-процессын-хувьд-батал." class="level3" data-number="9.10.3">
+<h3 data-number="9.10.3" class="anchored" data-anchor-id="textma1-процессын-хувьд-батал."><span class="header-section-number">9.10.3</span> 4.3. <span class="math inline">\(\text{MA}(1)\)</span> процессын хувьд батал.</h3>
 <p><span class="math inline">\(\text{MA}(1)\)</span>: <span class="math inline">\(Y_t = e_t - \theta e_{t-1}\)</span> үед <span class="math inline">\(\rho_1 = \frac{-\theta}{1 + \theta^2}\)</span>. Бид <span class="math inline">\(\rho_1\)</span>-ийн <span class="math inline">\(\theta\)</span>-өөр авсан уламжлалыг ашиглан экстремум утгыг олно:</p>
 <p><span class="math display">\[
 f(\theta) = \frac{-\theta}{1 + \theta^2}, \qquad f'(\theta) = \frac{-(1 + \theta^2) - (-\theta)(2\theta)}{(1 + \theta^2)^2} = \frac{\theta^2 - 1}{(1 + \theta^2)^2}
@@ -1428,16 +1612,16 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 </ul>
 <p>Иймд <span class="math inline">\(\max_{-\infty &lt; \theta &lt; \infty} \rho_1 = 0.5\)</span>, <span class="math inline">\(\min_{-\infty &lt; \theta &lt; \infty} \rho_1 = -0.5\)</span> болох нь батлагдав.</p>
 </section>
-<section id="textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." class="level3" data-number="13.10.4">
-<h3 data-number="13.10.4" class="anchored" data-anchor-id="textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул."><span class="header-section-number">13.10.4</span> 4.4. <span class="math inline">\(\text{MA}(1)\)</span>-ийн хувьд <span class="math inline">\(\theta\)</span>-г <span class="math inline">\(1/\theta\)</span>-өөр солиход ACF өөрчлөгдөхгүй гэдгийг харуул.</h3>
+<section id="textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул." class="level3" data-number="9.10.4">
+<h3 data-number="9.10.4" class="anchored" data-anchor-id="textma1-ийн-хувьд-theta-г-1theta-өөр-солиход-acf-өөрчлөгдөхгүй-гэдгийг-харуул."><span class="header-section-number">9.10.4</span> 4.4. <span class="math inline">\(\text{MA}(1)\)</span>-ийн хувьд <span class="math inline">\(\theta\)</span>-г <span class="math inline">\(1/\theta\)</span>-өөр солиход ACF өөрчлөгдөхгүй гэдгийг харуул.</h3>
 <p><span class="math inline">\(\theta\)</span>-ийн оронд <span class="math inline">\(1/\theta\)</span>-г тавивал:</p>
 <p><span class="math display">\[
 \rho_1' = \frac{-1/\theta}{1 + (1/\theta)^2} = \frac{-1/\theta}{(\theta^2 + 1)/\theta^2} = -\frac{1}{\theta} \cdot \frac{\theta^2}{\theta^2 + 1} = \frac{-\theta}{\theta^2 + 1} = \rho_1.
 \]</span></p>
 <p>Энэ нь <span class="math inline">\(\text{MA}(1)\)</span> процессын урвуу чанар (<em>invertibility</em>) болон ACF нь <span class="math inline">\(\theta\)</span> болон <span class="math inline">\(1/\theta\)</span>-ийн хувьд ижил байх <em>identifiability</em> асуудлыг харуулж байна.</p>
 </section>
-<section id="textar1-загваруудын-acf-ийг-тооцоолж-зур." class="level3" data-number="13.10.5">
-<h3 data-number="13.10.5" class="anchored" data-anchor-id="textar1-загваруудын-acf-ийг-тооцоолж-зур."><span class="header-section-number">13.10.5</span> 4.5. <span class="math inline">\(\text{AR}(1)\)</span> загваруудын ACF-ийг тооцоолж зур.</h3>
+<section id="textar1-загваруудын-acf-ийг-тооцоолж-зур." class="level3" data-number="9.10.5">
+<h3 data-number="9.10.5" class="anchored" data-anchor-id="textar1-загваруудын-acf-ийг-тооцоолж-зур."><span class="header-section-number">9.10.5</span> 4.5. <span class="math inline">\(\text{AR}(1)\)</span> загваруудын ACF-ийг тооцоолж зур.</h3>
 <p><span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = \phi_1 Y_{t-1} + e_t\)</span>. ACF нь <span class="math inline">\(\rho_k = \phi_1^k\)</span>.</p>
 <ul>
 <li><strong>(a) <span class="math inline">\(\phi_1 = 0.6\)</span>:</strong> <span class="math inline">\(\rho_k = 0.6^k\)</span>. Экспоненциалаар тэг рүү буурна (<span class="math inline">\(0.6,\; 0.36,\; 0.216, \ldots\)</span>).</li>
@@ -1446,8 +1630,8 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <li><strong>(d) <span class="math inline">\(\phi_1 = 0.3\)</span>:</strong> <span class="math inline">\(\rho_k = 0.3^k\)</span>. Маш хурдан буурна (<span class="math inline">\(0.3,\; 0.09,\; 0.027, \ldots\)</span>).</li>
 </ul>
 </section>
-<section id="textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." class="level3" data-number="13.10.6">
-<h3 data-number="13.10.6" class="anchored" data-anchor-id="textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1."><span class="header-section-number">13.10.6</span> 4.6. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t = \nabla Y_t = Y_t - Y_{t-1}\)</span>.</h3>
+<section id="textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1." class="level3" data-number="9.10.6">
+<h3 data-number="9.10.6" class="anchored" data-anchor-id="textar1-процесс-y_t-w_t-nabla-y_t-y_t---y_t-1."><span class="header-section-number">9.10.6</span> 4.6. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t\)</span>, <span class="math inline">\(W_t = \nabla Y_t = Y_t - Y_{t-1}\)</span>.</h3>
 <p><strong>(a) <span class="math inline">\(W_t\)</span>-ийн автоковариацын функцийг <span class="math inline">\(\phi, \sigma_e^2\)</span>-ээр илэрхийл:</strong></p>
 <p><span class="math inline">\(W_t = \phi Y_{t-1} + e_t - Y_{t-1} = (\phi - 1) Y_{t-1} + e_t\)</span>. <span class="math inline">\(W_t\)</span> нь <span class="math inline">\(\text{ARMA}(1,1)\)</span> процесс болно: <span class="math inline">\(W_t - \phi W_{t-1} = e_t - e_{t-1}\)</span>.</p>
 <p><span class="math inline">\(\text{MA}(\infty)\)</span> хэлбэрээр: <span class="math inline">\(W_t = e_t + (\phi - 1)\sum_{j=1}^{\infty} \phi^{j-1} e_{t-j}\)</span>.</p>
@@ -1464,8 +1648,8 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <p><span class="math inline">\(k \ge 2\)</span>-ийн хувьд: <span class="math inline">\(\gamma_W(k) = \phi^{k-1} \gamma_W(1)\)</span>.</p>
 <p><strong>(b) <span class="math inline">\(\operatorname{Var}(W_t) = \frac{2\sigma_e^2}{1 + \phi}\)</span> гэдгийг харуул:</strong> Дээрх (a) хэсгийн <span class="math inline">\(\gamma_W(0)\)</span>-ийн томьёо нь яг <span class="math inline">\(\frac{2\sigma_e^2}{1 + \phi}\)</span> байна.</p>
 </section>
-<section id="загваруудын-acf-ийн-чухал-шинж-чанарууд" class="level3" data-number="13.10.7">
-<h3 data-number="13.10.7" class="anchored" data-anchor-id="загваруудын-acf-ийн-чухал-шинж-чанарууд"><span class="header-section-number">13.10.7</span> 4.7. Загваруудын ACF-ийн чухал шинж чанарууд</h3>
+<section id="загваруудын-acf-ийн-чухал-шинж-чанарууд" class="level3" data-number="9.10.7">
+<h3 data-number="9.10.7" class="anchored" data-anchor-id="загваруудын-acf-ийн-чухал-шинж-чанарууд"><span class="header-section-number">9.10.7</span> 4.7. Загваруудын ACF-ийн чухал шинж чанарууд</h3>
 <ul>
 <li><strong>(a) <span class="math inline">\(\text{MA}(1)\)</span>:</strong> Lag 1-ийн дараа огцом тэг болж тасарна (<em>cuts off after lag 1</em>).</li>
 <li><strong>(b) <span class="math inline">\(\text{MA}(2)\)</span>:</strong> Lag 2-ийн дараа огцом тэг болж тасарна.</li>
@@ -1474,16 +1658,16 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <li><strong>(e) <span class="math inline">\(\text{ARMA}(1,1)\)</span>:</strong> Lag 1-ээс эхлэн аажмаар тэг рүү буурна (хэзээ ч яг тэг болж тасрахгүй).</li>
 </ul>
 </section>
-<section id="y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." class="level3" data-number="13.10.8">
-<h3 data-number="13.10.8" class="anchored" data-anchor-id="y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол."><span class="header-section-number">13.10.8</span> 4.8. <span class="math inline">\(Y_t = \phi_2 Y_{t-2} + e_t\)</span> үед <span class="math inline">\(\phi_2\)</span>-ийн стационар байх мужийг ол.</h3>
+<section id="y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол." class="level3" data-number="9.10.8">
+<h3 data-number="9.10.8" class="anchored" data-anchor-id="y_t-phi_2-y_t-2-e_t-үед-phi_2-ийн-стационар-байх-мужийг-ол."><span class="header-section-number">9.10.8</span> 4.8. <span class="math inline">\(Y_t = \phi_2 Y_{t-2} + e_t\)</span> үед <span class="math inline">\(\phi_2\)</span>-ийн стационар байх мужийг ол.</h3>
 <p>Тэгшитгэлийг <span class="math inline">\(Y_{t-k}\)</span>-ээр үржүүлж, математик дундаж авбал: <span class="math inline">\(\gamma_k = \phi_2 \gamma_{k-2}\)</span>. Энэ нь зөвхөн тэгш lag-үүдэд хамааралтай (сондгой lag-үүдэд <span class="math inline">\(\gamma_1 = 0\)</span>).</p>
 <p>Характеристикийн тэгшитгэл: <span class="math inline">\(1 - \phi_2 z^2 = 0 \implies z^2 = 1/\phi_2 \implies z = \pm 1/\sqrt{\phi_2}\)</span>.</p>
 <p>Стационар байх нөхцөл нь бүх язгуур нэгж тойргоос гадна байх ёстой (<span class="math inline">\(|z| &gt; 1\)</span>): <span class="math display">\[
 \left|\frac{1}{\sqrt{\phi_2}}\right| &gt; 1 \implies \frac{1}{|\phi_2|} &gt; 1 \implies |\phi_2| &lt; 1.
 \]</span> Иймд стационар байх муж нь <span class="math inline">\(-1 &lt; \phi_2 &lt; 1\)</span>.</p>
 </section>
-<section id="textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." class="level3" data-number="13.10.9">
-<h3 data-number="13.10.9" class="anchored" data-anchor-id="textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл."><span class="header-section-number">13.10.9</span> 4.9. <span class="math inline">\(\text{AR}(2)\)</span> загварын ACF-ийг рекурсив томьёогоор тооцоолж, шинж чанарыг тодорхойл.</h3>
+<section id="textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл." class="level3" data-number="9.10.9">
+<h3 data-number="9.10.9" class="anchored" data-anchor-id="textar2-загварын-acf-ийг-рекурсив-томьёогоор-тооцоолж-шинж-чанарыг-тодорхойл."><span class="header-section-number">9.10.9</span> 4.9. <span class="math inline">\(\text{AR}(2)\)</span> загварын ACF-ийг рекурсив томьёогоор тооцоолж, шинж чанарыг тодорхойл.</h3>
 <p>Загвар: <span class="math inline">\(Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + e_t\)</span>. Юл-Уокерын тэгшитгэл: <span class="math inline">\(\rho_k = \phi_1 \rho_{k-1} + \phi_2 \rho_{k-2}\)</span> (<span class="math inline">\(k \ge 3\)</span>), <span class="math inline">\(\rho_1 = \frac{\phi_1}{1 - \phi_2}\)</span>, <span class="math inline">\(\rho_2 = \phi_1 \rho_1 + \phi_2\)</span>. Характеристикийн тэгшитгэл (урвуу язгуурын хувьд): <span class="math inline">\(x^2 - \phi_1 x - \phi_2 = 0\)</span>, язгуур <span class="math inline">\(x_{1,2} = \frac{\phi_1 \pm \sqrt{\phi_1^2 + 4\phi_2}}{2}\)</span>. Комплекс язгуурын үед <span class="math inline">\(R = \sqrt{-\phi_2}\)</span>, <span class="math inline">\(\Theta = \arccos\!\left(\frac{\phi_1}{2\sqrt{-\phi_2}}\right)\)</span>.</p>
 <ul>
 <li><strong>(a) <span class="math inline">\(\phi_1 = 0.6, \phi_2 = 0.3\)</span>:</strong> Дискриминант <span class="math inline">\(0.6^2 + 4(0.3) = 1.56 &gt; 0\)</span> (бодит язгуурууд). <span class="math inline">\(\rho_0 = 1,\; \rho_1 = 0.857,\; \rho_2 = 0.814,\; \rho_3 = 0.745, \ldots\)</span> (аажмаар буурна).</li>
@@ -1494,8 +1678,8 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <li><strong>(f) <span class="math inline">\(\phi_1 = -0.5, \phi_2 = -0.6\)</span>:</strong> Дискриминант <span class="math inline">\((-0.5)^2 + 4(-0.6) = -2.15 &lt; 0\)</span> (комплекс язгуурууд). <span class="math inline">\(R = \sqrt{0.6} \approx 0.775\)</span>, <span class="math inline">\(\Theta = \arccos\!\left(\frac{-0.5}{2\sqrt{0.6}}\right) \approx 1.899\text{ rad}\)</span>. <span class="math inline">\(\rho_0 = 1,\; \rho_1 = -0.3125,\; \rho_2 = -0.444,\; \rho_3 = 0.409, \ldots\)</span> (синус долгион).</li>
 </ul>
 </section>
-<section id="textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." class="level3" data-number="13.10.10">
-<h3 data-number="13.10.10" class="anchored" data-anchor-id="textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур."><span class="header-section-number">13.10.10</span> 4.10. <span class="math inline">\(\text{ARMA}(1,1)\)</span> загваруудын автокорреляцийн функцийг (ACF) зур.</h3>
+<section id="textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур." class="level3" data-number="9.10.10">
+<h3 data-number="9.10.10" class="anchored" data-anchor-id="textarma11-загваруудын-автокорреляцийн-функцийг-acf-зур."><span class="header-section-number">9.10.10</span> 4.10. <span class="math inline">\(\text{ARMA}(1,1)\)</span> загваруудын автокорреляцийн функцийг (ACF) зур.</h3>
 <p>Загвар: <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t - \theta e_{t-1}\)</span>. ACF-ийн ерөнхий томьёо: <span class="math display">\[
 \rho_1 = \frac{(1 - \phi\theta)(\phi - \theta)}{1 + \theta^2 - 2\phi\theta}, \qquad \rho_k = \phi^{k-1} \rho_1 \;\;(k \ge 2).
 \]</span></p>
@@ -1504,16 +1688,16 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <li><p><strong>(b) <span class="math inline">\(\phi = 0.7, \theta = -0.4\)</span>:</strong> <span class="math display">\[\rho_1 = \frac{(1 + 0.28)(1.1)}{1 + 0.16 + 0.56} = \frac{1.408}{1.72} \approx 0.8186, \quad \rho_2 = 0.7 \times 0.8186 \approx 0.573.\]</span> Lag 1-д маш өндөр эерэг утгатай (<span class="math inline">\(0.819\)</span>) байх ба цаашдаа экспоненциалаар буурна.</p></li>
 </ul>
 </section>
-<section id="textarma12-загварын-хувьд-батал." class="level3" data-number="13.10.11">
-<h3 data-number="13.10.11" class="anchored" data-anchor-id="textarma12-загварын-хувьд-батал."><span class="header-section-number">13.10.11</span> 4.11. <span class="math inline">\(\text{ARMA}(1,2)\)</span> загварын хувьд батал.</h3>
+<section id="textarma12-загварын-хувьд-батал." class="level3" data-number="9.10.11">
+<h3 data-number="9.10.11" class="anchored" data-anchor-id="textarma12-загварын-хувьд-батал."><span class="header-section-number">9.10.11</span> 4.11. <span class="math inline">\(\text{ARMA}(1,2)\)</span> загварын хувьд батал.</h3>
 <p><span class="math inline">\(Y_t = 0.8 Y_{t-1} + e_t + 0.7 e_{t-1} + 0.6 e_{t-2}\)</span>.</p>
 <ul>
 <li><p><strong>(a) <span class="math inline">\(k &gt; 2\)</span> үед <span class="math inline">\(\rho_k = 0.8 \rho_{k-1}\)</span>:</strong> <span class="math inline">\(Y_t\)</span>-г <span class="math inline">\(Y_{t-k}\)</span>-аар үржүүлж, математик дундаж авбал: <span class="math display">\[E(Y_t Y_{t-k}) = 0.8 E(Y_{t-1} Y_{t-k}) + E(e_t Y_{t-k}) + 0.7 E(e_{t-1} Y_{t-k}) + 0.6 E(e_{t-2} Y_{t-k}).\]</span> <span class="math inline">\(k &gt; 2\)</span> үед <span class="math inline">\(e_t, e_{t-1}, e_{t-2}\)</span> нь <span class="math inline">\(Y_{t-k}\)</span>-тай хамааралгүй тул сүүлийн 3 гишүүн <span class="math inline">\(0\)</span> болно. Иймд <span class="math inline">\(\gamma_k = 0.8 \gamma_{k-1} \implies \rho_k = 0.8 \rho_{k-1}\)</span>.</p></li>
 <li><p><strong>(b) <span class="math inline">\(\rho_2 = 0.8 \rho_1 + 0.6 \frac{\sigma_e^2}{\gamma_0}\)</span>:</strong> Дээрх тэгшитгэлд <span class="math inline">\(k = 2\)</span> гэвэл: <span class="math display">\[\gamma_2 = 0.8 \gamma_1 + E(e_t Y_{t-2}) + 0.7 E(e_{t-1} Y_{t-2}) + 0.6 E(e_{t-2} Y_{t-2}).\]</span> <span class="math inline">\(E(e_t Y_{t-2}) = 0\)</span>, <span class="math inline">\(E(e_{t-1} Y_{t-2}) = 0\)</span>, харин <span class="math inline">\(E(e_{t-2} Y_{t-2}) = \sigma_e^2\)</span> тул <span class="math inline">\(\gamma_2 = 0.8 \gamma_1 + 0.6 \sigma_e^2\)</span>. Хоёр талыг <span class="math inline">\(\gamma_0\)</span>-д хуваавал <span class="math inline">\(\rho_2 = 0.8 \rho_1 + 0.6 \frac{\sigma_e^2}{\gamma_0}\)</span>.</p></li>
 </ul>
 </section>
-<section id="хоёр-textma2-процессын-харьцуулалт." class="level3" data-number="13.10.12">
-<h3 data-number="13.10.12" class="anchored" data-anchor-id="хоёр-textma2-процессын-харьцуулалт."><span class="header-section-number">13.10.12</span> 4.12. Хоёр <span class="math inline">\(\text{MA}(2)\)</span> процессын харьцуулалт.</h3>
+<section id="хоёр-textma2-процессын-харьцуулалт." class="level3" data-number="9.10.12">
+<h3 data-number="9.10.12" class="anchored" data-anchor-id="хоёр-textma2-процессын-харьцуулалт."><span class="header-section-number">9.10.12</span> 4.12. Хоёр <span class="math inline">\(\text{MA}(2)\)</span> процессын харьцуулалт.</h3>
 <p>1-р процесс: <span class="math inline">\(\theta_1 = \theta_2 = 1/6\)</span>. 2-р процесс: <span class="math inline">\(\theta_1 = -1, \theta_2 = 6\)</span>.</p>
 <ul>
 <li><strong>(a) Ижил ACF-тэй гэдгийг харуул:</strong>
@@ -1528,8 +1712,8 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 </ul></li>
 </ul>
 </section>
-<section id="rho_1-le-12-гэдгийг-батал." class="level3" data-number="13.10.13">
-<h3 data-number="13.10.13" class="anchored" data-anchor-id="rho_1-le-12-гэдгийг-батал."><span class="header-section-number">13.10.13</span> 4.13. <span class="math inline">\(|\rho_1| \le 1/2\)</span> гэдгийг батал.</h3>
+<section id="rho_1-le-12-гэдгийг-батал." class="level3" data-number="9.10.13">
+<h3 data-number="9.10.13" class="anchored" data-anchor-id="rho_1-le-12-гэдгийг-батал."><span class="header-section-number">9.10.13</span> 4.13. <span class="math inline">\(|\rho_1| \le 1/2\)</span> гэдгийг батал.</h3>
 <p>Өгөгдсөн: <span class="math inline">\(\rho_k = 0\)</span> (<span class="math inline">\(k &gt; 1\)</span>), стационар процесс.</p>
 <p><span class="math inline">\(S_n = \sum_{i=1}^{n} Y_i\)</span> гэж авбал: <span class="math display">\[
 \operatorname{Var}(S_n) = n\gamma_0 + 2\sum_{k=1}^{n-1}(n - k)\gamma_k = n\gamma_0 + 2(n - 1)\gamma_1 \ge 0 \implies \rho_1 = \frac{\gamma_1}{\gamma_0} \ge -\frac{n}{2(n-1)}.
@@ -1538,53 +1722,53 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 \operatorname{Var}(A_n) = n\gamma_0 - 2(n - 1)\gamma_1 \ge 0 \implies \rho_1 \le \frac{n}{2(n-1)}.
 \]</span> <span class="math inline">\(n \to \infty\)</span> үед <span class="math inline">\(\rho_1 \le 1/2\)</span>. Иймд <span class="math inline">\(-1/2 \le \rho_1 \le 1/2 \implies |\rho_1| \le 1/2\)</span> батлагдав.</p>
 </section>
-<section id="стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." class="level3" data-number="13.10.14">
-<h3 data-number="13.10.14" class="anchored" data-anchor-id="стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул."><span class="header-section-number">13.10.14</span> 4.14. Стационар, <span class="math inline">\(|\rho_1| &lt; 0.5\)</span>, <span class="math inline">\(\rho_k = 0\)</span> (<span class="math inline">\(k &gt; 1\)</span>) процесс нь <span class="math inline">\(\text{MA}(1)\)</span> байхыг харуул.</h3>
+<section id="стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул." class="level3" data-number="9.10.14">
+<h3 data-number="9.10.14" class="anchored" data-anchor-id="стационар-rho_1-0.5-rho_k-0-k-1-процесс-нь-textma1-байхыг-харуул."><span class="header-section-number">9.10.14</span> 4.14. Стационар, <span class="math inline">\(|\rho_1| &lt; 0.5\)</span>, <span class="math inline">\(\rho_k = 0\)</span> (<span class="math inline">\(k &gt; 1\)</span>) процесс нь <span class="math inline">\(\text{MA}(1)\)</span> байхыг харуул.</h3>
 <p><span class="math inline">\(\rho_1 = \frac{-\theta}{1 + \theta^2}\)</span> тэгшитгэлийг <span class="math inline">\(\theta\)</span>-ийн хувьд бодвол: <span class="math display">\[
 \rho_1 \theta^2 + \theta + \rho_1 = 0 \implies \theta = \frac{-1 \pm \sqrt{1 - 4\rho_1^2}}{2\rho_1}.
 \]</span> <span class="math inline">\(|\rho_1| &lt; 1/2\)</span> тул <span class="math inline">\(1 - 4\rho_1^2 &gt; 0\)</span> буюу бодит язгууртай. Язгууруудын үржвэр нь <span class="math inline">\(1\)</span> тул нэг язгуур нь <span class="math inline">\(|\theta| &lt; 1\)</span> байна. Тэр язгуурыг сонгон <span class="math inline">\(e_t = \sum_{j=0}^{\infty} \theta^j Y_{t-j}\)</span> гэж авбал <span class="math inline">\(|\theta| &lt; 1\)</span> тул цуваа нийлэх бөгөөд <span class="math inline">\(Y_t = e_t - \theta e_{t-1}\)</span> болон <span class="math inline">\(\operatorname{Cov}(e_t, Y_{t-k}) = 0\)</span> (<span class="math inline">\(k &gt; 0\)</span>) нөхцөлүүд биелнэ.</p>
 </section>
-<section id="textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." class="level3" data-number="13.10.15">
-<h3 data-number="13.10.15" class="anchored" data-anchor-id="textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул."><span class="header-section-number">13.10.15</span> 4.15. <span class="math inline">\(\text{AR}(1)\)</span> процесст <span class="math inline">\(|\phi| = 1\)</span> үед стационар биш гэдгийг харуул.</h3>
+<section id="textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул." class="level3" data-number="9.10.15">
+<h3 data-number="9.10.15" class="anchored" data-anchor-id="textar1-процесст-phi-1-үед-стационар-биш-гэдгийг-харуул."><span class="header-section-number">9.10.15</span> 4.15. <span class="math inline">\(\text{AR}(1)\)</span> процесст <span class="math inline">\(|\phi| = 1\)</span> үед стационар биш гэдгийг харуул.</h3>
 <p><span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> тэгшитгэлийн хоёр талаас дисперс авбал <span class="math inline">\(\operatorname{Var}(Y_t) = \phi^2 \operatorname{Var}(Y_{t-1}) + \sigma_e^2\)</span>. Хэрэв стационар бол <span class="math inline">\(\operatorname{Var}(Y_t) = \operatorname{Var}(Y_{t-1}) = \gamma_0\)</span> байх ёстой тул <span class="math inline">\(\gamma_0(1 - \phi^2) = \sigma_e^2\)</span>. Хэрэв <span class="math inline">\(|\phi| = 1\)</span> бол <span class="math inline">\(\gamma_0 \cdot 0 = \sigma_e^2\)</span> болох ба <span class="math inline">\(\sigma_e^2 &gt; 0\)</span> тул зөрчил үүснэ. Иймд стационар байж чадахгүй.</p>
 </section>
-<section id="стационар-бус-textar1-y_t-3-y_t-1-e_t." class="level3" data-number="13.10.16">
-<h3 data-number="13.10.16" class="anchored" data-anchor-id="стационар-бус-textar1-y_t-3-y_t-1-e_t."><span class="header-section-number">13.10.16</span> 4.16. «Стационар бус» <span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = 3 Y_{t-1} + e_t\)</span>.</h3>
+<section id="стационар-бус-textar1-y_t-3-y_t-1-e_t." class="level3" data-number="9.10.16">
+<h3 data-number="9.10.16" class="anchored" data-anchor-id="стационар-бус-textar1-y_t-3-y_t-1-e_t."><span class="header-section-number">9.10.16</span> 4.16. «Стационар бус» <span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = 3 Y_{t-1} + e_t\)</span>.</h3>
 <ul>
 <li><strong>(a)</strong> <span class="math inline">\(Y_t = -\sum_{j=1}^{\infty} (1/3)^j e_{t+j}\)</span>-г баруун гар талд орлуулбал: <span class="math display">\[3Y_{t-1} + e_t = -3\sum_{j=1}^{\infty} \left(\frac{1}{3}\right)^j e_{t-1+j} + e_t = -\sum_{j=1}^{\infty} \left(\frac{1}{3}\right)^{j-1} e_{t-1+j} + e_t = -\left(e_t + \frac{1}{3}e_{t+1} + \cdots\right) + e_t = -\sum_{j=1}^{\infty} \left(\frac{1}{3}\right)^j e_{t+j} = Y_t.\]</span></li>
 <li><strong>(b)</strong> <span class="math inline">\(E(Y_t) = 0\)</span>, <span class="math inline">\(\operatorname{Var}(Y_t) = \sum_{j=1}^{\infty} (1/3)^{2j} \sigma_e^2 = \frac{1/9}{1 - 1/9}\sigma_e^2 = \frac{\sigma_e^2}{8}\)</span> (тогтмол), ковариац нь зөвхөн хугацааны зөрүүнээс хамаарна. Иймд стационар.</li>
 <li><strong>(c)</strong> Учир нь <span class="math inline">\(Y_t\)</span> нь ирээдүйн цагаан шуугиануудаас (<span class="math inline">\(e_{t+1}, e_{t+2}, \ldots\)</span>) хамаарч байна. Энэ нь шалтгаант (<em>causal</em>) бус бөгөөд бодит амьдралд ирээдүйн алдааг урьдчилан мэдэх боломжгүй.</li>
 </ul>
 </section>
-<section id="y_t-frac12-y_t-1-e_t-тэгшитгэл." class="level3" data-number="13.10.17">
-<h3 data-number="13.10.17" class="anchored" data-anchor-id="y_t-frac12-y_t-1-e_t-тэгшитгэл."><span class="header-section-number">13.10.17</span> 4.17. <span class="math inline">\(Y_t = \frac{1}{2} Y_{t-1} + e_t\)</span> тэгшитгэл.</h3>
+<section id="y_t-frac12-y_t-1-e_t-тэгшитгэл." class="level3" data-number="9.10.17">
+<h3 data-number="9.10.17" class="anchored" data-anchor-id="y_t-frac12-y_t-1-e_t-тэгшитгэл."><span class="header-section-number">9.10.17</span> 4.17. <span class="math inline">\(Y_t = \frac{1}{2} Y_{t-1} + e_t\)</span> тэгшитгэл.</h3>
 <ul>
 <li><strong>(a)</strong> Орлуулж шалгавал: <span class="math display">\[\frac{1}{2} Y_{t-1} + e_t = \frac{1}{2}\left[10\left(\frac{1}{2}\right)^{t-1} + e_{t-1} + \frac{1}{2}e_{t-2} + \cdots\right] + e_t = 10\left(\frac{1}{2}\right)^t + e_t + \frac{1}{2}e_{t-1} + \left(\frac{1}{2}\right)^2 e_{t-2} + \cdots = Y_t.\]</span></li>
 <li><strong>(b)</strong> Үгүй. Учир нь <span class="math inline">\(E(Y_t) = 10(1/2)^t\)</span> бөгөөд энэ нь <span class="math inline">\(t\)</span> хугацаанаас хамаарч өөрчлөгдөж байна.</li>
 </ul>
 </section>
-<section id="y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." class="level3" data-number="13.10.18">
-<h3 data-number="13.10.18" class="anchored" data-anchor-id="y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit."><span class="header-section-number">13.10.18</span> 4.18. <span class="math inline">\(Y_t\)</span> нь <span class="math inline">\(|\phi| &lt; 1\)</span> бүхий тэг дундажтай <span class="math inline">\(\text{AR}(1)\)</span>. <span class="math inline">\(W_t = Y_t + c\phi^t\)</span>.</h3>
+<section id="y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit." class="level3" data-number="9.10.18">
+<h3 data-number="9.10.18" class="anchored" data-anchor-id="y_t-нь-phi-1-бүхий-тэг-дундажтай-textar1.-w_t-y_t-cphit."><span class="header-section-number">9.10.18</span> 4.18. <span class="math inline">\(Y_t\)</span> нь <span class="math inline">\(|\phi| &lt; 1\)</span> бүхий тэг дундажтай <span class="math inline">\(\text{AR}(1)\)</span>. <span class="math inline">\(W_t = Y_t + c\phi^t\)</span>.</h3>
 <ul>
 <li><strong>(a)</strong> <span class="math inline">\(E(W_t) = E(Y_t) + E(c\phi^t) = 0 + c\phi^t = c\phi^t\)</span>.</li>
 <li><strong>(b)</strong> <span class="math inline">\(W_t - \phi W_{t-1} = (Y_t + c\phi^t) - \phi(Y_{t-1} + c\phi^{t-1}) = Y_t - \phi Y_{t-1} + c\phi^t - c\phi^t = e_t\)</span>.</li>
 <li><strong>(c)</strong> Үгүй, учир нь дундаж нь <span class="math inline">\(c\phi^t\)</span> бөгөөд <span class="math inline">\(c \ne 0\)</span> үед хугацаанаас хамаарна.</li>
 </ul>
 </section>
-<section id="textma6-загварыг-хялбарчлах." class="level3" data-number="13.10.19">
-<h3 data-number="13.10.19" class="anchored" data-anchor-id="textma6-загварыг-хялбарчлах."><span class="header-section-number">13.10.19</span> 4.19. <span class="math inline">\(\text{MA}(6)\)</span> загварыг хялбарчлах.</h3>
+<section id="textma6-загварыг-хялбарчлах." class="level3" data-number="9.10.19">
+<h3 data-number="9.10.19" class="anchored" data-anchor-id="textma6-загварыг-хялбарчлах."><span class="header-section-number">9.10.19</span> 4.19. <span class="math inline">\(\text{MA}(6)\)</span> загварыг хялбарчлах.</h3>
 <p><span class="math inline">\(\theta_1 = 0.5, \theta_2 = -0.25, \theta_3 = 0.125, \theta_4 = -0.0625, \theta_5 = 0.03125, \theta_6 = -0.015625\)</span>. Энд <span class="math inline">\(\psi_j = -\theta_j = (-0.5)^j\)</span> байна. Хязгааргүй үргэлжилбэл: <span class="math display">\[
 \psi(B) = 1 - 0.5 B + 0.25 B^2 - \cdots = \frac{1}{1 + 0.5 B}.
 \]</span> Иймд хамгийн ойролцоо хялбар загвар нь <span class="math inline">\(\text{AR}(1)\)</span>: <span class="math inline">\(Y_t = -0.5 Y_{t-1} + e_t\)</span> байна.</p>
 </section>
-<section id="textma7-загварыг-хялбарчлах." class="level3" data-number="13.10.20">
-<h3 data-number="13.10.20" class="anchored" data-anchor-id="textma7-загварыг-хялбарчлах."><span class="header-section-number">13.10.20</span> 4.20. <span class="math inline">\(\text{MA}(7)\)</span> загварыг хялбарчлах.</h3>
+<section id="textma7-загварыг-хялбарчлах." class="level3" data-number="9.10.20">
+<h3 data-number="9.10.20" class="anchored" data-anchor-id="textma7-загварыг-хялбарчлах."><span class="header-section-number">9.10.20</span> 4.20. <span class="math inline">\(\text{MA}(7)\)</span> загварыг хялбарчлах.</h3>
 <p><span class="math inline">\(\theta_1 = 1, \theta_2 = -0.5, \theta_3 = 0.25, \theta_4 = -0.125, \ldots\)</span>, өөрөөр хэлбэл <span class="math inline">\(\psi_j = -\theta_j = -(-0.5)^{j-1}\)</span> (<span class="math inline">\(j \ge 1\)</span>). <span class="math display">\[
 \psi(B) = 1 - B + 0.5 B^2 - 0.25 B^3 + \cdots = 1 - B(1 - 0.5 B + 0.25 B^2 - \cdots) = 1 - \frac{B}{1 + 0.5 B} = \frac{1 - 0.5 B}{1 + 0.5 B}.
 \]</span> Энэ нь <span class="math inline">\(\text{ARMA}(1,1)\)</span> загвар болно: <span class="math inline">\((1 + 0.5 B)Y_t = (1 - 0.5 B)e_t \implies Y_t = -0.5 Y_{t-1} + e_t - 0.5 e_{t-1}\)</span>.</p>
 </section>
-<section id="y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." class="level3" data-number="13.10.21">
-<h3 data-number="13.10.21" class="anchored" data-anchor-id="y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд."><span class="header-section-number">13.10.21</span> 4.21. <span class="math inline">\(Y_t = e_{t-1} - e_{t-2} + 0.5 e_{t-3}\)</span> процессын хувьд.</h3>
+<section id="y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд." class="level3" data-number="9.10.21">
+<h3 data-number="9.10.21" class="anchored" data-anchor-id="y_t-e_t-1---e_t-2-0.5-e_t-3-процессын-хувьд."><span class="header-section-number">9.10.21</span> 4.21. <span class="math inline">\(Y_t = e_{t-1} - e_{t-2} + 0.5 e_{t-3}\)</span> процессын хувьд.</h3>
 <ul>
 <li><strong>(a)</strong> Коэффициентүүд нь <span class="math inline">\(\psi_0 = 0, \psi_1 = 1, \psi_2 = -1, \psi_3 = 0.5\)</span>.
 <ul>
@@ -1596,28 +1780,28 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 <li><strong>(b)</strong> Энэ нь <span class="math inline">\(e_{t-1}\)</span> цагаан шуугианы хувьд <span class="math inline">\(p = 0, q = 2\)</span> буюу <span class="math inline">\(\text{ARMA}(0, 2) = \text{MA}(2)\)</span> (эсвэл <span class="math inline">\(e_t\)</span>-тэй харьцуулбал <span class="math inline">\(q = 3\)</span> эрэмбийн) ижил статистик шинж чанартай <span class="math inline">\(\text{MA}(2)\)</span> процесс: <span class="math inline">\(Y_t^* = e_t - e_{t-1} + 0.5 e_{t-2}\)</span> (<span class="math inline">\(\theta_1 = 1, \theta_2 = -0.5\)</span>).</li>
 </ul>
 </section>
-<section id="хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." class="level3" data-number="13.10.22">
-<h3 data-number="13.10.22" class="anchored" data-anchor-id="хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул."><span class="header-section-number">13.10.22</span> 4.22. Хоёр өгүүлбэрийн эквивалент байдлыг харуул.</h3>
+<section id="хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул." class="level3" data-number="9.10.22">
+<h3 data-number="9.10.22" class="anchored" data-anchor-id="хоёр-өгүүлбэрийн-эквивалент-байдлыг-харуул."><span class="header-section-number">9.10.22</span> 4.22. Хоёр өгүүлбэрийн эквивалент байдлыг харуул.</h3>
 <p><span class="math inline">\(P(x) = 1 - \phi_1 x - \phi_2 x^2 - \cdots - \phi_p x^p = 0\)</span> болон <span class="math inline">\(Q(x) = x^p - \phi_1 x^{p-1} - \cdots - \phi_p = 0\)</span> гэж авбал <span class="math inline">\(Q(x) = x^p P(1/x)\)</span>. Хэрэв <span class="math inline">\(G\)</span> нь <span class="math inline">\(P(x)\)</span>-ийн язгуур бол <span class="math inline">\(P(G) = 0 \implies Q(1/G) = (1/G)^p P(G) = 0\)</span>. Иймд <span class="math inline">\(P(x)\)</span>-ийн бүх язгуур <span class="math inline">\(|G| &gt; 1\)</span> байх нөхцөл нь <span class="math inline">\(Q(x)\)</span>-ийн бүх язгуур <span class="math inline">\(|1/G| &lt; 1\)</span> байх нөхцөлтэй эквивалент байна.</p>
 </section>
-<section id="textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." class="level3" data-number="13.10.23">
-<h3 data-number="13.10.23" class="anchored" data-anchor-id="textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1."><span class="header-section-number">13.10.23</span> 4.23. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span>, <span class="math inline">\(b_t = Y_t - \phi Y_{t+1}\)</span>.</h3>
+<section id="textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1." class="level3" data-number="9.10.23">
+<h3 data-number="9.10.23" class="anchored" data-anchor-id="textar1-процесс-y_t-phi-y_t-1-e_t-b_t-y_t---phi-y_t1."><span class="header-section-number">9.10.23</span> 4.23. <span class="math inline">\(\text{AR}(1)\)</span> процесс <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span>, <span class="math inline">\(b_t = Y_t - \phi Y_{t+1}\)</span>.</h3>
 <p><span class="math inline">\(Y_{t+1} = \phi Y_t + e_{t+1}\)</span> тул <span class="math inline">\(b_t = Y_t - \phi(\phi Y_t + e_{t+1}) = (1 - \phi^2)Y_t - \phi e_{t+1}\)</span>.</p>
 <ul>
 <li><strong>(a)</strong> <span class="math inline">\(k &gt; 0\)</span> үед <span class="math inline">\(e_{t+1}\)</span> нь <span class="math inline">\(Y_{t-k}\)</span> болон <span class="math inline">\(e_{t-k+1}\)</span>-ээс хамааралгүй. <span class="math inline">\(\operatorname{Cov}(Y_t, e_{t-k+1}) = \phi^{k-1}\sigma_e^2\)</span> ба <span class="math inline">\(\operatorname{Cov}(Y_t, Y_{t-k}) = \frac{\phi^k \sigma_e^2}{1 - \phi^2}\)</span> тул: <span class="math display">\[\operatorname{Cov}(b_t, b_{t-k}) = (1 - \phi^2)^2 \frac{\phi^k \sigma_e^2}{1 - \phi^2} - \phi(1 - \phi^2)\phi^{k-1}\sigma_e^2 = (1 - \phi^2)\phi^k \sigma_e^2 - (1 - \phi^2)\phi^k \sigma_e^2 = 0.\]</span></li>
 <li><strong>(b)</strong> <span class="math inline">\(k \ge 1\)</span> үед: <span class="math display">\[\operatorname{Cov}(b_t, Y_{t+k}) = (1 - \phi^2)\operatorname{Cov}(Y_t, Y_{t+k}) - \phi\operatorname{Cov}(e_{t+1}, Y_{t+k}) = (1 - \phi^2)\frac{\phi^k \sigma_e^2}{1 - \phi^2} - \phi \phi^{k-1}\sigma_e^2 = 0.\]</span></li>
 </ul>
 </section>
-<section id="t-0-ээс-эхэлсэн-рекурсив-процесс." class="level3" data-number="13.10.24">
-<h3 data-number="13.10.24" class="anchored" data-anchor-id="t-0-ээс-эхэлсэн-рекурсив-процесс."><span class="header-section-number">13.10.24</span> 4.24. <span class="math inline">\(t = 0\)</span>-ээс эхэлсэн рекурсив процесс.</h3>
+<section id="t-0-ээс-эхэлсэн-рекурсив-процесс." class="level3" data-number="9.10.24">
+<h3 data-number="9.10.24" class="anchored" data-anchor-id="t-0-ээс-эхэлсэн-рекурсив-процесс."><span class="header-section-number">9.10.24</span> 4.24. <span class="math inline">\(t = 0\)</span>-ээс эхэлсэн рекурсив процесс.</h3>
 <ul>
 <li><strong>(a)</strong> <span class="math inline">\(E(Y_0) = c_1 E(e_0) = 0\)</span>, <span class="math inline">\(E(Y_1) = c_2 E(Y_0) + E(e_1) = 0\)</span>. Индукцаар <span class="math inline">\(t &gt; 1\)</span> үед <span class="math inline">\(E(Y_t) = \phi_1 E(Y_{t-1}) + \phi_2 E(Y_{t-2}) + E(e_t) = 0\)</span>.</li>
 <li><strong>(b)</strong> <span class="math inline">\(Y_1 = c_2 Y_0 + e_1\)</span> тул <span class="math inline">\(\operatorname{Var}(Y_1) = c_2^2 \operatorname{Var}(Y_0) + \sigma_e^2\)</span>. <span class="math inline">\(\operatorname{Var}(Y_0) = \operatorname{Var}(Y_1)\)</span> тул <span class="math inline">\(\operatorname{Var}(Y_0) = \frac{\sigma_e^2}{1 - c_2^2}\)</span>. Мөн <span class="math inline">\(\operatorname{Corr}(Y_1, Y_0) = c_2 = \rho_1 = \frac{\phi_1}{1 - \phi_2}\)</span>. Харин <span class="math inline">\(\operatorname{Var}(Y_0) = c_1^2 \sigma_e^2\)</span> тул: <span class="math display">\[c_2 = \frac{\phi_1}{1 - \phi_2}, \qquad c_1 = \frac{1}{\sqrt{1 - c_2^2}} = \frac{1}{\sqrt{1 - \left(\frac{\phi_1}{1 - \phi_2}\right)^2}}.\]</span></li>
 <li><strong>(c)</strong> Үүсгэсэн <span class="math inline">\(Y_t\)</span> процессын дундаж <span class="math inline">\(0\)</span>, дисперс <span class="math inline">\(v\)</span> (стационар үед <span class="math inline">\(\gamma_0\)</span>) байхад <span class="math inline">\(\mu\)</span> дундажтай, <span class="math inline">\(\sigma^2\)</span> дисперстэй болгохын тулд <span class="math inline">\(Z_t = \mu + \frac{\sigma}{\sqrt{v}} Y_t\)</span> шугаман хувиргалт хийнэ.</li>
 </ul>
 </section>
-<section id="y_t-phi-y_t-1-e_t-процесс." class="level3" data-number="13.10.25">
-<h3 data-number="13.10.25" class="anchored" data-anchor-id="y_t-phi-y_t-1-e_t-процесс."><span class="header-section-number">13.10.25</span> 4.25. <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> процесс.</h3>
+<section id="y_t-phi-y_t-1-e_t-процесс." class="level3" data-number="9.10.25">
+<h3 data-number="9.10.25" class="anchored" data-anchor-id="y_t-phi-y_t-1-e_t-процесс."><span class="header-section-number">9.10.25</span> 4.25. <span class="math inline">\(Y_t = \phi Y_{t-1} + e_t\)</span> процесс.</h3>
 <ul>
 <li><strong>(a)</strong> Рекурсив орлуулалтаар: <span class="math inline">\(Y_1 = \phi Y_0 + e_1\)</span>, <span class="math inline">\(Y_2 = \phi^2 Y_0 + \phi e_1 + e_2\)</span>, …, <span class="math inline">\(t\)</span>-р алхамд <span class="math inline">\(Y_t = \phi^t Y_0 + \sum_{j=0}^{t-1} \phi^j e_{t-j}\)</span>.</li>
 <li><strong>(b)</strong> <span class="math inline">\(E(Y_t) = \sum_{j=0}^{t-1} \phi^j E(e_{t-j}) + \phi^t E(Y_0) = \phi^t \mu_0\)</span>.</li>
@@ -1633,6 +1817,54 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -2109,11 +2341,14 @@ f'(\theta) = 0 \implies \theta^2 = 1 \implies \theta = \pm 1.
   </script>
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./11-solutions.html" class="pagination-link" aria-label="Сонгосон бодолтууд">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span>
+      <a href="./08-arima.html" class="pagination-link" aria-label="Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./09-forecasting.html" class="pagination-link" aria-label="Таамаглал">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Таамаглал</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

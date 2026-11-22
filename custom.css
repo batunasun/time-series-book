@@ -1,0 +1,28 @@
+/* Номын хавтасны зурагт сүүдэр, булангийн дугуйралт өгөх */
+.cover-img {
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  margin-left: 24px;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Хулганаар очиход бага зэрэг товойх эффект */
+.cover-img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+/* Харанхуй горимд (Dark mode) сүүдрийг илүү зохистой болгох */
+body.quarto-dark .cover-img {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* Гар утасны дэлгэц дээр хавтсыг голлуулах */
+@media (max-width: 768px) {
+  .cover-img {
+    display: block;
+    float: none !important;
+    margin: 0 auto 20px auto;
+  }
+}
