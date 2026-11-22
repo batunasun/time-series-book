@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Хэсэгчилсэн автокорреляцын функц (PACF) – Хугацааны цувааны шинжилгээ</title>
+<title>4&nbsp; Хэсэгчилсэн автокорреляцын функц (PACF) – Хугацааны цувааны шинжилгээ</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -73,7 +73,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./05-ar1.html" rel="next">
 <link href="./03-acf.html" rel="prev">
-<link href="./images/must-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -329,7 +328,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-pacf.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-pacf.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -364,79 +363,79 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Агуулга</span></span></a>
+ <span class="menu-text">Танилцуулга</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-white-noise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Цагаан чимээ (White Noise)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-stationarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Стационар байдал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-acf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-pacf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-ma1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн хөдөлгөөнт дундаж процесс: MA(1)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-arma.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Авторегрессив хөдөлгөөнт дундаж процесс: ARMA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-arima.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Авторегрессив нэгтгэсэн хөдөлгөөнт дундаж процесс: ARIMA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Стационар хугацааны цувааны загварууд</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-forecasting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Таамаглал</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Таамаглал</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-exercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Дасгалууд</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11-solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Сонгосон бодолтууд</span></span></a>
   </div>
 </li>
     </ul>
@@ -449,34 +448,34 @@ window.Quarto = {
     <h2 id="toc-title">Дэд гарчиг</h2>
    
   <ul>
-  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">5.1</span> Оршил</a></li>
-  <li><a href="#урам-зориг" id="toc-урам-зориг" class="nav-link" data-scroll-target="#урам-зориг"><span class="header-section-number">5.2</span> Урам зориг</a></li>
-  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">5.3</span> Тодорхойлолт</a></li>
-  <li><a href="#pacf-ийг-тооцоолох" id="toc-pacf-ийг-тооцоолох" class="nav-link" data-scroll-target="#pacf-ийг-тооцоолох"><span class="header-section-number">5.4</span> PACF-ийг тооцоолох</a></li>
-  <li><a href="#цагаан-чимээний-pacf" id="toc-цагаан-чимээний-pacf" class="nav-link" data-scroll-target="#цагаан-чимээний-pacf"><span class="header-section-number">5.5</span> Цагаан чимээний PACF</a>
+  <li><a href="#оршил" id="toc-оршил" class="nav-link active" data-scroll-target="#оршил"><span class="header-section-number">4.1</span> Оршил</a></li>
+  <li><a href="#урам-зориг" id="toc-урам-зориг" class="nav-link" data-scroll-target="#урам-зориг"><span class="header-section-number">4.2</span> Урам зориг</a></li>
+  <li><a href="#тодорхойлолт" id="toc-тодорхойлолт" class="nav-link" data-scroll-target="#тодорхойлолт"><span class="header-section-number">4.3</span> Тодорхойлолт</a></li>
+  <li><a href="#pacf-ийг-тооцоолох" id="toc-pacf-ийг-тооцоолох" class="nav-link" data-scroll-target="#pacf-ийг-тооцоолох"><span class="header-section-number">4.4</span> PACF-ийг тооцоолох</a></li>
+  <li><a href="#цагаан-чимээний-pacf" id="toc-цагаан-чимээний-pacf" class="nav-link" data-scroll-target="#цагаан-чимээний-pacf"><span class="header-section-number">4.5</span> Цагаан чимээний PACF</a>
   <ul class="collapse">
-  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">5.5.1</span> Симуляц</a></li>
+  <li><a href="#симуляц" id="toc-симуляц" class="nav-link" data-scroll-target="#симуляц"><span class="header-section-number">4.5.1</span> Симуляц</a></li>
   </ul></li>
-  <li><a href="#ar1-процессын-pacf" id="toc-ar1-процессын-pacf" class="nav-link" data-scroll-target="#ar1-процессын-pacf"><span class="header-section-number">5.6</span> AR(1) процессын PACF</a>
+  <li><a href="#ar1-процессын-pacf" id="toc-ar1-процессын-pacf" class="nav-link" data-scroll-target="#ar1-процессын-pacf"><span class="header-section-number">4.6</span> AR(1) процессын PACF</a>
   <ul class="collapse">
-  <li><a href="#жишээ" id="toc-жишээ" class="nav-link" data-scroll-target="#жишээ"><span class="header-section-number">5.6.1</span> Жишээ</a></li>
+  <li><a href="#жишээ" id="toc-жишээ" class="nav-link" data-scroll-target="#жишээ"><span class="header-section-number">4.6.1</span> Жишээ</a></li>
   </ul></li>
-  <li><a href="#ar2-процессын-pacf" id="toc-ar2-процессын-pacf" class="nav-link" data-scroll-target="#ar2-процессын-pacf"><span class="header-section-number">5.7</span> AR(2) процессын PACF</a></li>
-  <li><a href="#ma1-процессын-pacf" id="toc-ma1-процессын-pacf" class="nav-link" data-scroll-target="#ma1-процессын-pacf"><span class="header-section-number">5.8</span> MA(1) процессын PACF</a>
+  <li><a href="#ar2-процессын-pacf" id="toc-ar2-процессын-pacf" class="nav-link" data-scroll-target="#ar2-процессын-pacf"><span class="header-section-number">4.7</span> AR(2) процессын PACF</a></li>
+  <li><a href="#ma1-процессын-pacf" id="toc-ma1-процессын-pacf" class="nav-link" data-scroll-target="#ma1-процессын-pacf"><span class="header-section-number">4.8</span> MA(1) процессын PACF</a>
   <ul class="collapse">
-  <li><a href="#жишээ-1" id="toc-жишээ-1" class="nav-link" data-scroll-target="#жишээ-1"><span class="header-section-number">5.8.1</span> Жишээ</a></li>
+  <li><a href="#жишээ-1" id="toc-жишээ-1" class="nav-link" data-scroll-target="#жишээ-1"><span class="header-section-number">4.8.1</span> Жишээ</a></li>
   </ul></li>
-  <li><a href="#acf-ба-pacf-ийн-харьцуулалт" id="toc-acf-ба-pacf-ийн-харьцуулалт" class="nav-link" data-scroll-target="#acf-ба-pacf-ийн-харьцуулалт"><span class="header-section-number">5.9</span> ACF ба PACF-ийн харьцуулалт</a>
+  <li><a href="#acf-ба-pacf-ийн-харьцуулалт" id="toc-acf-ба-pacf-ийн-харьцуулалт" class="nav-link" data-scroll-target="#acf-ба-pacf-ийн-харьцуулалт"><span class="header-section-number">4.9</span> ACF ба PACF-ийн харьцуулалт</a>
   <ul class="collapse">
-  <li><a href="#ar-загварууд" id="toc-ar-загварууд" class="nav-link" data-scroll-target="#ar-загварууд"><span class="header-section-number">5.9.1</span> AR загварууд</a></li>
-  <li><a href="#ma-загварууд" id="toc-ma-загварууд" class="nav-link" data-scroll-target="#ma-загварууд"><span class="header-section-number">5.9.2</span> MA загварууд</a></li>
-  <li><a href="#arma-загварууд" id="toc-arma-загварууд" class="nav-link" data-scroll-target="#arma-загварууд"><span class="header-section-number">5.9.3</span> ARMA загварууд</a></li>
+  <li><a href="#ar-загварууд" id="toc-ar-загварууд" class="nav-link" data-scroll-target="#ar-загварууд"><span class="header-section-number">4.9.1</span> AR загварууд</a></li>
+  <li><a href="#ma-загварууд" id="toc-ma-загварууд" class="nav-link" data-scroll-target="#ma-загварууд"><span class="header-section-number">4.9.2</span> MA загварууд</a></li>
+  <li><a href="#arma-загварууд" id="toc-arma-загварууд" class="nav-link" data-scroll-target="#arma-загварууд"><span class="header-section-number">4.9.3</span> ARMA загварууд</a></li>
   </ul></li>
-  <li><a href="#загвар-тодорхойлох" id="toc-загвар-тодорхойлох" class="nav-link" data-scroll-target="#загвар-тодорхойлох"><span class="header-section-number">5.10</span> Загвар тодорхойлох</a></li>
-  <li><a href="#жишээ-ar-ба-ma-загваруудыг-харьцуулах" id="toc-жишээ-ar-ба-ma-загваруудыг-харьцуулах" class="nav-link" data-scroll-target="#жишээ-ar-ба-ma-загваруудыг-харьцуулах"><span class="header-section-number">5.11</span> Жишээ: AR ба MA загваруудыг харьцуулах</a></li>
-  <li><a href="#статистик-ач-холбогдол" id="toc-статистик-ач-холбогдол" class="nav-link" data-scroll-target="#статистик-ач-холбогдол"><span class="header-section-number">5.12</span> Статистик ач холбогдол</a></li>
-  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">5.13</span> Дүгнэлт</a></li>
-  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">5.14</span> Дасгал</a></li>
+  <li><a href="#загвар-тодорхойлох" id="toc-загвар-тодорхойлох" class="nav-link" data-scroll-target="#загвар-тодорхойлох"><span class="header-section-number">4.10</span> Загвар тодорхойлох</a></li>
+  <li><a href="#жишээ-ar-ба-ma-загваруудыг-харьцуулах" id="toc-жишээ-ar-ба-ma-загваруудыг-харьцуулах" class="nav-link" data-scroll-target="#жишээ-ar-ба-ma-загваруудыг-харьцуулах"><span class="header-section-number">4.11</span> Жишээ: AR ба MA загваруудыг харьцуулах</a></li>
+  <li><a href="#статистик-ач-холбогдол" id="toc-статистик-ач-холбогдол" class="nav-link" data-scroll-target="#статистик-ач-холбогдол"><span class="header-section-number">4.12</span> Статистик ач холбогдол</a></li>
+  <li><a href="#дүгнэлт" id="toc-дүгнэлт" class="nav-link" data-scroll-target="#дүгнэлт"><span class="header-section-number">4.13</span> Дүгнэлт</a></li>
+  <li><a href="#дасгал" id="toc-дасгал" class="nav-link" data-scroll-target="#дасгал"><span class="header-section-number">4.14</span> Дасгал</a></li>
   </ul>
 </nav>
     </div>
@@ -486,7 +485,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Хэсэгчилсэн автокорреляцын функц (PACF)</span></h1>
 </div>
 
 
@@ -503,8 +502,8 @@ window.Quarto = {
 </header>
 
 
-<section id="оршил" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">5.1</span> Оршил</h2>
+<section id="оршил" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="оршил"><span class="header-section-number">4.1</span> Оршил</h2>
 <p>Автокорреляцын функц (ACF) нь</p>
 <p><span class="math display">\[
 Y_t
@@ -530,8 +529,8 @@ Y_{t-k}
 <p>хоорондын шууд хамаарлыг хэмждэг.</p>
 <p>PACF нь авторегрессив загваруудыг тодорхойлох хамгийн ашигтай хэрэгслүүдийн нэг юм.</p>
 </section>
-<section id="урам-зориг" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="урам-зориг"><span class="header-section-number">5.2</span> Урам зориг</h2>
+<section id="урам-зориг" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="урам-зориг"><span class="header-section-number">4.2</span> Урам зориг</h2>
 <p>AR(1) процессыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t.
@@ -559,8 +558,8 @@ Y_{t-1}
 <p>-ээр дамжин үүсдэг.</p>
 <p>PACF энэ шууд бус нөлөөг арилгадаг.</p>
 </section>
-<section id="тодорхойлолт" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">5.3</span> Тодорхойлолт</h2>
+<section id="тодорхойлолт" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="тодорхойлолт"><span class="header-section-number">4.3</span> Тодорхойлолт</h2>
 <p>(k) хоцролт дээрх хэсэгчилсэн автокорреляцыг</p>
 <p><span class="math display">\[
 \alpha(k)
@@ -584,8 +583,8 @@ Y_{t-k}
 \]</span></p>
 <p>нь (k) хоцролтын шууд хувь нэмрийг хэмждэг.</p>
 </section>
-<section id="pacf-ийг-тооцоолох" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="pacf-ийг-тооцоолох"><span class="header-section-number">5.4</span> PACF-ийг тооцоолох</h2>
+<section id="pacf-ийг-тооцоолох" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="pacf-ийг-тооцоолох"><span class="header-section-number">4.4</span> PACF-ийг тооцоолох</h2>
 <p>Практикт PACF-ийг рекурсив регрессийн арга эсвэл Yule-Walker тэгшитгэлээр үнэлдэг.</p>
 <p>Аз болоход R үүнийг автоматаар тооцоолдог.</p>
 <div class="cell">
@@ -606,8 +605,8 @@ Y_{t-k}
 </div>
 </div>
 </section>
-<section id="цагаан-чимээний-pacf" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="цагаан-чимээний-pacf"><span class="header-section-number">5.5</span> Цагаан чимээний PACF</h2>
+<section id="цагаан-чимээний-pacf" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="цагаан-чимээний-pacf"><span class="header-section-number">4.5</span> Цагаан чимээний PACF</h2>
 <p>Цагаан чимээний хувьд</p>
 <p><span class="math display">\[
 Y_t \sim WN(0,\sigma^2),
@@ -618,8 +617,8 @@ Y_t \sim WN(0,\sigma^2),
 \alpha(k)=0,
 \qquad k\ge1.
 \]</span></p>
-<section id="симуляц" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">5.5.1</span> Симуляц</h3>
+<section id="симуляц" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="симуляц"><span class="header-section-number">4.5.1</span> Симуляц</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -640,8 +639,8 @@ Y_t \sim WN(0,\sigma^2),
 <p>Бүх баганууд тэг орчимд санамсаргүйгээр хэлбэлзэх ёстой.</p>
 </section>
 </section>
-<section id="ar1-процессын-pacf" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="ar1-процессын-pacf"><span class="header-section-number">5.6</span> AR(1) процессын PACF</h2>
+<section id="ar1-процессын-pacf" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="ar1-процессын-pacf"><span class="header-section-number">4.6</span> AR(1) процессын PACF</h2>
 <p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t=\phi Y_{t-1}+\varepsilon_t,
@@ -660,8 +659,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t,
 \qquad k&gt;1.
 \]</span></p>
 <p>Иймд PACF нь 1 хоцролтын дараа тасардаг.</p>
-<section id="жишээ" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="жишээ"><span class="header-section-number">5.6.1</span> Жишээ</h3>
+<section id="жишээ" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="жишээ"><span class="header-section-number">4.6.1</span> Жишээ</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -685,8 +684,8 @@ Y_t=\phi Y_{t-1}+\varepsilon_t,
 <p>1 хоцролт дээр ач холбогдолтой оргил гарч, дараагийн хоцролтууд тэгтэй ойрхон байна.</p>
 </section>
 </section>
-<section id="ar2-процессын-pacf" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="ar2-процессын-pacf"><span class="header-section-number">5.7</span> AR(2) процессын PACF</h2>
+<section id="ar2-процессын-pacf" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="ar2-процессын-pacf"><span class="header-section-number">4.7</span> AR(2) процессын PACF</h2>
 <p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t
@@ -719,16 +718,16 @@ Y_t
 </div>
 <p>PACF нь 1 ба 2 хоцролтууд дээр ач холбогдолтой утгуудыг харуулсны дараа тасардаг.</p>
 </section>
-<section id="ma1-процессын-pacf" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="ma1-процессын-pacf"><span class="header-section-number">5.8</span> MA(1) процессын PACF</h2>
+<section id="ma1-процессын-pacf" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="ma1-процессын-pacf"><span class="header-section-number">4.8</span> MA(1) процессын PACF</h2>
 <p>Дараахьыг авч үзье:</p>
 <p><span class="math display">\[
 Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 \]</span></p>
 <p>AR процессоос ялгаатай нь PACF тасардаггүй.</p>
 <p>Харин аажмаар тэг рүү буурдаг.</p>
-<section id="жишээ-1" class="level3" data-number="5.8.1">
-<h3 data-number="5.8.1" class="anchored" data-anchor-id="жишээ-1"><span class="header-section-number">5.8.1</span> Жишээ</h3>
+<section id="жишээ-1" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="жишээ-1"><span class="header-section-number">4.8.1</span> Жишээ</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -752,26 +751,26 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 <p>PACF огцом зогсохын оронд аажмаар буурдаг.</p>
 </section>
 </section>
-<section id="acf-ба-pacf-ийн-харьцуулалт" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="acf-ба-pacf-ийн-харьцуулалт"><span class="header-section-number">5.9</span> ACF ба PACF-ийн харьцуулалт</h2>
-<section id="ar-загварууд" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="ar-загварууд"><span class="header-section-number">5.9.1</span> AR загварууд</h3>
+<section id="acf-ба-pacf-ийн-харьцуулалт" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="acf-ба-pacf-ийн-харьцуулалт"><span class="header-section-number">4.9</span> ACF ба PACF-ийн харьцуулалт</h2>
+<section id="ar-загварууд" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="ar-загварууд"><span class="header-section-number">4.9.1</span> AR загварууд</h3>
 <p>AR((p)) процессын хувьд:</p>
 <ul>
 <li>ACF аажмаар буурдаг.</li>
 <li>PACF (p) хоцролтын дараа тасардаг.</li>
 </ul>
 </section>
-<section id="ma-загварууд" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="ma-загварууд"><span class="header-section-number">5.9.2</span> MA загварууд</h3>
+<section id="ma-загварууд" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="ma-загварууд"><span class="header-section-number">4.9.2</span> MA загварууд</h3>
 <p>MA((q)) процессын хувьд:</p>
 <ul>
 <li>ACF (q) хоцролтын дараа тасардаг.</li>
 <li>PACF аажмаар буурдаг.</li>
 </ul>
 </section>
-<section id="arma-загварууд" class="level3" data-number="5.9.3">
-<h3 data-number="5.9.3" class="anchored" data-anchor-id="arma-загварууд"><span class="header-section-number">5.9.3</span> ARMA загварууд</h3>
+<section id="arma-загварууд" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="arma-загварууд"><span class="header-section-number">4.9.3</span> ARMA загварууд</h3>
 <p>ARMA((p,q)) процессын хувьд:</p>
 <ul>
 <li>ACF аажмаар буурдаг.</li>
@@ -780,8 +779,8 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 <p>Аль ч функц огцом тасралт харуулдаггүй.</p>
 </section>
 </section>
-<section id="загвар-тодорхойлох" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="загвар-тодорхойлох"><span class="header-section-number">5.10</span> Загвар тодорхойлох</h2>
+<section id="загвар-тодорхойлох" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="загвар-тодорхойлох"><span class="header-section-number">4.10</span> Загвар тодорхойлох</h2>
 <p>Box-Jenkins арга нь ACF ба PACF-ийг хамт ашигладаг.</p>
 <table class="caption-top table">
 <thead>
@@ -821,8 +820,8 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 </table>
 <p>Эдгээр хэв маяг нь практик загвар тодорхойлоход үндсэн чухал юм.</p>
 </section>
-<section id="жишээ-ar-ба-ma-загваруудыг-харьцуулах" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="жишээ-ar-ба-ma-загваруудыг-харьцуулах"><span class="header-section-number">5.11</span> Жишээ: AR ба MA загваруудыг харьцуулах</h2>
+<section id="жишээ-ar-ба-ma-загваруудыг-харьцуулах" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="жишээ-ar-ба-ma-загваруудыг-харьцуулах"><span class="header-section-number">4.11</span> Жишээ: AR ба MA загваруудыг харьцуулах</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -847,8 +846,8 @@ Y_t=\varepsilon_t+\theta\varepsilon_{t-1}.
 <li>MA(1): ACF тасарна, PACF аажмаар буурна.</li>
 </ul>
 </section>
-<section id="статистик-ач-холбогдол" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="статистик-ач-холбогдол"><span class="header-section-number">5.12</span> Статистик ач холбогдол</h2>
+<section id="статистик-ач-холбогдол" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="статистик-ач-холбогдол"><span class="header-section-number">4.12</span> Статистик ач холбогдол</h2>
 <p>Том түүврийн хувьд</p>
 <p><span class="math display">\[
 SE(r_k)
@@ -861,8 +860,8 @@ SE(r_k)
 \]</span></p>
 <p>Эдгээр хязгаараас гадуур байгаа утгууд нь ач холбогдолтой хамаарлыг илтгэж болно.</p>
 </section>
-<section id="дүгнэлт" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">5.13</span> Дүгнэлт</h2>
+<section id="дүгнэлт" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="дүгнэлт"><span class="header-section-number">4.13</span> Дүгнэлт</h2>
 <ul>
 <li>PACF нь өгөгдсөн хоцролт дээрх шууд хамаарлыг хэмждэг.</li>
 <li>PACF нь завсрын ажиглалтуудын нөлөөг арилгадаг.</li>
@@ -871,8 +870,8 @@ SE(r_k)
 <li>ACF ба PACF хамтдаа загвар тодорхойлох үндсэн хэрэгсэл болдог.</li>
 </ul>
 </section>
-<section id="дасгал" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">5.14</span> Дасгал</h2>
+<section id="дасгал" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="дасгал"><span class="header-section-number">4.14</span> Дасгал</h2>
 <ol type="1">
 <li>() бүхий AR(1) процессыг симуляцла.</li>
 <li>Түүний ACF ба PACF-ийг зур.</li>
@@ -1415,12 +1414,12 @@ SE(r_k)
 <nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./03-acf.html" class="pagination-link" aria-label="Автокорреляцын функц (ACF)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Автокорреляцын функц (ACF)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05-ar1.html" class="pagination-link" aria-label="Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нэгдүгээр эрэмбийн авторегрессив процесс: AR(1)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
